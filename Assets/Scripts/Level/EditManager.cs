@@ -9,7 +9,9 @@ public class EditManager : MonoBehaviour
     [SerializeField] private GameObject _targetObject;
     [SerializeField] private bool _isEditMode;
     [SerializeField] private LayersManager _layersManager;
-    
+
+    public bool IsEditMode => _isEditMode;
+
     private void Awake()
     {
         _targetObject = _camera.Follow.gameObject;

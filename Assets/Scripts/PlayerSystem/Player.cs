@@ -7,6 +7,7 @@ namespace PlayerSystem
 {
     public class Player : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Transform _hand;
         [SerializeField] private float _speed;
         [SerializeField] private KeyCode _interactionKey;
@@ -19,7 +20,7 @@ namespace PlayerSystem
         
         private void Awake()
         {
-            _movement = new Movement(transform, _speed);
+            _movement = new Movement(_spriteRenderer, transform, _hand, _speed);
             _interaction = new Interaction(new ChangeStrategy(), _hand);
         }
 
@@ -29,6 +30,7 @@ namespace PlayerSystem
             if (direction != 0)
             {
                 _movement.Move(direction);
+                _movement.Flip(direction);
             }
 
             if (Input.GetKeyDown(_interactionKey))

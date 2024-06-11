@@ -4,7 +4,7 @@ using Utils;
 
 namespace EnemySystem.CreatureSystem
 {
-    public class Creature : MonoBehaviour
+    public class Creature : MonoBehaviour, IEnemy
     {
         public event Action OnPlayerKill;
         

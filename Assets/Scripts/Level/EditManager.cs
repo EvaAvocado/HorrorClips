@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace Level
         [SerializeField] private bool _isEditMode;
         [SerializeField] private LayersManager _layersManager;
 
+        public static event Action<bool> OnChangeEditMode; 
+        
         public bool IsEditMode => _isEditMode;
 
         private void Awake()
@@ -32,12 +35,14 @@ namespace Level
                 DOTween.To(() => _camera.m_Lens.OrthographicSize, x=> _camera.m_Lens.OrthographicSize = x, _orthoSize * 3 + _orthoSize/2, 1f);
                 _camera.transform.DOMove(new Vector3(0, _layersManager.SpawnPointY + _layersManager.Height/2 ,_camera.transform.position.z), 1f);
                 _isEditMode = true;
+                OnChangeEditMode?.Invoke(_isEditMode);
             }
             else if (Input.GetKeyUp(KeyCode.Q) && _isEditMode)
             {
                 DOTween.To(() => _camera.m_Lens.OrthographicSize, x=> _camera.m_Lens.OrthographicSize = x, _orthoSize, 1f);
                 _camera.transform.DOMove(new Vector3(_targetObject.transform.position.x, _targetObject.transform.position.y , _camera.transform.position.z), 1f).OnComplete(SetCameraFollow);
                 _isEditMode = false;
+                OnChangeEditMode?.Invoke(_isEditMode);
             }
         }
 

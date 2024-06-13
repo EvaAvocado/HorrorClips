@@ -1,17 +1,17 @@
-﻿using EnemySystem.CreatureSystem;
+﻿using PlayerSystem;
 using UnityEngine;
 
 namespace Core
 {
     public class Bootstrapper : MonoBehaviour
     {
-        [SerializeField] private Creature _creature;
+        [SerializeField] private Player _player;
 
         private readonly Game _game = new();
         
         private void Awake()
         {
-            _creature.OnPlayerKill += _game.ResetScene;
+            _player.OnDie += _game.ResetScene;
         }
     }
 }

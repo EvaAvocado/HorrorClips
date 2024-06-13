@@ -8,5 +8,10 @@ namespace Items
         {
             Debug.Log("Tuck Tuck");
         }
+
+        public void AlternativeUse(Transform objectTransform)
+        {
+            Debug.Log("Try open");
+        }
     }
 }

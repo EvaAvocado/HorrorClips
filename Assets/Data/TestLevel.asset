@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66f333482b917e6459bbc91300b4e4ea, type: 3}
-  m_Name: Test
+  m_Name: TestLevel
   m_EditorClassIdentifier: 
   clips:
     gridSize: {x: 6, y: 2}

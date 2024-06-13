@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Data;
 using Level.Clips;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Level
@@ -25,12 +26,21 @@ namespace Level
         private List<ClipPlace> _topClipPlaces;
         private List<ClipPlace> _bottomClipPlaces;
 
-        private List<GameObject> _topClips = new List<GameObject>();
-        private List<GameObject> _bottomClips = new List<GameObject>();
+        private List<GameObject> _topGameObj = new List<GameObject>();
+        private List<GameObject> _bottomGameObj = new List<GameObject>();
+
+        private List<Clip> _topClips = new List<Clip>();
+        private List<Clip> _bottomClips = new List<Clip>();
+
+        #region Properties
 
         public float SpawnPointY => _spawnPointY;
         public float Height => _height;
         public float Width => _width;
+        public List<Clip> TopClips => _topClips;
+        public List<Clip> BottomClips => _bottomClips;
+
+        #endregion
 
         private void Awake()
         {
@@ -49,21 +59,21 @@ namespace Level
                 {
                     var clip = _levelData.clips.GetCells()[0, i];
 
-                    _topClips.Add(clip);
+                    _topGameObj.Add(clip);
                 }
 
-                _countOfClipsTop = _topClips.Count;
+                _countOfClipsTop = _topGameObj.Count;
 
                 for (int i = 0; i < _levelData.clips.GridSize.x; i++)
                 {
                     var clip = _levelData.clips.GetCells()[1, i];
                     if (clip != null)
                     {
-                        _bottomClips.Add(clip);
+                        _bottomGameObj.Add(clip);
                     }
                 }
 
-                _countOfClipsBottom = _bottomClips.Count;
+                _countOfClipsBottom = _bottomGameObj.Count;
 
                 _bottomClipPlaces = SpawnLayer(_spawnPointY, _countOfClipsBottom);
                 _topClipPlaces = SpawnLayer(_spawnPointY + _height + _height / 2, _countOfClipsTop);
@@ -92,13 +102,16 @@ namespace Level
         {
             for (int i = 0; i < clipPlaces.Count; i++)
             {
-                var clip = isTop ? _levelData.clips.GetCells()[0, i] : _bottomClips[i];
+                var clip = isTop ? _levelData.clips.GetCells()[0, i] : _bottomGameObj[i];
                 if (clip != null)
                 {
-                    clipPlaces[i].SetClip(Instantiate(clip,
-                            new Vector3(clipPlaces[i].transform.position.x, clipPlaces[i].transform.position.y,
-                                clip.transform.position.z), Quaternion.identity)
-                        .GetComponent<Clip>());
+                    var newClip = Instantiate(clip, new Vector3(clipPlaces[i].transform.position.x, 
+                            clipPlaces[i].transform.position.y, clip.transform.position.z), Quaternion.identity)
+                            .GetComponent<Clip>();
+                    clipPlaces[i].SetClip(newClip);
+                    
+                    if (isTop) _topClips.Add(newClip);
+                    else _bottomClips.Add(newClip);
                 }
             }
 

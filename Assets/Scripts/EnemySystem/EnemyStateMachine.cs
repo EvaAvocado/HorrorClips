@@ -28,14 +28,12 @@ namespace EnemySystem
             {
                 [typeof(Wait)] = new Wait(),
                 [typeof(Patrol)] = new Patrol(),
-                [typeof(Hunt)] = new Hunt(spriteRenderer, transform, playerTransform, speed)
+                [typeof(Hunt)] = new Hunt(spriteRenderer, transform, playerTransform, speed),
+                [typeof(Die)] = new Die(transform.gameObject)
             };
         }
 
-        public void UpdateState()
-        {
-            _activeState.Update();
-        }
+        public void UpdateState() => _activeState.Update();
         
         public IEnemyState GetState() => _activeState;
     }

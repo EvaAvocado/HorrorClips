@@ -22,20 +22,27 @@ namespace PlayerSystem
             _playerTransform.position += _playerTransform.right * (direction * _speed * Time.deltaTime);
         }
 
-        public void Flip(float direction)
+        public bool Flip(float direction)
         {
             if (direction > 0
                 && _playerSprite.flipX)
             {
                 _playerSprite.flipX = false;
                 _handTransform.localPosition *= -1;
+                
+                return true;
             }
-            else if (direction < 0
-                     && !_playerSprite.flipX)
+            
+            if (direction < 0
+                && !_playerSprite.flipX)
             {
                 _playerSprite.flipX = true;
                 _handTransform.localPosition *= -1;
+
+                return true;
             }
+
+            return false;
         }
     }
 }

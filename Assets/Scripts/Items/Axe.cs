@@ -13,5 +13,12 @@ namespace Items
                 objectTransform.localPosition = Vector3.zero;
             }
         }
+
+        public void AlternativeUse(Transform objectTransform)
+        {
+            Debug.Log("drop");
+            objectTransform.parent = null;
+            objectTransform.GetComponent<IItem>().Drop();
+        }
     }
 }

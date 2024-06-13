@@ -1,20 +1,29 @@
-﻿namespace EnemySystem.States
+﻿using UnityEngine;
+
+namespace EnemySystem.States
 {
     public class Die : IEnemyState
     {
+        private readonly GameObject _enemy;
+
+        public Die(GameObject enemy)
+        {
+            _enemy = enemy;
+        }
+
         public void Enter()
         {
-            throw new System.NotImplementedException();
+            _enemy.SetActive(false);
         }
 
         public void Update()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

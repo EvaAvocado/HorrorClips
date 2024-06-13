@@ -9,7 +9,9 @@ namespace PlayerSystem
         private readonly Transform _hand;
         
         private IStrategy _strategy;
-        private Transform _item;
+        private IItem _itemInHand;
+        private IItem _item;
+        private bool _isAxeInHand;
 
         public Interaction(ChangeStrategy changeStrategy, Transform hand)
         {
@@ -21,11 +23,22 @@ namespace PlayerSystem
         {
             if (_item is not null)
             {
-                _strategy = _changeStrategy.SwitchStrategy(_item.GetComponent<Item>().GetItemEnum);
-                _strategy?.Use(_hand, _item);
+                _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
+                _strategy?.Use(_hand, _item.GetTransform());
+                _itemInHand = _item;
+                _isAxeInHand = true;
+            }
+            else if (_itemInHand is not null
+                && _isAxeInHand)
+            {
+                _strategy?.AlternativeUse(_itemInHand.GetTransform());
+                _itemInHand = null;
+                _isAxeInHand = false;
             }
         }
 
-        public void SetItemEnum(Transform item) => _item = item;
+        public void SetItemEnum(IItem item) => _item = item;
+
+        public void Flip() => _itemInHand?.Flip();
     }
 }

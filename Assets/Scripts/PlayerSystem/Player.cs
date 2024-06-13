@@ -7,11 +7,14 @@ namespace PlayerSystem
 {
     public class Player : MonoBehaviour
     {
+        public event Action OnDie;
+        
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Transform _hand;
         [SerializeField] private float _speed;
         [SerializeField] private KeyCode _interactionKey;
         [SerializeField] private LayerMask _itemLayer;
+        [SerializeField] private LayerMask _enemyLayer;
 
         private Movement _movement;
         private Interaction _interaction;
@@ -30,12 +33,21 @@ namespace PlayerSystem
             if (direction != 0)
             {
                 _movement.Move(direction);
-                _movement.Flip(direction);
+                
+                if (_movement.Flip(direction))
+                {
+                    _interaction.Flip();
+                }
             }
 
             if (Input.GetKeyDown(_interactionKey))
             {
                 _interaction.Action();
+
+                if (_spriteRenderer.flipX)
+                {
+                    _interaction.Flip();
+                }
             }
         }
 
@@ -43,7 +55,12 @@ namespace PlayerSystem
         {
             if (_itemLayer.Contains(other.gameObject.layer))
             {
-                _interaction.SetItemEnum(other.transform);
+                _interaction.SetItemEnum(other.GetComponent<IItem>());
+            }
+            
+            if (_enemyLayer.Contains(other.gameObject.layer))
+            {
+                OnDie?.Invoke();
             }
         }
 

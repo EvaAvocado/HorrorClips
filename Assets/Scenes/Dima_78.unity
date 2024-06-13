@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 632870156}
   - component: {fileID: 632870158}
   - component: {fileID: 632870159}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,9 +292,6 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 632870156}
   _playerTransform: {fileID: 1368465628}
   _speed: 2
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
   _axeLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -395,9 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb85db4a17b4ee2a4b4314df901d8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _creature: {fileID: 1834393409}
-  _minions:
-  - {fileID: 632870158}
+  _player: {fileID: 1368465626}
 --- !u!4 &1019801579
 Transform:
   m_ObjectHideFlags: 0
@@ -566,6 +561,9 @@ MonoBehaviour:
   _itemLayer:
     serializedVersion: 2
     m_Bits: 64
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!212 &1368465627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -710,7 +708,7 @@ GameObject:
   - component: {fileID: 1369814055}
   - component: {fileID: 1369814058}
   m_Layer: 6
-  m_Name: Square
+  m_Name: TestAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +838,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c8981965b24038bdc6ebd70b9f101a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1369814056}
+  _speedDrop: 3
   _type: 1
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1376798760
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,8 +891,8 @@ GameObject:
   - component: {fileID: 1834393409}
   - component: {fileID: 1834393412}
   - component: {fileID: 1834393413}
-  m_Layer: 0
-  m_Name: Capsule
+  m_Layer: 7
+  m_Name: Creature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,9 +912,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseSpeed: 1
   _runSpeed: 5
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!212 &1834393410
 SpriteRenderer:
   m_ObjectHideFlags: 0

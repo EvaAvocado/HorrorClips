@@ -19,6 +19,8 @@ namespace PlayerSystem
         private Movement _movement;
         private Interaction _interaction;
 
+        public static event Action<float> OnMove;
+
         private const string HORIZONTAL = "Horizontal";
         
         private void Awake()
@@ -32,6 +34,8 @@ namespace PlayerSystem
             var direction = Input.GetAxis(HORIZONTAL);
             if (direction != 0)
             {
+                OnMove?.Invoke(direction);
+                
                 _movement.Move(direction);
                 
                 if (_movement.Flip(direction))

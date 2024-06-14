@@ -12,6 +12,7 @@ namespace Level.Clips
         [SerializeField] private bool _isCanDrag = true;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
+        [SerializeField] private LayerMask _playerLayer;
 
         private bool _isBeingHeld;
         private Camera _camera;
@@ -55,7 +56,7 @@ namespace Level.Clips
 
         private void Update()
         {
-            if (_isCanDrag && _isBeingHeld && _clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit)
+            if (_isCanDrag && _isBeingHeld && _clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
             {
                 _mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 transform.localPosition = new Vector3(_mousePos.x - _startPos.x, _mousePos.y - _startPos.y,
@@ -87,6 +88,24 @@ namespace Level.Clips
         {
             transform.DOMove(newPos, 0.25f)
                 .OnComplete(() => _isCanDrag = true);
+        }
+
+        public void PlayerEnter()
+        {
+            if (_clipState != ClipStateEnum.Enter
+                && _clipState != ClipStateEnum.Exit)
+            {
+                _clipState = ClipStateEnum.PlayerIn;
+            }
+        }
+
+        public void PlayerExit()
+        {
+            if (_clipState != ClipStateEnum.Enter
+                && _clipState != ClipStateEnum.Exit)
+            {
+                _clipState = ClipStateEnum.Default;
+            }
         }
     }
 }

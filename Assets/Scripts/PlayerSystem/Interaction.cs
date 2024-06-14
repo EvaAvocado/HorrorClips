@@ -24,20 +24,20 @@ namespace PlayerSystem
             if (_item is not null)
             {
                 _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
-                _strategy?.Use(_hand, _item.GetTransform());
+                _strategy?.Use(_hand, _item);
                 _itemInHand = _item;
                 _isAxeInHand = true;
             }
             else if (_itemInHand is not null
                 && _isAxeInHand)
             {
-                _strategy?.AlternativeUse(_itemInHand.GetTransform());
+                _strategy?.AlternativeUse(_itemInHand);
                 _itemInHand = null;
                 _isAxeInHand = false;
             }
         }
 
-        public void SetItemEnum(IItem item) => _item = item;
+        public void SetItem(IItem item) => _item = item;
 
         public void Flip() => _itemInHand?.Flip();
     }

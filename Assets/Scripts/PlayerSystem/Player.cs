@@ -48,6 +48,8 @@ namespace PlayerSystem
                 {
                     _interaction.Flip();
                 }
+                
+                _interaction.SetItem(null);
             }
         }
 
@@ -55,7 +57,7 @@ namespace PlayerSystem
         {
             if (_itemLayer.Contains(other.gameObject.layer))
             {
-                _interaction.SetItemEnum(other.GetComponent<IItem>());
+                _interaction.SetItem(other.GetComponent<IItem>());
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
@@ -68,7 +70,7 @@ namespace PlayerSystem
         {
             if (_itemLayer.Contains(other.gameObject.layer))
             {
-                _interaction.SetItemEnum(null);
+                _interaction.SetItem(null);
             }
         }
     }

@@ -19,6 +19,7 @@ namespace EnemySystem.Minion
             _stateMachine = new EnemyStateMachine();
             _stateMachine.CreateStates(_spriteRenderer, transform, _playerTransform, _speed);
             _stateMachine.ChangeState<Wait>();
+            _camera = Camera.main;
         }
 
         private void Update()

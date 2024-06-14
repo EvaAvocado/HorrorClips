@@ -14,6 +14,7 @@ namespace Level.Clips
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
         [SerializeField] private LayerMask _playerLayer;
 
+        [SerializeField] private bool _isEditMode;
         private bool _isBeingHeld;
         private Camera _camera;
         private Vector3 _mousePos;
@@ -26,9 +27,10 @@ namespace Level.Clips
             Default,
             Enter,
             Exit,
-            PlayerIn
+            PlayerIn,
+            EditMode
         }
-        
+
         #region Properties
 
         public ClipPlace CurrentClipPlace
@@ -42,11 +44,6 @@ namespace Level.Clips
             set => _isCanDrag = value;
         }
 
-        private void OnEnable()
-        {
-            _camera = Camera.main;
-        }
-
         public ClipStateEnum ClipState
         {
             set => _clipState = value;
@@ -54,9 +51,21 @@ namespace Level.Clips
 
         #endregion
 
+        private void OnEnable()
+        {
+            EditManager.OnChangeEditMode += ChangeEditMode;
+            _camera = Camera.main;
+        }
+
+        private void OnDisable()
+        {
+            EditManager.OnChangeEditMode -= ChangeEditMode;
+        }
+
         private void Update()
         {
-            if (_isCanDrag && _isBeingHeld && _clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
+            if (_isCanDrag && _isBeingHeld && _clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit &&
+                _clipState != ClipStateEnum.PlayerIn && _isEditMode)
             {
                 _mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 transform.localPosition = new Vector3(_mousePos.x - _startPos.x, _mousePos.y - _startPos.y,
@@ -89,7 +98,7 @@ namespace Level.Clips
             transform.DOMove(newPos, 0.25f)
                 .OnComplete(() => _isCanDrag = true);
         }
-
+        
         public void PlayerEnter()
         {
             if (_clipState != ClipStateEnum.Enter
@@ -106,6 +115,11 @@ namespace Level.Clips
             {
                 _clipState = ClipStateEnum.Default;
             }
+        }
+
+        private void ChangeEditMode(bool status)
+        {
+            _isEditMode = status;
         }
     }
 }

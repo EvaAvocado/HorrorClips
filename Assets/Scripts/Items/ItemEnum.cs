@@ -4,6 +4,7 @@
     {
         NONE = 0,
         AXE = 1,
-        DOOR = 2
+        DOOR = 2,
+        FLASHLIGHT = 3
     }
 }

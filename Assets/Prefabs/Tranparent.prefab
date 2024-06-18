@@ -90,9 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4c385e948746379ddf6c0437d63010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderers:
-  - {fileID: 0}
-  - {fileID: 0}
+  _renderers: []
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8

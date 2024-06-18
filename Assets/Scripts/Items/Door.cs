@@ -4,7 +4,7 @@ namespace Items
 {
     public class Door : IStrategy
     {
-        public void Use(Transform hand, IItem item)
+        public void Use(Transform pos, IItem item)
         {
             Debug.Log("Tuck Tuck");
         }

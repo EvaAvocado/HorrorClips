@@ -12,6 +12,7 @@ namespace PlayerSystem
         
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Transform _hand;
+        [SerializeField] private Transform _head;
         [SerializeField] private float _speed;
         [SerializeField] private KeyCode _interactionKey;
         [SerializeField] private LayerMask _itemLayer;
@@ -25,13 +26,15 @@ namespace PlayerSystem
 
         private const string HORIZONTAL = "Horizontal";
         
+        public bool HaveFlashlight => _interaction.HaveFlashlight;
+        
         private void Awake()
         {
             _movement = new Movement(_spriteRenderer, transform, _hand, _speed);
-            _interaction = new Interaction(new ChangeStrategy(), _hand);
+            _interaction = new Interaction(new ChangeStrategy(), _hand, _head);
         }
 
-        void Update()
+        private void Update()
         {
             var direction = Input.GetAxis(HORIZONTAL);
             if (direction != 0)

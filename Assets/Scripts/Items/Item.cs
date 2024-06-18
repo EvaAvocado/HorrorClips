@@ -35,7 +35,8 @@ namespace Items
                 CheckEnemy(other);
             }
             
-            if (_wallLayer.Contains(other.gameObject.layer))
+            if (_isDropItem
+                && _wallLayer.Contains(other.gameObject.layer))
             {
                 _isDropItem = false;
                 // Realisation of the rebound

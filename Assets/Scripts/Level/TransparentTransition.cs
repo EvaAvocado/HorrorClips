@@ -19,7 +19,7 @@ namespace Level
             {
                 for (int i = 0; i < _renderers.Count; i++)
                 {
-                    _renderers[i].color = new Color(MAX_COLOR, MAX_COLOR, MAX_COLOR, TRANSPARENCY);
+                    _renderers[i].color = ChangeColor(TRANSPARENCY);
                 }
             }
         }
@@ -30,9 +30,11 @@ namespace Level
             {
                 for (int i = 0; i < _renderers.Count; i++)
                 {
-                    _renderers[i].color = new Color(MAX_COLOR, MAX_COLOR, MAX_COLOR, MAX_COLOR);
+                    _renderers[i].color = ChangeColor(MAX_COLOR);
                 }
             }
         }
+
+        private Color ChangeColor(float alpha) => new(MAX_COLOR, MAX_COLOR, MAX_COLOR, alpha);
     }
 }

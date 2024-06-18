@@ -4,21 +4,22 @@ namespace Items
 {
     public class Axe : IStrategy
     {
-        public void Use(Transform hand, Transform objectTransform)
+        public void Use(Transform hand, IItem item)
         {
             Debug.Log("Use Axe");
-            if (hand.childCount == 0)
+            if (!item.IsDropItem()
+                && hand.childCount == 0)
             {
-                objectTransform.parent = hand;
-                objectTransform.localPosition = Vector3.zero;
+                item.GetTransform().parent = hand;
+                item.GetTransform().localPosition = Vector3.zero;
             }
         }
 
-        public void AlternativeUse(Transform objectTransform)
+        public void AlternativeUse(IItem item)
         {
             Debug.Log("drop");
-            objectTransform.parent = null;
-            objectTransform.GetComponent<IItem>().Drop();
+            item.GetTransform().parent = null;
+            item.Drop();
         }
     }
 }

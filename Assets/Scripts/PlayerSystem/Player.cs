@@ -1,5 +1,6 @@
 using System;
 using Items;
+using Level.Clips;
 using UnityEngine;
 using Utils;
 
@@ -15,6 +16,7 @@ namespace PlayerSystem
         [SerializeField] private KeyCode _interactionKey;
         [SerializeField] private LayerMask _itemLayer;
         [SerializeField] private LayerMask _enemyLayer;
+        [SerializeField] private LayerMask _clipLayer;
 
         private Movement _movement;
         private Interaction _interaction;
@@ -52,6 +54,8 @@ namespace PlayerSystem
                 {
                     _interaction.Flip();
                 }
+                
+                _interaction.SetItem(null);
             }
         }
 
@@ -59,12 +63,17 @@ namespace PlayerSystem
         {
             if (_itemLayer.Contains(other.gameObject.layer))
             {
-                _interaction.SetItemEnum(other.GetComponent<IItem>());
+                _interaction.SetItem(other.GetComponent<IItem>());
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
                 OnDie?.Invoke();
+            }
+            
+            if (_clipLayer.Contains(other.gameObject.layer))
+            {
+                other.GetComponent<Clip>().PlayerEnter();
             }
         }
 
@@ -72,7 +81,12 @@ namespace PlayerSystem
         {
             if (_itemLayer.Contains(other.gameObject.layer))
             {
-                _interaction.SetItemEnum(null);
+                _interaction.SetItem(null);
+            }
+            
+            if (_clipLayer.Contains(other.gameObject.layer))
+            {
+                other.GetComponent<Clip>().PlayerExit();
             }
         }
     }

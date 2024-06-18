@@ -1,7 +1,6 @@
 using System;
 using Array2DEditor;
 using DG.Tweening;
-using UnityEditorInternal;
 using UnityEngine;
 using Utils;
 
@@ -13,6 +12,7 @@ namespace Level.Clips
         [SerializeField] private bool _isCanDrag = true;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
+        [SerializeField] private LayerMask _playerLayer;
 
         [SerializeField] private bool _isEditMode;
         private bool _isBeingHeld;
@@ -97,6 +97,24 @@ namespace Level.Clips
         {
             transform.DOMove(newPos, 0.25f)
                 .OnComplete(() => _isCanDrag = true);
+        }
+        
+        public void PlayerEnter()
+        {
+            if (_clipState != ClipStateEnum.Enter
+                && _clipState != ClipStateEnum.Exit)
+            {
+                _clipState = ClipStateEnum.PlayerIn;
+            }
+        }
+
+        public void PlayerExit()
+        {
+            if (_clipState != ClipStateEnum.Enter
+                && _clipState != ClipStateEnum.Exit)
+            {
+                _clipState = ClipStateEnum.Default;
+            }
         }
 
         private void ChangeEditMode(bool status)

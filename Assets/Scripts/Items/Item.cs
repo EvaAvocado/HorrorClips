@@ -14,6 +14,8 @@ namespace Items
 
         private bool _isDropItem;
 
+        public bool IsDropItem() => _isDropItem;
+
         public ItemEnum GetItemEnum() => _type;
 
         private void Update()
@@ -36,6 +38,8 @@ namespace Items
             if (_wallLayer.Contains(other.gameObject.layer))
             {
                 _isDropItem = false;
+                // Realisation of the rebound
+                Debug.Log("rebound");
             }
         }
 

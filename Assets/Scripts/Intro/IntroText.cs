@@ -15,11 +15,6 @@ namespace Intro
         [SerializeField] private Text _textField;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private LayerMask _playerLayer;
-        
-        private void Awake()
-        {
-            _textField.text = _text;
-        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -35,6 +30,12 @@ namespace Intro
             _textField.transform.DOMove(
                 new Vector3(_textField.transform.position.x, _textField.transform.position.y + _deltaToShift, _textField.transform.position.z),
                 _duration);
+        }
+
+        public void SetText(String newText)
+        {
+            _text = newText;
+            _textField.text = _text;
         }
     }
 }

@@ -539,6 +539,10 @@ MonoBehaviour:
   _isCanDrag: 1
   _spriteRenderer: {fileID: 2341208284399090638}
   _clipState: 0
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _isEditMode: 0
 --- !u!61 &3324179297680527706
 BoxCollider2D:
   m_ObjectHideFlags: 0

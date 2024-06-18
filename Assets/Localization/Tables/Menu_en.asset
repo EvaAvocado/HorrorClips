@@ -26,6 +26,14 @@ MonoBehaviour:
     m_Localized: Change language
     m_Metadata:
       m_Items: []
+  - m_Id: 23441001783296
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23485062946816
+    m_Localized: Sounds
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

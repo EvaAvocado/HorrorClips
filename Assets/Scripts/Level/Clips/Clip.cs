@@ -10,7 +10,7 @@ namespace Level.Clips
     {
         [SerializeField] private ClipPlace _currentClipPlace;
         [SerializeField] private bool _isCanDrag = true;
-        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
         [SerializeField] private LayerMask _playerLayer;
 
@@ -79,7 +79,10 @@ namespace Level.Clips
             {
                 _startPos = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
                 _isBeingHeld = true;
-                _spriteRenderer.sortingOrder += 1;
+                foreach (var sprite in _spriteRenderers)
+                {
+                    sprite.sortingLayerName = "RoomTop";
+                }
             }
         }
 
@@ -89,7 +92,10 @@ namespace Level.Clips
             {
                 OnMouseUpAction?.Invoke(this);
                 _isBeingHeld = false;
-                _spriteRenderer.sortingOrder -= 1;
+                foreach (var sprite in _spriteRenderers)
+                {
+                    sprite.sortingLayerName = "Room";
+                }
             }
         }
 

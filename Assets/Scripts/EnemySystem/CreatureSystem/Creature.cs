@@ -1,3 +1,5 @@
+using System;
+using PlayerSystem;
 using UnityEngine;
 
 namespace EnemySystem.CreatureSystem
@@ -6,12 +8,22 @@ namespace EnemySystem.CreatureSystem
     {
         [SerializeField] private float _baseSpeed;
         [SerializeField] private float _runSpeed;
-        
-        private const string HORIZONTAL = "Horizontal";
-        
+
+        private float _playerDirection;
+
+        private void OnEnable()
+        {
+            Player.OnMove += PlayerMove;
+        }
+
+        private void OnDisable()
+        {
+            Player.OnMove -= PlayerMove;
+        }
+
         private void Update()
         {
-            if (Input.GetAxis(HORIZONTAL) == 0)
+            if (_playerDirection == 0)
             {
                 transform.position += transform.right * (_baseSpeed * Time.deltaTime);
             }
@@ -20,5 +32,7 @@ namespace EnemySystem.CreatureSystem
                 transform.position += transform.right * (_runSpeed * Time.deltaTime);
             }
         }
+
+        private void PlayerMove(float direction) => _playerDirection = direction;
     }
 }

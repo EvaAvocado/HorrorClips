@@ -99,5 +99,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startSize: 0.2
   _endSize: 3
-  _distance: 75
+  _distance: 85
   _offset: 0.05

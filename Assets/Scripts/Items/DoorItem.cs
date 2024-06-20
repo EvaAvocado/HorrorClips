@@ -23,7 +23,7 @@ namespace Items
             throw new System.NotImplementedException();
         }
 
-        public void AlternativeUse()
+        public void AlternativeUse(IItem item = null)
         {
             if (_strokeCounter < _sprites.Count)
             {
@@ -32,6 +32,12 @@ namespace Items
             else
             {
                 gameObject.SetActive(false);
+                
+                if (item is not null)
+                {
+                    item.GetTransform().parent = null;
+                    item.GetTransform().gameObject.SetActive(false);
+                }
             }
         }
 

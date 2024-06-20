@@ -1,4 +1,5 @@
-﻿using EnemySystem.Minion;
+﻿using System;
+using EnemySystem.Minion;
 using UnityEngine;
 using Utils;
 
@@ -47,7 +48,7 @@ namespace Items
                 Debug.Log("rebound");
             }
         }
-        
+
         private void CheckEnemy(Collider2D other)
         {
             if (other.TryGetComponent<Minion>(out Minion minion))
@@ -58,7 +59,7 @@ namespace Items
 
         public Transform GetTransform() => transform;
 
-        public void AlternativeUse() 
+        public void AlternativeUse(IItem item = null) 
         {
             _isDropItem = true;
 

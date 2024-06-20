@@ -14,7 +14,7 @@ namespace Items.Strategy
             }
         }
 
-        public void AlternativeUse(IItem item)
+        public void AlternativeUse(IItem item, IItem itemTwo = null)
         {
             
         }

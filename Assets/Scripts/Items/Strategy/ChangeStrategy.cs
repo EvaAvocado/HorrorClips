@@ -5,6 +5,7 @@
         private readonly Axe _axe = new();
         private readonly Door _door = new();
         private readonly Flashlight _flashlight = new();
+        private readonly Rope _rope = new();
 
         public IStrategy SwitchStrategy(ItemEnum itemEnum)
         {
@@ -22,6 +23,10 @@
                 {
                     return _flashlight;
                 }
+                case ItemEnum.ROPE:
+                {
+                    return _rope;
+                } 
             }
 
             return null;

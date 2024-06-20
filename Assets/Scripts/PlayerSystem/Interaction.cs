@@ -31,10 +31,12 @@ namespace PlayerSystem
             {
                 _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
 
-                if (_item.GetItemEnum() == ItemEnum.DOOR
+                if ((_item.GetItemEnum() == ItemEnum.DOOR
+                    || _item.GetItemEnum() == ItemEnum.ROPE)
                     && _isAxeInHand)
                 {
-                    _strategy?.AlternativeUse(_item);
+                    _strategy?.AlternativeUse(_item, _itemInHand);
+                    CheckAxe();
                     return true;
                 }
                 
@@ -73,6 +75,15 @@ namespace PlayerSystem
             }
 
             return false;
+        }
+
+        private void CheckAxe()
+        {
+            if (!_itemInHand.GetTransform().gameObject.activeSelf)
+            {
+                _itemInHand = null;
+                _isAxeInHand = false;
+            }
         }
 
         public void SetItem(IItem item) => _item = item;

@@ -2,16 +2,16 @@
 
 namespace Items.Strategy
 {
-    public class Door : IStrategy
+    public class Rope : IStrategy
     {
         public void Use(Transform pos, IItem item)
         {
-            Debug.Log("Tuck Tuck");
+            Debug.Log("try");
         }
 
         public void AlternativeUse(IItem item, IItem itemTwo = null)
         {
-            Debug.Log("Try open");
+            Debug.Log("Use Rope");
             item.AlternativeUse(itemTwo);
         }
     }

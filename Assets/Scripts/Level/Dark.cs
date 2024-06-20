@@ -18,8 +18,10 @@ namespace Level
         {
             if (_playerLayer.Contains(other.gameObject.layer))
             {
-                CheckFlashlight(other.gameObject);
-                _spriteRenderer.color = ChangeColor(TRANSPARENCY);
+                if (CheckFlashlight(other.gameObject))
+                {
+                    _spriteRenderer.color = ChangeColor(TRANSPARENCY);
+                }
             }
         }
 
@@ -39,12 +41,15 @@ namespace Level
             }
         }
 
-        private void CheckFlashlight(GameObject player)
+        private bool CheckFlashlight(GameObject player)
         {
             if (player.GetComponent<Player>().HaveFlashlight)
             {
                 _collider2D.isTrigger = true;
+                return true;
             }
+
+            return false;
         }
         
         private Color ChangeColor(float alpha) => new(0, 0, 0, alpha);

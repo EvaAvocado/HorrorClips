@@ -1,4 +1,5 @@
 ﻿using Items;
+using Items.Strategy;
 using UnityEngine;
 
 namespace PlayerSystem
@@ -24,35 +25,54 @@ namespace PlayerSystem
         
         public bool HaveFlashlight => _isHaveFlashlight;
         
-        public void Action()
+        public bool Action()
         {
             if (_item is not null)
             {
                 _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
+
+                if (_item.GetItemEnum() == ItemEnum.DOOR
+                    && _isAxeInHand)
+                {
+                    _strategy?.AlternativeUse(_item);
+                    return true;
+                }
                 
                 if (_item.GetItemEnum() == ItemEnum.AXE)
                 {
                     _itemInHand = _item;
                     _isAxeInHand = true;
                     _strategy?.Use(_hand, _item);
+                    return false;
                 }
-                else if (_item.GetItemEnum() == ItemEnum.FLASHLIGHT)
+                
+                if (_item.GetItemEnum() == ItemEnum.FLASHLIGHT)
                 {
                     _isHaveFlashlight = true;
                     _strategy?.Use(_head, _item);
+                    return false;
                 }
-                else
+
+                if (_item.GetItemEnum() == ItemEnum.DOOR)
                 {
                     _strategy?.Use(_hand, _item);
+                    return true;
                 }
+                
+                _strategy?.Use(_hand, _item);
+                return false;
             }
-            else if (_itemInHand is not null 
-                     && _isAxeInHand)
+            
+            if (_itemInHand is not null 
+                && _isAxeInHand)
             {
                 _strategy?.AlternativeUse(_itemInHand);
                 _itemInHand = null;
                 _isAxeInHand = false;
+                return false;
             }
+
+            return false;
         }
 
         public void SetItem(IItem item) => _item = item;

@@ -1,4 +1,4 @@
-﻿namespace Items
+﻿namespace Items.Strategy
 {
     public class ChangeStrategy
     {

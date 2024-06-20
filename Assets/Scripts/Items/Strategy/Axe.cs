@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Items
+namespace Items.Strategy
 {
     public class Axe : IStrategy
     {
@@ -19,7 +19,7 @@ namespace Items
         {
             Debug.Log("drop");
             item.GetTransform().parent = null;
-            item.Drop();
+            item.AlternativeUse();
         }
     }
 }

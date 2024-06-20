@@ -24,6 +24,10 @@ namespace Items
             {
                 transform.position += transform.right * (_speedDrop * Time.deltaTime);
             }
+            else if (transform.parent is not null)
+            {
+                transform.localPosition = Vector3.zero;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -43,10 +47,18 @@ namespace Items
                 Debug.Log("rebound");
             }
         }
+        
+        private void CheckEnemy(Collider2D other)
+        {
+            if (other.TryGetComponent<Minion>(out Minion minion))
+            {
+                minion.Die();
+            }
+        }
 
         public Transform GetTransform() => transform;
 
-        public void Drop() 
+        public void AlternativeUse() 
         {
             _isDropItem = true;
 
@@ -57,13 +69,5 @@ namespace Items
         }
 
         public void Flip() => _spriteRenderer.flipX = !_spriteRenderer.flipX;
-
-        private void CheckEnemy(Collider2D other)
-        {
-            if (other.TryGetComponent<Minion>(out Minion minion))
-            {
-                minion.Die();
-            }
-        }
     }
 }

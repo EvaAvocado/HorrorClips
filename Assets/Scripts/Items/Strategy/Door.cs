@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Items
+namespace Items.Strategy
 {
     public class Door : IStrategy
     {
@@ -12,6 +12,7 @@ namespace Items
         public void AlternativeUse(IItem item)
         {
             Debug.Log("Try open");
+            item.AlternativeUse();
         }
     }
 }

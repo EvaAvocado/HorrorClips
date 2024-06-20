@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Items
+namespace Items.Strategy
 {
     public class Flashlight : IStrategy
     {

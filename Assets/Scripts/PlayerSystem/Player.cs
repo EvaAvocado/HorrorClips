@@ -1,5 +1,6 @@
 using System;
 using Items;
+using Items.Strategy;
 using Level.Clips;
 using UnityEngine;
 using Utils;
@@ -51,14 +52,15 @@ namespace PlayerSystem
 
             if (Input.GetKeyDown(_interactionKey))
             {
-                _interaction.Action();
+                if (!_interaction.Action())
+                {
+                    _interaction.SetItem(null);
+                }
 
                 if (_spriteRenderer.flipX)
                 {
                     _interaction.Flip();
                 }
-                
-                _interaction.SetItem(null);
             }
         }
 

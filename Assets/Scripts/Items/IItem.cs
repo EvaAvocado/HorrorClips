@@ -7,7 +7,7 @@ namespace Items
         bool IsDropItem();
         ItemEnum GetItemEnum();
         Transform GetTransform();
-        void Drop();
+        void AlternativeUse();
         void Flip();
     }
 }

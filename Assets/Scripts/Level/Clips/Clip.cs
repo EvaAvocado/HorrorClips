@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Array2DEditor;
 using DG.Tweening;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Level.Clips
         [SerializeField] private ClipPlace _currentClipPlace;
         [SerializeField] private bool _isCanDrag = true;
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
+        [SerializeField] private List<SpriteRenderer> _leftSprites;
+        [SerializeField] private List<SpriteRenderer> _rightSprites;
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
         [SerializeField] private LayerMask _playerLayer;
         [SerializeField] private bool _isEditMode;
@@ -21,6 +24,9 @@ namespace Level.Clips
         private Vector3 _startPos;
 
         public static event Action<Clip> OnMouseUpAction;
+
+        public List<SpriteRenderer> LeftSprites => _leftSprites;
+        public List<SpriteRenderer> RightSprites => _rightSprites;
 
         public enum ClipStateEnum
         {

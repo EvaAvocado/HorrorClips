@@ -627,8 +627,8 @@ MonoBehaviour:
   - {fileID: 5054850588657561236}
   - {fileID: 2159553624640420270}
   - {fileID: 2090263457874231463}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6779620478308922453}
+  - {fileID: 341650554254128946}
   _clipState: 0
   _playerLayer:
     serializedVersion: 2
@@ -687,14 +687,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8234951763654138320}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

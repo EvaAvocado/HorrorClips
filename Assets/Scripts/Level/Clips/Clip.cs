@@ -13,8 +13,8 @@ namespace Level.Clips
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
         [SerializeField] private LayerMask _playerLayer;
-
         [SerializeField] private bool _isEditMode;
+        
         private bool _isBeingHeld;
         private Camera _camera;
         private Vector3 _mousePos;
@@ -27,8 +27,7 @@ namespace Level.Clips
             Default,
             Enter,
             Exit,
-            PlayerIn,
-            EditMode
+            PlayerIn
         }
 
         #region Properties
@@ -75,34 +74,41 @@ namespace Level.Clips
 
         private void OnMouseDown()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && _isCanDrag && _isEditMode && _clipState != ClipStateEnum.Enter
+                && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
             {
                 _startPos = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
                 _isBeingHeld = true;
-                foreach (var sprite in _spriteRenderers)
-                {
-                    sprite.sortingLayerName = "RoomTop";
-                }
+                SetSortingLayer("RoomTop");
             }
         }
 
         private void OnMouseUp()
         {
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && _isCanDrag && _isEditMode && _clipState != ClipStateEnum.Enter
+                && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
             {
                 OnMouseUpAction?.Invoke(this);
                 _isBeingHeld = false;
-                foreach (var sprite in _spriteRenderers)
-                {
-                    sprite.sortingLayerName = "Room";
-                }
+            }
+        }
+
+        private void SetSortingLayer(string layerName)
+        {
+            foreach (var sprite in _spriteRenderers)
+            {
+                sprite.sortingLayerName = layerName;
             }
         }
 
         public void ChangePosition(Vector3 newPos)
         {
             transform.DOMove(newPos, 0.25f)
-                .OnComplete(() => _isCanDrag = true);
+                .OnComplete(() =>
+                {
+                    _isCanDrag = true;
+                    if (!_isBeingHeld) SetSortingLayer("Room");
+                });
         }
         
         public void PlayerEnter()

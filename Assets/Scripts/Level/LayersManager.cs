@@ -42,12 +42,7 @@ namespace Level
 
         #endregion
 
-        private void Awake()
-        {
-            Init();
-        }
-
-        private void Init()
+        public void Init()
         {
             var size = _clipPlacePrefab.Sprite.size;
             _height = size.y;

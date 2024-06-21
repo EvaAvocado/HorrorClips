@@ -1,6 +1,7 @@
 using System;
 using Items;
 using Items.Strategy;
+using Level;
 using Level.Clips;
 using UnityEngine;
 using Utils;
@@ -22,13 +23,29 @@ namespace PlayerSystem
 
         private Movement _movement;
         private Interaction _interaction;
+        private bool _isEditMode;
 
         public static event Action<float> OnMove;
 
         private const string HORIZONTAL = "Horizontal";
-        
+
         public bool HaveFlashlight => _interaction.HaveFlashlight;
-        
+
+        private void OnEnable()
+        {
+            EditManager.OnChangeEditMode += SetIsCanMove;
+        }
+
+        private void OnDisable()
+        {
+            EditManager.OnChangeEditMode -= SetIsCanMove;
+        }
+
+        private void SetIsCanMove(bool status)
+        {
+            _isEditMode = status;
+        }
+
         private void Awake()
         {
             _movement = new Movement(_spriteRenderer, transform, _hand, _speed);
@@ -38,7 +55,7 @@ namespace PlayerSystem
         private void Update()
         {
             var direction = Input.GetAxis(HORIZONTAL);
-            if (direction != 0)
+            if (direction != 0 && !_isEditMode)
             {
                 OnMove?.Invoke(direction);
                 
@@ -76,7 +93,7 @@ namespace PlayerSystem
                 OnDie?.Invoke();
             }
             
-            if (_clipLayer.Contains(other.gameObject.layer))
+            if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 other.GetComponent<Clip>().PlayerEnter();
             }
@@ -89,7 +106,7 @@ namespace PlayerSystem
                 _interaction.SetItem(null);
             }
             
-            if (_clipLayer.Contains(other.gameObject.layer))
+            if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 other.GetComponent<Clip>().PlayerExit();
             }

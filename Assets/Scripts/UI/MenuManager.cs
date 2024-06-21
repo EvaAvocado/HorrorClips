@@ -13,12 +13,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private VolumeController[] _volumeControllers;
     [SerializeField] private bool _isCanOpen = true;
 
-    private void Start()
-    {
-        Init();
-    }
-
-    private void Init()
+    public void Init()
     {
         foreach (var controller in _volumeControllers)
         {

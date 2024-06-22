@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4814583881425370084}
   m_Layer: 0
-  m_Name: TestEnemy (Prototype)
+  m_Name: Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

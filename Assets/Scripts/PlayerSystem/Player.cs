@@ -26,6 +26,8 @@ namespace PlayerSystem
         private bool _isEditMode;
 
         public static event Action<float> OnMove;
+        public static event Action OnIdle;
+        public static event Action OnFlip;
 
         private const string HORIZONTAL = "Horizontal";
 
@@ -44,6 +46,7 @@ namespace PlayerSystem
         private void SetIsCanMove(bool status)
         {
             _isEditMode = status;
+            if (_isEditMode) OnIdle?.Invoke();
         }
 
         private void Awake()
@@ -64,7 +67,12 @@ namespace PlayerSystem
                 if (_movement.Flip(direction))
                 {
                     _interaction.Flip();
+                    OnFlip?.Invoke();
                 }
+            }
+            else if (!_isEditMode)
+            {
+                OnIdle?.Invoke();
             }
 
             if (Input.GetKeyDown(_interactionKey))

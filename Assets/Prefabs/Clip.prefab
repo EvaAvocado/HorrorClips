@@ -720,6 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 6015839686359269581}
+  _collider: {fileID: 140686105079787}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8

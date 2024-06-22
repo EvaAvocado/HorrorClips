@@ -575,6 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 1429096718371808299}
+  _collider: {fileID: 2132960308221811288}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8

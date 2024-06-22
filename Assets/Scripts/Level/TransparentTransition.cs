@@ -9,6 +9,7 @@ namespace Level
     public class TransparentTransition : MonoBehaviour
     {
         [SerializeField] private Clip _clip;
+        [SerializeField] private Collider2D _collider;
         [SerializeField] private LayerMask _playerLayer;
         [SerializeField] private LayerMask _clipLayer;
 
@@ -25,7 +26,8 @@ namespace Level
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_playerLayer.Contains(other.gameObject.layer))
+            if (_playerLayer.Contains(other.gameObject.layer)
+                && _leftSprites is not null)
             {
                 for (int i = 0; i < _leftSprites.Count; i++)
                 {
@@ -41,6 +43,7 @@ namespace Level
             if (_clipLayer.Contains(other.gameObject.layer))
             {
                 _leftSprites = other.GetComponent<Clip>().LeftSprites;
+                _collider.isTrigger = true;
             }
         }
         
@@ -57,6 +60,12 @@ namespace Level
                 {
                     _rightSprites[i].color = ChangeColor(MAX_COLOR);
                 }
+            }
+            
+            if (_clipLayer.Contains(other.gameObject.layer))
+            {
+                _leftSprites = null;
+                _collider.isTrigger = false;
             }
         }
 

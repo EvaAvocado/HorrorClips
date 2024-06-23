@@ -12,7 +12,7 @@ namespace PlayerSystem
     {
         public event Action OnDie;
         
-        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private Transform _hand;
         [SerializeField] private Transform _head;
         [SerializeField] private float _speed;
@@ -51,7 +51,7 @@ namespace PlayerSystem
 
         private void Awake()
         {
-            _movement = new Movement(_spriteRenderer, transform, _hand, _speed);
+            _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
             _interaction = new Interaction(new ChangeStrategy(), _hand, _head);
         }
 
@@ -82,7 +82,7 @@ namespace PlayerSystem
                     _interaction.SetItem(null);
                 }
 
-                if (_spriteRenderer.flipX)
+                if (_spriteRenderers[0].flipX)
                 {
                     _interaction.Flip();
                 }

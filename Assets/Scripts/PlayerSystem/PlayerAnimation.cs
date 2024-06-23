@@ -13,14 +13,14 @@ namespace PlayerSystem
         {
             Player.OnMove += ChangeRunState;
             Player.OnIdle += ChangeIdleState;
-            Player.OnFlip += ChangeFlipState;
+            //Player.OnFlip += ChangeFlipState;
         }
 
         private void OnDisable()
         {
             Player.OnMove -= ChangeRunState;
             Player.OnIdle -= ChangeIdleState;
-            Player.OnFlip -= ChangeFlipState;
+            //Player.OnFlip -= ChangeFlipState;
         }
 
         private void ChangeRunState(float direction)

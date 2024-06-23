@@ -4,14 +4,14 @@ namespace PlayerSystem
 {
     public class Movement
     {
-        private readonly SpriteRenderer _playerSprite;
+        private readonly SpriteRenderer[] _playerSprites;
         private readonly Transform _playerTransform;
         private readonly Transform _handTransform;
         private readonly float _speed;
         
-        public Movement(SpriteRenderer playerSprite, Transform playerTransform, Transform handTransform, float speed)
+        public Movement(SpriteRenderer[] playerSprites, Transform playerTransform, Transform handTransform, float speed)
         {
-            _playerSprite = playerSprite;
+            _playerSprites = playerSprites;
             _playerTransform = playerTransform;
             _handTransform = handTransform;
             _speed = speed;
@@ -25,18 +25,20 @@ namespace PlayerSystem
         public bool Flip(float direction)
         {
             if (direction > 0
-                && _playerSprite.flipX)
+                && _playerSprites[0].flipX)
             {
-                _playerSprite.flipX = false;
+                _playerSprites[0].flipX = false;
+                _playerSprites[1].flipX = false;
                 _handTransform.localPosition *= -1;
                 
                 return true;
             }
             
             if (direction < 0
-                && !_playerSprite.flipX)
+                && !_playerSprites[0].flipX)
             {
-                _playerSprite.flipX = true;
+                _playerSprites[0].flipX = true;
+                _playerSprites[1].flipX = true;
                 _handTransform.localPosition *= -1;
 
                 return true;

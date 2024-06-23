@@ -10,6 +10,7 @@ namespace Core
         [SerializeField] private EditManager _editManager;
         [SerializeField] private LayersManager _layersManager;
         [SerializeField] private MenuManager _menuManager;
+        [SerializeField] private PitchChanger _pitchChanger;
 
         private readonly Game _game = new();
         
@@ -22,6 +23,7 @@ namespace Core
 
         private void Start()
         {
+            _pitchChanger.Init();
             _menuManager.Init();
         }
     }

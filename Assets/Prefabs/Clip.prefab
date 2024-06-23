@@ -555,7 +555,7 @@ MonoBehaviour:
   _clipState: 0
   _playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _isEditMode: 0
 --- !u!61 &6710528701774333961
 BoxCollider2D:

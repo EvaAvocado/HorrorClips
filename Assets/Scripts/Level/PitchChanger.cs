@@ -17,8 +17,6 @@ namespace Level
         {
             SetPitch(_pitchParameterMusic);
             SetPitch(_pitchParameterSound);
-            
-            print(_pitchFloat);
         }
 
         private void SetPitch(string parameter)

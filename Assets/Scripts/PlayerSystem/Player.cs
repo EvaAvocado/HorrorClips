@@ -31,6 +31,7 @@ namespace PlayerSystem
 
         private const string HORIZONTAL = "Horizontal";
 
+        public SpriteRenderer[] SpriteRenderers => _spriteRenderers;
         public bool HaveFlashlight => _interaction.HaveFlashlight;
 
         private void OnEnable()

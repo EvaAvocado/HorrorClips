@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Level.Clips;
+using PlayerSystem;
 using UnityEngine;
 using Utils;
 
@@ -15,6 +16,7 @@ namespace Level
 
         private List<SpriteRenderer> _leftSprites;
         private List<SpriteRenderer> _rightSprites;
+        private Player _player;
         
         private const float TRANSPARENCY = 0.5f;
         private const int MAX_COLOR = 255;
@@ -38,6 +40,13 @@ namespace Level
                 {
                     _rightSprites[i].color = ChangeColor(TRANSPARENCY);
                 }
+                
+                if (_player == null) _player = other.GetComponent<Player>();
+                
+                foreach (var sprite in _player.SpriteRenderers)
+                {
+                    sprite.color = ChangeColor(TRANSPARENCY);
+                }
             }
             
             if (_clipLayer.Contains(other.gameObject.layer))
@@ -59,6 +68,13 @@ namespace Level
                 for (int i = 0; i < _rightSprites.Count; i++)
                 {
                     _rightSprites[i].color = ChangeColor(MAX_COLOR);
+                }
+
+                if (_player == null) _player = other.GetComponent<Player>();
+                
+                foreach (var sprite in _player.SpriteRenderers)
+                {
+                    sprite.color = ChangeColor(MAX_COLOR);
                 }
             }
             

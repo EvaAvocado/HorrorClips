@@ -70,8 +70,12 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 4cf2ebb081bd77d4a86882c6ffc592a6
     name: MusicVol
+  - guid: 0119b99bd7a321c4ba8d35bda6445ff9
+    name: MusicPitch
   - guid: e51f9d1e01e9d8c4abebe2b4c41b6e93
     name: SoundsVol
+  - guid: 0c0e983f10f08fd41be4a9bc3652e083
+    name: SoundsPitch
   m_AudioMixerGroupViews:
   - guids:
     - 9cc54d7fa70230d4d8890e88bb8e3e5c
@@ -124,7 +128,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 1e2fec2b49058684ca846b926a940aa9
-  m_FloatValues: {}
+  m_FloatValues:
+    0119b99bd7a321c4ba8d35bda6445ff9: 1
   m_TransitionOverrides: {}
 --- !u!244 &7254395377544900914
 AudioMixerEffectController:

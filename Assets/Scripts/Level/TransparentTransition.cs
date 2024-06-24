@@ -18,7 +18,6 @@ namespace Level
 
         private List<SpriteRenderer> _leftSprites;
         private List<SpriteRenderer> _rightSprites;
-        private Player _player;
         
         private const float TRANSPARENCY = 0.5f;
         private const int MAX_COLOR = 255;
@@ -43,14 +42,9 @@ namespace Level
                     _rightSprites[i].color = ChangeColor(TRANSPARENCY);
                 }
 
-                if (_player == null)
+                if (other.TryGetComponent(out Player player))
                 {
-                    other.TryGetComponent(out Player player);
-                    _player = player;
-                }
-                if (_player != null)
-                {
-                    foreach (var sprite in _player.SpriteRenderers)
+                    foreach (var sprite in player.SpriteRenderers)
                     {
                         sprite.color = ChangeColor(TRANSPARENCY);
                     }
@@ -83,14 +77,9 @@ namespace Level
                     _rightSprites[i].color = ChangeColor(MAX_COLOR);
                 }
                 
-                if (_player == null)
+                if (other.TryGetComponent(out Player player))
                 {
-                    other.TryGetComponent(out Player player);
-                    _player = player;
-                }
-                if (_player != null)
-                {
-                    foreach (var sprite in _player.SpriteRenderers)
+                    foreach (var sprite in player.SpriteRenderers)
                     {
                         sprite.color = ChangeColor(MAX_COLOR);
                     }

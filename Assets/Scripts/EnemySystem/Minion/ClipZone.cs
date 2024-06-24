@@ -19,7 +19,7 @@ namespace EnemySystem.Minion
         private void OnEnable()
         {
             if (_currentClip != null)
-                SetNewCollider(_currentClip.transform.position, _currentClip.ColliderWithoutDoors.size);
+                SetNewCollider(_currentClip.transform.localPosition, _currentClip.ColliderWithoutDoors.size);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -37,7 +37,7 @@ namespace EnemySystem.Minion
             if (_currentClip != clip && clip != null)
             {
                 _currentClip = clip;
-                SetNewCollider(_currentClip.transform.position, _currentClip.ColliderWithoutDoors.size);
+                SetNewCollider(_currentClip.transform.localPosition, _currentClip.ColliderWithoutDoors.size);
             }
         }
 

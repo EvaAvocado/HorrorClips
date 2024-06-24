@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using EnemySystem.Minion;
 using Level.Clips;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utils;
 
 namespace Level
@@ -11,7 +13,7 @@ namespace Level
     {
         [SerializeField] private Clip _clip;
         [SerializeField] private Collider2D _collider;
-        [SerializeField] private LayerMask _playerLayer;
+        [FormerlySerializedAs("_playerLayer")] [SerializeField] private LayerMask _creatureLayer;
         [SerializeField] private LayerMask _clipLayer;
 
         private List<SpriteRenderer> _leftSprites;
@@ -28,7 +30,7 @@ namespace Level
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_playerLayer.Contains(other.gameObject.layer)
+            if (_creatureLayer.Contains(other.gameObject.layer)
                 && _leftSprites is not null)
             {
                 for (int i = 0; i < _leftSprites.Count; i++)
@@ -40,12 +42,23 @@ namespace Level
                 {
                     _rightSprites[i].color = ChangeColor(TRANSPARENCY);
                 }
-                
-                if (_player == null) _player = other.GetComponent<Player>();
-                
-                foreach (var sprite in _player.SpriteRenderers)
+
+                if (_player == null)
                 {
-                    sprite.color = ChangeColor(TRANSPARENCY);
+                    other.TryGetComponent(out Player player);
+                    _player = player;
+                }
+                if (_player != null)
+                {
+                    foreach (var sprite in _player.SpriteRenderers)
+                    {
+                        sprite.color = ChangeColor(TRANSPARENCY);
+                    }
+                }
+
+                if (other.TryGetComponent(out Minion minion))
+                {
+                    minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
                 }
             }
             
@@ -58,7 +71,7 @@ namespace Level
         
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (_playerLayer.Contains(other.gameObject.layer))
+            if (_creatureLayer.Contains(other.gameObject.layer))
             {
                 for (int i = 0; i < _leftSprites.Count; i++)
                 {
@@ -69,12 +82,23 @@ namespace Level
                 {
                     _rightSprites[i].color = ChangeColor(MAX_COLOR);
                 }
-
-                if (_player == null) _player = other.GetComponent<Player>();
                 
-                foreach (var sprite in _player.SpriteRenderers)
+                if (_player == null)
                 {
-                    sprite.color = ChangeColor(MAX_COLOR);
+                    other.TryGetComponent(out Player player);
+                    _player = player;
+                }
+                if (_player != null)
+                {
+                    foreach (var sprite in _player.SpriteRenderers)
+                    {
+                        sprite.color = ChangeColor(MAX_COLOR);
+                    }
+                }
+
+                if (other.TryGetComponent(out Minion minion))
+                {
+                    minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
                 }
             }
             

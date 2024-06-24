@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Array2DEditor;
 using DG.Tweening;
+using EnemySystem.Minion;
 using UnityEngine;
 using Utils;
 
@@ -18,7 +19,9 @@ namespace Level.Clips
         [SerializeField] private Collider2D _rightCollider;
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
         [SerializeField] private LayerMask _playerLayer;
+        [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private bool _isEditMode;
+        [SerializeField] private BoxCollider2D _colliderWithoutDoors;
         
         private bool _isBeingHeld;
         private Camera _camera;
@@ -29,6 +32,8 @@ namespace Level.Clips
 
         public List<SpriteRenderer> LeftSprites => _leftSprites;
         public List<SpriteRenderer> RightSprites => _rightSprites;
+        public BoxCollider2D ColliderWithoutDoors => _colliderWithoutDoors;
+        public bool IsEditMode => _isEditMode;
 
         public enum ClipStateEnum
         {
@@ -152,6 +157,17 @@ namespace Level.Clips
         private void ChangeEditMode(bool status)
         {
             _isEditMode = status;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (_enemyLayer.Contains(other.gameObject.layer))
+            {
+                if (other.TryGetComponent(out Minion minion) && !_isEditMode)
+                {
+                    minion.Parent.transform.SetParent(transform);
+                }
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ namespace PlayerSystem
         [SerializeField] private LayerMask _itemLayer;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private LayerMask _clipLayer;
+        [SerializeField] private CapsuleCollider2D _playerCollider;
 
         private Movement _movement;
         private Interaction _interaction;
@@ -36,18 +37,26 @@ namespace PlayerSystem
 
         private void OnEnable()
         {
-            EditManager.OnChangeEditMode += SetIsCanMove;
+            EditManager.OnChangeEditMode += ChangeEditMode;
         }
 
         private void OnDisable()
         {
-            EditManager.OnChangeEditMode -= SetIsCanMove;
+            EditManager.OnChangeEditMode -= ChangeEditMode;
         }
 
-        private void SetIsCanMove(bool status)
+        private void ChangeEditMode(bool status)
         {
             _isEditMode = status;
-            if (_isEditMode) OnIdle?.Invoke();
+            if (_isEditMode)
+            {
+                OnIdle?.Invoke();
+                _playerCollider.enabled = false;
+            }
+            else
+            {
+                _playerCollider.enabled = true;
+            }
         }
 
         private void Awake()
@@ -92,12 +101,12 @@ namespace PlayerSystem
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_itemLayer.Contains(other.gameObject.layer))
+            if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
             }
             
-            if (_enemyLayer.Contains(other.gameObject.layer))
+            if (_enemyLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 OnDie?.Invoke();
             }
@@ -110,7 +119,7 @@ namespace PlayerSystem
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (_itemLayer.Contains(other.gameObject.layer))
+            if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 _interaction.SetItem(null);
             }

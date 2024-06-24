@@ -1,4 +1,6 @@
-﻿using EnemySystem.States;
+﻿using System;
+using EnemySystem.States;
+using PlayerSystem;
 using UnityEngine;
 using Utils;
 
@@ -11,12 +13,21 @@ namespace EnemySystem.Minion
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _speed;
         [SerializeField] private LayerMask _axeLayer;
+        [SerializeField] private ClipZone _clipZone;
+        [SerializeField] private GameObject _parent;
+        [SerializeField] private MinionAnimation _minionAnimation;
 
         private IStateMachine _stateMachine;
-        
+
+        public GameObject Parent => _parent;
+        public MinionAnimation MinionAnimation => _minionAnimation;
+
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
+
         private void Awake()
         {
             _stateMachine = new EnemyStateMachine();
+            _playerTransform = FindObjectOfType<Player>().transform;
             _stateMachine.CreateStates(_spriteRenderer, transform, _playerTransform, _speed);
             _stateMachine.ChangeState<Wait>();
             _camera = Camera.main;
@@ -37,6 +48,15 @@ namespace EnemySystem.Minion
                 || viewPosition.x > 1.03f))
             {
                 LostPlayer();
+                _minionAnimation.Lost();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (_clipZone.ClipLayer.Contains(other.gameObject.layer))
+            {
+                _clipZone.TryChangeCollider(other);
             }
         }
 

@@ -33,7 +33,7 @@ Transform:
   - {fileID: 7583002432154451289}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3836347867385666340
+--- !u!1 &3062004896126659549
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,40 +41,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8861235725391108945}
-  - component: {fileID: 6666361035323186181}
-  - component: {fileID: 2255988732289502183}
-  - component: {fileID: 6684546628276713876}
-  - component: {fileID: 1612050105757167448}
-  m_Layer: 8
-  m_Name: Minion
+  - component: {fileID: 2224549814606133937}
+  - component: {fileID: 8470379945501238465}
+  - component: {fileID: 6020177019774638120}
+  - component: {fileID: 3921526181339756440}
+  m_Layer: 0
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8861235725391108945
+--- !u!4 &2224549814606133937
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3836347867385666340}
+  m_GameObject: {fileID: 3062004896126659549}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4814583881425370084}
+  m_Father: {fileID: 8861235725391108945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6666361035323186181
+--- !u!212 &8470379945501238465
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3836347867385666340}
+  m_GameObject: {fileID: 3062004896126659549}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -88,7 +87,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,20 +105,89 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_SortingLayerID: 299361023
+  m_SortingLayer: -1
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: b85fbfe9cc19979459b74c922d0918da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 7.5000005, y: 5.002442}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6020177019774638120
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3062004896126659549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50ba610e089aed8478536da270825b6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3921526181339756440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3062004896126659549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4bf70865bb8bd4ab38ae1d7cfae009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6020177019774638120}
+--- !u!1 &3836347867385666340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8861235725391108945}
+  - component: {fileID: 2255988732289502183}
+  - component: {fileID: 6684546628276713876}
+  - component: {fileID: 1612050105757167448}
+  m_Layer: 8
+  m_Name: Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8861235725391108945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836347867385666340}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2224549814606133937}
+  m_Father: {fileID: 4814583881425370084}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2255988732289502183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,12 +201,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
-  _spriteRenderer: {fileID: 6666361035323186181}
+  _spriteRenderer: {fileID: 8470379945501238465}
   _playerTransform: {fileID: 0}
   _speed: 2
   _axeLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  _clipZone: {fileID: 77801114005738813}
+  _parent: {fileID: 997036291322273804}
+  _minionAnimation: {fileID: 3921526181339756440}
 --- !u!70 &6684546628276713876
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,8 +242,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.13928485, y: 0}
+  m_Size: {x: 1.0000005, y: 2}
   m_Direction: 0
 --- !u!50 &1612050105757167448
 Rigidbody2D:
@@ -213,7 +284,7 @@ GameObject:
   - component: {fileID: 3311893896082283126}
   - component: {fileID: 77801114005738813}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ClipZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,3 +366,8 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  _clipLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _collider2D: {fileID: 3311893896082283126}
+  _currentClip: {fileID: 0}

@@ -12,7 +12,7 @@ namespace Items.Strategy
         public void AlternativeUse(IItem item, IItem itemTwo = null)
         {
             Debug.Log("Use Rope");
-            item.AlternativeUse(itemTwo);
+            item.GetTransform().gameObject.SetActive(false);
         }
     }
 }

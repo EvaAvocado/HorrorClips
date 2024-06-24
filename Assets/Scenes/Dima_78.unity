@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 1259268043}
   - component: {fileID: 1259268042}
   - component: {fileID: 1259268041}
-  - component: {fileID: 1259268040}
+  - component: {fileID: 1259268044}
   m_Layer: 6
   m_Name: Rope
   m_TagString: Untagged
@@ -940,21 +940,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1259268040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259268039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ec9889152042cc9f3138c3d03d968b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sprite: {fileID: 1259268042}
-  _sprites: []
-  _type: 4
 --- !u!61 &1259268041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1067,6 +1052,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!114 &1259268044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259268039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c8981965b24038bdc6ebd70b9f101a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 0}
+  _speedDrop: 0
+  _type: 4
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1282197548
 GameObject:
   m_ObjectHideFlags: 0

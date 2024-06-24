@@ -14,6 +14,8 @@ namespace Level.Clips
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private List<SpriteRenderer> _leftSprites;
         [SerializeField] private List<SpriteRenderer> _rightSprites;
+        [SerializeField] private Collider2D _leftCollider;
+        [SerializeField] private Collider2D _rightCollider;
         [SerializeField] private ClipStateEnum _clipState = ClipStateEnum.Default;
         [SerializeField] private LayerMask _playerLayer;
         [SerializeField] private bool _isEditMode;
@@ -55,6 +57,18 @@ namespace Level.Clips
         }
 
         #endregion
+
+        private void Start()
+        {
+            // if (_clipState == ClipStateEnum.Enter)
+            // {
+            //     _leftCollider.isTrigger = false;
+            // }
+            // else if (_clipState == ClipStateEnum.Exit)
+            // {
+            //     _rightCollider.isTrigger = false;
+            // }
+        }
 
         private void OnEnable()
         {

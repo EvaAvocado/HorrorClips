@@ -1,11 +1,19 @@
-﻿namespace Items.Strategy
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace Items.Strategy
 {
     public class ChangeStrategy
     {
-        private readonly Axe _axe = new();
+        private readonly Axe _axe;
         private readonly Door _door = new();
         private readonly Flashlight _flashlight = new();
         private readonly Rope _rope = new();
+
+        public ChangeStrategy(List<Animator> animators)
+        {
+            _axe = new Axe(animators);
+        }
 
         public IStrategy SwitchStrategy(ItemEnum itemEnum)
         {

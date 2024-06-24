@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Items;
 using Items.Strategy;
 using Level;
@@ -15,6 +16,7 @@ namespace PlayerSystem
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private Transform _hand;
         [SerializeField] private Transform _head;
+        [SerializeField] private List<Animator> _animators;
         [SerializeField] private float _speed;
         [SerializeField] private KeyCode _interactionKey;
         [SerializeField] private LayerMask _itemLayer;
@@ -62,7 +64,7 @@ namespace PlayerSystem
         private void Awake()
         {
             _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
-            _interaction = new Interaction(new ChangeStrategy(), _hand, _head);
+            _interaction = new Interaction(new ChangeStrategy(_animators), _hand, _head);
         }
 
         private void Update()

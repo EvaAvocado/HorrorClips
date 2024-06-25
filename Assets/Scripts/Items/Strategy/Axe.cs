@@ -5,16 +5,19 @@ namespace Items.Strategy
 {
     public class Axe : IStrategy
     {
-        private List<Animator> _animators;
+        private readonly List<Animator> _animators;
+        private readonly float _needTimeForThrowAxe;
         
-        public Axe(List<Animator> animators)
+        private static readonly int Swing = Animator.StringToHash("swing");
+
+        public Axe(List<Animator> animators, float needTimeForThrowAxe)
         {
             _animators = animators;
+            _needTimeForThrowAxe = needTimeForThrowAxe;
         }
         
         public void Use(Transform pos, IItem item)
         {
-            Debug.Log("Use Axe");
             if (!item.IsDropItem()
                 && pos.childCount == 0)
             {
@@ -29,16 +32,26 @@ namespace Items.Strategy
             }
         }
 
-        public void AlternativeUse(IItem item, IItem itemTwo = null)
+        public void AlternativeUse(IItem item, IItem itemTwo = null, float pressingTime = 0)
         {
-            Debug.Log("drop");
-            item.GetTransform().gameObject.SetActive(true);
-            item.GetTransform().parent = null;
-            item.AlternativeUse();
-            
-            for (int i = 0; i < _animators.Count; i++)
+            if (pressingTime < _needTimeForThrowAxe)
             {
-                _animators[i].SetLayerWeight(1, 0f);
+                for (int i = 0; i < _animators.Count; i++)
+                {
+                    _animators[i].SetTrigger(Swing);
+                }
+            }
+            else
+            {
+                item.GetTransform().gameObject.SetActive(true);
+                item.GetTransform().parent = null;
+                item.AlternativeUse();
+                
+                for (int i = 0; i < _animators.Count; i++)
+                {
+                    _animators[i].SetLayerWeight(1, 0f);
+                    _animators[i].ResetTrigger(Swing);
+                }
             }
         }
     }

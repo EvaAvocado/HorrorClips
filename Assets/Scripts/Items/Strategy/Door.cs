@@ -9,7 +9,7 @@ namespace Items.Strategy
             Debug.Log("Tuck Tuck");
         }
 
-        public void AlternativeUse(IItem item, IItem itemTwo = null)
+        public void AlternativeUse(IItem item, IItem itemTwo = null, float pressingTime = 0)
         {
             Debug.Log("Try open");
             item.AlternativeUse(itemTwo);

@@ -10,9 +10,9 @@ namespace Items.Strategy
         private readonly Flashlight _flashlight = new();
         private readonly Rope _rope = new();
 
-        public ChangeStrategy(List<Animator> animators)
+        public ChangeStrategy(List<Animator> animators, float needTimeForThrowAxe)
         {
-            _axe = new Axe(animators);
+            _axe = new Axe(animators, needTimeForThrowAxe);
         }
 
         public IStrategy SwitchStrategy(ItemEnum itemEnum)

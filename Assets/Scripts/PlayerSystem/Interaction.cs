@@ -8,7 +8,7 @@ namespace PlayerSystem
     {
         private readonly ChangeStrategy _changeStrategy;
         private readonly Transform _hand;
-        private readonly Transform _head;
+        private readonly float _needTimeForThrowAxe;
         
         private IStrategy _strategy;
         private IItem _itemInHand;
@@ -16,16 +16,16 @@ namespace PlayerSystem
         private bool _isAxeInHand;
         private bool _isHaveFlashlight;
 
-        public Interaction(ChangeStrategy changeStrategy, Transform hand, Transform head)
+        public Interaction(ChangeStrategy changeStrategy, Transform hand, float needTimeForThrowAxe)
         {
             _changeStrategy = changeStrategy;
             _hand = hand;
-            _head = head;
+            _needTimeForThrowAxe = needTimeForThrowAxe;
         }
         
         public bool HaveFlashlight => _isHaveFlashlight;
         
-        public bool Action()
+        public bool Action(float pressingTime)
         {
             if (_item is not null)
             {
@@ -51,7 +51,7 @@ namespace PlayerSystem
                 if (_item.GetItemEnum() == ItemEnum.FLASHLIGHT)
                 {
                     _isHaveFlashlight = true;
-                    _strategy?.Use(_head, _item);
+                    _strategy?.Use(_hand, _item);
                     return false;
                 }
 
@@ -68,9 +68,15 @@ namespace PlayerSystem
             if (_itemInHand is not null 
                 && _isAxeInHand)
             {
-                _strategy?.AlternativeUse(_itemInHand);
-                _itemInHand = null;
-                _isAxeInHand = false;
+                _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
+                _strategy?.AlternativeUse(_itemInHand, null, pressingTime);
+
+                if (pressingTime >= _needTimeForThrowAxe)
+                {
+                    _itemInHand = null;
+                    _isAxeInHand = false;
+                }
+                
                 return false;
             }
 
@@ -79,7 +85,7 @@ namespace PlayerSystem
 
         private void CheckAxe()
         {
-            if (!_itemInHand.GetTransform().gameObject.activeSelf)
+            if (_itemInHand.GetTransform().parent is null)
             {
                 _itemInHand = null;
                 _isAxeInHand = false;

@@ -18,6 +18,7 @@ namespace PlayerSystem
         [SerializeField] private Transform _head;
         [SerializeField] private List<Animator> _animators;
         [SerializeField] private float _speed;
+        [SerializeField] private float _needTimeForThrowAxe;
         [SerializeField] private KeyCode _interactionKey;
         [SerializeField] private LayerMask _itemLayer;
         [SerializeField] private LayerMask _enemyLayer;
@@ -27,6 +28,7 @@ namespace PlayerSystem
         private Movement _movement;
         private Interaction _interaction;
         private bool _isEditMode;
+        private float _pressingTime;
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -37,6 +39,12 @@ namespace PlayerSystem
         public SpriteRenderer[] SpriteRenderers => _spriteRenderers;
         public bool HaveFlashlight => _interaction.HaveFlashlight;
 
+        private void Awake()
+        {
+            _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
+            _interaction = new Interaction(new ChangeStrategy(_animators, _needTimeForThrowAxe), _hand, _needTimeForThrowAxe);
+        }
+        
         private void OnEnable()
         {
             EditManager.OnChangeEditMode += ChangeEditMode;
@@ -45,26 +53,6 @@ namespace PlayerSystem
         private void OnDisable()
         {
             EditManager.OnChangeEditMode -= ChangeEditMode;
-        }
-
-        private void ChangeEditMode(bool status)
-        {
-            _isEditMode = status;
-            if (_isEditMode)
-            {
-                OnIdle?.Invoke();
-                _playerCollider.enabled = false;
-            }
-            else
-            {
-                _playerCollider.enabled = true;
-            }
-        }
-
-        private void Awake()
-        {
-            _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
-            _interaction = new Interaction(new ChangeStrategy(_animators), _hand, _head);
         }
 
         private void Update()
@@ -87,9 +75,14 @@ namespace PlayerSystem
                 OnIdle?.Invoke();
             }
 
-            if (Input.GetKeyDown(_interactionKey))
+            if (Input.GetKey(_interactionKey))
             {
-                if (!_interaction.Action())
+                _pressingTime += Time.deltaTime;
+            }
+            
+            if (Input.GetKeyUp(_interactionKey))
+            {
+                if (!_interaction.Action(_pressingTime))
                 {
                     _interaction.SetItem(null);
                 }
@@ -98,6 +91,22 @@ namespace PlayerSystem
                 {
                     _interaction.Flip();
                 }
+                
+                _pressingTime = 0;
+            }
+        }
+
+        private void ChangeEditMode(bool status)
+        {
+            _isEditMode = status;
+            if (_isEditMode)
+            {
+                OnIdle?.Invoke();
+                _playerCollider.enabled = false;
+            }
+            else
+            {
+                _playerCollider.enabled = true;
             }
         }
 

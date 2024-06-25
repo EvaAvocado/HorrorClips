@@ -178,6 +178,7 @@ MonoBehaviour:
   - {fileID: 3433131520606109140}
   - {fileID: 4470299303752914358}
   _speed: 7
+  _needTimeForThrowAxe: 2
   _interactionKey: 101
   _itemLayer:
     serializedVersion: 2

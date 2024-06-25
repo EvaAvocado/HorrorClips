@@ -36,7 +36,6 @@ namespace Items
                 if (item is not null)
                 {
                     item.GetTransform().parent = null;
-                    item.GetTransform().gameObject.SetActive(false);
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using EnemySystem.States;
+using Level;
 using PlayerSystem;
 using UnityEngine;
 using Utils;
@@ -8,16 +9,17 @@ namespace EnemySystem.Minion
 {
     public class Minion : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _speed;
         [SerializeField] private LayerMask _axeLayer;
-        [SerializeField] private ClipZone _clipZone;
         [SerializeField] private GameObject _parent;
         [SerializeField] private MinionAnimation _minionAnimation;
+        [SerializeField] private Vector2 _distanceToLostPlayer;
 
         private IStateMachine _stateMachine;
+        private Player _player;
+        private EditManager _editManager;
 
         public GameObject Parent => _parent;
         public MinionAnimation MinionAnimation => _minionAnimation;
@@ -30,42 +32,51 @@ namespace EnemySystem.Minion
             _playerTransform = FindObjectOfType<Player>().transform;
             _stateMachine.CreateStates(_spriteRenderer, transform, _playerTransform, _speed);
             _stateMachine.ChangeState<Wait>();
-            _camera = Camera.main;
+            _editManager = FindObjectOfType<EditManager>();
         }
 
         private void Update()
         {
             _stateMachine.UpdateState();
 
-            CheckCamera();
-        }
-
-        private void CheckCamera()
-        {
-            var viewPosition = _camera.WorldToViewportPoint(transform.position);
-            if (_stateMachine.GetState() is Hunt
-                && (viewPosition.x < -0.03f
-                || viewPosition.x > 1.03f))
+            if (_editManager.IsEditMode && _stateMachine.GetState() is Hunt)
             {
                 LostPlayer();
                 _minionAnimation.Lost();
             }
+
+            CheckPlayerPos();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void CheckPlayerPos()
         {
-            if (_clipZone.ClipLayer.Contains(other.gameObject.layer))
+            if (_player != null)
             {
-                _clipZone.TryChangeCollider(other);
+                var distance = transform.position - _player.transform.position;
+                if (_stateMachine.GetState() is Hunt &&
+                    Mathf.Abs(distance.x) >= _distanceToLostPlayer.x ||
+                    Mathf.Abs(distance.y) >= _distanceToLostPlayer.y)
+                {
+                    LostPlayer();
+                    _minionAnimation.Lost();
+                }
             }
         }
 
-        public void SeesPlayer() => _stateMachine.ChangeState<Hunt>();
+        public void SeesPlayer(Player player)
+        {
+            _stateMachine.ChangeState<Hunt>();
+            _player = player;
+        }
 
         public void Wait() => _stateMachine.ChangeState<Wait>();
 
-        public void LostPlayer() => _stateMachine.ChangeState<Wait>();
-        
+        public void LostPlayer()
+        {
+            _stateMachine.ChangeState<Wait>();
+            _player = null;
+        }
+
         public void Die() => _stateMachine.ChangeState<Die>();
     }
 }

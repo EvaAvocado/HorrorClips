@@ -21,6 +21,9 @@ namespace Level
         
         private const float TRANSPARENCY = 0.5f;
         private const int MAX_COLOR = 255;
+        
+        public static event Action OnTransparent;
+        public static event Action OnNontransparent;
 
         private void Awake()
         {
@@ -54,6 +57,8 @@ namespace Level
                 {
                     minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
                 }
+                
+                OnTransparent?.Invoke();
             }
             
             if (_clipLayer.Contains(other.gameObject.layer))
@@ -89,6 +94,8 @@ namespace Level
                 {
                     minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
                 }
+                
+                OnNontransparent?.Invoke();
             }
             
             if (_clipLayer.Contains(other.gameObject.layer))

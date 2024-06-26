@@ -14,16 +14,24 @@ namespace Level
         [SerializeField] private GameObject _targetObject;
         [SerializeField] private GameObject _targetObjectCenter;
         [SerializeField] private bool _isEditMode;
-        [SerializeField] private LayersManager _layersManager;
         
+        private LayersManager _layersManager;
         private TweenerCore<float, float, FloatOptions> _currentTween;
+        private bool _isCanPress = true;
 
         public static event Action<bool> OnChangeEditMode; 
         
         public bool IsEditMode => _isEditMode;
 
-        public void Init()
+        public bool IsCanPress
         {
+            set => _isCanPress = value;
+        }
+
+        public void Init(LayersManager layersManager)
+        {
+            _layersManager = layersManager;
+            
             _targetObject = _camera.Follow.gameObject;
             _targetObjectCenter.transform.position = new Vector3(0, _layersManager.SpawnPointY + _layersManager.Height / 2,
                 _camera.transform.position.z);
@@ -31,7 +39,7 @@ namespace Level
 
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.Q) && !_isEditMode)
+            if (Input.GetKeyUp(KeyCode.Q) && !_isEditMode && _isCanPress)
             {
                 if (_currentTween != null)
                 {
@@ -46,7 +54,7 @@ namespace Level
                 _isEditMode = true;
                 OnChangeEditMode?.Invoke(_isEditMode);
             }
-            else if (Input.GetKeyUp(KeyCode.Q) && _isEditMode)
+            else if (Input.GetKeyUp(KeyCode.Q) && _isEditMode && _isCanPress)
             {
                 if (_currentTween != null)
                 {

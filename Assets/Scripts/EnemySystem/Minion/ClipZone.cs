@@ -1,6 +1,7 @@
 ﻿using System;
 using Level;
 using Level.Clips;
+using PlayerSystem;
 using UnityEngine;
 using Utils;
 
@@ -13,7 +14,7 @@ namespace EnemySystem.Minion
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private BoxCollider2D _collider2D;
         [SerializeField] private Clip _currentClip;
-        
+
         public LayerMask ClipLayer => _clipLayer;
 
         private void OnEnable()
@@ -24,10 +25,21 @@ namespace EnemySystem.Minion
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_playerLayer.Contains(other.gameObject.layer) && !_currentClip.IsEditMode)
+            if (_currentClip != null)
             {
-                _enemy.SeesPlayer();
-                _enemy.MinionAnimation.Hunt();
+                if (_playerLayer.Contains(other.gameObject.layer) && !_currentClip.IsEditMode)
+                {
+                    _enemy.SeesPlayer(other.GetComponent<Player>());
+                    _enemy.MinionAnimation.Hunt();
+                }
+            }
+            else
+            {
+                if (_playerLayer.Contains(other.gameObject.layer))
+                {
+                    _enemy.SeesPlayer(other.GetComponent<Player>());
+                    _enemy.MinionAnimation.Hunt();
+                }
             }
         }
 

@@ -11,13 +11,15 @@ namespace Core
         [SerializeField] private LayersManager _layersManager;
         [SerializeField] private MenuManager _menuManager;
         [SerializeField] private PitchChanger _pitchChanger;
+        [SerializeField] private PressQ _pressQ;
 
         private readonly Game _game = new();
         
         private void Awake()
         {
             _layersManager.Init();
-            _editManager.Init();
+            _editManager.Init(_layersManager);
+            _pressQ.Init(_editManager);
             _player.OnDie += _game.ResetScene;
         }
 

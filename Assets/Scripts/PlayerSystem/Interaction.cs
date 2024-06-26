@@ -16,16 +16,16 @@ namespace PlayerSystem
         private bool _isAxeInHand;
         private bool _isHaveFlashlight;
 
-        public Interaction(ChangeStrategy changeStrategy, Transform hand, float needTimeForThrowAxe)
+        public Interaction(ChangeStrategy changeStrategy, Transform hand)
         {
             _changeStrategy = changeStrategy;
             _hand = hand;
-            _needTimeForThrowAxe = needTimeForThrowAxe;
         }
         
         public bool HaveFlashlight => _isHaveFlashlight;
+        public bool HaveAxeInHand => _isAxeInHand;
         
-        public bool Action(float pressingTime)
+        public bool Action(float pressingTime, bool isHoldAxe)
         {
             if (_item is not null)
             {
@@ -69,10 +69,15 @@ namespace PlayerSystem
                 && _isAxeInHand)
             {
                 _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
-                _strategy?.AlternativeUse(_itemInHand, null, pressingTime);
 
-                if (pressingTime >= _needTimeForThrowAxe)
+                if (pressingTime < 0.1f)
                 {
+                    _strategy?.AlternativeUse(_itemInHand, null, true);
+                }
+                else if (isHoldAxe)
+                {
+                    _strategy?.AlternativeUse(_itemInHand);
+                    
                     _itemInHand = null;
                     _isAxeInHand = false;
                 }

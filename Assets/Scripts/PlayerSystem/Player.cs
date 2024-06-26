@@ -18,7 +18,6 @@ namespace PlayerSystem
         [SerializeField] private Transform _head;
         [SerializeField] private List<Animator> _animators;
         [SerializeField] private float _speed;
-        [SerializeField] private float _needTimeForThrowAxe;
         [SerializeField] private KeyCode _interactionKey;
         [SerializeField] private LayerMask _itemLayer;
         [SerializeField] private LayerMask _enemyLayer;
@@ -28,15 +27,15 @@ namespace PlayerSystem
         private Movement _movement;
         private Interaction _interaction;
         private bool _isEditMode;
+        private bool _isHoldAxe;
         private float _pressingTime;
-        
-        private readonly int _isThrow = Animator.StringToHash("is-throw");
-        private readonly int _isHold = Animator.StringToHash("is-hold");
-        private readonly int _release = Animator.StringToHash("release");
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
         public static event Action OnFlip;
+        public static event Action OnHold;
+        public static event Action OnThrow;
+        public static event Action OnRelease;
 
         private const string HORIZONTAL = "Horizontal";
 
@@ -46,7 +45,7 @@ namespace PlayerSystem
         private void Awake()
         {
             _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
-            _interaction = new Interaction(new ChangeStrategy(_animators, _needTimeForThrowAxe), _hand, _needTimeForThrowAxe);
+            _interaction = new Interaction(new ChangeStrategy(_animators), _hand);
         }
         
         private void OnEnable()
@@ -79,31 +78,24 @@ namespace PlayerSystem
                 OnIdle?.Invoke();
             }
 
-            if (Input.GetKey(_interactionKey))
+            if (Input.GetKey(_interactionKey)
+                && _interaction.HaveAxeInHand)
             {
                 _pressingTime += Time.deltaTime;
 
-                if (_pressingTime >= _needTimeForThrowAxe)
+                if (_pressingTime >= 4)
                 {
-                    for (int i = 0; i < _animators.Count; i++)
-                    {
-                        _animators[i].SetBool(_isThrow, false);
-                        _animators[i].SetBool(_isHold, true);
-                    }
+                    // OnHold?.Invoke();
                 }
                 else
                 {
-                    for (int i = 0; i < _animators.Count; i++)
-                    {
-                        _animators[i].SetBool(_isThrow, true);
-                        _animators[i].SetBool(_isHold, false);
-                    }
+                    OnThrow?.Invoke();
                 }
             }
             
             if (Input.GetKeyUp(_interactionKey))
             {
-                if (!_interaction.Action(_pressingTime))
+                if (!_interaction.Action(_pressingTime, _isHoldAxe))
                 {
                     _interaction.SetItem(null);
                 }
@@ -113,24 +105,20 @@ namespace PlayerSystem
                     _interaction.Flip();
                 }
                 
-                for (int i = 0; i < _animators.Count; i++)
+                if (_isHoldAxe)
                 {
-                    _animators[i].SetBool(_isThrow, false);
-                    _animators[i].SetBool(_isHold, false);
-
-                    if (_pressingTime >= _needTimeForThrowAxe)
-                    {
-                        _animators[i].SetTrigger(_release);
-                    }
+                    OnRelease?.Invoke();
                 }
                 
                 _pressingTime = 0;
+                _isHoldAxe = false;
             }
         }
 
         private void ChangeEditMode(bool status)
         {
             _isEditMode = status;
+            
             if (_isEditMode)
             {
                 OnIdle?.Invoke();
@@ -172,5 +160,7 @@ namespace PlayerSystem
                 other.GetComponent<Clip>().PlayerExit();
             }
         }
+        
+        public void HoldAxe() => _isHoldAxe = true;
     }
 }

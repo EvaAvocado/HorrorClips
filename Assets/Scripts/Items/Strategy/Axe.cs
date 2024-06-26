@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Items.Strategy
@@ -7,13 +8,13 @@ namespace Items.Strategy
     {
         private readonly List<Animator> _animators;
         private readonly float _needTimeForThrowAxe;
-        
-        private static readonly int Swing = Animator.StringToHash("swing");
 
-        public Axe(List<Animator> animators, float needTimeForThrowAxe)
+        public static event Action OnSwing;
+        // private static event Action OnRelease;
+
+        public Axe(List<Animator> animators)
         {
             _animators = animators;
-            _needTimeForThrowAxe = needTimeForThrowAxe;
         }
         
         public void Use(Transform pos, IItem item)
@@ -32,26 +33,17 @@ namespace Items.Strategy
             }
         }
 
-        public void AlternativeUse(IItem item, IItem itemTwo = null, float pressingTime = 0)
+        public void AlternativeUse(IItem item, IItem itemTwo = null, bool isSwing = false)
         {
-            if (pressingTime < _needTimeForThrowAxe)
+            if (isSwing)
             {
-                for (int i = 0; i < _animators.Count; i++)
-                {
-                    _animators[i].SetTrigger(Swing);
-                }
+                OnSwing?.Invoke();
             }
             else
             {
                 item.GetTransform().gameObject.SetActive(true);
                 item.GetTransform().parent = null;
                 item.AlternativeUse();
-                
-                for (int i = 0; i < _animators.Count; i++)
-                {
-                    _animators[i].SetLayerWeight(1, 0f);
-                    _animators[i].ResetTrigger(Swing);
-                }
             }
         }
     }

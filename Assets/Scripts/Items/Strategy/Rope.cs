@@ -9,7 +9,7 @@ namespace Items.Strategy
             Debug.Log("try");
         }
 
-        public void AlternativeUse(IItem item, IItem itemTwo = null, float pressingTime = 0)
+        public void AlternativeUse(IItem item, IItem itemTwo = null, bool isSwing = false)
         {
             Debug.Log("Use Rope");
             item.GetTransform().gameObject.SetActive(false);

@@ -13,6 +13,10 @@ namespace Items
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private LayerMask _wallLayer;
 
+        public static event Action OnAxeIdle;
+        public static event Action OnAxeSpinLeft;
+        public static event Action OnAxeSpinRight;
+        
         private bool _isDropItem;
 
         public bool IsDropItem() => _isDropItem;
@@ -46,6 +50,7 @@ namespace Items
                 _isDropItem = false;
                 // Realisation of the rebound
                 Debug.Log("rebound");
+                OnAxeIdle?.Invoke();
             }
         }
 
@@ -65,7 +70,12 @@ namespace Items
 
             if (_spriteRenderer.flipX)
             {
+                OnAxeSpinLeft?.Invoke();
                 _speedDrop *= -1;
+            }
+            else
+            {
+                OnAxeSpinRight?.Invoke();
             }
         }
 

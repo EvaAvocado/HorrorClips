@@ -29,6 +29,10 @@ namespace PlayerSystem
         private Interaction _interaction;
         private bool _isEditMode;
         private float _pressingTime;
+        
+        private readonly int _isThrow = Animator.StringToHash("is-throw");
+        private readonly int _isHold = Animator.StringToHash("is-hold");
+        private readonly int _release = Animator.StringToHash("release");
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -78,6 +82,23 @@ namespace PlayerSystem
             if (Input.GetKey(_interactionKey))
             {
                 _pressingTime += Time.deltaTime;
+
+                if (_pressingTime >= _needTimeForThrowAxe)
+                {
+                    for (int i = 0; i < _animators.Count; i++)
+                    {
+                        _animators[i].SetBool(_isThrow, false);
+                        _animators[i].SetBool(_isHold, true);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < _animators.Count; i++)
+                    {
+                        _animators[i].SetBool(_isThrow, true);
+                        _animators[i].SetBool(_isHold, false);
+                    }
+                }
             }
             
             if (Input.GetKeyUp(_interactionKey))
@@ -90,6 +111,17 @@ namespace PlayerSystem
                 if (_spriteRenderers[0].flipX)
                 {
                     _interaction.Flip();
+                }
+                
+                for (int i = 0; i < _animators.Count; i++)
+                {
+                    _animators[i].SetBool(_isThrow, false);
+                    _animators[i].SetBool(_isHold, false);
+
+                    if (_pressingTime >= _needTimeForThrowAxe)
+                    {
+                        _animators[i].SetTrigger(_release);
+                    }
                 }
                 
                 _pressingTime = 0;

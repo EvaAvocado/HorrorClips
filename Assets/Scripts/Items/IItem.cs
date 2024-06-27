@@ -8,6 +8,6 @@ namespace Items
         ItemEnum GetItemEnum();
         Transform GetTransform();
         void AlternativeUse(IItem item = null);
-        void Flip();
+        void Flip(float direction);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using EnemySystem.Minion;
+using PlayerSystem;
 using UnityEngine;
 using Utils;
 
@@ -71,7 +72,6 @@ namespace Items
             if (_spriteRenderer.flipX)
             {
                 OnAxeSpinLeft?.Invoke();
-                _speedDrop *= -1;
             }
             else
             {
@@ -79,6 +79,20 @@ namespace Items
             }
         }
 
-        public void Flip() => _spriteRenderer.flipX = !_spriteRenderer.flipX;
+        public void Flip(float direction)
+        {
+            if (direction < 0
+                && _speedDrop > 0)
+            {
+                _spriteRenderer.flipX = true;
+                _speedDrop *= -1;
+            }
+            else if (direction > 0
+                     && _speedDrop < 0)
+            {
+                _spriteRenderer.flipX = false;
+                _speedDrop *= -1;
+            }
+        }
     }
 }

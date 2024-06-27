@@ -99,6 +99,6 @@ namespace PlayerSystem
 
         public void SetItem(IItem item) => _item = item;
 
-        public void Flip() => _itemInHand?.Flip();
+        public void Flip(float direction) => _itemInHand?.Flip(direction);
     }
 }

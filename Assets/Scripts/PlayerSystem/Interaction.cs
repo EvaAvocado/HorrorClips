@@ -31,8 +31,7 @@ namespace PlayerSystem
             {
                 _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
 
-                if ((_item.GetItemEnum() == ItemEnum.DOOR
-                    || _item.GetItemEnum() == ItemEnum.ROPE)
+                if (_item.GetItemEnum() == ItemEnum.DOOR
                     && _isAxeInHand)
                 {
                     _strategy?.AlternativeUse(_item, _itemInHand);
@@ -77,9 +76,6 @@ namespace PlayerSystem
                 else if (isHoldAxe)
                 {
                     _strategy?.AlternativeUse(_itemInHand);
-                    
-                    _itemInHand = null;
-                    _isAxeInHand = false;
                 }
                 
                 return false;
@@ -100,5 +96,14 @@ namespace PlayerSystem
         public void SetItem(IItem item) => _item = item;
 
         public void Flip(float direction) => _itemInHand?.Flip(direction);
+        
+        public void Drop()
+        {
+            if (_itemInHand is not null)
+            {
+                _itemInHand.Drop();
+                CheckAxe();
+            }
+        }
     }
 }

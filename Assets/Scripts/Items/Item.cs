@@ -67,8 +67,6 @@ namespace Items
 
         public void AlternativeUse(IItem item = null) 
         {
-            _isDropItem = true;
-
             if (_spriteRenderer.flipX)
             {
                 OnAxeSpinLeft?.Invoke();
@@ -94,5 +92,7 @@ namespace Items
                 _speedDrop *= -1;
             }
         }
+        
+        public void Drop() => _isDropItem = true;
     }
 }

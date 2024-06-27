@@ -44,5 +44,10 @@ namespace Items
         {
             throw new System.NotImplementedException();
         }
+
+        public void Drop()
+        {
+            
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace Items
         Transform GetTransform();
         void AlternativeUse(IItem item = null);
         void Flip(float direction);
+        void Drop();
     }
 }

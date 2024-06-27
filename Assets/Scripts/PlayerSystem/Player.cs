@@ -162,5 +162,6 @@ namespace PlayerSystem
         }
         
         public void HoldAxe() => _isHoldAxe = true;
+        public void DropAxe() => _interaction.Drop();
     }
 }

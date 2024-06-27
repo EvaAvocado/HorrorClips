@@ -40,9 +40,14 @@ namespace Items
             }
         }
 
-        public void Flip()
+        public void Flip(float di)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Drop()
+        {
+            
         }
     }
 }

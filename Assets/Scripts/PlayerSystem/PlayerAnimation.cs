@@ -90,6 +90,8 @@ namespace PlayerSystem
             _animator.ResetTrigger(Swing);
             _animator.ResetTrigger(Release);
             _animator.SetLayerWeight(1, 0f);
+            
+            _player.DropAxe();
         }
 
         private void ChangeSwingState()

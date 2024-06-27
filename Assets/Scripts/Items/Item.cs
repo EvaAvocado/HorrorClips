@@ -1,5 +1,6 @@
 ﻿using System;
 using EnemySystem.Minion;
+using PlayerSystem;
 using UnityEngine;
 using Utils;
 
@@ -8,6 +9,8 @@ namespace Items
     public class Item : MonoBehaviour, IItem
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Collider2D _leftCollider;
+        [SerializeField] private Collider2D _rightCollider;
         [SerializeField] private float _speedDrop;
         [SerializeField] private ItemEnum _type;
         [SerializeField] private LayerMask _enemyLayer;
@@ -48,6 +51,8 @@ namespace Items
                 && _wallLayer.Contains(other.gameObject.layer))
             {
                 _isDropItem = false;
+                _leftCollider.enabled = false;
+                _rightCollider.enabled = false;
                 // Realisation of the rebound
                 Debug.Log("rebound");
                 OnAxeIdle?.Invoke();
@@ -66,12 +71,9 @@ namespace Items
 
         public void AlternativeUse(IItem item = null) 
         {
-            _isDropItem = true;
-
             if (_spriteRenderer.flipX)
             {
                 OnAxeSpinLeft?.Invoke();
-                _speedDrop *= -1;
             }
             else
             {
@@ -79,6 +81,25 @@ namespace Items
             }
         }
 
-        public void Flip() => _spriteRenderer.flipX = !_spriteRenderer.flipX;
+        public void Flip(float direction)
+        {
+            if (direction < 0
+                && _speedDrop > 0)
+            {
+                _spriteRenderer.flipX = true;
+                _speedDrop *= -1;
+            }
+            else if (direction > 0
+                     && _speedDrop < 0)
+            {
+                _spriteRenderer.flipX = false;
+                _speedDrop *= -1;
+            }
+        }
+        
+        public void Drop() => _isDropItem = true;
+
+        public void LeftSpin() => _leftCollider.enabled = true;
+        public void RightSpin() => _rightCollider.enabled = true;
     }
 }

@@ -69,7 +69,7 @@ namespace PlayerSystem
                 
                 if (_movement.Flip(direction))
                 {
-                    _interaction.Flip();
+                    _interaction.Flip(direction);
                     OnFlip?.Invoke();
                 }
             }
@@ -102,7 +102,7 @@ namespace PlayerSystem
 
                 if (_spriteRenderers[0].flipX)
                 {
-                    _interaction.Flip();
+                    _interaction.Flip(-1);
                 }
                 
                 if (_isHoldAxe)
@@ -162,5 +162,6 @@ namespace PlayerSystem
         }
         
         public void HoldAxe() => _isHoldAxe = true;
+        public void DropAxe() => _interaction.Drop();
     }
 }

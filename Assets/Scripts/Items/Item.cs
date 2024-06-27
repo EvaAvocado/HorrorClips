@@ -9,6 +9,8 @@ namespace Items
     public class Item : MonoBehaviour, IItem
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Collider2D _leftCollider;
+        [SerializeField] private Collider2D _rightCollider;
         [SerializeField] private float _speedDrop;
         [SerializeField] private ItemEnum _type;
         [SerializeField] private LayerMask _enemyLayer;
@@ -49,6 +51,8 @@ namespace Items
                 && _wallLayer.Contains(other.gameObject.layer))
             {
                 _isDropItem = false;
+                _leftCollider.enabled = false;
+                _rightCollider.enabled = false;
                 // Realisation of the rebound
                 Debug.Log("rebound");
                 OnAxeIdle?.Invoke();
@@ -94,5 +98,8 @@ namespace Items
         }
         
         public void Drop() => _isDropItem = true;
+
+        public void LeftSpin() => _leftCollider.enabled = true;
+        public void RightSpin() => _rightCollider.enabled = true;
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
+using Items.Strategy;
 using UnityEngine;
 
 namespace Items
 {
     public class AxeAnimation : MonoBehaviour
     {
+        [SerializeField] private Item _axe;
         [SerializeField] private Animator _animator;
         
         private static readonly int Idle = Animator.StringToHash("idle");
@@ -29,12 +31,14 @@ namespace Items
         {
             _animator.ResetTrigger(Idle);
             _animator.SetTrigger(SpinLeft);
+            _axe.LeftSpin();
         }
         
         private void ChangeSpinRightState()
         {
             _animator.ResetTrigger(Idle);
             _animator.SetTrigger(SpinRight);
+            _axe.RightSpin();
         }
 
         private void ChangeIdleState()

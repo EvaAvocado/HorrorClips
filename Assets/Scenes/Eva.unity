@@ -1521,6 +1521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClipPlace
       objectReference: {fileID: 0}
+    - target: {fileID: 3609205334525196599, guid: b8f60cd12c370e147ac08ab8a91f32c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9136996636495852369, guid: b8f60cd12c370e147ac08ab8a91f32c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1617,10 +1621,6 @@ PrefabInstance:
     - target: {fileID: 3315529917545158442, guid: d3f48cae9a36fd448b70cf78ee810c1a, type: 3}
       propertyPath: m_Name
       value: Global Volume
-      objectReference: {fileID: 0}
-    - target: {fileID: 3315529917545158442, guid: d3f48cae9a36fd448b70cf78ee810c1a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

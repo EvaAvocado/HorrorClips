@@ -1,5 +1,6 @@
 using Core;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Intro
@@ -10,6 +11,7 @@ namespace Intro
         [SerializeField] private BoxCollider2D _collider;
         [SerializeField] private LayerMask _palyerLayer;
         [SerializeField] private LanguageSelector _differentLanguageSelector;
+        [SerializeField] private UnityEvent _selectLanguage;
         
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -17,6 +19,7 @@ namespace Intro
             {
                 _languageSelector.ChangeLanguage();
                 _differentLanguageSelector.gameObject.SetActive(false);
+                _selectLanguage?.Invoke();
                 gameObject.SetActive(false);
             }
         }

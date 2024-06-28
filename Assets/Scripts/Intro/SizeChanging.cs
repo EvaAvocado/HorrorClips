@@ -13,6 +13,7 @@ namespace Intro
 
         private float _delta;
         private float _currentPosX;
+        private float _currentStartPos;
 
         private void OnEnable()
         {
@@ -28,25 +29,33 @@ namespace Intro
         {
             _currentPosX = transform.position.x;
             transform.localScale = new Vector3(_startSize, _startSize, transform.localScale.z);
-            _delta = (_endSize-_startSize) / (_distance/_offset);
+            _delta = (_endSize - _startSize) / (_distance / _offset);
+            _currentStartPos = _distance - 0.1f;
         }
 
         private void ChangeSize(float direction)
         {
             var newPosX = transform.position.x;
-            
-            if (direction > 0 && _currentPosX + _offset < newPosX && newPosX > 0 && newPosX < _distance)
+
+            if (direction > 0 && _currentPosX + _offset < newPosX && newPosX > _currentStartPos &&
+                newPosX < _distance)
             {
                 transform.localScale = new Vector3(transform.localScale.x + _delta, transform.localScale.x + _delta,
                     transform.localScale.z);
                 _currentPosX = newPosX;
             }
-            else if (direction < 0 && _currentPosX - _offset > newPosX && newPosX > 0 && newPosX < _distance)
+            else if (direction < 0 && _currentPosX - _offset > newPosX && newPosX > _currentStartPos &&
+                     newPosX < _distance)
             {
                 transform.localScale = new Vector3(transform.localScale.x - _delta, transform.localScale.x - _delta,
                     transform.localScale.z);
                 _currentPosX = newPosX;
             }
+        }
+
+        public void ChangeCurrentStartPos(float value)
+        {
+            _currentStartPos = value;
         }
     }
 }

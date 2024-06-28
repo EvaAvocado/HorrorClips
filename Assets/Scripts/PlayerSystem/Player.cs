@@ -148,6 +148,14 @@ namespace PlayerSystem
             }
         }
 
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
+            {
+                _interaction.SetItem(other.GetComponent<IItem>());
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)

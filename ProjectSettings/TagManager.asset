@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: ClipPlace
+    uniqueID: 822174203
+    locked: 0
   - name: Room
     uniqueID: 1251186755
     locked: 0

@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 5674b6eccf979e9409eb5430bd926bd0
+  - enabled: 1
+    path: Assets/Scenes/Eva.unity
+    guid: 5ba8d0cf628892641b9a4e27ee103357
+  - enabled: 1
+    path: Assets/Scenes/Dima_78.unity
+    guid: 7a8cb903b834f9247820efa08bac6afb
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 719f02c64026f1943a35fc8576c7a1ef, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3495b73afcd340344a8c18367df3f982, type: 2}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Data;
+using Intro;
 using Level.Clips;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Level
     {
         [SerializeField] private ClipPlace _clipPlacePrefab;
         [SerializeField] private LevelData _levelData;
+        [SerializeField] private Fade _fade;
 
         [Header("Bottom Layer")] [SerializeField]
         private int _countOfClipsBottom;
@@ -75,6 +77,8 @@ namespace Level
 
                 SpawnClips(_bottomClipPlaces, false);
                 SpawnClips(_topClipPlaces, true);
+                
+                _fade.FadeOut();
             }
         }
 

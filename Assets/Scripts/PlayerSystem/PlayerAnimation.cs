@@ -1,3 +1,4 @@
+using System;
 using Items.Strategy;
 using UnityEngine;
 
@@ -16,6 +17,10 @@ namespace PlayerSystem
         private static readonly int Swing = Animator.StringToHash("swing");
 
         private bool _isThrow;
+        private bool _isMoving;
+        private bool _isCanDrop;
+        private bool _isCanRelease;
+        private float _direction;
 
         private void OnEnable()
         {
@@ -38,15 +43,63 @@ namespace PlayerSystem
             Player.OnRelease -= ChangeReleaseState;
             Axe.OnSwing -= ChangeSwingState;
         }
+        
+        private void Update()
+        {
+            if (_isCanRelease && !Input.GetKey(KeyCode.E))
+            {
+                ResetAnimator();
+                _isCanRelease = false;
+            }
+        }
+
+        private void ResetAnimator()
+        {
+            _isCanDrop = false;
+            _animator.SetBool(IsThrow, false);
+            _animator.SetBool(IsHold, false);
+            _animator.ResetTrigger(Swing);
+            _animator.ResetTrigger(Release);
+            _player.NotHoldAxe();
+            _isThrow = false;
+
+            if (_isMoving)
+            {
+                if (_direction > 0)
+                {
+                    _animator.Play("run_axe_right");
+                }
+                else
+                {
+                    _animator.Play("run_axe_left");
+                }
+            } 
+            else if (!_isMoving)
+            {
+                if (_direction > 0)
+                {
+                    _animator.Play("idle_axe_right");
+                }
+                else
+                {
+                    _animator.Play("idle_axe_left");
+                }
+            }
+        }
 
         private void ChangeRunState(float direction)
         {
+            _isMoving = true;
+            _direction = direction;
+            ResetAnimator();
+            
             _animator.SetBool(IsRunning, true);
             _animator.SetFloat(HorizontalMove, direction);
         }
     
         private void ChangeIdleState()
         {
+            _isMoving = false;
             _animator.SetBool(IsRunning, false);
         }
         
@@ -54,7 +107,20 @@ namespace PlayerSystem
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
+        
 
+        private void ChangeThrowState()
+        {
+            if (!_isThrow)
+            {
+                _isMoving = false;
+                _isCanDrop = true;
+                _isCanRelease = true;
+                _animator.SetBool(IsThrow, true);
+                _animator.SetBool(IsHold, false);
+            }
+        }
+        
         private void ChangeHoldState()
         {
             _animator.SetBool(IsThrow, false);
@@ -62,15 +128,6 @@ namespace PlayerSystem
             
             _isThrow = true;
             _player.HoldAxe();
-        }
-
-        private void ChangeThrowState()
-        {
-            if (!_isThrow)
-            {
-                _animator.SetBool(IsThrow, true);
-                _animator.SetBool(IsHold, false);
-            }
         }
 
         private void ChangeReleaseState()
@@ -83,19 +140,29 @@ namespace PlayerSystem
             _isThrow = false;
         }
 
+        private void ChangeIsCanReleaseState()
+        {
+            _isCanRelease = false;
+        }
+
         private void ChangeDropAxeState()
         {
             _animator.SetBool(IsThrow, false);
             _animator.SetBool(IsHold, false);
             _animator.ResetTrigger(Swing);
             _animator.ResetTrigger(Release);
-            _animator.SetLayerWeight(1, 0f);
-            
-            _player.DropAxe();
+
+            if (_isCanDrop)
+            {
+                print(1);
+                _animator.SetLayerWeight(1, 0f);
+                _player.DropAxe(); 
+            }
         }
 
         private void ChangeSwingState()
         {
+            _isMoving = false;
             _animator.SetBool(IsThrow, false);
             _animator.SetBool(IsHold, false);
             _animator.ResetTrigger(Release);

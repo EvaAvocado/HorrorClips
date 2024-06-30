@@ -81,7 +81,8 @@ namespace PlayerSystem
                 OnIdle?.Invoke();
             }
 
-            if (Input.GetKey(_interactionKey)
+            if (!_isTriggerForItem 
+                && Input.GetKey(_interactionKey)
                 && _interaction.HaveAxeInHand)
             {
                 _pressingTime += Time.deltaTime;

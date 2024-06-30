@@ -4,6 +4,7 @@ using Items;
 using Items.Strategy;
 using Level;
 using Level.Clips;
+using UI;
 using UnityEngine;
 using Utils;
 
@@ -23,6 +24,7 @@ namespace PlayerSystem
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private CapsuleCollider2D _playerCollider;
+        [SerializeField] private GameObject _hint;
 
         private Movement _movement;
         private Interaction _interaction;
@@ -142,6 +144,7 @@ namespace PlayerSystem
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
                 _isTriggerForItem = true;
+                _hint.SetActive(true);
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer) && !_isEditMode)
@@ -161,6 +164,7 @@ namespace PlayerSystem
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
                 _isTriggerForItem = true;
+                _hint.SetActive(true);
             }
         }
 
@@ -170,6 +174,7 @@ namespace PlayerSystem
             {
                 _interaction.SetItem(null);
                 _isTriggerForItem = false;
+                _hint.SetActive(false);
             }
             
             if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)

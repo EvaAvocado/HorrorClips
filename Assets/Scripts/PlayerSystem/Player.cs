@@ -38,7 +38,7 @@ namespace PlayerSystem
         public static event Action OnRelease;
 
         private const string HORIZONTAL = "Horizontal";
-
+        public Movement Movement => _movement;
         public SpriteRenderer[] SpriteRenderers => _spriteRenderers;
         public bool HaveFlashlight => _interaction.HaveFlashlight;
 

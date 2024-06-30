@@ -1457,7 +1457,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1507378173
-  m_SortingOrder: 2
+  m_SortingOrder: 200
   m_TargetDisplay: 0
 --- !u!114 &2560459424034384830
 MonoBehaviour:
@@ -1516,6 +1516,7 @@ MonoBehaviour:
   _volumeControllers:
   - {fileID: 6501445578544261741}
   - {fileID: 6476951438879945693}
+  _isCanOpen: 1
 --- !u!1 &7771625063311965965
 GameObject:
   m_ObjectHideFlags: 0

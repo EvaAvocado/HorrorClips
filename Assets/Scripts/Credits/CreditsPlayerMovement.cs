@@ -21,6 +21,7 @@ namespace Credits
                 }
                 
                 _player.Movement.Move(1);
+                _player.InvokeOnMove(1);
             }
             
         }

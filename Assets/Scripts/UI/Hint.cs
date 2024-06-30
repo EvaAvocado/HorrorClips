@@ -1,16 +1,18 @@
-﻿using System;
-using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UI
 {
     public class Hint : MonoBehaviour
     {
-        [SerializeField] private Transform _startPosition;
-        [SerializeField] private Transform _endPosition;
-        [SerializeField] private float _timeForAnim;
+        [SerializeField] private Animator _animator;
         
-        private void OnEnable()
+        
+        
+        //[SerializeField] private Transform _startPosition;
+        //[SerializeField] private Transform _endPosition;
+        //[SerializeField] private float _timeForAnim;
+        
+        /*private void OnEnable()
         {
             AnimationText();
             transform.position = _endPosition.position;
@@ -28,6 +30,6 @@ namespace UI
                     });
                 });
             }
-        }
+        }*/
     }
 }

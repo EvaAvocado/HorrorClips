@@ -16,7 +16,6 @@ namespace PlayerSystem
         
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private Transform _hand;
-        [SerializeField] private Transform _head;
         [SerializeField] private List<Animator> _animators;
         [SerializeField] private float _speed;
         [SerializeField] private KeyCode _interactionKey;
@@ -67,7 +66,7 @@ namespace PlayerSystem
             var direction = Input.GetAxis(HORIZONTAL);
             if (direction != 0 && !_isEditMode)
             {
-                OnMove?.Invoke(direction);
+                InvokeOnMove(direction);
                 
                 _movement.Move(direction);
                 
@@ -183,7 +182,6 @@ namespace PlayerSystem
             }
         }
 
-
         public void UseAxe()
         {
             if (!_interaction.Action(_pressingTime, _isHoldAxe))
@@ -194,6 +192,11 @@ namespace PlayerSystem
             
             _pressingTime = 0;
             _isHoldAxe = false;
+        }
+
+        public void InvokeOnMove(float direction)
+        {
+            OnMove?.Invoke(direction);
         }
         
         public void HoldAxe() => _isHoldAxe = true;

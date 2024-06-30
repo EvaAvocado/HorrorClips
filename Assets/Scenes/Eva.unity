@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 822344492}
   - component: {fileID: 822344491}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasPressQ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1627,6 +1627,8 @@ MonoBehaviour:
   _actionAfterFadeOut:
     m_PersistentCalls:
       m_Calls: []
+  _playFadeInOnStart: 0
+  _playFadeOutOnStart: 0
 --- !u!114 &2098459983
 MonoBehaviour:
   m_ObjectHideFlags: 0

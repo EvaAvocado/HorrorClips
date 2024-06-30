@@ -1,4 +1,5 @@
-﻿using Level;
+﻿using Intro;
+using Level;
 using PlayerSystem;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Core
             _layersManager.Init();
             _editManager.Init(_layersManager);
             _pressQ.Init(_editManager);
-            _player.OnDie += _game.ResetScene;
+            _player.OnDie += _layersManager.Fade.FadeIn;
         }
 
         private void Start()

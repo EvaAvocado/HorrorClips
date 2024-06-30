@@ -1,4 +1,7 @@
-﻿using UnityEngine.SceneManagement;
+﻿using System;
+using Intro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {

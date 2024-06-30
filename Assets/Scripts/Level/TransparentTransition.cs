@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EnemySystem.CreatureSystem;
 using EnemySystem.Minion;
 using Level.Clips;
 using PlayerSystem;
@@ -58,6 +59,11 @@ namespace Level
                     minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
                 }
                 
+                if (other.TryGetComponent(out Creature monster))
+                {
+                    monster.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                }
+                
                 OnTransparent?.Invoke();
             }
             
@@ -93,6 +99,11 @@ namespace Level
                 if (other.TryGetComponent(out Minion minion))
                 {
                     minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                }
+
+                if (other.TryGetComponent(out Creature monster))
+                {
+                    monster.SpriteRenderer.color = ChangeColor(MAX_COLOR);
                 }
                 
                 OnNontransparent?.Invoke();

@@ -36,6 +36,8 @@ namespace Level
 
         #region Properties
 
+        public Fade Fade => _fade;
+
         public float SpawnPointY => _spawnPointY;
         public float Height => _height;
         public float Width => _width;

@@ -10,9 +10,9 @@ namespace Core
         [SerializeField] private string _sceneName;
         [SerializeField] private float _timeBeforeLoadScene;
         
-        public void LoadScene()
+        private void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(_sceneName);
+            SceneManager.LoadScene(sceneName);
         }
 
         public void LoadSceneAfterTime()
@@ -20,10 +20,26 @@ namespace Core
             StartCoroutine(TimerToLoadScene());
         }
 
+        public void ReloadScene()
+        {
+            LoadScene(SceneManager.GetActiveScene().name);
+        }
+        
+        public void ReloadSceneAfterTime()
+        {
+            StartCoroutine(TimerToReloadScene());
+        }
+
         private IEnumerator TimerToLoadScene()
         {
             yield return new WaitForSeconds(_timeBeforeLoadScene);
-            LoadScene();
+            LoadScene(_sceneName);
+        }
+        
+        private IEnumerator TimerToReloadScene()
+        {
+            yield return new WaitForSeconds(_timeBeforeLoadScene);
+            LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

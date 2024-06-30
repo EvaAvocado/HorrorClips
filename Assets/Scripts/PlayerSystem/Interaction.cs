@@ -1,4 +1,5 @@
-﻿using Items;
+﻿using System;
+using Items;
 using Items.Strategy;
 using UnityEngine;
 
@@ -31,10 +32,14 @@ namespace PlayerSystem
             {
                 _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
 
-                if (_item.GetItemEnum() == ItemEnum.DOOR
+                if ((_item.GetItemEnum() == ItemEnum.DOOR
+                    || _item.GetItemEnum() == ItemEnum.ROPE)
                     && _isAxeInHand)
                 {
+                    // _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
+                    
                     _strategy?.AlternativeUse(_item, _itemInHand);
+                    // _strategy?.AlternativeUse(_itemInHand, _item);
                     CheckAxe();
                     return true;
                 }
@@ -69,11 +74,7 @@ namespace PlayerSystem
             {
                 _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
 
-                if (pressingTime < 0.1f)
-                {
-                    _strategy?.AlternativeUse(_itemInHand, null, true);
-                }
-                else if (isHoldAxe)
+                if (isHoldAxe)
                 {
                     _strategy?.AlternativeUse(_itemInHand);
                 }
@@ -86,7 +87,8 @@ namespace PlayerSystem
 
         private void CheckAxe()
         {
-            if (_itemInHand.GetTransform().parent is null)
+            if (_itemInHand is not null 
+                && _itemInHand.GetTransform().parent is null)
             {
                 _itemInHand = null;
                 _isAxeInHand = false;

@@ -1,4 +1,5 @@
 using System;
+using Items;
 using Items.Strategy;
 using UnityEngine;
 
@@ -30,7 +31,10 @@ namespace PlayerSystem
             Player.OnHold += ChangeHoldState;
             Player.OnThrow += ChangeThrowState;
             Player.OnRelease += ChangeReleaseState;
+            Player.OnSwing += ChangeSwingState;
             Axe.OnSwing += ChangeSwingState;
+            DoorItem.OnDestroyDoor += ChangeDropAxeState;
+            DoorItem.OnDestroyDoor += DropAxe;
         }
 
         private void OnDisable()
@@ -41,7 +45,10 @@ namespace PlayerSystem
             Player.OnHold -= ChangeHoldState;
             Player.OnThrow -= ChangeThrowState;
             Player.OnRelease -= ChangeReleaseState;
+            Player.OnSwing -= ChangeSwingState;
             Axe.OnSwing -= ChangeSwingState;
+            DoorItem.OnDestroyDoor -= ChangeDropAxeState;
+            DoorItem.OnDestroyDoor -= DropAxe;
         }
         
         private void Update()
@@ -156,7 +163,7 @@ namespace PlayerSystem
             {
                 print(1);
                 _animator.SetLayerWeight(1, 0f);
-                _player.DropAxe(); 
+                _player.DropAxe();
             }
         }
 
@@ -167,6 +174,17 @@ namespace PlayerSystem
             _animator.SetBool(IsHold, false);
             _animator.ResetTrigger(Release);
             _animator.SetTrigger(Swing);
+        }
+
+        private void DropAxe()
+        {
+            _animator.SetLayerWeight(1, 0f);
+            _player.DropAxe();
+        }
+
+        private void UseAxe()
+        {
+            _player.UseAxe();
         }
     }
 }

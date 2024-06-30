@@ -28,6 +28,7 @@ namespace PlayerSystem
         private Interaction _interaction;
         private bool _isEditMode;
         private bool _isHoldAxe;
+        private bool _isTriggerForItem;
         private float _pressingTime;
 
         public static event Action<float> OnMove;
@@ -36,6 +37,7 @@ namespace PlayerSystem
         public static event Action OnHold;
         public static event Action OnThrow;
         public static event Action OnRelease;
+        public static event Action OnSwing;
 
         private const string HORIZONTAL = "Horizontal";
 
@@ -83,11 +85,7 @@ namespace PlayerSystem
             {
                 _pressingTime += Time.deltaTime;
 
-                if (_pressingTime >= 4)
-                {
-                    // OnHold?.Invoke();
-                }
-                else
+                if (!_isHoldAxe)
                 {
                     OnThrow?.Invoke();
                 }
@@ -95,6 +93,14 @@ namespace PlayerSystem
             
             if (Input.GetKeyUp(_interactionKey))
             {
+                if (_interaction.HaveAxeInHand
+                    && _isTriggerForItem)
+                {
+                    Debug.Log("Ret");
+                    OnSwing?.Invoke();
+                    return;
+                }
+                
                 if (!_interaction.Action(_pressingTime, _isHoldAxe))
                 {
                     _interaction.SetItem(null);
@@ -135,6 +141,7 @@ namespace PlayerSystem
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
+                _isTriggerForItem = true;
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer) && !_isEditMode)
@@ -153,6 +160,7 @@ namespace PlayerSystem
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
+                _isTriggerForItem = true;
             }
         }
 
@@ -161,12 +169,26 @@ namespace PlayerSystem
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 _interaction.SetItem(null);
+                _isTriggerForItem = false;
             }
             
             if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 other.GetComponent<Clip>().PlayerExit();
             }
+        }
+
+
+        public void UseAxe()
+        {
+            if (!_interaction.Action(_pressingTime, _isHoldAxe))
+            {
+                _interaction.SetItem(null);
+                _isTriggerForItem = false;
+            }
+            
+            _pressingTime = 0;
+            _isHoldAxe = false;
         }
         
         public void HoldAxe() => _isHoldAxe = true;

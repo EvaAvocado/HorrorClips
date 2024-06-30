@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Items
@@ -10,6 +11,9 @@ namespace Items
         [SerializeField] private ItemEnum _type;
 
         private int _strokeCounter;
+        private int _checkAnim;
+
+        public static event Action OnDestroyDoor; 
         
         public bool IsDropItem()
         {
@@ -36,6 +40,7 @@ namespace Items
                 if (item is not null)
                 {
                     item.GetTransform().parent = null;
+                    OnDestroyDoor?.Invoke();
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace EnemySystem.States
 
         public void Enter()
         {
-            _enemy.SetActive(false);
+            //_enemy.SetActive(false);
         }
 
         public void Update()

@@ -161,7 +161,6 @@ namespace PlayerSystem
 
             if (_isCanDrop)
             {
-                print(1);
                 _animator.SetLayerWeight(1, 0f);
                 _player.DropAxe();
             }

@@ -59,5 +59,10 @@ namespace Items
         {
             return true;
         }
+
+        public void ChangeSprite()
+        {
+            
+        }
     }
 }

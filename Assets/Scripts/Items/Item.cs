@@ -1,6 +1,5 @@
 ﻿using System;
 using EnemySystem.Minion;
-using PlayerSystem;
 using UnityEngine;
 using Utils;
 
@@ -15,6 +14,9 @@ namespace Items
         [SerializeField] private ItemEnum _type;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private LayerMask _wallLayer;
+        [SerializeField] private Sprite[] _sprites;
+
+        private int _currentSprite;
 
         public static event Action OnAxeIdle;
         public static event Action OnAxeSpinLeft;
@@ -43,8 +45,8 @@ namespace Items
             if (_isDropItem
                 && _enemyLayer.Contains(other.gameObject.layer))
             {
-                gameObject.SetActive(false);
                 CheckEnemy(other);
+                gameObject.SetActive(false);
             }
             
             if (_isDropItem
@@ -61,9 +63,9 @@ namespace Items
 
         private void CheckEnemy(Collider2D other)
         {
-            if (other.TryGetComponent<Minion>(out Minion minion))
+            if (other.TryGetComponent(out ClipZoneFinder colliderInMinion))
             {
-                minion.Die();
+                colliderInMinion.Minion.Die();
             }
         }
 
@@ -94,6 +96,15 @@ namespace Items
             {
                 _spriteRenderer.flipX = false;
                 _speedDrop *= -1;
+            }
+        }
+
+        public void ChangeSprite()
+        {
+            _currentSprite++;
+            if (_sprites.Length < _currentSprite)
+            {
+                _spriteRenderer.sprite = _sprites[_currentSprite];
             }
         }
         

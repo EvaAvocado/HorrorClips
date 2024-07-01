@@ -9,6 +9,7 @@ namespace Items.Strategy
         private readonly Door _door = new();
         private readonly Flashlight _flashlight = new();
         private readonly Rope _rope = new();
+        private readonly TV _tv = new();
 
         public ChangeStrategy(List<Animator> animators)
         {
@@ -34,7 +35,11 @@ namespace Items.Strategy
                 case ItemEnum.ROPE:
                 {
                     return _rope;
-                } 
+                }
+                case ItemEnum.TV:
+                {
+                    return _tv;
+                }
             }
 
             return null;

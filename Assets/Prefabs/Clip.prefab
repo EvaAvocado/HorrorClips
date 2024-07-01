@@ -1445,7 +1445,6 @@ MonoBehaviour:
   _ropeLeft: {fileID: 6859152972383681467}
   _ropeRight: {fileID: 213205142520343400}
   _animator: {fileID: 3783881263552718142}
-  _sprite: {fileID: 324183118196733827}
 --- !u!95 &3783881263552718142
 Animator:
   serializedVersion: 5
@@ -1962,7 +1961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3441140400852869393
 Transform:
   m_ObjectHideFlags: 0

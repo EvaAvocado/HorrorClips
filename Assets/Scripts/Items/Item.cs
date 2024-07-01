@@ -98,6 +98,21 @@ namespace Items
         }
         
         public void Drop() => _isDropItem = true;
+        public bool CheckUse(bool haveAxe)
+        {
+            if (ItemEnum.ROPE == _type
+                && !haveAxe)
+            {
+                return false;
+            }
+            
+            // if ()
+            // {
+            //     
+            // }
+
+            return true;
+        }
 
         public void LeftSpin() => _leftCollider.enabled = true;
         public void RightSpin() => _rightCollider.enabled = true;

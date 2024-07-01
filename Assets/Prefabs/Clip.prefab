@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2754646424798955713}
   - component: {fileID: 3277000724344468804}
   - component: {fileID: 749752548149648300}
+  - component: {fileID: 4285335046769555844}
   m_Layer: 6
   m_Name: Rope_Left
   m_TagString: Untagged
@@ -130,6 +131,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7196836, y: 13.055508}
   m_EdgeRadius: 0
+--- !u!114 &4285335046769555844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200024707010897540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c8981965b24038bdc6ebd70b9f101a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 3277000724344468804}
+  _leftCollider: {fileID: 0}
+  _rightCollider: {fileID: 0}
+  _speedDrop: 0
+  _type: 4
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &315034578157742894
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +459,7 @@ GameObject:
   - component: {fileID: 5262432934065448436}
   - component: {fileID: 4696436855911468661}
   - component: {fileID: 6217312228873807241}
+  - component: {fileID: 5081362407311180185}
   m_Layer: 6
   m_Name: Rope_Right
   m_TagString: Untagged
@@ -554,6 +579,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7930608, y: 15.000001}
   m_EdgeRadius: 0
+--- !u!114 &5081362407311180185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363362536984654376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c8981965b24038bdc6ebd70b9f101a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 4696436855911468661}
+  _leftCollider: {fileID: 0}
+  _rightCollider: {fileID: 0}
+  _speedDrop: 0
+  _type: 4
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2548115796692831868
 GameObject:
   m_ObjectHideFlags: 0

@@ -140,9 +140,11 @@ namespace PlayerSystem
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
+            if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode
+                && other.GetComponent<IItem>().CheckUse(_interaction.HaveAxeInHand))
             {
-                _interaction.SetItem(other.GetComponent<IItem>());
+                IItem item = other.GetComponent<IItem>();
+                _interaction.SetItem(item);
                 _isTriggerForItem = true;
                 _hint.SetActive(true);
             }
@@ -160,7 +162,8 @@ namespace PlayerSystem
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode)
+            if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode 
+                && other.GetComponent<IItem>().CheckUse(_interaction.HaveAxeInHand))
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
                 _isTriggerForItem = true;

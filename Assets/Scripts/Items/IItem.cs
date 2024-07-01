@@ -10,5 +10,6 @@ namespace Items
         void AlternativeUse(IItem item = null);
         void Flip(float direction);
         void Drop();
+        bool CheckUse(bool haveAxe);
     }
 }

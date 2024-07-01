@@ -54,5 +54,10 @@ namespace Items
         {
             
         }
+
+        public bool CheckUse(bool haveAxe)
+        {
+            return true;
+        }
     }
 }

@@ -154,6 +154,7 @@ MonoBehaviour:
   _wallLayer:
     serializedVersion: 2
     m_Bits: 0
+  _sprites: []
 --- !u!1 &315034578157742894
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +603,7 @@ MonoBehaviour:
   _wallLayer:
     serializedVersion: 2
     m_Bits: 0
+  _sprites: []
 --- !u!1 &2548115796692831868
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1496654969016956560
 Transform:
   m_ObjectHideFlags: 0
@@ -1421,7 +1423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4075462667331385434
 Transform:
   m_ObjectHideFlags: 0
@@ -1874,7 +1876,8 @@ GameObject:
   - component: {fileID: 438650527987388808}
   - component: {fileID: 7661354123315855255}
   - component: {fileID: 8613760647707426663}
-  - component: {fileID: 735757161543593706}
+  - component: {fileID: 3428356591656246484}
+  - component: {fileID: 3425955775913735503}
   m_Layer: 6
   m_Name: TV
   m_TagString: Untagged
@@ -2016,7 +2019,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
---- !u!114 &735757161543593706
+--- !u!114 &3428356591656246484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2025,9 +2028,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 8920995162973861492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899beb77096a68741a2a10c7f939affd, type: 3}
+  m_Script: {fileID: 11500000, guid: d40f4bd68f3d49a981815fe4e719aa8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _necessaryMinionsCount: 1
+  _currentMinionsCount: 0
+  _animators:
+  - {fileID: 7661354123315855255}
+  - {fileID: 2763651919558272042}
+  _eventIfInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3425955775913735503}
+        m_TargetAssemblyTypeName: Core.SceneLoader, Assembly-CSharp
+        m_MethodName: ReloadSceneAfterTime
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3425955775913735503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920995162973861492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5d7e09493c68e4b9ab01b01dfad050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: 
+  _timeBeforeLoadScene: 0.1
 --- !u!1001 &5446120207033227750
 PrefabInstance:
   m_ObjectHideFlags: 0

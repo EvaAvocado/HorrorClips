@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clipZone: {fileID: 77801114005738813}
+  _minion: {fileID: 2255988732289502183}
 --- !u!1 &3062004896126659549
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@
         AXE = 1,
         DOOR = 2,
         FLASHLIGHT = 3,
-        ROPE = 4
+        ROPE = 4,
+        TV = 5
     }
 }

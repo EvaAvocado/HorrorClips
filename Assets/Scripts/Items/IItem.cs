@@ -11,5 +11,6 @@ namespace Items
         void Flip(float direction);
         void Drop();
         bool CheckUse(bool haveAxe);
+        void ChangeSprite();
     }
 }

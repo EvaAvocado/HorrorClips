@@ -189,7 +189,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 297585623650863239, guid: f03b097ba32e94f479e57173e25b2075, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.98
+      value: -15.48
       objectReference: {fileID: 0}
     - target: {fileID: 297585623650863239, guid: f03b097ba32e94f479e57173e25b2075, type: 3}
       propertyPath: m_LocalPosition.y
@@ -324,10 +324,6 @@ PrefabInstance:
     - target: {fileID: 997036291322273804, guid: f735503ea6ae50e4b9acaf4059f5d22f, type: 3}
       propertyPath: m_Name
       value: Minion
-      objectReference: {fileID: 0}
-    - target: {fileID: 997036291322273804, guid: f735503ea6ae50e4b9acaf4059f5d22f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4814583881425370084, guid: f735503ea6ae50e4b9acaf4059f5d22f, type: 3}
       propertyPath: m_LocalPosition.x

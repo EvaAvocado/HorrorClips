@@ -115,17 +115,6 @@ namespace Items
             {
                 return false;
             }
-            
-            if (ItemEnum.ROPE == _type
-                && !haveAxe)
-            {
-                return false;
-            }
-            
-            // if ()
-            // {
-            //     
-            // }
 
             return true;
         }

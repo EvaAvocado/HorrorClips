@@ -75,6 +75,9 @@ namespace PlayerSystem
                     _interaction.Flip(direction);
                     OnFlip?.Invoke();
                 }
+                
+                _pressingTime = 0;
+                _isHoldAxe = false;
             }
             else if (!_isEditMode)
             {

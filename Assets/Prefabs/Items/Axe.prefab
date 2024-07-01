@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3647695402721494493}
   - component: {fileID: 4741872428971480464}
   - component: {fileID: 1543032210010105684}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2754350629997500701}
   - component: {fileID: 4344173588184764888}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RightCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523017768899339337}
   - component: {fileID: 2300951032841559257}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LeftCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

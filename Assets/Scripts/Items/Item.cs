@@ -100,6 +100,11 @@ namespace Items
         public void Drop() => _isDropItem = true;
         public bool CheckUse(bool haveAxe)
         {
+            if (_isDropItem)
+            {
+                return false;
+            }
+            
             if (ItemEnum.ROPE == _type
                 && !haveAxe)
             {

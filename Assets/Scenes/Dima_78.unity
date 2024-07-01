@@ -1960,6 +1960,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 4074142463540443271, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774667838470021717, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1e474ac63d31bc4a8fe3e7ef45bc4ae, type: 3}
     - target: {fileID: 8263946929373651693, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20

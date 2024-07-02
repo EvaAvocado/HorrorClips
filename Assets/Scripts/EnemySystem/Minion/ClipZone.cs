@@ -14,6 +14,8 @@ namespace EnemySystem.Minion
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private BoxCollider2D _collider2D;
         [SerializeField] private Clip _currentClip;
+        
+        private EditManager _editManager;
 
         public LayerMask ClipLayer => _clipLayer;
 
@@ -21,13 +23,14 @@ namespace EnemySystem.Minion
         {
             if (_currentClip != null)
                 SetNewCollider(_currentClip.transform.localPosition, _currentClip.ColliderWithoutDoors.size);
+            _editManager = FindObjectOfType<EditManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_currentClip != null)
             {
-                if (_playerLayer.Contains(other.gameObject.layer) && !_currentClip.IsEditMode)
+                if (_playerLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
                 {
                     _enemy.SeesPlayer(other.GetComponent<Player>());
                     _enemy.MinionAnimation.Hunt();
@@ -46,7 +49,7 @@ namespace EnemySystem.Minion
         public void TryChangeCollider(Collider2D other)
         {
             var clip = other.GetComponent<Clip>();
-            if (_currentClip != clip && clip != null)
+            if (_currentClip != clip && clip != null && !_editManager.IsEditMode)
             {
                 _currentClip = clip;
                 SetNewCollider(_currentClip.transform.localPosition, _currentClip.ColliderWithoutDoors.size);

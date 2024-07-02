@@ -292,6 +292,7 @@ MonoBehaviour:
     m_Bits: 128
   _playerCollider: {fileID: 41195180579708008}
   _hint: {fileID: 980763158928951174}
+  _isCantStop: 0
 --- !u!70 &41195180579708008
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -638,8 +639,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1251186755
+  m_SortingOrder: 16
   m_TargetDisplay: 0
 --- !u!114 &3867428732340336074
 MonoBehaviour:

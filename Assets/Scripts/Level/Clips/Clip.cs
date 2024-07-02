@@ -12,7 +12,7 @@ namespace Level.Clips
     {
         [SerializeField] private ClipPlace _currentClipPlace;
         [SerializeField] private bool _isCanDrag = true;
-        [SerializeField] private SpriteRenderer[] _spriteRenderers;
+        [SerializeField] private List<SpriteRenderer> _spriteRenderers;
         [SerializeField] private List<SpriteRenderer> _leftSprites;
         [SerializeField] private List<SpriteRenderer> _rightSprites;
         [SerializeField] private Collider2D _leftCollider;
@@ -34,6 +34,12 @@ namespace Level.Clips
         public List<SpriteRenderer> RightSprites => _rightSprites;
         public BoxCollider2D ColliderWithoutDoors => _colliderWithoutDoors;
         public bool IsEditMode => _isEditMode;
+
+        public List<SpriteRenderer> SpriteRenderers
+        {
+            get => _spriteRenderers;
+            set => _spriteRenderers = value;
+        }
 
         public enum ClipStateEnum
         {
@@ -165,7 +171,15 @@ namespace Level.Clips
             {
                 if (other.TryGetComponent(out Minion minion) && !_isEditMode)
                 {
+                    if (minion.ClipParent != null)
+                    {
+                        minion.ClipParent.SpriteRenderers.Remove(minion.SpriteRenderer);
+                    }
+                    
                     minion.Parent.transform.SetParent(transform);
+                    minion.ClipParent = this;
+                    
+                    if (!_spriteRenderers.Contains(minion.SpriteRenderer)) _spriteRenderers.Add(minion.SpriteRenderer);
                 }
             }
         }

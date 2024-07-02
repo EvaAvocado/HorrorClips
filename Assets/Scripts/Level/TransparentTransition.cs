@@ -34,7 +34,7 @@ namespace Level
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_creatureLayer.Contains(other.gameObject.layer)
-                && _leftSprites is not null)
+                && _leftSprites is not null && !_clip.IsEditMode)
             {
                 for (int i = 0; i < _leftSprites.Count; i++)
                 {
@@ -67,7 +67,7 @@ namespace Level
                 OnTransparent?.Invoke();
             }
             
-            if (_clipLayer.Contains(other.gameObject.layer))
+            if (_clipLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
             {
                 _leftSprites = other.GetComponent<Clip>().LeftSprites;
                 _collider.isTrigger = true;
@@ -76,7 +76,7 @@ namespace Level
         
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (_creatureLayer.Contains(other.gameObject.layer))
+            if (_creatureLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
             {
                 for (int i = 0; i < _leftSprites.Count; i++)
                 {
@@ -109,7 +109,7 @@ namespace Level
                 OnNontransparent?.Invoke();
             }
             
-            if (_clipLayer.Contains(other.gameObject.layer))
+            if (_clipLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
             {
                 _leftSprites = null;
                 _collider.isTrigger = false;

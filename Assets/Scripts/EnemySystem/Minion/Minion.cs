@@ -1,6 +1,7 @@
 ﻿using System;
 using EnemySystem.States;
 using Level;
+using Level.Clips;
 using PlayerSystem;
 using UnityEngine;
 using Utils;
@@ -17,6 +18,8 @@ namespace EnemySystem.Minion
         [SerializeField] private MinionAnimation _minionAnimation;
         [SerializeField] private Vector2 _distanceToLostPlayer;
 
+        private Clip _clipParent;
+
         private IStateMachine _stateMachine;
         private Player _player;
         private EditManager _editManager;
@@ -25,8 +28,13 @@ namespace EnemySystem.Minion
 
         public GameObject Parent => _parent;
         public MinionAnimation MinionAnimation => _minionAnimation;
-
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
+
+        public Clip ClipParent
+        {
+            get => _clipParent;
+            set => _clipParent = value;
+        }
 
         private void Awake()
         {

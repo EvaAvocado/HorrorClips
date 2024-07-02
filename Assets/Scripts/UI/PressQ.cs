@@ -1,5 +1,6 @@
 using System;
 using Level;
+using Level.Clips;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +13,14 @@ public class PressQ : MonoBehaviour
     private EditManager _editManager;
     private int _transparentObjectsCount;
     private bool _isMenuOpen;
+    private bool _isClipMoving;
 
     private void OnEnable()
     {
         TransparentTransition.OnTransparent += SetTransparent;
         TransparentTransition.OnNontransparent += SetNontransparent;
+        Clip.OnStartMoving += ClipMoving;
+        Clip.OnStopMoving += ClipStop;
         MenuManager.OnMenuOpen += MenuOpen;
         MenuManager.OnMenuClose += MenuClose;
     }
@@ -25,6 +29,8 @@ public class PressQ : MonoBehaviour
     {
         TransparentTransition.OnTransparent -= SetTransparent;
         TransparentTransition.OnNontransparent -= SetNontransparent;
+        Clip.OnStartMoving -= ClipMoving;
+        Clip.OnStopMoving -= ClipStop;
         MenuManager.OnMenuOpen -= MenuOpen;
         MenuManager.OnMenuClose -= MenuClose;
     }
@@ -56,7 +62,7 @@ public class PressQ : MonoBehaviour
     private void SetNontransparent()
     {
         _transparentObjectsCount--;
-        if (_transparentObjectsCount == 0 && !_isMenuOpen)
+        if (_transparentObjectsCount == 0 && !_isMenuOpen && !_isClipMoving)
         {
             SetCanPress();
         }
@@ -71,7 +77,22 @@ public class PressQ : MonoBehaviour
     private void MenuClose()
     {
         _isMenuOpen = false;
-        if (_transparentObjectsCount == 0)
+        if (_transparentObjectsCount == 0 && !_isClipMoving)
+        {
+            SetCanPress();
+        }
+    }
+
+    private void ClipMoving()
+    {
+        _isClipMoving = true;
+        SetCantPress();
+    }
+
+    private void ClipStop()
+    {
+        _isClipMoving = false;
+        if (_transparentObjectsCount == 0 && !_isMenuOpen)
         {
             SetCanPress();
         }

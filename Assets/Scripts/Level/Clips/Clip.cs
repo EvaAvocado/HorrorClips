@@ -29,6 +29,8 @@ namespace Level.Clips
         private Vector3 _startPos;
 
         public static event Action<Clip> OnMouseUpAction;
+        public static event Action OnStartMoving; 
+        public static event Action OnStopMoving; 
 
         public List<SpriteRenderer> LeftSprites => _leftSprites;
         public List<SpriteRenderer> RightSprites => _rightSprites;
@@ -108,6 +110,7 @@ namespace Level.Clips
             if (Input.GetMouseButtonDown(0) && _isCanDrag && _isEditMode && _clipState != ClipStateEnum.Enter
                 && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
             {
+                OnStartMoving?.Invoke();
                 _startPos = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
                 _isBeingHeld = true;
                 SetSortingLayer("RoomTop");
@@ -120,6 +123,7 @@ namespace Level.Clips
                 && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
             {
                 OnMouseUpAction?.Invoke(this);
+                OnStopMoving?.Invoke();
                 _isBeingHeld = false;
             }
         }

@@ -8,10 +8,11 @@ namespace Level
     {
         [SerializeField] private Collider2D _collider;
         [SerializeField] private LayerMask _clipLayer;
+        [SerializeField] private bool _isDeadEnd;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_clipLayer.Contains(other.gameObject.layer))
+            if (_clipLayer.Contains(other.gameObject.layer) && !_isDeadEnd)
             {
                 _collider.isTrigger = true;
             }
@@ -19,7 +20,7 @@ namespace Level
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (_clipLayer.Contains(other.gameObject.layer))
+            if (_clipLayer.Contains(other.gameObject.layer) && !_isDeadEnd)
             {
                 _collider.isTrigger = false;
             }

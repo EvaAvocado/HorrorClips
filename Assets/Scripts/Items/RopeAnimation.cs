@@ -10,6 +10,7 @@ namespace Items
         [SerializeField] private RopeItem _ropeRight;
         [SerializeField] private Animator _animator;
         [SerializeField] private ChandelierAnimation _chandelier;
+        [SerializeField] private SafeAnimation _safe;
         [SerializeField] private SpriteRenderer _sprite;
 
         private SpriteRenderer _ropeLeftSprite;
@@ -35,6 +36,7 @@ namespace Items
         {
             _ropeRight.ChangeSprite();
             _animator.ResetTrigger(Right);
+            _safe.ChangeFallState();
         }
 
         public void ChangeLeftState()

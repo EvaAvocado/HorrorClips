@@ -10,7 +10,7 @@ namespace Items
         [SerializeField] private ItemEnum _type;
         [SerializeField] private bool _isLeftRope;
 
-        private int _count;
+        private bool _use;
         
         public bool IsDropItem()
         {
@@ -37,6 +37,8 @@ namespace Items
             {
                 _animator.ChangeRightState();
             }
+
+            _use = true;
         }
 
         public void Flip(float direction)
@@ -51,7 +53,13 @@ namespace Items
 
         public bool CheckUse(bool haveAxe)
         {
-            return haveAxe;
+            if (!_use
+                && haveAxe)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public void ChangeSprite()

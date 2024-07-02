@@ -1,4 +1,5 @@
 ﻿using System;
+using Level;
 using UnityEngine;
 
 namespace Items
@@ -8,6 +9,7 @@ namespace Items
         [SerializeField] private RopeItem _ropeLeft;
         [SerializeField] private RopeItem _ropeRight;
         [SerializeField] private Animator _animator;
+        [SerializeField] private ChandelierAnimation _chandelier;
         [SerializeField] private SpriteRenderer _sprite;
 
         private SpriteRenderer _ropeLeftSprite;
@@ -22,20 +24,11 @@ namespace Items
             _ropeRightSprite = _ropeRight.GetComponent<SpriteRenderer>();
         }
 
-        private void OnEnable()
-        {
-            
-        }
-
-        private void OnDisable()
-        {
-            
-        }
-
         private void EndLeftAnim()
         {
             _ropeLeft.ChangeSprite();
             _animator.ResetTrigger(Left);
+            _chandelier.ChangeFallState();
         }
 
         private void EndRightAnim()

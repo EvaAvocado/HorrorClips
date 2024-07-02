@@ -19,29 +19,29 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 4563941040128
-    m_Localized: "code\n\navocado eva\nSazonov Dmitriy\r"
+    m_Localized: "CODE\n\nAvocado Eva\nSazonov Dmitriy\r"
     m_Metadata:
       m_Items: []
   - m_Id: 4481447469056
-    m_Localized: 'Game design
+    m_Localized: 'GAME DESIGN
 
 
       Oleynik Andrey
 
-      avocado eva'
+      Avocado Eva'
     m_Metadata:
       m_Items: []
   - m_Id: 4691594682368
-    m_Localized: 'art
+    m_Localized: 'ART
 
 
-      avocado eva
+      Avocado Eva
 
 '
     m_Metadata:
       m_Items: []
   - m_Id: 4816215842816
-    m_Localized: 'animations
+    m_Localized: 'ANIMATIONS
 
 
       Oleynik Andrey
@@ -50,7 +50,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4899233701888
-    m_Localized: 'music
+    m_Localized: 'MUSIC
 
 
       Oleynik Andrey
@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 437331426648064
-    m_Localized: 'tracks used
+    m_Localized: 'TRACKS USED
 
 
       Umbrellas to Mend

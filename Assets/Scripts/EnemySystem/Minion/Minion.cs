@@ -8,7 +8,7 @@ using Utils;
 
 namespace EnemySystem.Minion
 {
-    public class Minion : MonoBehaviour
+    public class Minion : MonoBehaviour, ITransparent
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Transform _playerTransform;

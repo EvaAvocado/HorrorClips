@@ -11,7 +11,7 @@ using Utils;
 
 namespace PlayerSystem
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, ITransparent
     {
         public event Action OnDie;
         

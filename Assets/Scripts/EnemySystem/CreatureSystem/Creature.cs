@@ -1,9 +1,10 @@
+using Level;
 using PlayerSystem;
 using UnityEngine;
 
 namespace EnemySystem.CreatureSystem
 {
-    public class Creature : MonoBehaviour
+    public class Creature : MonoBehaviour, ITransparent
     {
         [SerializeField] private float _baseSpeed;
         [SerializeField] private float _runSpeed;

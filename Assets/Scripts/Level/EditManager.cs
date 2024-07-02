@@ -9,14 +9,15 @@ namespace Level
 {
     public class EditManager : MonoBehaviour
     {
-        [SerializeField] private CinemachineVirtualCamera _camera;
+        [SerializeField] private Animator _cinemachineAnimator;
+        //[SerializeField] private CinemachineVirtualCamera _camera;
+        //[SerializeField] private CinemachineVirtualCamera _cameraEditMode;
         [SerializeField] private float _orthoSize = 10;
         [SerializeField] private GameObject _targetObject;
         [SerializeField] private GameObject _targetObjectCenter;
         [SerializeField] private bool _isEditMode;
-        
-        private LayersManager _layersManager;
-        private TweenerCore<float, float, FloatOptions> _currentTween;
+
+        private bool _playerCamera;
         private bool _isCanPress = true;
 
         public static event Action<bool> OnChangeEditMode; 
@@ -30,50 +31,37 @@ namespace Level
 
         public void Init(LayersManager layersManager)
         {
-            _layersManager = layersManager;
-            
-            _targetObject = _camera.Follow.gameObject;
-            _targetObjectCenter.transform.position = new Vector3(0, _targetObjectCenter.transform.position.y,
-                _camera.transform.position.z);
+            _playerCamera = true;
         }
 
         private void Update()
         {
             if (Input.GetKeyUp(KeyCode.Q) && !_isEditMode && _isCanPress)
             {
-                if (_currentTween != null)
-                {
-                    DOTween.Kill(_currentTween);
-                    _camera.transform.DOKill();
-                }
-
-                SetCameraFollow(_targetObjectCenter.transform);
-                _currentTween = DOTween.To(() => _camera.m_Lens.OrthographicSize, x=> _camera.m_Lens.OrthographicSize = x, _orthoSize * 3 + _orthoSize/2, 1f).SetEase(Ease.Linear);
-                
-                //_camera.transform.DOMove(_targetObjectCenter.transform.position, 1f).OnComplete(() => SetCameraFollow(_targetObjectCenter.transform));
                 _isEditMode = true;
+                SwitchState();
                 OnChangeEditMode?.Invoke(_isEditMode);
             }
             else if (Input.GetKeyUp(KeyCode.Q) && _isEditMode && _isCanPress)
             {
-                if (_currentTween != null)
-                {
-                    DOTween.Kill(_currentTween);
-                    _camera.transform.DOKill();
-                }
-                
-                _currentTween = DOTween.To(() => _camera.m_Lens.OrthographicSize, x=> _camera.m_Lens.OrthographicSize = x, _orthoSize, 1f);
-                SetCameraFollow(_targetObject.transform);
-                
-                //_camera.transform.DOMove(new Vector3(_targetObject.transform.position.x, _targetObject.transform.position.y , _camera.transform.position.z), 1f).OnComplete(SetCameraFollow);
+                SwitchState();
                 _isEditMode = false;
                 OnChangeEditMode?.Invoke(_isEditMode);
             }
         }
 
-        private void SetCameraFollow(Transform target)
+        private void SwitchState()
         {
-            _camera.Follow = target;
+            if (_playerCamera)
+            {
+                _cinemachineAnimator.Play("EditMode");
+                _playerCamera = false;
+            }
+            else
+            {
+                _cinemachineAnimator.Play("Player");
+                _playerCamera = true;
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Credits
                 if (direction != 0)
                 {
                     _isPlayersControl = true;
+                    _player.IsCantStop = false;
                 }
                 
                 _player.Movement.Move(1);

@@ -235,6 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6020177019774638120}
+  _minionParent: {fileID: 997036291322273804}
+  _collider: {fileID: 2276886178624372980}
 --- !u!1 &3836347867385666340
 GameObject:
   m_ObjectHideFlags: 0

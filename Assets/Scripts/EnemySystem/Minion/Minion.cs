@@ -82,7 +82,6 @@ namespace EnemySystem.Minion
         public void Die()
         {
             OnDieMinion?.Invoke();
-            gameObject.SetActive(false);
             _stateMachine.ChangeState<Die>();
         }
     }

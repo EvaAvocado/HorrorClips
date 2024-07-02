@@ -6,6 +6,7 @@ using Level;
 using Level.Clips;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utils;
 
 namespace PlayerSystem
@@ -24,7 +25,8 @@ namespace PlayerSystem
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private CapsuleCollider2D _playerCollider;
         [SerializeField] private GameObject _hint;
-
+        [SerializeField] private bool _isCantStop;
+        
         private Movement _movement;
         private Interaction _interaction;
         private bool _isEditMode;
@@ -44,6 +46,11 @@ namespace PlayerSystem
         public Movement Movement => _movement;
         public SpriteRenderer[] SpriteRenderers => _spriteRenderers;
         public bool HaveFlashlight => _interaction.HaveFlashlight;
+
+        public bool IsCantStop
+        {
+            set => _isCantStop = value;
+        }
 
         private void Awake()
         {
@@ -79,7 +86,7 @@ namespace PlayerSystem
                 _pressingTime = 0;
                 _isHoldAxe = false;
             }
-            else if (!_isEditMode)
+            else if (!_isEditMode && !_isCantStop)
             {
                 OnIdle?.Invoke();
             }

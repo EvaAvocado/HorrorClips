@@ -24,7 +24,7 @@ namespace EnemySystem.Minion
         private Player _player;
         private EditManager _editManager;
         
-        public static event Action OnDieMinion;
+        public static event Action<Minion> OnDieMinion;
 
         public GameObject Parent => _parent;
         public MinionAnimation MinionAnimation => _minionAnimation;
@@ -89,7 +89,7 @@ namespace EnemySystem.Minion
 
         public void Die()
         {
-            OnDieMinion?.Invoke();
+            OnDieMinion?.Invoke(this);
             _stateMachine.ChangeState<Die>();
         }
     }

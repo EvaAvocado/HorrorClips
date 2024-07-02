@@ -33,7 +33,7 @@ namespace Level
             _layersManager = layersManager;
             
             _targetObject = _camera.Follow.gameObject;
-            _targetObjectCenter.transform.position = new Vector3(0, _layersManager.SpawnPointY + _layersManager.Height / 2,
+            _targetObjectCenter.transform.position = new Vector3(0, _targetObjectCenter.transform.position.y,
                 _camera.transform.position.z);
         }
 

@@ -134,9 +134,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Creature
       objectReference: {fileID: 0}
+    - target: {fileID: 1725872599069219073, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9140289559766023371, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65
+      value: -45.7
       objectReference: {fileID: 0}
     - target: {fileID: 9140289559766023371, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -230,6 +234,10 @@ PrefabInstance:
     - target: {fileID: 2116642821888124649, guid: f03b097ba32e94f479e57173e25b2075, type: 3}
       propertyPath: m_Name
       value: Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116642821888124649, guid: f03b097ba32e94f479e57173e25b2075, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -327,7 +335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814583881425370084, guid: f735503ea6ae50e4b9acaf4059f5d22f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4814583881425370084, guid: f735503ea6ae50e4b9acaf4059f5d22f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -482,22 +490,6 @@ PrefabInstance:
     - target: {fileID: 1603876339166236733, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_Name
       value: LEVEL
-      objectReference: {fileID: 0}
-    - target: {fileID: 7083691401894383299, guid: ee7d78469c6879940b8daec40b115066, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8397633924665762619, guid: ee7d78469c6879940b8daec40b115066, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775303189267124546, guid: ee7d78469c6879940b8daec40b115066, type: 3}
-      propertyPath: m_SortingOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775303189267124546, guid: ee7d78469c6879940b8daec40b115066, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1251186755
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

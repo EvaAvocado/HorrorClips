@@ -25,7 +25,7 @@ namespace Items
             Minion.OnDieMinion -= AddDeadMinion;
         }
         
-        private void AddDeadMinion()
+        private void AddDeadMinion(Minion minion)
         {
             _currentMinionsCount++;
             CheckCountMinions();

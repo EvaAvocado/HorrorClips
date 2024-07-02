@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8861235725391108945}
   - component: {fileID: 2255988732289502183}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,6 +488,6 @@ MonoBehaviour:
     m_Bits: 8
   _clipLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   _collider2D: {fileID: 5762814206878222328}
   _currentClip: {fileID: 0}

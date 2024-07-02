@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Array2DEditor;
 using DG.Tweening;
+using EnemySystem.CreatureSystem;
 using EnemySystem.Minion;
 using UnityEngine;
 using Utils;
@@ -22,15 +23,15 @@ namespace Level.Clips
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private bool _isEditMode;
         [SerializeField] private BoxCollider2D _colliderWithoutDoors;
-        
+
         private bool _isBeingHeld;
         private Camera _camera;
         private Vector3 _mousePos;
         private Vector3 _startPos;
 
         public static event Action<Clip> OnMouseUpAction;
-        public static event Action OnStartMoving; 
-        public static event Action OnStopMoving; 
+        public static event Action OnStartMoving;
+        public static event Action OnStopMoving;
 
         public List<SpriteRenderer> LeftSprites => _leftSprites;
         public List<SpriteRenderer> RightSprites => _rightSprites;
@@ -48,7 +49,8 @@ namespace Level.Clips
             Default,
             Enter,
             Exit,
-            PlayerIn
+            PlayerIn,
+            MonsterIn
         }
 
         #region Properties
@@ -97,7 +99,7 @@ namespace Level.Clips
         private void Update()
         {
             if (_isCanDrag && _isBeingHeld && _clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit &&
-                _clipState != ClipStateEnum.PlayerIn && _isEditMode)
+                _clipState != ClipStateEnum.PlayerIn && _isEditMode && _clipState != ClipStateEnum.MonsterIn)
             {
                 _mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 transform.localPosition = new Vector3(_mousePos.x - _startPos.x, _mousePos.y - _startPos.y,
@@ -108,7 +110,8 @@ namespace Level.Clips
         private void OnMouseDown()
         {
             if (Input.GetMouseButtonDown(0) && _isCanDrag && _isEditMode && _clipState != ClipStateEnum.Enter
-                && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
+                && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn &&
+                _clipState != ClipStateEnum.MonsterIn)
             {
                 OnStartMoving?.Invoke();
                 _startPos = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
@@ -120,7 +123,8 @@ namespace Level.Clips
         private void OnMouseUp()
         {
             if (Input.GetMouseButtonUp(0) && _isCanDrag && _isEditMode && _clipState != ClipStateEnum.Enter
-                && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn)
+                && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn &&
+                _clipState != ClipStateEnum.MonsterIn)
             {
                 OnMouseUpAction?.Invoke(this);
                 OnStopMoving?.Invoke();
@@ -145,11 +149,11 @@ namespace Level.Clips
                     if (!_isBeingHeld) SetSortingLayer("Room");
                 });
         }
-        
+
         public void PlayerEnter()
         {
-            if (_clipState != ClipStateEnum.Enter
-                && _clipState != ClipStateEnum.Exit)
+            if (_clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit &&
+                _clipState != ClipStateEnum.MonsterIn)
             {
                 _clipState = ClipStateEnum.PlayerIn;
             }
@@ -157,8 +161,8 @@ namespace Level.Clips
 
         public void PlayerExit()
         {
-            if (_clipState != ClipStateEnum.Enter
-                && _clipState != ClipStateEnum.Exit)
+            if (_clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit &&
+                _clipState != ClipStateEnum.MonsterIn)
             {
                 _clipState = ClipStateEnum.Default;
             }
@@ -180,11 +184,16 @@ namespace Level.Clips
                     {
                         minion.ClipParent.SpriteRenderers.Remove(minion.SpriteRenderer);
                     }
-                    
+
                     minion.Parent.transform.SetParent(transform);
                     minion.ClipParent = this;
-                    
+
                     if (!_spriteRenderers.Contains(minion.SpriteRenderer)) _spriteRenderers.Add(minion.SpriteRenderer);
+                }
+
+                if (other.TryGetComponent(out Creature monster))
+                {
+                    _clipState = ClipStateEnum.MonsterIn;
                 }
             }
         }

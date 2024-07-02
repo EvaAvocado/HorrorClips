@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EnemySystem.CreatureSystem;
 using EnemySystem.Minion;
 using Level.Clips;
@@ -19,6 +20,7 @@ namespace Level
 
         private List<SpriteRenderer> _leftSprites;
         private List<SpriteRenderer> _rightSprites;
+        private List<Minion> _minionsOnClip = new List<Minion>();
         
         private const float TRANSPARENCY = 0.5f;
         private const int MAX_COLOR = 255;
@@ -31,8 +33,19 @@ namespace Level
             _rightSprites = _clip.RightSprites;
         }
 
+        private void OnEnable()
+        {
+            Minion.OnDieMinion += CheckDiedMinion;
+        }
+        
+        private void OnDisable()
+        {
+            Minion.OnDieMinion -= CheckDiedMinion;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
+            print(other.name + " ENTER");
             if (_creatureLayer.Contains(other.gameObject.layer)
                 && _leftSprites is not null && !_clip.IsEditMode)
             {
@@ -56,7 +69,9 @@ namespace Level
 
                 if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
+                    //print("Minion enter" + minion.name);
                     minion.Minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                    _minionsOnClip.Add(minion.Minion);
                 }
                 
                 if (other.TryGetComponent(out Creature monster))
@@ -76,7 +91,6 @@ namespace Level
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            
             if (_clipLayer.Contains(other.gameObject.layer))
             {
                 _leftSprites = other.GetComponent<Clip>().LeftSprites;
@@ -86,6 +100,7 @@ namespace Level
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            print(other.name + " EXIT");
             if (_creatureLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
             {
                 for (int i = 0; i < _leftSprites.Count; i++)
@@ -108,7 +123,9 @@ namespace Level
 
                 if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
+                    //print("Minion exit");
                     minion.Minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                    _minionsOnClip.Remove(minion.Minion);
                 }
 
                 if (other.TryGetComponent(out Creature monster))
@@ -123,6 +140,25 @@ namespace Level
             {
                 _leftSprites = null;
                 _collider.isTrigger = false;
+            }
+        }
+
+        private void CheckDiedMinion(Minion minion)
+        {
+            if (_minionsOnClip.Contains(minion))
+            {
+                for (int i = 0; i < _leftSprites.Count; i++)
+                {
+                    _leftSprites[i].color = ChangeColor(MAX_COLOR);
+                }
+                
+                for (int i = 0; i < _rightSprites.Count; i++)
+                {
+                    _rightSprites[i].color = ChangeColor(MAX_COLOR);
+                }
+                
+                OnNontransparent?.Invoke();
+                _minionsOnClip.Remove(minion);
             }
         }
 

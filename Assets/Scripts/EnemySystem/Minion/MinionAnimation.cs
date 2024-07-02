@@ -32,7 +32,7 @@ namespace EnemySystem.Minion
             _animator.SetBool(IsHunting, false);
         }
         
-        private void DieAnimation()
+        private void DieAnimation(Minion minion)
         {
             _collider.SetActive(false);
             _animator.SetTrigger(IsDie);

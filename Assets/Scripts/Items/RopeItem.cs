@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Utils;
 
 namespace Items
 {
@@ -9,9 +11,20 @@ namespace Items
         [SerializeField] private Sprite _endSprite;
         [SerializeField] private ItemEnum _type;
         [SerializeField] private bool _isLeftRope;
+        [SerializeField] private LayerMask _axe;
 
         private bool _use;
-        
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (_axe.Contains(other.gameObject.layer)
+                && other.TryGetComponent<Item>(out Item axe)
+                && axe.IsDropItem())
+            {
+                AlternativeUse();
+            }
+        }
+
         public bool IsDropItem()
         {
             throw new System.NotImplementedException();

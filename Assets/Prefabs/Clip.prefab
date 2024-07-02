@@ -148,6 +148,9 @@ MonoBehaviour:
   _endSprite: {fileID: 21300000, guid: f93859f55cb3f2346a80cc924d10bde4, type: 3}
   _type: 4
   _isLeftRope: 1
+  _axe:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &315034578157742894
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +716,9 @@ MonoBehaviour:
   _endSprite: {fileID: 21300000, guid: 5a9b7e45ddfdc5b4d873c37853d2ee82, type: 3}
   _type: 4
   _isLeftRope: 0
+  _axe:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2548115796692831868
 GameObject:
   m_ObjectHideFlags: 0

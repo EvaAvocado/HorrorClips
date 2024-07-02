@@ -173,8 +173,9 @@ namespace Level.Clips
         {
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
-                if (other.TryGetComponent(out Minion minion) && !_isEditMode)
+                if (other.TryGetComponent(out ClipZoneFinder clipZoneFinder) && !_isEditMode)
                 {
+                    var minion = clipZoneFinder.Minion;
                     if (minion.ClipParent != null)
                     {
                         minion.ClipParent.SpriteRenderers.Remove(minion.SpriteRenderer);

@@ -1,4 +1,5 @@
 ﻿using System;
+using Level;
 using UnityEngine;
 
 namespace Items
@@ -8,6 +9,7 @@ namespace Items
         [SerializeField] private RopeItem _ropeLeft;
         [SerializeField] private RopeItem _ropeRight;
         [SerializeField] private Animator _animator;
+        [SerializeField] private ChandelierAnimation _chandelier;
         
         private static readonly int Left = Animator.StringToHash("left");
         private static readonly int Right = Animator.StringToHash("right");
@@ -26,6 +28,7 @@ namespace Items
         {
             _ropeLeft.ChangeSprite();
             _animator.ResetTrigger(Left);
+            _chandelier.ChangeFallState();
         }
 
         private void EndRightAnim()

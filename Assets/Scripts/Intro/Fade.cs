@@ -11,12 +11,16 @@ namespace Intro
     {
         [SerializeField] private float _duration = 2;
         [SerializeField] private Image _image;
+        [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Color _color;
-        [FormerlySerializedAs("_actionAfterFade")] [SerializeField] private UnityEvent _actionAfterFadeIn;
+
+        [FormerlySerializedAs("_actionAfterFade")] [SerializeField]
+        private UnityEvent _actionAfterFadeIn;
+
         [SerializeField] private UnityEvent _actionAfterFadeOut;
         [SerializeField] private bool _playFadeInOnStart;
         [SerializeField] private bool _playFadeOutOnStart;
-    
+
         public float Duration
         {
             set => _duration = value;
@@ -37,12 +41,30 @@ namespace Intro
 
         public void FadeIn()
         {
-            _image.DOColor(new Color(_color.r, _color.g, _color.b, 1), _duration).SetEase(Ease.Linear).OnComplete(() => _actionAfterFadeIn?.Invoke());
+            if (_image != null)
+            {
+                _image.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _duration).SetEase(Ease.Linear)
+                    .OnComplete(() => _actionAfterFadeIn?.Invoke());
+            }
+            else
+            {
+                _sprite.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _duration).SetEase(Ease.Linear)
+                    .OnComplete(() => _actionAfterFadeIn?.Invoke());
+            }
         }
-        
+
         public void FadeOut()
         {
-            _image.DOColor(new Color(_color.r, _color.g, _color.b, 0), _duration).SetEase(Ease.Linear).OnComplete(() => _actionAfterFadeOut?.Invoke());
+            if (_image != null)
+            {
+                _image.DOColor(new Color(_color.r, _color.g, _color.b, 0), _duration).SetEase(Ease.Linear)
+                    .OnComplete(() => _actionAfterFadeOut?.Invoke());
+            }
+            else
+            {
+                _sprite.DOColor(new Color(_color.r, _color.g, _color.b, 0), _duration).SetEase(Ease.Linear)
+                    .OnComplete(() => _actionAfterFadeOut?.Invoke());
+            }
         }
     }
 }

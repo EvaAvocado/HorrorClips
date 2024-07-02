@@ -61,7 +61,6 @@ public class PressQ : MonoBehaviour
     
     private void SetNontransparent()
     {
-        print(_transparentObjectsCount);
         _transparentObjectsCount--;
         if (_transparentObjectsCount == 0 && !_isMenuOpen && !_isClipMoving)
         {

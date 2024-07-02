@@ -4,6 +4,7 @@ using Array2DEditor;
 using DG.Tweening;
 using EnemySystem.CreatureSystem;
 using EnemySystem.Minion;
+using Intro;
 using UnityEngine;
 using Utils;
 
@@ -23,6 +24,7 @@ namespace Level.Clips
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private bool _isEditMode;
         [SerializeField] private BoxCollider2D _colliderWithoutDoors;
+        [SerializeField] private Fade _clipChooseSprite;
 
         private bool _isBeingHeld;
         private Camera _camera;
@@ -107,7 +109,7 @@ namespace Level.Clips
             }
         }
 
-        private void OnMouseDown()
+        public void MouseDown()
         {
             if (Input.GetMouseButtonDown(0) && _isCanDrag && _isEditMode && _clipState != ClipStateEnum.Enter
                 && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn &&
@@ -120,7 +122,7 @@ namespace Level.Clips
             }
         }
 
-        private void OnMouseUp()
+        public void MouseUp()
         {
             if (Input.GetMouseButtonUp(0) && _isCanDrag && _isEditMode && _clipState != ClipStateEnum.Enter
                 && _clipState != ClipStateEnum.Exit && _clipState != ClipStateEnum.PlayerIn &&
@@ -171,6 +173,16 @@ namespace Level.Clips
         private void ChangeEditMode(bool status)
         {
             _isEditMode = status;
+            if (_isEditMode && (_clipState == ClipStateEnum.Enter || _clipState == ClipStateEnum.Exit ||
+                                _clipState == ClipStateEnum.MonsterIn || _clipState == ClipStateEnum.PlayerIn))
+            {
+                _clipChooseSprite.FadeIn();
+            }
+            else if (!_isEditMode && (_clipState == ClipStateEnum.Enter || _clipState == ClipStateEnum.Exit ||
+                                    _clipState == ClipStateEnum.MonsterIn || _clipState == ClipStateEnum.PlayerIn))
+            {
+                _clipChooseSprite.FadeOut();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)

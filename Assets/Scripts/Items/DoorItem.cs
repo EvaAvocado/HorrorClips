@@ -14,6 +14,7 @@ namespace Items
         private int _checkAnim;
 
         public static event Action OnDestroyDoor; 
+        public event Action OnTouchDoor;
         
         public bool IsDropItem()
         {
@@ -29,6 +30,11 @@ namespace Items
 
         public void AlternativeUse(IItem item = null)
         {
+            if (_strokeCounter < 1)
+            {
+                OnTouchDoor?.Invoke();
+            }
+            
             if (_strokeCounter < _sprites.Count)
             {
                 _sprite.sprite = _sprites[_strokeCounter++];

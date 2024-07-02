@@ -108,7 +108,6 @@ namespace PlayerSystem
                 if (_interaction.HaveAxeInHand
                     && _isTriggerForItem)
                 {
-                    Debug.Log("Ret");
                     OnSwing?.Invoke();
                     return;
                 }

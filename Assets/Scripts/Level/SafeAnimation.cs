@@ -6,6 +6,7 @@ namespace Level
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private GameObject _hole;
+        [SerializeField] private GameObject _background;
         [SerializeField] private Collider2D _collider2D;
         
         private static readonly int Fall = Animator.StringToHash("fall");
@@ -14,6 +15,11 @@ namespace Level
         private void HoleDisable()
         {
             _hole.SetActive(false);
+        }
+
+        private void BackgroundOn()
+        {
+            _background.SetActive(true);
         }
 
         public void ChangeFallState()

@@ -67,7 +67,7 @@ namespace Level
                 OnTransparent?.Invoke();
             }
             
-            if (_clipLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
+            if (_clipLayer.Contains(other.gameObject.layer))
             {
                 _leftSprites = other.GetComponent<Clip>().LeftSprites;
                 _collider.isTrigger = true;
@@ -109,7 +109,7 @@ namespace Level
                 OnNontransparent?.Invoke();
             }
             
-            if (_clipLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
+            if (_clipLayer.Contains(other.gameObject.layer))
             {
                 _leftSprites = null;
                 _collider.isTrigger = false;

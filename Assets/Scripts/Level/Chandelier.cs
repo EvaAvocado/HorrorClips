@@ -14,9 +14,9 @@ namespace Level
         {
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
-                if (other.TryGetComponent(out Minion minion))
+                if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
-                    minion.Die();
+                    minion.Minion.Die();
                 }
             }
         }
@@ -25,9 +25,9 @@ namespace Level
         {
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
-                if (other.TryGetComponent(out Minion minion))
+                if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
-                    minion.Die();
+                    minion.Minion.Die();
                 }
             }
         }

@@ -54,9 +54,9 @@ namespace Level
                     }
                 }
 
-                if (other.TryGetComponent(out Minion minion))
+                if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
-                    minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                    minion.Minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
                 }
                 
                 if (other.TryGetComponent(out Creature monster))
@@ -96,9 +96,9 @@ namespace Level
                     }
                 }
 
-                if (other.TryGetComponent(out Minion minion))
+                if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
-                    minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                    minion.Minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
                 }
 
                 if (other.TryGetComponent(out Creature monster))

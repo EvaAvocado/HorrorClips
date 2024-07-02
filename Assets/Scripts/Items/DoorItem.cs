@@ -9,9 +9,15 @@ namespace Items
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private List<Sprite> _sprites;
         [SerializeField] private ItemEnum _type;
+        [SerializeField] private Animator _animator; 
 
         private int _strokeCounter;
         private int _checkAnim;
+
+        public SpriteRenderer Sprite
+        {
+            get => _sprite;
+        }
 
         public static event Action OnDestroyDoor; 
         public event Action OnTouchDoor;
@@ -41,14 +47,20 @@ namespace Items
             }
             else
             {
-                gameObject.SetActive(false);
-                
                 if (item is not null)
                 {
                     item.GetTransform().parent = null;
+                    
+                    _animator.gameObject.SetActive(true);
+                    _animator.Play("explosion");
                     OnDestroyDoor?.Invoke();
                 }
             }
+        }
+
+        public void Destroy()
+        {
+            gameObject.SetActive(false);
         }
 
         public void Flip(float di)

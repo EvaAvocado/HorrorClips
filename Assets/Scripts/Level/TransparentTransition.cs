@@ -109,7 +109,7 @@ namespace Level
         {
             if (_creatureLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
             {
-                    for (int i = 0; i < _leftSprites.Count; i++)
+                for (int i = 0; i < _leftSprites.Count; i++)
                 {
                     _leftSprites[i].color = ChangeColor(MAX_COLOR);
                 }

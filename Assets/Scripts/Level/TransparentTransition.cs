@@ -73,7 +73,17 @@ namespace Level
                 _collider.isTrigger = true;
             }
         }
-        
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            
+            if (_clipLayer.Contains(other.gameObject.layer))
+            {
+                _leftSprites = other.GetComponent<Clip>().LeftSprites;
+                _collider.isTrigger = true;
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             if (_creatureLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)

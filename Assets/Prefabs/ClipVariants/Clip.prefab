@@ -1631,6 +1631,9 @@ MonoBehaviour:
   _wallLayer:
     serializedVersion: 2
     m_Bits: 0
+  _clipLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _sprites: []
 --- !u!61 &3822362366357761107
 BoxCollider2D:
@@ -3338,7 +3341,7 @@ MonoBehaviour:
   _collider: {fileID: 140686105079787}
   _creatureLayer:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 328
   _clipLayer:
     serializedVersion: 2
     m_Bits: 128

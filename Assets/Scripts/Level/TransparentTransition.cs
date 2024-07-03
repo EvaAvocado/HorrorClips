@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using EnemySystem.CreatureSystem;
 using EnemySystem.Minion;
+using Items;
+using Items.Strategy;
 using Level.Clips;
 using PlayerSystem;
 using UnityEngine;
@@ -95,6 +97,15 @@ namespace Level
                     }
                 }
 
+                if (other.TryGetComponent(out Item axe))
+                {
+                    if (!_transparentCreatures.Contains(axe))
+                    {
+                        _transparentCreatures.Add(axe);
+                        axe.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                    }
+                }
+
                 if (_countOfCreatures != _transparentCreatures.Count)
                 {
                     OnTransparent?.Invoke();
@@ -159,6 +170,15 @@ namespace Level
                     {
                         _transparentCreatures.Remove(monster);
                         monster.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                    }
+                }
+                
+                if (other.TryGetComponent(out Item axe))
+                {
+                    if (_transparentCreatures.Contains(axe))
+                    {
+                        _transparentCreatures.Remove(axe);
+                        axe.SpriteRenderer.color = ChangeColor(MAX_COLOR);
                     }
                 }
 

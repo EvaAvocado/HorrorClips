@@ -8,7 +8,7 @@ using Utils;
 
 namespace Items
 {
-    public class Item : MonoBehaviour, IItem
+    public class Item : MonoBehaviour, IItem, ITransparent
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Animator _animator;
@@ -29,6 +29,8 @@ namespace Items
         public static event Action OnAxeSpinRight;
         
         private bool _isDropItem;
+
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
         public bool IsDropItem() => _isDropItem;
 

@@ -1636,6 +1636,10 @@ PrefabInstance:
       propertyPath: _isCanOpen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1703633008881119343, guid: 24d3434155972b64e9dbb924618ae546, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 804691404730715177}
     - target: {fileID: 4633169805678209321, guid: 24d3434155972b64e9dbb924618ae546, type: 3}
       propertyPath: m_Pivot.x
       value: 0

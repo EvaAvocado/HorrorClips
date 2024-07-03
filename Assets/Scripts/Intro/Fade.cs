@@ -66,5 +66,18 @@ namespace Intro
                     .OnComplete(() => _actionAfterFadeOut?.Invoke());
             }
         }
+
+        public void FadeWithColor(Color newColor)
+        {
+            
+            if (_image != null)
+            {
+                _image.DOColor(newColor, _duration).SetEase(Ease.Linear);
+            }
+            else
+            {
+                _sprite.DOColor(newColor, _duration).SetEase(Ease.Linear);
+            }
+        }
     }
 }

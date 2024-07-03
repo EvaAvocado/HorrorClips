@@ -80,5 +80,10 @@ namespace Items
             _sprite.sprite = _endSprite;
             gameObject.SetActive(true);
         }
+
+        public void PlayNewAnimation(string animName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

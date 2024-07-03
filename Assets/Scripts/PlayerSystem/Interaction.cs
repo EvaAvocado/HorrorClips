@@ -9,6 +9,7 @@ namespace PlayerSystem
     {
         private readonly ChangeStrategy _changeStrategy;
         private readonly Transform _hand;
+        private readonly Player _player;
         private readonly float _needTimeForThrowAxe;
         
         private IStrategy _strategy;
@@ -17,10 +18,11 @@ namespace PlayerSystem
         private bool _isAxeInHand;
         private bool _isHaveFlashlight;
 
-        public Interaction(ChangeStrategy changeStrategy, Transform hand)
+        public Interaction(ChangeStrategy changeStrategy, Transform hand, Player player)
         {
             _changeStrategy = changeStrategy;
             _hand = hand;
+            _player = player;
         }
         
         public bool HaveFlashlight => _isHaveFlashlight;
@@ -53,24 +55,24 @@ namespace PlayerSystem
                 {
                     _itemInHand = _item;
                     _isAxeInHand = true;
-                    _strategy?.Use(_hand, _item);
+                    _strategy?.Use(_hand, _item, _player);
                     return false;
                 }
                 
                 if (_item.GetItemEnum() == ItemEnum.FLASHLIGHT)
                 {
                     _isHaveFlashlight = true;
-                    _strategy?.Use(_hand, _item);
+                    _strategy?.Use(_hand, _item, _player);
                     return false;
                 }
 
                 if (_item.GetItemEnum() == ItemEnum.DOOR)
                 {
-                    _strategy?.Use(_hand, _item);
+                    _strategy?.Use(_hand, _item, _player);
                     return true;
                 }
                 
-                _strategy?.Use(_hand, _item);
+                _strategy?.Use(_hand, _item, _player);
                 return false;
             }
             

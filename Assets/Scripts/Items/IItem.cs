@@ -12,5 +12,6 @@ namespace Items
         void Drop();
         bool CheckUse(bool haveAxe);
         void ChangeSprite();
+        void PlayNewAnimation(string animName);
     }
 }

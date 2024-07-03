@@ -25,6 +25,7 @@ namespace PlayerSystem
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private CapsuleCollider2D _playerCollider;
         [SerializeField] private GameObject _hint;
+        [SerializeField] private FlashlightOnPlayer _flashlight;
         [SerializeField] private bool _isCantStop;
         
         private Movement _movement;
@@ -55,7 +56,7 @@ namespace PlayerSystem
         private void Awake()
         {
             _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
-            _interaction = new Interaction(new ChangeStrategy(_animators), _hand);
+            _interaction = new Interaction(new ChangeStrategy(_animators), _hand, this);
         }
         
         private void OnEnable()
@@ -216,6 +217,11 @@ namespace PlayerSystem
         public void InvokeOnMove(float direction)
         {
             OnMove?.Invoke(direction);
+        }
+
+        public void OnFlashlight()
+        {
+            _flashlight.OnFlashlight();
         }
         
         public void HoldAxe() => _isHoldAxe = true;

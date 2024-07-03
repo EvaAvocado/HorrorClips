@@ -82,5 +82,10 @@ namespace Items
         {
             
         }
+
+        public void PlayNewAnimation(string animName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

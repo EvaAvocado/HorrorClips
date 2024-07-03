@@ -8,6 +8,7 @@ namespace Items
     public class Item : MonoBehaviour, IItem
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Animator _animator;
         [SerializeField] private Collider2D _leftCollider;
         [SerializeField] private Collider2D _rightCollider;
         [SerializeField] private float _speedDrop;
@@ -69,6 +70,11 @@ namespace Items
             }
         }
 
+        public void PlayNewAnimation(string animName)
+        {
+            _animator.Play(animName);
+        }
+
         public Transform GetTransform() => transform;
 
         public void AlternativeUse(IItem item = null) 
@@ -107,7 +113,7 @@ namespace Items
                 _spriteRenderer.sprite = _sprites[_currentSprite];
             }
         }
-        
+
         public void Drop() => _isDropItem = true;
         public bool CheckUse(bool haveAxe)
         {

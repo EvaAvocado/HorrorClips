@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PlayerSystem;
 using UnityEngine;
 
 namespace Items.Strategy
@@ -17,7 +18,7 @@ namespace Items.Strategy
             _animators = animators;
         }
         
-        public void Use(Transform pos, IItem item)
+        public void Use(Transform pos, IItem item, Player player)
         {
             if (!item.IsDropItem()
                 && pos.childCount == 0)

@@ -153,6 +153,7 @@ namespace PlayerSystem
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode
                 && other.TryGetComponent<IItem>(out IItem iitem)
                 && iitem.CheckUse(_interaction.HaveAxeInHand)
+                && CheckItem(iitem)
                 && (_isTriggerForItem == false
                 || iitem.GetItemEnum() == ItemEnum.AXE))
             {
@@ -178,6 +179,7 @@ namespace PlayerSystem
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode
                 && other.TryGetComponent<IItem>(out IItem iitem)
                 && iitem.CheckUse(_interaction.HaveAxeInHand)
+                && CheckItem(iitem)
                 && (_isTriggerForItem == false 
                 || iitem.GetItemEnum() == ItemEnum.AXE))
             {
@@ -200,6 +202,17 @@ namespace PlayerSystem
             {
                 other.GetComponent<Clip>().PlayerExit();
             }
+        }
+
+        private bool CheckItem(IItem item)
+        {
+            if (item.GetItemEnum() == ItemEnum.AXE
+                && _interaction.HaveAxeInHand)
+            {
+                return false;
+            }
+            
+            return true;
         }
 
         public void UseAxe()

@@ -15,7 +15,10 @@ namespace Level
     {
         [SerializeField] private Clip _clip;
         [SerializeField] private Collider2D _collider;
-        [FormerlySerializedAs("_playerLayer")] [SerializeField] private LayerMask _creatureLayer;
+
+        [FormerlySerializedAs("_playerLayer")] [SerializeField]
+        private LayerMask _creatureLayer;
+
         [SerializeField] private LayerMask _clipLayer;
 
         private List<SpriteRenderer> _leftSprites;
@@ -23,10 +26,10 @@ namespace Level
         private List<ITransparent> _transparentCreatures = new List<ITransparent>();
 
         private int _countOfCreatures;
-        
+
         private const float TRANSPARENCY = 0.5f;
         private const int MAX_COLOR = 255;
-        
+
         public static event Action OnTransparent;
         public static event Action OnNontransparent;
 
@@ -40,7 +43,7 @@ namespace Level
         {
             Minion.OnDieMinion += CheckDiedMinion;
         }
-        
+
         private void OnDisable()
         {
             Minion.OnDieMinion -= CheckDiedMinion;
@@ -55,7 +58,7 @@ namespace Level
                 {
                     _leftSprites[i].color = ChangeColor(TRANSPARENCY);
                 }
-                
+
                 for (int i = 0; i < _rightSprites.Count; i++)
                 {
                     _rightSprites[i].color = ChangeColor(TRANSPARENCY);
@@ -63,23 +66,33 @@ namespace Level
 
                 if (other.TryGetComponent(out Player player))
                 {
-                    if (!_transparentCreatures.Contains(player)) _transparentCreatures.Add(player);
-                    foreach (var sprite in player.SpriteRenderers)
+                    if (!_transparentCreatures.Contains(player))
                     {
-                        sprite.color = ChangeColor(TRANSPARENCY);
+                        _transparentCreatures.Add(player);
+
+                        foreach (var sprite in player.SpriteRenderers)
+                        {
+                            sprite.color = ChangeColor(TRANSPARENCY);
+                        }
                     }
                 }
 
                 if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
-                    if (!_transparentCreatures.Contains(minion.Minion)) _transparentCreatures.Add(minion.Minion);
-                    minion.Minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                    if (!_transparentCreatures.Contains(minion.Minion))
+                    {
+                        _transparentCreatures.Add(minion.Minion);
+                        minion.Minion.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                    }
                 }
-                
+
                 if (other.TryGetComponent(out Creature monster))
                 {
-                    if (!_transparentCreatures.Contains(monster)) _transparentCreatures.Add(monster);
-                    monster.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                    if (!_transparentCreatures.Contains(monster))
+                    {
+                        _transparentCreatures.Add(monster);
+                        monster.SpriteRenderer.color = ChangeColor(TRANSPARENCY);
+                    }
                 }
 
                 if (_countOfCreatures != _transparentCreatures.Count)
@@ -88,7 +101,7 @@ namespace Level
                     _countOfCreatures = _transparentCreatures.Count;
                 }
             }
-            
+
             if (_clipLayer.Contains(other.gameObject.layer))
             {
                 _leftSprites = other.GetComponent<Clip>().LeftSprites;
@@ -113,40 +126,49 @@ namespace Level
                 {
                     _leftSprites[i].color = ChangeColor(MAX_COLOR);
                 }
-                
+
                 for (int i = 0; i < _rightSprites.Count; i++)
                 {
                     _rightSprites[i].color = ChangeColor(MAX_COLOR);
                 }
-                
+
                 if (other.TryGetComponent(out Player player))
                 {
-                    if (_transparentCreatures.Contains(player)) _transparentCreatures.Remove(player);
-                    foreach (var sprite in player.SpriteRenderers)
+                    if (_transparentCreatures.Contains(player))
                     {
-                        sprite.color = ChangeColor(MAX_COLOR);
+                        _transparentCreatures.Remove(player);
+                        foreach (var sprite in player.SpriteRenderers)
+                        {
+                            sprite.color = ChangeColor(MAX_COLOR);
+                        }
                     }
                 }
 
                 if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
-                    if (_transparentCreatures.Contains(minion.Minion)) _transparentCreatures.Remove(minion.Minion);
-                    minion.Minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                    if (_transparentCreatures.Contains(minion.Minion))
+                    {
+                        _transparentCreatures.Remove(minion.Minion);
+                        minion.Minion.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                    }
                 }
 
                 if (other.TryGetComponent(out Creature monster))
                 {
-                    if (_transparentCreatures.Contains(monster)) _transparentCreatures.Remove(monster);
-                    monster.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                    if (_transparentCreatures.Contains(monster))
+                    {
+                        _transparentCreatures.Remove(monster);
+                        monster.SpriteRenderer.color = ChangeColor(MAX_COLOR);
+                    }
                 }
-                
+
                 if (_countOfCreatures != _transparentCreatures.Count)
                 {
                     OnNontransparent?.Invoke();
                     _countOfCreatures = _transparentCreatures.Count;
                 }
             }
-            
+
             if (_clipLayer.Contains(other.gameObject.layer))
             {
                 _leftSprites = null;
@@ -162,12 +184,12 @@ namespace Level
                 {
                     _leftSprites[i].color = ChangeColor(MAX_COLOR);
                 }
-                
+
                 for (int i = 0; i < _rightSprites.Count; i++)
                 {
                     _rightSprites[i].color = ChangeColor(MAX_COLOR);
                 }
-                
+
                 OnNontransparent?.Invoke();
                 _transparentCreatures.Remove(minion);
             }

@@ -331,6 +331,9 @@ MonoBehaviour:
   _wallLayer:
     serializedVersion: 2
     m_Bits: 512
+  _clipLayer:
+    serializedVersion: 2
+    m_Bits: 128
   _sprites: []
 --- !u!1 &4249196177513025721
 GameObject:

@@ -1,5 +1,8 @@
 ﻿using System;
 using EnemySystem.Minion;
+using Level;
+using Level.Clips;
+using UnityEditorInternal;
 using UnityEngine;
 using Utils;
 
@@ -15,9 +18,11 @@ namespace Items
         [SerializeField] private ItemEnum _type;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private LayerMask _wallLayer;
+        [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private Sprite[] _sprites;
 
         private int _currentSprite;
+        private EditManager _editManager;
 
         public static event Action OnAxeIdle;
         public static event Action OnAxeSpinLeft;
@@ -28,6 +33,11 @@ namespace Items
         public bool IsDropItem() => _isDropItem;
 
         public ItemEnum GetItemEnum() => _type;
+
+        private void OnEnable()
+        {
+            _editManager = FindObjectOfType<EditManager>();
+        }
 
         private void Update()
         {
@@ -59,6 +69,22 @@ namespace Items
                 // Realisation of the rebound
                 Debug.Log("rebound");
                 OnAxeIdle?.Invoke();
+            }
+
+            if (_clipLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
+            {
+                var clip = other.GetComponent<Clip>();
+                transform.SetParent(clip.transform);
+                clip.SpriteRenderers.Add(_spriteRenderer);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (_clipLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
+            {
+                var clip = other.GetComponent<Clip>();
+                clip.SpriteRenderers.Remove(_spriteRenderer);
             }
         }
 

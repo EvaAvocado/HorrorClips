@@ -166,6 +166,14 @@ namespace PlayerSystem
             }
         }
 
+        private void ChangeStateForAxe()
+        {
+            if (_isCanDrop)
+            {
+                _player.DropAxe();
+            }
+        }
+
         private void ChangeSwingState()
         {
             _isMoving = false;

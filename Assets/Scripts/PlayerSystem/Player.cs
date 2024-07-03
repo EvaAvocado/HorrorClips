@@ -113,7 +113,7 @@ namespace PlayerSystem
                     return;
                 }
                 
-                if (!_interaction.Action(_pressingTime, _isHoldAxe))
+                if (!_interaction.Action(_isHoldAxe))
                 {
                     _interaction.SetItem(null);
                 }
@@ -153,6 +153,7 @@ namespace PlayerSystem
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode
                 && other.TryGetComponent<IItem>(out IItem iitem)
                 && iitem.CheckUse(_interaction.HaveAxeInHand)
+                && CheckItem(iitem)
                 && (_isTriggerForItem == false
                 || iitem.GetItemEnum() == ItemEnum.AXE))
             {
@@ -178,6 +179,7 @@ namespace PlayerSystem
             if (_itemLayer.Contains(other.gameObject.layer) && !_isEditMode
                 && other.TryGetComponent<IItem>(out IItem iitem)
                 && iitem.CheckUse(_interaction.HaveAxeInHand)
+                && CheckItem(iitem)
                 && (_isTriggerForItem == false 
                 || iitem.GetItemEnum() == ItemEnum.AXE))
             {
@@ -202,9 +204,20 @@ namespace PlayerSystem
             }
         }
 
+        private bool CheckItem(IItem item)
+        {
+            if (item.GetItemEnum() == ItemEnum.AXE
+                && _interaction.HaveAxeInHand)
+            {
+                return false;
+            }
+            
+            return true;
+        }
+
         public void UseAxe()
         {
-            if (!_interaction.Action(_pressingTime, _isHoldAxe))
+            if (!_interaction.Action(_isHoldAxe))
             {
                 _interaction.SetItem(null);
                 _isTriggerForItem = false;

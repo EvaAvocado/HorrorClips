@@ -66,8 +66,6 @@ namespace Items
                 _isDropItem = false;
                 _leftCollider.enabled = false;
                 _rightCollider.enabled = false;
-                // Realisation of the rebound
-                Debug.Log("rebound");
                 OnAxeIdle?.Invoke();
             }
 

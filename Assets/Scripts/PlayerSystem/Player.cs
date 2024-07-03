@@ -113,7 +113,7 @@ namespace PlayerSystem
                     return;
                 }
                 
-                if (!_interaction.Action(_pressingTime, _isHoldAxe))
+                if (!_interaction.Action(_isHoldAxe))
                 {
                     _interaction.SetItem(null);
                 }
@@ -204,7 +204,7 @@ namespace PlayerSystem
 
         public void UseAxe()
         {
-            if (!_interaction.Action(_pressingTime, _isHoldAxe))
+            if (!_interaction.Action(_isHoldAxe))
             {
                 _interaction.SetItem(null);
                 _isTriggerForItem = false;

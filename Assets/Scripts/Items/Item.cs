@@ -35,10 +35,10 @@ namespace Items
             {
                 transform.position += transform.right * (_speedDrop * Time.deltaTime);
             }
-            else if (transform.parent is not null)
+            /*else if (transform.parent is not null)
             {
                 transform.localPosition = Vector3.zero;
-            }
+            }*/
         }
 
         private void OnTriggerEnter2D(Collider2D other)

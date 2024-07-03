@@ -488,6 +488,6 @@ MonoBehaviour:
     m_Bits: 8
   _clipLayer:
     serializedVersion: 2
-    m_Bits: 128
-  _collider2D: {fileID: 5762814206878222328}
+    m_Bits: 0
+  _collider2D: {fileID: 3311893896082283126}
   _currentClip: {fileID: 0}

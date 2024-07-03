@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66f333482b917e6459bbc91300b4e4ea, type: 3}
-  m_Name: 1
+  m_Name: 3
   m_EditorClassIdentifier: 
   clips:
     gridSize: {x: 6, y: 2}
@@ -19,14 +19,14 @@ MonoBehaviour:
     - row:
       - {fileID: 0}
       - {fileID: 0}
-      - {fileID: 3835325023179717618, guid: aea2ade8c68cfd4428af468df626d6f1, type: 3}
+      - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
     - row:
       - {fileID: 3517618704492747488, guid: 5164a9d8bf5518d4b885d796c218273d, type: 3}
       - {fileID: 0}
-      - {fileID: 6845257911951924489, guid: 8a41f6207b845fa4f9b5165bda4f3f94, type: 3}
+      - {fileID: 6845257911951924489, guid: 3b3637622fa14b249a123adb1bdc6aee, type: 3}
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 3517618704492747488, guid: 5164a9d8bf5518d4b885d796c218273d, type: 3}

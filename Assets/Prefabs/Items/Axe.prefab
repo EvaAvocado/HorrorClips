@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 2116642821888124649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.05, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3647695402721494493}
+  _animator: {fileID: 0}
   _leftCollider: {fileID: 2300951032841559257}
   _rightCollider: {fileID: 4344173588184764888}
   _speedDrop: 10
@@ -330,6 +331,7 @@ MonoBehaviour:
   _wallLayer:
     serializedVersion: 2
     m_Bits: 512
+  _sprites: []
 --- !u!1 &4249196177513025721
 GameObject:
   m_ObjectHideFlags: 0

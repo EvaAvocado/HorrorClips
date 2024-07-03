@@ -19,6 +19,8 @@ namespace EnemySystem.Minion
 
         public LayerMask ClipLayer => _clipLayer;
 
+        public Clip CurrentClip => _currentClip;
+
         private void OnEnable()
         {
             if (_currentClip != null)
@@ -56,7 +58,7 @@ namespace EnemySystem.Minion
             }
         }
 
-        private void SetNewCollider(Vector2 newPosition, Vector2 newSize)
+        public void SetNewCollider(Vector2 newPosition, Vector2 newSize)
         {
             transform.position = newPosition;
             _collider2D.size = newSize;

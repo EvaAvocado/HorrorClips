@@ -3013,7 +3013,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4002717331419670389}
         m_TargetAssemblyTypeName: Core.SceneLoader, Assembly-CSharp
-        m_MethodName: ReloadSceneAfterTime
+        m_MethodName: LoadSceneAfterTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3167,7 +3167,7 @@ MonoBehaviour:
     m_Bits: 8
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   _isEditMode: 0
   _colliderWithoutDoors: {fileID: 1874858827360691307}
   _clipChooseSprite: {fileID: 7041764362162934442}

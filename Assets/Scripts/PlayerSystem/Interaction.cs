@@ -28,7 +28,7 @@ namespace PlayerSystem
         public bool HaveFlashlight => _isHaveFlashlight;
         public bool HaveAxeInHand => _isAxeInHand;
         
-        public bool Action(float pressingTime, bool isHoldAxe)
+        public bool Action(bool isHoldAxe)
         {
             if (_item is not null)
             {
@@ -38,10 +38,8 @@ namespace PlayerSystem
                     || _item.GetItemEnum() == ItemEnum.ROPE)
                     && _isAxeInHand)
                 {
-                    // _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
-                    
                     _strategy?.AlternativeUse(_item, _itemInHand);
-                    // _strategy?.AlternativeUse(_itemInHand, _item);
+                    
                     CheckAxe();
                     return true;
                 }
@@ -76,18 +74,18 @@ namespace PlayerSystem
                 return false;
             }
             
-            if (_itemInHand is not null 
-                && _isAxeInHand)
-            {
-                _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
-
-                if (isHoldAxe)
-                {
-                    _strategy?.AlternativeUse(_itemInHand);
-                }
-                
-                return false;
-            }
+            // if (_itemInHand is not null 
+            //     && _isAxeInHand)
+            // {
+            //     _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
+            //
+            //     if (isHoldAxe)
+            //     {
+            //         _strategy?.AlternativeUse(_itemInHand);
+            //     }
+            //     
+            //     return false;
+            // }
 
             return false;
         }
@@ -111,6 +109,8 @@ namespace PlayerSystem
             if (_itemInHand is not null)
             {
                 _itemInHand.Drop();
+                _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
+                _strategy?.AlternativeUse(_itemInHand);
                 CheckAxe();
             }
         }

@@ -862,7 +862,7 @@ Transform:
   m_GameObject: {fileID: 6528870625878587172}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.75951, y: -4.9318066, z: -19.754316}
+  m_LocalPosition: {x: 0.2404893, y: -1.9318063, z: -19.754316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1102,8 +1102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clipPlacePrefab: {fileID: 3252457836660974670, guid: b8f60cd12c370e147ac08ab8a91f32c2, type: 3}
-  _levelData: {fileID: 11400000, guid: e10b496373c40894491606a1e0c1e6c2, type: 2}
+  _levelData: {fileID: 11400000, guid: a3984d5156f93e24cb63ea3be04b76e6, type: 2}
   _fade: {fileID: 1147791151493270843}
+  _player: {fileID: 8736690917170078579}
   _countOfClipsBottom: 3
   _spawnPointY: 0
   _countOfClipsTop: 6
@@ -1261,7 +1262,7 @@ Transform:
   m_GameObject: {fileID: 8261028720885468683}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22, y: 0.89999986, z: -10}
+  m_LocalPosition: {x: 0, y: 3.8999999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1794,7 +1795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3315529917545158442, guid: d3f48cae9a36fd448b70cf78ee810c1a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1824,11 +1825,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8263946929373651693, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8263946929373651693, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8263946929373651693, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
       propertyPath: m_LocalPosition.z

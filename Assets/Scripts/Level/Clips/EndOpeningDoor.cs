@@ -22,7 +22,7 @@ namespace Level.Clips
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_playerLayer.Contains(other.gameObject.layer))
+            if (_playerLayer.Contains(other.gameObject.layer) && _isEndDoor)
             {
                 _fade.FadeIn();
             }

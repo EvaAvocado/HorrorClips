@@ -174,9 +174,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: LEVEL
       objectReference: {fileID: 0}
+    - target: {fileID: 1888882132976877740, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888882132976877740, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991256900537320709, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: _levelNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000726726857764380, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2404893
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000726726857764380, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9318063
+      objectReference: {fileID: 0}
     - target: {fileID: 6222664996868998095, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641168108932134693, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: _levelData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b588fde601f0b648b5117abf651dc08, type: 2}
+    - target: {fileID: 7649903220925081249, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649903220925081249, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.8999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

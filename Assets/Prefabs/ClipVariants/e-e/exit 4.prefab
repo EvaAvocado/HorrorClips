@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4002717331419670389, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: _sceneName
+      value: Level_5
+      objectReference: {fileID: 0}
     - target: {fileID: 4725816749268805833, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _isDeadEnd
       value: 0
@@ -52,13 +56,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6047987221714705459, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: _isEndDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6879847922711558204, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _isDeadEnd
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130817869045225804, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7607441105184073044, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_IsActive
@@ -66,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7888838607348643044, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_Name
-      value: 7-3
+      value: exit 4
       objectReference: {fileID: 0}
     - target: {fileID: 8887074774280248579, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_IsActive

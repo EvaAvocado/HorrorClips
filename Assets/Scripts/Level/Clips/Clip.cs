@@ -203,7 +203,7 @@ namespace Level.Clips
                     if (!_spriteRenderers.Contains(minion.SpriteRenderer)) _spriteRenderers.Add(minion.SpriteRenderer);
                 }
 
-                if (other.TryGetComponent(out Creature monster))
+                if (other.TryGetComponent(out Creature monster) && !_isEditMode)
                 {
                     _clipState = ClipStateEnum.MonsterIn;
                 }

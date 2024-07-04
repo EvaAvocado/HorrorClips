@@ -25,6 +25,8 @@ namespace Level.Clips
         [SerializeField] private bool _isEditMode;
         [SerializeField] private BoxCollider2D _colliderWithoutDoors;
         [SerializeField] private Fade _clipChooseSprite;
+        [SerializeField] private GameObject _leftWall;
+        [SerializeField] private GameObject _rightWall;
 
         private bool _isBeingHeld;
         private Camera _camera;
@@ -77,14 +79,14 @@ namespace Level.Clips
 
         private void Start()
         {
-            // if (_clipState == ClipStateEnum.Enter)
-            // {
-            //     _leftCollider.isTrigger = false;
-            // }
-            // else if (_clipState == ClipStateEnum.Exit)
-            // {
-            //     _rightCollider.isTrigger = false;
-            // }
+            if (_clipState == ClipStateEnum.Enter)
+            {
+                _leftWall.layer = 9;
+            }
+            else if (_clipState == ClipStateEnum.Exit)
+            {
+                _rightWall.layer = 9;
+            }
         }
 
         private void OnEnable()

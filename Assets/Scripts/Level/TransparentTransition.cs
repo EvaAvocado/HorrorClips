@@ -110,7 +110,6 @@ namespace Level
 
                 if (_countOfCreatures != _transparentCreatures.Count)
                 {
-                    Debug.Log("test");
                     OnTransparent?.Invoke();
                     _countOfCreatures = _transparentCreatures.Count;
                 }

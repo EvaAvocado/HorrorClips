@@ -13,7 +13,6 @@ namespace Items.Strategy
 
         public void AlternativeUse(IItem item, IItem itemTwo = null, bool isSwing = false)
         {
-            Debug.Log("Try open");
             item.AlternativeUse(itemTwo);
         }
     }

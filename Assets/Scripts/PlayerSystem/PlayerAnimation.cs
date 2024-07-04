@@ -33,7 +33,7 @@ namespace PlayerSystem
             Player.OnRelease += ChangeReleaseState;
             Player.OnSwing += ChangeSwingState;
             Axe.OnSwing += ChangeSwingState;
-            DoorItem.OnDestroyDoor += ChangeDropAxeState;
+            // DoorItem.OnDestroyDoor += ChangeDropAxeState;
             DoorItem.OnDestroyDoor += DropAxe;
         }
 
@@ -47,7 +47,7 @@ namespace PlayerSystem
             Player.OnRelease -= ChangeReleaseState;
             Player.OnSwing -= ChangeSwingState;
             Axe.OnSwing -= ChangeSwingState;
-            DoorItem.OnDestroyDoor -= ChangeDropAxeState;
+            // DoorItem.OnDestroyDoor -= ChangeDropAxeState;
             DoorItem.OnDestroyDoor -= DropAxe;
         }
 
@@ -190,7 +190,7 @@ namespace PlayerSystem
         private void DropAxe()
         {
             _animator.SetLayerWeight(1, 0f);
-            _player.DropAxe();
+            _player.CheckAxe();
         }
 
         private void UseAxe()

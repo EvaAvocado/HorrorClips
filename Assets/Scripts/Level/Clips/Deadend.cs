@@ -13,6 +13,7 @@ namespace Level.Clips
          {
              if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
              {
+                 gameObject.layer = default;
                  _collider.isTrigger = true;
              }
          }
@@ -21,6 +22,7 @@ namespace Level.Clips
          {
              if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
              {
+                 gameObject.layer = default;
                  _collider.isTrigger = true;
              }
          }
@@ -29,6 +31,7 @@ namespace Level.Clips
          {
              if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
              {
+                 gameObject.layer = 9;
                  _collider.isTrigger = false;
              }
         }

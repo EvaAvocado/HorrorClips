@@ -90,7 +90,7 @@ namespace PlayerSystem
             return false;
         }
 
-        private void CheckAxe()
+        public void CheckAxe()
         {
             if (_itemInHand is not null 
                 && _itemInHand.GetTransform().parent is null)

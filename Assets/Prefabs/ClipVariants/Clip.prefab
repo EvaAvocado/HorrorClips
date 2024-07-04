@@ -1139,6 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 1.5
+  _durationFadeIn: 0
   _image: {fileID: 0}
   _sprite: {fileID: 1740196062240087162}
   _color: {r: 0, g: 0, b: 0, a: 0.8039216}
@@ -3008,6 +3009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 0.8
+  _durationFadeIn: 0
   _image: {fileID: 2251466354911644821}
   _sprite: {fileID: 0}
   _color: {r: 0, g: 0, b: 0, a: 1}
@@ -3816,6 +3818,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1251186755
       objectReference: {fileID: 0}
+    - target: {fileID: 5948275745012135544, guid: 2bc73ba581131ad4fb2fb7d757e1b1ab, type: 3}
+      propertyPath: _wall
+      value: 
+      objectReference: {fileID: 315034578157742894}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3899,6 +3905,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1251186755
       objectReference: {fileID: 0}
+    - target: {fileID: 5948275745012135544, guid: 2bc73ba581131ad4fb2fb7d757e1b1ab, type: 3}
+      propertyPath: _wall
+      value: 
+      objectReference: {fileID: 7033398324744804956}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

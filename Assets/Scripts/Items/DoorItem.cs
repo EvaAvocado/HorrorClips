@@ -9,7 +9,8 @@ namespace Items
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private List<Sprite> _sprites;
         [SerializeField] private ItemEnum _type;
-        [SerializeField] private Animator _animator; 
+        [SerializeField] private Animator _animator;
+        [SerializeField] private GameObject _wall;
 
         private int _strokeCounter;
         private int _checkAnim;
@@ -53,6 +54,7 @@ namespace Items
                     
                     _animator.gameObject.SetActive(true);
                     _animator.Play("explosion");
+                    _wall.layer = default;
                     OnDestroyDoor?.Invoke();
                 }
             }

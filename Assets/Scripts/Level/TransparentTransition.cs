@@ -27,6 +27,8 @@ namespace Level
 
         private List<SpriteRenderer> _leftSprites;
         private List<SpriteRenderer> _rightSprites;
+        private StopWall _rightStop;
+        private StopWall _leftStop;
         private List<ITransparent> _transparentCreatures = new List<ITransparent>();
 
         private int _countOfCreatures;
@@ -40,6 +42,7 @@ namespace Level
         private void Awake()
         {
             _rightSprites = _clip.RightSprites;
+            _rightStop = _clip.RightStop;
             _countOfCreatures = _transparentCreatures.Count;
         }
 
@@ -114,19 +117,43 @@ namespace Level
                     _countOfCreatures = _transparentCreatures.Count;
                 }
             }
-
-            if (_clipLayer.Contains(other.gameObject.layer))
+//TODO
+            if (_clipLayer.Contains(other.gameObject.layer)
+                && _leftSprites is null
+                && other.TryGetComponent(out Clip clip)
+                && clip != _clip)
             {
-                _leftSprites = other.GetComponent<Clip>().LeftSprites;
+                Debug.Log(other.name);
+                _leftSprites = clip.LeftSprites;
+                clip.LeftStop.EnableWall(true);
+                _rightStop.EnableWall(true);
                 _collider.isTrigger = true;
             }
         }
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (_clipLayer.Contains(other.gameObject.layer))
+            //TODO
+            if (_clipLayer.Contains(other.gameObject.layer)
+                && _leftSprites is null
+                && other.TryGetComponent(out Clip clip)
+                && clip != _clip)
             {
-                _leftSprites = other.GetComponent<Clip>().LeftSprites;
+                Debug.Log(other.name);
+                _leftSprites = clip.LeftSprites;
+                clip.LeftStop.EnableWall(true);
+                _rightStop.EnableWall(true);
+                _collider.isTrigger = true;
+            }
+
+            if (_clipLayer.Contains(other.gameObject.layer)
+                && _leftSprites is not null
+                && other.TryGetComponent(out Clip clip1)
+                && !clip1.LeftStop.GetEnableWall
+                && clip1 != _clip)
+            {
+                clip1.LeftStop.EnableWall(true);
+                _rightStop.EnableWall(true);
                 _collider.isTrigger = true;
             }
         }
@@ -190,11 +217,16 @@ namespace Level
                     _countOfCreatures = _transparentCreatures.Count;
                 }
             }
-
-            if (_clipLayer.Contains(other.gameObject.layer))
+//TODO
+            if (_clipLayer.Contains(other.gameObject.layer)
+                && _leftSprites == other.GetComponent<Clip>().LeftSprites
+                && other.GetComponent<Clip>() != _clip)
             {
+                Debug.Log(_leftSprites == other.GetComponent<Clip>().LeftSprites);
                 _leftSprites = null;
                 _collider.isTrigger = false;
+                _rightStop.EnableWall(false);
+                other.GetComponent<Clip>().LeftStop.EnableWall(false);
             }
         }
 

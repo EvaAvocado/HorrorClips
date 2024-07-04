@@ -3176,6 +3176,8 @@ MonoBehaviour:
   _isEditMode: 0
   _colliderWithoutDoors: {fileID: 1874858827360691307}
   _clipChooseSprite: {fileID: 7041764362162934442}
+  _rightStop: {fileID: 4725816749268805833}
+  _leftStop: {fileID: 6879847922711558204}
   _leftWall: {fileID: 315034578157742894}
   _rightWall: {fileID: 7033398324744804956}
 --- !u!61 &6710528701774333961

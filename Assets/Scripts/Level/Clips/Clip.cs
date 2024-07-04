@@ -25,6 +25,8 @@ namespace Level.Clips
         [SerializeField] private bool _isEditMode;
         [SerializeField] private BoxCollider2D _colliderWithoutDoors;
         [SerializeField] private Fade _clipChooseSprite;
+        [SerializeField] private StopWall _rightStop;
+        [SerializeField] private StopWall _leftStop;
         [SerializeField] private GameObject _leftWall;
         [SerializeField] private GameObject _rightWall;
 
@@ -39,6 +41,8 @@ namespace Level.Clips
 
         public List<SpriteRenderer> LeftSprites => _leftSprites;
         public List<SpriteRenderer> RightSprites => _rightSprites;
+        public StopWall RightStop => _rightStop;
+        public StopWall LeftStop => _leftStop;
         public BoxCollider2D ColliderWithoutDoors => _colliderWithoutDoors;
         public bool IsEditMode => _isEditMode;
 

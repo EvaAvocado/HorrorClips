@@ -10,6 +10,7 @@ namespace Intro
     public class Fade : MonoBehaviour
     {
         [SerializeField] private float _duration = 2;
+        [SerializeField] private float _durationFadeIn;
         [SerializeField] private Image _image;
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Color _color;
@@ -41,15 +42,31 @@ namespace Intro
 
         public void FadeIn()
         {
-            if (_image != null)
+            if (_durationFadeIn != 0)
             {
-                _image.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _duration).SetEase(Ease.Linear)
-                    .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                if (_image != null)
+                {
+                    _image.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _durationFadeIn).SetEase(Ease.Linear)
+                        .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                }
+                else
+                {
+                    _sprite.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _durationFadeIn).SetEase(Ease.Linear)
+                        .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                }
             }
             else
             {
-                _sprite.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _duration).SetEase(Ease.Linear)
-                    .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                if (_image != null)
+                {
+                    _image.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _duration).SetEase(Ease.Linear)
+                        .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                }
+                else
+                {
+                    _sprite.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _duration).SetEase(Ease.Linear)
+                        .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                }
             }
         }
 

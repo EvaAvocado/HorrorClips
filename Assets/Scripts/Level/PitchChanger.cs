@@ -11,7 +11,7 @@ namespace Level
         [SerializeField] private string _pitchParameterMusic;
         [SerializeField] private string _pitchParameterSound;
 
-        private float _pitchFloat;
+        private float _pitchFloat = 1f;
 
         public void Init()
         {
@@ -21,7 +21,7 @@ namespace Level
 
         private void SetPitch(string parameter)
         {
-            _audioMixer.GetFloat(parameter, out _pitchFloat);
+            //_audioMixer.GetFloat(parameter, out _pitchFloat);
             _audioMixer.SetFloat(parameter, _pitchFloat - (_levelNumber * _deltaToPitch)/100);
         }
     }

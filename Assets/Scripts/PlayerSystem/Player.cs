@@ -34,6 +34,7 @@ namespace PlayerSystem
         private bool _isHoldAxe;
         private bool _isTriggerForItem;
         private float _pressingTime;
+        private bool _isInTheDark;
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -47,6 +48,12 @@ namespace PlayerSystem
         public Movement Movement => _movement;
         public SpriteRenderer[] SpriteRenderers => _spriteRenderers;
         public bool HaveFlashlight => _interaction.HaveFlashlight;
+
+        public bool IsInTheDark
+        {
+            get => _isInTheDark;
+            set => _isInTheDark = value;
+        }
 
         public bool IsCantStop
         {

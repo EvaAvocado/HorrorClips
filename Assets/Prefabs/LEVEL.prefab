@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 188abe24183200446b1ce40730260ebe, type: 2}
   _deltaToPitch: 8
-  _levelNumber: 2
+  _levelNumber: 0
   _pitchParameterMusic: MusicPitch
   _pitchParameterSound: SoundsPitch
 --- !u!1 &7083691401894383299

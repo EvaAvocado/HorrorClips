@@ -20,7 +20,10 @@ namespace Level
         {
             if (_playerLayer.Contains(other.gameObject.layer))
             {
-                if (other.GetComponent<Player>().HaveFlashlight)
+                var player = other.GetComponent<Player>();
+                player.IsInTheDark = true;
+                
+                if (player.HaveFlashlight)
                 {
                     _collider2D.enabled = false;
                     _fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
@@ -32,6 +35,9 @@ namespace Level
         {
             if (_playerLayer.Contains(other.gameObject.layer))
             {
+                var player = other.GetComponent<Player>();
+                player.IsInTheDark = false;
+                
                 _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
                 _collider2D.enabled = true;
             }

@@ -424,13 +424,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8470379945501238465}
   _playerTransform: {fileID: 0}
-  _speed: 2
+  _speed: 3.5
   _axeLayer:
     serializedVersion: 2
     m_Bits: 64
   _parent: {fileID: 997036291322273804}
   _minionAnimation: {fileID: 8763517314687628812}
-  _distanceToLostPlayer: {x: 17, y: 0.01}
+  _distanceToLostPlayer: {x: 20, y: 0.01}
 --- !u!1 &5174124093463872583
 GameObject:
   m_ObjectHideFlags: 0

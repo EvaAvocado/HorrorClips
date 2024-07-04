@@ -10,10 +10,13 @@ namespace EnemySystem.CreatureSystem
         [SerializeField] private float _runSpeed;
         [SerializeField] private Animator _animator;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private float _deltaToShiftX;
 
         private float _playerDirection;
 
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
+
+        public float DeltaToShiftX => _deltaToShiftX;
 
         private void OnEnable()
         {

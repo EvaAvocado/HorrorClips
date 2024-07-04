@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Data;
+using EnemySystem.CreatureSystem;
 using Intro;
 using Level.Clips;
 using PlayerSystem;
@@ -15,6 +16,7 @@ namespace Level
         [SerializeField] private LevelData _levelData;
         [SerializeField] private Fade _fade;
         [SerializeField] private Player _player;
+        [SerializeField] private Creature _creature;
 
         [Header("Bottom Layer")] [SerializeField]
         private int _countOfClipsBottom;
@@ -83,6 +85,8 @@ namespace Level
                 SpawnClips(_topClipPlaces, true);
 
                 _player.transform.position = _bottomClips[0].transform.position - new Vector3(5,3,0);
+                _creature.transform.position = new Vector3(_bottomClips[0].transform.position.x - 20 - _creature.DeltaToShiftX,
+                    _bottomClips[0].transform.position.y - 3f, 0);
                 
                 _fade.FadeOut();
             }

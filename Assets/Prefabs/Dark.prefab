@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7735102473614211637}
   - component: {fileID: 3212430810509446886}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 1.2
+  _durationFadeIn: 0
   _image: {fileID: 0}
   _sprite: {fileID: 1482393384132795976}
   _color: {r: 0, g: 0, b: 0, a: 0}

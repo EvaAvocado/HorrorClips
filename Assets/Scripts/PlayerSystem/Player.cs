@@ -212,6 +212,11 @@ namespace PlayerSystem
                 _isTriggerForItem = false;
                 _hint.SetActive(false);
             }
+            
+            if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
+            {
+                other.GetComponent<Clip>().PlayerExit();
+            }
         }
 
         private bool CheckItem(IItem item)

@@ -1105,6 +1105,7 @@ MonoBehaviour:
   _levelData: {fileID: 11400000, guid: 8b588fde601f0b648b5117abf651dc08, type: 2}
   _fade: {fileID: 1147791151493270843}
   _player: {fileID: 8736690917170078579}
+  _creature: {fileID: 188865077830972037}
   _countOfClipsBottom: 3
   _spawnPointY: 0
   _countOfClipsTop: 6
@@ -1567,6 +1568,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 317410725209958414}
     m_Modifications:
+    - target: {fileID: 294073403793854622, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
+      propertyPath: _deltaToShiftX
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1725872599069219073, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: m_Name
       value: Creature
@@ -1620,6 +1625,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
+--- !u!114 &188865077830972037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 294073403793854622, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
+  m_PrefabInstance: {fileID: 471252858018374171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb528ecf0ba355747a0bbcbce804f0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8670252916277386960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9140289559766023371, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}

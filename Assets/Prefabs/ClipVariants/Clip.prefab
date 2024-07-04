@@ -485,7 +485,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.5472312, y: -0.3053751}
+  m_Offset: {x: -0.6518159, y: -0.3053751}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -496,7 +496,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.0944624, y: 9.61075}
+  m_Size: {x: 2.3036318, y: 9.61075}
   m_EdgeRadius: 0
 --- !u!114 &6879847922711558204
 MonoBehaviour:
@@ -1011,7 +1011,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.6897397, y: -0.3053751}
+  m_Offset: {x: 0.63314915, y: -0.3053751}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1022,7 +1022,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.3794794, y: 9.61075}
+  m_Size: {x: 2.2662983, y: 9.61075}
   m_EdgeRadius: 0
 --- !u!114 &4725816749268805833
 MonoBehaviour:
@@ -1831,7 +1831,7 @@ GameObject:
   - component: {fileID: 532537971996614660}
   - component: {fileID: 8851373232072624607}
   - component: {fileID: 8677161624294983774}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}

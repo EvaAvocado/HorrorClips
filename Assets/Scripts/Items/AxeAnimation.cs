@@ -27,25 +27,34 @@ namespace Items
             Item.OnAxeSpinRight -= ChangeSpinRightState;
         }
 
-        private void ChangeSpinLeftState()
+        private void ChangeSpinLeftState(Item item)
         {
-            _animator.ResetTrigger(Idle);
-            _animator.SetTrigger(SpinLeft);
-            _axe.LeftSpin();
+            if (item == _axe)
+            {
+                _animator.ResetTrigger(Idle);
+                _animator.SetTrigger(SpinLeft);
+                _axe.LeftSpin();
+            }
         }
         
-        private void ChangeSpinRightState()
+        private void ChangeSpinRightState(Item item)
         {
-            _animator.ResetTrigger(Idle);
-            _animator.SetTrigger(SpinRight);
-            _axe.RightSpin();
+            if (item == _axe)
+            {
+                _animator.ResetTrigger(Idle);
+                _animator.SetTrigger(SpinRight);
+                _axe.RightSpin();
+            }
         }
 
-        private void ChangeIdleState()
+        private void ChangeIdleState(Item item)
         {
-            _animator.ResetTrigger(SpinLeft);
-            _animator.ResetTrigger(SpinRight);
-            _animator.SetTrigger(Idle);
+            if (item == _axe)
+            {
+                _animator.ResetTrigger(SpinLeft);
+                _animator.ResetTrigger(SpinRight);
+                _animator.SetTrigger(Idle);
+            }
         }
     }
 }

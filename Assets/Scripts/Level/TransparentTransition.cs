@@ -222,7 +222,7 @@ namespace Level
                 && _leftSprites == other.GetComponent<Clip>().LeftSprites
                 && other.GetComponent<Clip>() != _clip)
             {
-                Debug.Log(_leftSprites == other.GetComponent<Clip>().LeftSprites);
+                //Debug.Log(_leftSprites == other.GetComponent<Clip>().LeftSprites);
                 _leftSprites = null;
                 _collider.isTrigger = false;
                 _rightStop.EnableWall(false);

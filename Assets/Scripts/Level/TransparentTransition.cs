@@ -17,6 +17,8 @@ namespace Level
     {
         [SerializeField] private Clip _clip;
         [SerializeField] private Collider2D _collider;
+        [SerializeField] private GameObject _rightWall;
+        [SerializeField] private LayerMask _wall;
 
         [FormerlySerializedAs("_playerLayer")] [SerializeField]
         private LayerMask _creatureLayer;
@@ -56,18 +58,10 @@ namespace Level
             if (_creatureLayer.Contains(other.gameObject.layer)
                 && _leftSprites is not null && !_clip.IsEditMode)
             {
-                for (int i = 0; i < _leftSprites.Count; i++)
-                {
-                    _leftSprites[i].color = ChangeColor(TRANSPARENCY);
-                }
-
-                for (int i = 0; i < _rightSprites.Count; i++)
-                {
-                    _rightSprites[i].color = ChangeColor(TRANSPARENCY);
-                }
-
                 if (other.TryGetComponent(out Player player))
                 {
+                    Transparent(TRANSPARENCY);
+                    
                     if (!_transparentCreatures.Contains(player))
                     {
                         _transparentCreatures.Add(player);
@@ -81,6 +75,8 @@ namespace Level
 
                 if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
+                    Transparent(TRANSPARENCY);
+                    
                     if (!_transparentCreatures.Contains(minion.Minion))
                     {
                         _transparentCreatures.Add(minion.Minion);
@@ -90,6 +86,8 @@ namespace Level
 
                 if (other.TryGetComponent(out Creature monster))
                 {
+                    Transparent(TRANSPARENCY);
+                    
                     if (!_transparentCreatures.Contains(monster))
                     {
                         _transparentCreatures.Add(monster);
@@ -97,8 +95,12 @@ namespace Level
                     }
                 }
 
-                if (other.TryGetComponent(out Item axe))
+                if (other.TryGetComponent(out Item axe)
+                    && axe.GetItemEnum() == ItemEnum.AXE
+                    && !_wall.Contains(_rightWall.layer))
                 {
+                    Transparent(TRANSPARENCY);
+                    
                     if (!_transparentCreatures.Contains(axe))
                     {
                         _transparentCreatures.Add(axe);
@@ -108,6 +110,7 @@ namespace Level
 
                 if (_countOfCreatures != _transparentCreatures.Count)
                 {
+                    Debug.Log("test");
                     OnTransparent?.Invoke();
                     _countOfCreatures = _transparentCreatures.Count;
                 }
@@ -133,18 +136,10 @@ namespace Level
         {
             if (_creatureLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
             {
-                for (int i = 0; i < _leftSprites.Count; i++)
-                {
-                    _leftSprites[i].color = ChangeColor(MAX_COLOR);
-                }
-
-                for (int i = 0; i < _rightSprites.Count; i++)
-                {
-                    _rightSprites[i].color = ChangeColor(MAX_COLOR);
-                }
-
                 if (other.TryGetComponent(out Player player))
                 {
+                    Transparent(MAX_COLOR);
+                    
                     if (_transparentCreatures.Contains(player))
                     {
                         _transparentCreatures.Remove(player);
@@ -157,6 +152,8 @@ namespace Level
 
                 if (other.TryGetComponent(out ClipZoneFinder minion))
                 {
+                    Transparent(MAX_COLOR);
+                    
                     if (_transparentCreatures.Contains(minion.Minion))
                     {
                         _transparentCreatures.Remove(minion.Minion);
@@ -166,6 +163,8 @@ namespace Level
 
                 if (other.TryGetComponent(out Creature monster))
                 {
+                    Transparent(MAX_COLOR);
+                    
                     if (_transparentCreatures.Contains(monster))
                     {
                         _transparentCreatures.Remove(monster);
@@ -173,8 +172,12 @@ namespace Level
                     }
                 }
                 
-                if (other.TryGetComponent(out Item axe))
+                if (other.TryGetComponent(out Item axe)
+                    && axe.GetItemEnum() == ItemEnum.AXE
+                    && !_wall.Contains(_rightWall.layer))
                 {
+                    Transparent(MAX_COLOR);
+                    
                     if (_transparentCreatures.Contains(axe))
                     {
                         _transparentCreatures.Remove(axe);
@@ -216,5 +219,18 @@ namespace Level
         }
 
         private Color ChangeColor(float alpha) => new(MAX_COLOR, MAX_COLOR, MAX_COLOR, alpha);
+
+        private void Transparent(float alpha)
+        {
+            for (int i = 0; i < _leftSprites.Count; i++)
+            {
+                _leftSprites[i].color = ChangeColor(alpha);
+            }
+
+            for (int i = 0; i < _rightSprites.Count; i++)
+            {
+                _rightSprites[i].color = ChangeColor(alpha);
+            }
+        }
     }
 }

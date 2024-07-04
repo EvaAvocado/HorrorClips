@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 8047950506889267661}
   - component: {fileID: 6989539519012160963}
   - component: {fileID: 2258682444442964376}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WallLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2256,7 +2256,7 @@ GameObject:
   - component: {fileID: 1762333723352704959}
   - component: {fileID: 1779539808154412150}
   - component: {fileID: 352734216807092102}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WallRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3339,6 +3339,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clip: {fileID: 6015839686359269581}
   _collider: {fileID: 140686105079787}
+  _rightWall: {fileID: 7033398324744804956}
+  _wall:
+    serializedVersion: 2
+    m_Bits: 512
   _creatureLayer:
     serializedVersion: 2
     m_Bits: 328

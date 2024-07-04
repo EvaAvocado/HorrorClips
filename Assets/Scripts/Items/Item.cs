@@ -63,7 +63,8 @@ namespace Items
             }
             
             if (_isDropItem
-                && _wallLayer.Contains(other.gameObject.layer))
+                && _wallLayer.Contains(other.gameObject.layer)
+                && CheckWall(other))
             {
                 _isDropItem = false;
                 _leftCollider.enabled = false;
@@ -86,6 +87,23 @@ namespace Items
                 var clip = other.GetComponent<Clip>();
                 clip.SpriteRenderers.Remove(_spriteRenderer);
             }
+        }
+
+        private bool CheckWall(Collider2D other)
+        {
+            if (other.TryGetComponent(out IItem door))
+            {
+                if (door.GetItemEnum() == ItemEnum.DOOR)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void CheckEnemy(Collider2D other)

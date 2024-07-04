@@ -52,6 +52,31 @@ namespace EnemySystem.Minion
                 }
             }
         }
+        
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (_currentClip != null)
+            {
+                if (_playerLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
+                {
+                    var player = other.GetComponent<Player>();
+                    
+                    if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
+                    {
+                        _enemy.SeesPlayer(other.GetComponent<Player>());
+                        _enemy.MinionAnimation.Hunt();
+                    }
+                }
+            }
+            else
+            {
+                if (_playerLayer.Contains(other.gameObject.layer))
+                {
+                    _enemy.SeesPlayer(other.GetComponent<Player>());
+                    _enemy.MinionAnimation.Hunt();
+                }
+            }
+        }
 
         public void TryChangeCollider(Collider2D other)
         {

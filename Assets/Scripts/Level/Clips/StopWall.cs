@@ -10,6 +10,10 @@ namespace Level
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private bool _isDeadEnd;
 
+        public bool IsDeadEnd => _isDeadEnd;
+
+        public LayerMask ClipLayer => _clipLayer;
+
         // private void OnTriggerEnter2D(Collider2D other)
         // {
         //     if (_clipLayer.Contains(other.gameObject.layer) && !_isDeadEnd)

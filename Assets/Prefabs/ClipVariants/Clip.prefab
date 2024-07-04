@@ -3358,7 +3358,7 @@ MonoBehaviour:
     m_Bits: 8
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 256
   _isEditMode: 0
   _colliderWithoutDoors: {fileID: 1874858827360691307}
   _clipChooseSprite: {fileID: 7041764362162934442}

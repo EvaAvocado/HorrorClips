@@ -30,6 +30,11 @@ namespace EnemySystem.Minion
         public MinionAnimation MinionAnimation => _minionAnimation;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
+        public float Speed
+        {
+            set => _speed = value;
+        }
+
         public Clip ClipParent
         {
             get => _clipParent;

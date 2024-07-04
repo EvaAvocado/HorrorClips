@@ -8,10 +8,12 @@ namespace EnemySystem.Minion
         [SerializeField] private Animator _animator;
         [SerializeField] private GameObject _minionParent;
         [SerializeField] private GameObject _collider;
+        [SerializeField] private Animator _dieAnimator;
+        [SerializeField] private SpriteRenderer _spriteMinion;
+        [SerializeField] private Minion _minion;
     
         private static readonly int IsHunting = Animator.StringToHash("is-hunting");
-        private static readonly int IsDie = Animator.StringToHash("is-die");
-
+       
         private void OnEnable()
         {
             Minion.OnDieMinion += DieAnimation;
@@ -35,7 +37,14 @@ namespace EnemySystem.Minion
         private void DieAnimation(Minion minion)
         {
             _collider.SetActive(false);
-            _animator.SetTrigger(IsDie);
+            _minion.Speed = 0;
+            //_animator.speed = 0;
+            _dieAnimator.Play("die");
+        }
+
+        public void OffMinionSprite()
+        {
+            _spriteMinion.enabled = false;
         }
 
         public void DieMinion()

@@ -19,7 +19,8 @@ namespace Items
         {
             if (_axe.Contains(other.gameObject.layer)
                 && other.TryGetComponent<Item>(out Item axe)
-                && axe.IsDropItem())
+                && axe.IsDropItem()
+                && !_use)
             {
                 AlternativeUse();
             }

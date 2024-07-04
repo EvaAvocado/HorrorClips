@@ -49,6 +49,8 @@ namespace PlayerSystem
         public SpriteRenderer[] SpriteRenderers => _spriteRenderers;
         public bool HaveFlashlight => _interaction.HaveFlashlight;
 
+        public bool IsEditMode => _isEditMode;
+
         public bool IsInTheDark
         {
             get => _isInTheDark;
@@ -147,11 +149,11 @@ namespace PlayerSystem
             if (_isEditMode)
             {
                 OnIdle?.Invoke();
-                _playerCollider.enabled = false;
+                //_playerCollider.enabled = false;
             }
             else
             {
-                _playerCollider.enabled = true;
+                //_playerCollider.enabled = true;
             }
         }
 
@@ -170,8 +172,9 @@ namespace PlayerSystem
                 _hint.SetActive(true);
             }
             
-            if (_enemyLayer.Contains(other.gameObject.layer) && !_isEditMode)
+            if (_enemyLayer.Contains(other.gameObject.layer))
             {
+                print(1);
                 OnDie?.Invoke();
             }
             
@@ -194,6 +197,11 @@ namespace PlayerSystem
                 _isTriggerForItem = true;
                 _hint.SetActive(true);
             }
+            
+            if (_enemyLayer.Contains(other.gameObject.layer))
+            {
+                OnDie?.Invoke();
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -203,11 +211,6 @@ namespace PlayerSystem
                 _interaction.SetItem(null);
                 _isTriggerForItem = false;
                 _hint.SetActive(false);
-            }
-            
-            if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
-            {
-                other.GetComponent<Clip>().PlayerExit();
             }
         }
 

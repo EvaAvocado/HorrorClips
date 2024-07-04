@@ -9,7 +9,7 @@ namespace PlayerSystem
     {
         [SerializeField] private Player _player;
         [SerializeField] private Animator _animator;
-    
+
         private static readonly int IsRunning = Animator.StringToHash("is-running");
         private static readonly int HorizontalMove = Animator.StringToHash("horizontal-move");
         private static readonly int IsThrow = Animator.StringToHash("is-throw");
@@ -50,7 +50,7 @@ namespace PlayerSystem
             DoorItem.OnDestroyDoor -= ChangeDropAxeState;
             DoorItem.OnDestroyDoor -= DropAxe;
         }
-        
+
         private void Update()
         {
             if (_isCanRelease && !Input.GetKey(KeyCode.E))
@@ -80,7 +80,7 @@ namespace PlayerSystem
                 {
                     _animator.Play("run_axe_left");
                 }
-            } 
+            }
             else if (!_isMoving)
             {
                 if (_direction > 0)
@@ -96,29 +96,33 @@ namespace PlayerSystem
 
         private void ChangeRunState(float direction)
         {
-            _isMoving = true;
-            _direction = direction;
-            ResetAnimator();
-            
-            _animator.SetBool(IsRunning, true);
-            _animator.SetFloat(HorizontalMove, direction);
+            if (!_player.IsEditMode)
+            {
+                _isMoving = true;
+                _direction = direction;
+                ResetAnimator();
+
+                _animator.SetBool(IsRunning, true);
+                _animator.SetFloat(HorizontalMove, direction);
+            }
         }
-    
+
         private void ChangeIdleState()
         {
             _isMoving = false;
             _animator.SetBool(IsRunning, false);
         }
-        
+
         private void ChangeFlipState()
         {
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            transform.localScale =
+                new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
-        
+
 
         private void ChangeThrowState()
         {
-            if (!_isThrow)
+            if (!_isThrow && !_player.IsEditMode)
             {
                 _isMoving = false;
                 _isCanDrop = true;
@@ -127,12 +131,12 @@ namespace PlayerSystem
                 _animator.SetBool(IsHold, false);
             }
         }
-        
+
         private void ChangeHoldState()
         {
             _animator.SetBool(IsThrow, false);
             _animator.SetBool(IsHold, true);
-            
+
             _isThrow = true;
             _player.HoldAxe();
         }

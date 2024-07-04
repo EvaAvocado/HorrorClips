@@ -30,7 +30,7 @@ namespace PlayerSystem
         
         public bool Action(bool isHoldAxe)
         {
-            if (_item is not null)
+            if (_item is not null && !_player.IsEditMode)
             {
                 _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
 

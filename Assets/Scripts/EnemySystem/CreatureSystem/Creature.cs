@@ -31,7 +31,7 @@ namespace EnemySystem.CreatureSystem
         {
             if (_playerDirection == 0)
             {
-                _animator.speed = 0.5f;
+                _animator.speed = 0.2f;
                 transform.position += transform.right * (_baseSpeed * Time.deltaTime);
             }
             else

@@ -24,9 +24,9 @@ namespace Items
         private int _currentSprite;
         private EditManager _editManager;
 
-        public static event Action OnAxeIdle;
-        public static event Action OnAxeSpinLeft;
-        public static event Action OnAxeSpinRight;
+        public static event Action<Item> OnAxeIdle;
+        public static event Action<Item> OnAxeSpinLeft;
+        public static event Action<Item> OnAxeSpinRight;
         
         private bool _isDropItem;
 
@@ -69,7 +69,7 @@ namespace Items
                 _isDropItem = false;
                 _leftCollider.enabled = false;
                 _rightCollider.enabled = false;
-                OnAxeIdle?.Invoke();
+                OnAxeIdle?.Invoke(this);
             }
 
             if (_clipLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
@@ -125,11 +125,11 @@ namespace Items
         {
             if (_spriteRenderer.flipX)
             {
-                OnAxeSpinLeft?.Invoke();
+                OnAxeSpinLeft?.Invoke(this);
             }
             else
             {
-                OnAxeSpinRight?.Invoke();
+                OnAxeSpinRight?.Invoke(this);
             }
         }
 

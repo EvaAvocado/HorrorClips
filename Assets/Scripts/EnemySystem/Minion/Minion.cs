@@ -43,6 +43,24 @@ namespace EnemySystem.Minion
             set => _clipParent = value;
         }
 
+        private void OnEnable()
+        {
+            EditManager.OnChangeEditMode += ChangeEditMode;
+        }
+
+        private void OnDisable()
+        {
+            EditManager.OnChangeEditMode -= ChangeEditMode;
+        }
+
+        private void ChangeEditMode(bool status)
+        {
+            if (status)
+            {
+                _player = null;
+            }
+        }
+
         private void Awake()
         {
             _stateMachine = new EnemyStateMachine();

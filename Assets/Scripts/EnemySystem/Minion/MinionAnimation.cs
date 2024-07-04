@@ -36,10 +36,13 @@ namespace EnemySystem.Minion
         
         private void DieAnimation(Minion minion)
         {
-            _collider.SetActive(false);
-            _minion.Speed = 0;
-            //_animator.speed = 0;
-            _dieAnimator.Play("die");
+            if (minion == _minion)
+            {
+                _collider.SetActive(false);
+                _minion.Speed = 0;
+                //_animator.speed = 0;
+                _dieAnimator.Play("die");
+            }
         }
 
         public void OffMinionSprite()

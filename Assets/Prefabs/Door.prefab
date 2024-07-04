@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _door: {fileID: 5948275745012135544}
+  _colliderDoor: {fileID: 1008312803685197274}
 --- !u!1 &2317885953440488382
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,3 +320,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b0dbaeb5269a6543a10d02df0c20834, type: 3}
   _type: 2
   _animator: {fileID: 845594910940026856}
+  _wall: {fileID: 0}

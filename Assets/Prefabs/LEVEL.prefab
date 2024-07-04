@@ -35,8 +35,8 @@ Transform:
   - {fileID: 2544566261810118391}
   - {fileID: 2885453998635643}
   - {fileID: 1319670666698368852}
-  - {fileID: 1888882132976877740}
   - {fileID: 7963946828041819772}
+  - {fileID: 1888882132976877740}
   - {fileID: 123166023618435796}
   - {fileID: 8220597852525472771}
   - {fileID: 8670252916277386960}
@@ -955,7 +955,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1264,7 +1264,7 @@ Transform:
   m_GameObject: {fileID: 8261028720885468683}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24, y: 3.8999999, z: -10}
+  m_LocalPosition: {x: 0, y: 3.8999999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1665,6 +1665,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 804691404730715177}
+    - target: {fileID: 1703633008881119343, guid: 24d3434155972b64e9dbb924618ae546, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703633008881119343, guid: 24d3434155972b64e9dbb924618ae546, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -545950619
+      objectReference: {fileID: 0}
     - target: {fileID: 2012262993995269136, guid: 24d3434155972b64e9dbb924618ae546, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

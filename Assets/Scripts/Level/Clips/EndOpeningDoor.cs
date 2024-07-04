@@ -1,5 +1,3 @@
-using System;
-using Core;
 using Intro;
 using UnityEngine;
 using Utils;
@@ -24,6 +22,7 @@ namespace Level.Clips
         {
             if (_playerLayer.Contains(other.gameObject.layer) && _isEndDoor)
             {
+                _canvas.gameObject.SetActive(true);
                 _fade.FadeIn();
             }
         }

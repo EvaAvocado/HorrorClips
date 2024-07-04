@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: _spriteRenderers.Array.data[20]
       value: 
       objectReference: {fileID: 3519493529427900290}
+    - target: {fileID: 7033398324744804956, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7130817869045225804, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_IsActive
       value: 1

@@ -30,6 +30,8 @@ namespace EnemySystem.Minion
         public MinionAnimation MinionAnimation => _minionAnimation;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
+        public Player Player => _player;
+
         public float Speed
         {
             set => _speed = value;
@@ -74,6 +76,7 @@ namespace EnemySystem.Minion
                 {
                     LostPlayer();
                     _minionAnimation.Lost();
+                    _player = null;
                 }
             }
         }

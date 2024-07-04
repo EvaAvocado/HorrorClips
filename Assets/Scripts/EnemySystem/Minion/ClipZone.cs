@@ -55,7 +55,7 @@ namespace EnemySystem.Minion
         
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (_currentClip != null)
+            if (_currentClip != null && _enemy.Player == null)
             {
                 if (_playerLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
                 {

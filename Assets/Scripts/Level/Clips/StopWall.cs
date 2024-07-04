@@ -28,7 +28,7 @@ namespace Level
 
         public void EnableWall(bool isEnable){
             _collider.isTrigger = isEnable;
-            Debug.Log(name);
+            //Debug.Log(name);
         }
 
         public bool GetEnableWall => _collider.isTrigger;

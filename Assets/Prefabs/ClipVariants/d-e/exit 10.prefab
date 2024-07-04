@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4002717331419670389, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _sceneName
-      value: Level_11
+      value: OutroExit
       objectReference: {fileID: 0}
     - target: {fileID: 5367038585641510463, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_LocalPosition.x

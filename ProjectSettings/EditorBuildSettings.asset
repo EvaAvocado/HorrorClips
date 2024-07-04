@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 5674b6eccf979e9409eb5430bd926bd0
-  - enabled: 0
-    path: Assets/Scenes/Eva.unity
-    guid: 5ba8d0cf628892641b9a4e27ee103357
-  - enabled: 0
-    path: Assets/Scenes/Dima_78.unity
-    guid: 7a8cb903b834f9247820efa08bac6afb
   - enabled: 1
     path: Assets/Scenes/Levels/Level_1.unity
     guid: b7a256bc0b6104146ac15593252b6bba
@@ -47,6 +38,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level_10.unity
     guid: a13fc86da8354b64fb3637889be16cf5
+  - enabled: 1
+    path: Assets/Scenes/OutroExit.unity
+    guid: d851467c9c58ecd4799bd93aade283ec
+  - enabled: 1
+    path: Assets/Scenes/OutroTV.unity
+    guid: 71b400678c9c7bf41b8d29328f9c1c50
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 719f02c64026f1943a35fc8576c7a1ef, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3495b73afcd340344a8c18367df3f982, type: 2}

@@ -10,20 +10,27 @@ namespace Level
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private bool _isDeadEnd;
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (_clipLayer.Contains(other.gameObject.layer) && !_isDeadEnd)
-            {
-                _collider.isTrigger = true;
-            }
+        // private void OnTriggerEnter2D(Collider2D other)
+        // {
+        //     if (_clipLayer.Contains(other.gameObject.layer) && !_isDeadEnd)
+        //     {
+        //         _collider.isTrigger = true;
+        //     }
+        // }
+        //
+        // private void OnTriggerExit2D(Collider2D other)
+        // {
+        //     if (_clipLayer.Contains(other.gameObject.layer) && !_isDeadEnd)
+        //     {
+        //         _collider.isTrigger = false;
+        //     }
+        // }
+
+        public void EnableWall(bool isEnable){
+            _collider.isTrigger = isEnable;
+            Debug.Log(name);
         }
 
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (_clipLayer.Contains(other.gameObject.layer) && !_isDeadEnd)
-            {
-                _collider.isTrigger = false;
-            }
-        }
+        public bool GetEnableWall => _collider.isTrigger;
     }
 }

@@ -106,8 +106,7 @@ namespace EnemySystem.Minion
         {
             if (_isCanPlaySound)
             {
-                print(1);
-                //PlaySoundSpot();
+                PlaySoundSpot();
                 _isCanPlaySound = false;
             }
             _stateMachine.ChangeState<Hunt>();
@@ -118,7 +117,6 @@ namespace EnemySystem.Minion
 
         public void LostPlayer()
         {
-            print(2);
             _isCanPlaySound = true;
             _stateMachine.ChangeState<Wait>();
             _player = null;

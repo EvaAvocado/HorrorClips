@@ -16,7 +16,7 @@ namespace Level
         public void Init()
         {
             SetPitch(_pitchParameterMusic);
-            SetPitch(_pitchParameterSound);
+            //SetPitch(_pitchParameterSound);
         }
 
         private void SetPitch(string parameter)

@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Back
+    uniqueID: 1356314543
+    locked: 0
   - name: ClipPlace
     uniqueID: 822174203
     locked: 0

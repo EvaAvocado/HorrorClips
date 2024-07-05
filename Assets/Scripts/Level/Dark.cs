@@ -53,6 +53,16 @@ namespace Level
             }
         }
 
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (_playerLayer.Contains(other.gameObject.layer))
+            {
+                var player = other.GetComponent<Player>();
+                if (player.IsInTheDark) return;
+                player.IsInTheDark = true;
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             if (_playerLayer.Contains(other.gameObject.layer))

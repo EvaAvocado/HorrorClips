@@ -77,7 +77,7 @@ namespace EnemySystem.Minion
         {
             _stateMachine.UpdateState();
 
-            if (_editManager.IsEditMode && _stateMachine.GetState() is Hunt)
+            if (_editManager.IsEditMode) //&& _stateMachine.GetState() is Hunt)
             {
                 LostPlayer();
                 _minionAnimation.Lost();

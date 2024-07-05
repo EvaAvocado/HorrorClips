@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using EnemySystem.CreatureSystem;
+using EnemySystem.Minion;
 using Items;
 using Items.Strategy;
 using Level;
@@ -152,11 +154,11 @@ namespace PlayerSystem
             if (_isEditMode)
             {
                 OnIdle?.Invoke();
-                //_playerCollider.enabled = false;
+                _playerCollider.isTrigger = true;
             }
             else
             {
-                //_playerCollider.enabled = true;
+                _playerCollider.isTrigger = false;
             }
         }
 
@@ -177,8 +179,14 @@ namespace PlayerSystem
             
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
-                print(1);
-                OnDie?.Invoke();
+                if (other.TryGetComponent(out Creature creature))
+                {
+                    OnDie?.Invoke();
+                }
+                else if (!_isEditMode)
+                {
+                    OnDie?.Invoke();
+                }
             }
             
             if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
@@ -203,7 +211,14 @@ namespace PlayerSystem
             
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
-                OnDie?.Invoke();
+                if (other.TryGetComponent(out Creature creature))
+                {
+                    OnDie?.Invoke();
+                }
+                else if (!_isEditMode)
+                {
+                    OnDie?.Invoke();
+                }
             }
         }
 

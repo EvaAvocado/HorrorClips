@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 188865077830972037, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _deltaToShiftX
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 317410725209958414, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_LocalPosition.x

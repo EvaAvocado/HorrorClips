@@ -6,6 +6,7 @@ namespace Items
     {
         [SerializeField] private DoorItem _door;
         [SerializeField] private BoxCollider2D _colliderDoor;
+        [SerializeField] private AudioSource _audioSource;
 
         public void EndAnimation()
         {
@@ -20,6 +21,11 @@ namespace Items
         public void DeleteCollider()
         {
             _colliderDoor.enabled = false;
+        }
+        
+        public void PlaySoundBroken()
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "door break"));
         }
     }
 }

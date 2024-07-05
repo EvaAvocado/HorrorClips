@@ -11,6 +11,7 @@ namespace EnemySystem.Minion
         [SerializeField] private Animator _dieAnimator;
         [SerializeField] private SpriteRenderer _spriteMinion;
         [SerializeField] private Minion _minion;
+        [SerializeField] private AudioSource _audioSource;
     
         private static readonly int IsHunting = Animator.StringToHash("is-hunting");
        
@@ -36,6 +37,7 @@ namespace EnemySystem.Minion
         
         private void DieAnimation(Minion minion)
         {
+            PlaySoundDie();
             if (minion == _minion)
             {
                 _collider.SetActive(false);
@@ -43,6 +45,12 @@ namespace EnemySystem.Minion
                 //_animator.speed = 0;
                 _dieAnimator.Play("die");
             }
+        }
+        
+        private void PlaySoundDie()
+        {
+            _audioSource.clip = (AudioClip)Resources.Load("Sounds/" + "wilhelm-1-86895");
+            _audioSource.PlayOneShot(_audioSource.clip);
         }
 
         public void OffMinionSprite()

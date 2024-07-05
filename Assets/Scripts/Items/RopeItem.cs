@@ -12,6 +12,7 @@ namespace Items
         [SerializeField] private ItemEnum _type;
         [SerializeField] private bool _isLeftRope;
         [SerializeField] private LayerMask _axe;
+        [SerializeField] private AudioSource _audioSource;
 
         private bool _use;
 
@@ -85,6 +86,11 @@ namespace Items
         public void PlayNewAnimation(string animName)
         {
             throw new NotImplementedException();
+        }
+        
+        public void PlaySound(string soundName)
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" +soundName));
         }
     }
 }

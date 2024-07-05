@@ -8,11 +8,13 @@ namespace Items.Strategy
     {
         public void Use(Transform pos, [CanBeNull] IItem item, Player player)
         {
-            Debug.Log("Tuck Tuck");
+            item.PlaySound("closed door");
+            //Debug.Log("Tuck Tuck");
         }
 
         public void AlternativeUse(IItem item, IItem itemTwo = null, bool isSwing = false)
         {
+            item.PlaySound("axe door chop");
             item.AlternativeUse(itemTwo);
         }
     }

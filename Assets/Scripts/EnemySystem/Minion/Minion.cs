@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using EnemySystem.States;
 using Level;
 using Level.Clips;
@@ -17,6 +18,7 @@ namespace EnemySystem.Minion
         [SerializeField] private GameObject _parent;
         [SerializeField] private MinionAnimation _minionAnimation;
         [SerializeField] private Vector2 _distanceToLostPlayer;
+        [SerializeField] private AudioSource _audioSource;
 
         private Clip _clipParent;
 
@@ -118,5 +120,6 @@ namespace EnemySystem.Minion
             OnDieMinion?.Invoke(this);
             _stateMachine.ChangeState<Die>();
         }
+        
     }
 }

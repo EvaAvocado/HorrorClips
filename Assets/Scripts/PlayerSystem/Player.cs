@@ -35,6 +35,7 @@ namespace PlayerSystem
         private bool _isTriggerForItem;
         private float _pressingTime;
         private bool _isInTheDark;
+        private bool _isFlashlight;
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -139,6 +140,8 @@ namespace PlayerSystem
                 
                 _pressingTime = 0;
                 _isHoldAxe = false;
+                _isTriggerForItem = false;
+                _hint.SetActive(false);
             }
         }
 
@@ -221,6 +224,12 @@ namespace PlayerSystem
 
         private bool CheckItem(IItem item)
         {
+            if (item.GetItemEnum() == ItemEnum.FLASHLIGHT
+                && _isFlashlight)
+            {
+                return false;
+            }
+            
             if (item.GetItemEnum() == ItemEnum.AXE
                 && _interaction.HaveAxeInHand)
             {
@@ -249,6 +258,7 @@ namespace PlayerSystem
 
         public void OnFlashlight()
         {
+            _isFlashlight = true;
             _flashlight.OnFlashlight();
         }
         

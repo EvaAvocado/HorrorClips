@@ -23,6 +23,7 @@ namespace Items
 
         private int _currentSprite;
         private EditManager _editManager;
+        
 
         public static event Action<Item> OnAxeIdle;
         public static event Action<Item> OnAxeSpinLeft;

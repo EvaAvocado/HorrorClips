@@ -12,7 +12,7 @@ namespace Level
 
         public bool IsDeadEnd => _isDeadEnd;
         public LayerMask ClipLayer => _clipLayer;
-
+//TODO
         public void EnableWall(bool isEnable)
         {
             _collider.isTrigger = isEnable;

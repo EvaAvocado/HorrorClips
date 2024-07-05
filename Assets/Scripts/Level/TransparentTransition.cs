@@ -123,7 +123,7 @@ namespace Level
                 && other.TryGetComponent(out Clip clip)
                 && clip != _clip)
             {
-                Debug.Log(other.name);
+                //Debug.Log(other.name);
                 _leftSprites = clip.LeftSprites;
                 clip.LeftStop.EnableWall(true);
                 _rightStop.EnableWall(true);

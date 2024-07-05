@@ -8,6 +8,15 @@ namespace Level.Clips
     {
         [SerializeField] private StopWall _stopWall;
         [SerializeField] private BoxCollider2D _collider;
+
+        private void OnEnable()
+        {
+            if (_stopWall.IsDeadEnd)
+            {
+                _collider.isTrigger = false;
+            }
+        }
+
         //TODO
          private void OnTriggerEnter2D(Collider2D other)
          {
@@ -32,7 +41,7 @@ namespace Level.Clips
          {
              if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
              {
-                 Debug.Log(other.name);
+                 //Debug.Log(other.name);
                  gameObject.layer = 9;
                  _collider.isTrigger = false;
              }

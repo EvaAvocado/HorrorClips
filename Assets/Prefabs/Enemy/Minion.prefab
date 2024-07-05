@@ -523,13 +523,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8470379945501238465}
   _playerTransform: {fileID: 0}
-  _speed: 2
+  _speed: 3.5
   _axeLayer:
     serializedVersion: 2
     m_Bits: 64
   _parent: {fileID: 997036291322273804}
   _minionAnimation: {fileID: 8763517314687628812}
-  _distanceToLostPlayer: {x: 17, y: 0.5}
+  _distanceToLostPlayer: {x: 20, y: 0.5}
   _audioSource: {fileID: 4199955063167584784}
 --- !u!82 &4199955063167584784
 AudioSource:

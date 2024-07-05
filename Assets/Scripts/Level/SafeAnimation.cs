@@ -8,6 +8,7 @@ namespace Level
         [SerializeField] private GameObject _hole;
         [SerializeField] private GameObject _background;
         [SerializeField] private Collider2D _collider2D;
+        [SerializeField] private AudioSource _audioSource;
         
         private static readonly int Fall = Animator.StringToHash("fall");
         private static readonly int Property = Animator.StringToHash("enemy-exit");
@@ -31,6 +32,11 @@ namespace Level
         {
             _animator.SetTrigger(Property);
             _collider2D.enabled = true;
+        }
+        
+        private void PlaySoundSafe()
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "safe fall"));
         }
     }
 }

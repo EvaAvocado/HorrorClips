@@ -129,7 +129,8 @@ namespace Items
 
         public void PlaySound(string soundName)
         {
-            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" +soundName));
+            _audioSource.clip = (AudioClip)Resources.Load("Sounds/" + soundName);
+            _audioSource.PlayOneShot(_audioSource.clip);
         }
 
         public Transform GetTransform() => transform;

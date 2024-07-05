@@ -25,6 +25,7 @@ namespace EnemySystem.Minion
         private IStateMachine _stateMachine;
         private Player _player;
         private EditManager _editManager;
+        private bool _isCanPlaySound = true;
         
         public static event Action<Minion> OnDieMinion;
 
@@ -103,6 +104,12 @@ namespace EnemySystem.Minion
 
         public void SeesPlayer(Player player)
         {
+            if (_isCanPlaySound)
+            {
+                print(1);
+                //PlaySoundSpot();
+                _isCanPlaySound = false;
+            }
             _stateMachine.ChangeState<Hunt>();
             _player = player;
         }
@@ -111,6 +118,8 @@ namespace EnemySystem.Minion
 
         public void LostPlayer()
         {
+            print(2);
+            _isCanPlaySound = true;
             _stateMachine.ChangeState<Wait>();
             _player = null;
         }
@@ -119,6 +128,12 @@ namespace EnemySystem.Minion
         {
             OnDieMinion?.Invoke(this);
             _stateMachine.ChangeState<Die>();
+        }
+        
+        private void PlaySoundSpot()
+        {
+            _audioSource.clip = (AudioClip)Resources.Load("Sounds/" + "minion spot");
+            _audioSource.PlayOneShot(_audioSource.clip );
         }
         
     }

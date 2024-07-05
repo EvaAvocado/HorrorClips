@@ -29,6 +29,7 @@ namespace PlayerSystem
         [SerializeField] private GameObject _hint;
         [SerializeField] private FlashlightOnPlayer _flashlight;
         [SerializeField] private bool _isCantStop;
+        [SerializeField] private AudioSource _audioSource;
         
         private Movement _movement;
         private Interaction _interaction;
@@ -53,6 +54,8 @@ namespace PlayerSystem
         public bool HaveFlashlight => _interaction.HaveFlashlight;
 
         public bool IsEditMode => _isEditMode;
+
+        public AudioSource AudioSource => _audioSource;
 
         public bool IsInTheDark
         {

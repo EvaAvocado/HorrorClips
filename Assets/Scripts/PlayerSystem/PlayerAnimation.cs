@@ -9,6 +9,7 @@ namespace PlayerSystem
     {
         [SerializeField] private Player _player;
         [SerializeField] private Animator _animator;
+        [SerializeField] private AudioSource _audioSource;
 
         private static readonly int IsRunning = Animator.StringToHash("is-running");
         private static readonly int HorizontalMove = Animator.StringToHash("horizontal-move");
@@ -158,6 +159,8 @@ namespace PlayerSystem
 
         private void ChangeDropAxeState()
         {
+            PlaySoundAxeRelease();
+            
             _animator.SetBool(IsThrow, false);
             _animator.SetBool(IsHold, false);
             _animator.ResetTrigger(Swing);
@@ -170,13 +173,13 @@ namespace PlayerSystem
             }
         }
 
-        private void ChangeStateForAxe()
+        /*private void ChangeStateForAxe()
         {
             if (_isCanDrop)
             {
                 _player.DropAxe();
             }
-        }
+        }*/
 
         private void ChangeSwingState()
         {
@@ -196,6 +199,11 @@ namespace PlayerSystem
         private void UseAxe()
         {
             _player.UseAxe();
+        }
+        
+        private void PlaySoundAxeRelease()
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "axe throw"));
         }
     }
 }

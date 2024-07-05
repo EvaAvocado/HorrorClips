@@ -23,6 +23,7 @@ namespace Items.Strategy
             if (!item.IsDropItem()
                 && pos.childCount == 0)
             {
+                //item.PlaySound("item pickup");
                 item.GetTransform().parent = pos;
                 item.GetTransform().localPosition = Vector3.zero;
                 item.GetTransform().gameObject.SetActive(false);

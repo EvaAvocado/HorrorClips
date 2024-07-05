@@ -15,24 +15,34 @@ namespace EnemySystem.Minion
         [SerializeField] private BoxCollider2D _collider2D;
         [SerializeField] private Clip _currentClip;
         
-        private EditManager _editManager;
+        private bool _isEditMode;
 
         public LayerMask ClipLayer => _clipLayer;
 
         public Clip CurrentClip => _currentClip;
-
+        
         private void OnEnable()
         {
+            EditManager.OnChangeEditMode += ChangeEditMode;
             if (_currentClip != null)
                 SetNewCollider(_currentClip.transform.localPosition, _currentClip.ColliderWithoutDoors.size);
-            _editManager = FindObjectOfType<EditManager>();
+        }
+
+        private void OnDisable()
+        {
+            EditManager.OnChangeEditMode -= ChangeEditMode;
+        }
+
+        private void ChangeEditMode(bool status)
+        {
+            _isEditMode = status;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_currentClip != null)
             {
-                if (_playerLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
+                if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
                 {
                     var player = other.GetComponent<Player>();
                     
@@ -45,7 +55,7 @@ namespace EnemySystem.Minion
             }
             else
             {
-                if (_playerLayer.Contains(other.gameObject.layer))
+                if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
                 {
                     _enemy.SeesPlayer(other.GetComponent<Player>());
                     _enemy.MinionAnimation.Hunt();
@@ -57,7 +67,7 @@ namespace EnemySystem.Minion
         {
             if (_currentClip != null && _enemy.Player == null)
             {
-                if (_playerLayer.Contains(other.gameObject.layer) && !_editManager.IsEditMode)
+                if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
                 {
                     var player = other.GetComponent<Player>();
                     
@@ -70,7 +80,7 @@ namespace EnemySystem.Minion
             }
             else
             {
-                if (_playerLayer.Contains(other.gameObject.layer))
+                if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
                 {
                     _enemy.SeesPlayer(other.GetComponent<Player>());
                     _enemy.MinionAnimation.Hunt();
@@ -81,7 +91,7 @@ namespace EnemySystem.Minion
         public void TryChangeCollider(Collider2D other)
         {
             var clip = other.GetComponent<Clip>();
-            if (_currentClip != clip && clip != null && !_editManager.IsEditMode)
+            if (_currentClip != clip && clip != null && !_isEditMode)
             {
                 _currentClip = clip;
                 SetNewCollider(_currentClip.transform.localPosition, _currentClip.ColliderWithoutDoors.size);

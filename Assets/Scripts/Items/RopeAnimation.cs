@@ -12,6 +12,7 @@ namespace Items
         [SerializeField] private ChandelierAnimation _chandelier;
         [SerializeField] private SafeAnimation _safe;
         [SerializeField] private SpriteRenderer _sprite;
+        [SerializeField] private AudioSource _audioSource;
 
         private SpriteRenderer _ropeLeftSprite;
         private SpriteRenderer _ropeRightSprite;
@@ -53,12 +54,19 @@ namespace Items
 
         private void DisableLeft()
         {
+            PlaySoundRopeCut();
             _ropeLeft.gameObject.SetActive(false);
         }
         
         private void DisableRight()
         {
+            PlaySoundRopeCut();
             _ropeRight.gameObject.SetActive(false);
+        }
+        
+        private void PlaySoundRopeCut()
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "rope cut"));
         }
     }
 }

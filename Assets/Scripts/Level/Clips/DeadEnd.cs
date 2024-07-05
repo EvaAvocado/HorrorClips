@@ -4,21 +4,31 @@ using Utils;
 
 namespace Level.Clips
 {
-    public class Deadend : MonoBehaviour
+    public class DeadEnd : MonoBehaviour
     {
         [SerializeField] private StopWall _stopWall;
         [SerializeField] private BoxCollider2D _collider;
-        
+
+        private void OnEnable()
+        {
+            if (_stopWall.IsDeadEnd)
+            {
+                _collider.isTrigger = false;
+            }
+        }
+
+        //TODO
          private void OnTriggerEnter2D(Collider2D other)
          {
              if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
              {
+                 // Debug.Log(other.name);
                  gameObject.layer = default;
                  _collider.isTrigger = true;
              }
          }
-
-         private void OnCollisionStay2D(Collision2D other)
+//TODO
+         private void OnTriggerStay2D(Collider2D other)
          {
              if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
              {
@@ -26,11 +36,12 @@ namespace Level.Clips
                  _collider.isTrigger = true;
              }
          }
-
+//TODO
          private void OnTriggerExit2D(Collider2D other)
          {
              if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
              {
+                 //Debug.Log(other.name);
                  gameObject.layer = 9;
                  _collider.isTrigger = false;
              }

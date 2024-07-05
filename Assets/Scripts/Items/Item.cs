@@ -20,9 +20,11 @@ namespace Items
         [SerializeField] private LayerMask _wallLayer;
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private Sprite[] _sprites;
+        [SerializeField] private AudioSource _audioSource;
 
         private int _currentSprite;
         private EditManager _editManager;
+        
 
         public static event Action<Item> OnAxeIdle;
         public static event Action<Item> OnAxeSpinLeft;
@@ -52,6 +54,11 @@ namespace Items
                 transform.localPosition = Vector3.zero;
             }*/
         }
+        
+        private void PlaySoundBounce()
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "axe bounce"));
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -66,6 +73,7 @@ namespace Items
                 && _wallLayer.Contains(other.gameObject.layer)
                 && CheckWall(other))
             {
+                PlaySoundBounce();
                 _isDropItem = false;
                 _leftCollider.enabled = false;
                 _rightCollider.enabled = false;
@@ -117,6 +125,12 @@ namespace Items
         public void PlayNewAnimation(string animName)
         {
             _animator.Play(animName);
+        }
+
+        public void PlaySound(string soundName)
+        {
+            _audioSource.clip = (AudioClip)Resources.Load("Sounds/" + soundName);
+            _audioSource.PlayOneShot(_audioSource.clip);
         }
 
         public Transform GetTransform() => transform;

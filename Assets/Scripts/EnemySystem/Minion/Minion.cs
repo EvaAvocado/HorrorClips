@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using EnemySystem.States;
 using Level;
 using Level.Clips;
@@ -17,12 +18,14 @@ namespace EnemySystem.Minion
         [SerializeField] private GameObject _parent;
         [SerializeField] private MinionAnimation _minionAnimation;
         [SerializeField] private Vector2 _distanceToLostPlayer;
+        [SerializeField] private AudioSource _audioSource;
 
         private Clip _clipParent;
 
         private IStateMachine _stateMachine;
         private Player _player;
         private EditManager _editManager;
+        private bool _isCanPlaySound = true;
         
         public static event Action<Minion> OnDieMinion;
 
@@ -101,6 +104,11 @@ namespace EnemySystem.Minion
 
         public void SeesPlayer(Player player)
         {
+            if (_isCanPlaySound)
+            {
+                PlaySoundSpot();
+                _isCanPlaySound = false;
+            }
             _stateMachine.ChangeState<Hunt>();
             _player = player;
         }
@@ -109,6 +117,7 @@ namespace EnemySystem.Minion
 
         public void LostPlayer()
         {
+            _isCanPlaySound = true;
             _stateMachine.ChangeState<Wait>();
             _player = null;
         }
@@ -118,5 +127,12 @@ namespace EnemySystem.Minion
             OnDieMinion?.Invoke(this);
             _stateMachine.ChangeState<Die>();
         }
+        
+        private void PlaySoundSpot()
+        {
+            _audioSource.clip = (AudioClip)Resources.Load("Sounds/" + "minion spot");
+            _audioSource.PlayOneShot(_audioSource.clip );
+        }
+        
     }
 }

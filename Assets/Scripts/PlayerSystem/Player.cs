@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using EnemySystem.CreatureSystem;
+using EnemySystem.Minion;
 using Items;
 using Items.Strategy;
 using Level;
@@ -27,6 +29,7 @@ namespace PlayerSystem
         [SerializeField] private GameObject _hint;
         [SerializeField] private FlashlightOnPlayer _flashlight;
         [SerializeField] private bool _isCantStop;
+        [SerializeField] private AudioSource _audioSource;
         
         private Movement _movement;
         private Interaction _interaction;
@@ -35,6 +38,7 @@ namespace PlayerSystem
         private bool _isTriggerForItem;
         private float _pressingTime;
         private bool _isInTheDark;
+        private bool _isFlashlight;
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -50,6 +54,8 @@ namespace PlayerSystem
         public bool HaveFlashlight => _interaction.HaveFlashlight;
 
         public bool IsEditMode => _isEditMode;
+
+        public AudioSource AudioSource => _audioSource;
 
         public bool IsInTheDark
         {
@@ -139,6 +145,8 @@ namespace PlayerSystem
                 
                 _pressingTime = 0;
                 _isHoldAxe = false;
+                _isTriggerForItem = false;
+                _hint.SetActive(false);
             }
         }
 
@@ -149,11 +157,11 @@ namespace PlayerSystem
             if (_isEditMode)
             {
                 OnIdle?.Invoke();
-                //_playerCollider.enabled = false;
+                _playerCollider.isTrigger = true;
             }
             else
             {
-                //_playerCollider.enabled = true;
+                _playerCollider.isTrigger = false;
             }
         }
 
@@ -174,8 +182,14 @@ namespace PlayerSystem
             
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
-                print(1);
-                OnDie?.Invoke();
+                if (other.TryGetComponent(out Creature creature))
+                {
+                    OnDie?.Invoke();
+                }
+                else if (!_isEditMode)
+                {
+                    OnDie?.Invoke();
+                }
             }
             
             if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
@@ -200,7 +214,14 @@ namespace PlayerSystem
             
             if (_enemyLayer.Contains(other.gameObject.layer))
             {
-                OnDie?.Invoke();
+                if (other.TryGetComponent(out Creature creature))
+                {
+                    OnDie?.Invoke();
+                }
+                else if (!_isEditMode)
+                {
+                    OnDie?.Invoke();
+                }
             }
         }
 
@@ -221,6 +242,12 @@ namespace PlayerSystem
 
         private bool CheckItem(IItem item)
         {
+            if (item.GetItemEnum() == ItemEnum.FLASHLIGHT
+                && _isFlashlight)
+            {
+                return false;
+            }
+            
             if (item.GetItemEnum() == ItemEnum.AXE
                 && _interaction.HaveAxeInHand)
             {
@@ -249,6 +276,7 @@ namespace PlayerSystem
 
         public void OnFlashlight()
         {
+            _isFlashlight = true;
             _flashlight.OnFlashlight();
         }
         

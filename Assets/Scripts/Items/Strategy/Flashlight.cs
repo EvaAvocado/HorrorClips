@@ -14,6 +14,7 @@ namespace Items.Strategy
                 item.GetTransform().localPosition = Vector3.zero;
             }*/
             
+            item.PlaySound("item pickup");
             player.OnFlashlight();
             item.PlayNewAnimation("empty");
         }

@@ -6,6 +6,7 @@ namespace Level
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Chandelier _chandelier;
+        [SerializeField] private AudioSource _audioSource;
         
         private static readonly int Fall = Animator.StringToHash("fall");
 
@@ -22,6 +23,11 @@ namespace Level
         private void OffCollider()
         {
             _chandelier.EnableCollider(false);
+        }
+        
+        private void PlaySoundChandelier()
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "chandelier"));
         }
     }
 }

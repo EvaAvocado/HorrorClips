@@ -13,5 +13,6 @@ namespace Items
         bool CheckUse(bool haveAxe);
         void ChangeSprite();
         void PlayNewAnimation(string animName);
+        void PlaySound(string soundName);
     }
 }

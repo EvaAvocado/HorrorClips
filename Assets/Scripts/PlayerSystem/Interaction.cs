@@ -53,6 +53,7 @@ namespace PlayerSystem
                 {
                     _itemInHand = _item;
                     _isAxeInHand = true;
+                    PlaySoundPickup();
                     _strategy?.Use(_hand, _item, _player);
                     return false;
                 }
@@ -98,6 +99,11 @@ namespace PlayerSystem
                 _itemInHand = null;
                 _isAxeInHand = false;
             }
+        }
+        
+        private void PlaySoundPickup()
+        {
+            _player.AudioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "item pickup"));
         }
 
         public void SetItem(IItem item) => _item = item;

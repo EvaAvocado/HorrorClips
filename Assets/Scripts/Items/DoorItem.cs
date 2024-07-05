@@ -11,6 +11,7 @@ namespace Items
         [SerializeField] private ItemEnum _type;
         [SerializeField] private Animator _animator;
         [SerializeField] private GameObject _wall;
+        [SerializeField] private AudioSource _audioSource;
 
         private int _strokeCounter;
         private int _checkAnim;
@@ -88,6 +89,11 @@ namespace Items
         public void PlayNewAnimation(string animName)
         {
             throw new NotImplementedException();
+        }
+
+        public void PlaySound(string soundName)
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" +soundName));
         }
     }
 }

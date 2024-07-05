@@ -10,6 +10,7 @@ namespace Items
         [SerializeField] private int _currentMinionsCount;
         [SerializeField] private Animator[] _animators;
         [SerializeField] private UnityEvent _eventIfInteract;
+        [SerializeField] private AudioSource _audioSource;
         
         private bool _isCanInteract;
         
@@ -91,6 +92,11 @@ namespace Items
         public void PlayNewAnimation(string animName)
         {
             throw new System.NotImplementedException();
+        }
+        
+        public void PlaySound(string soundName)
+        {
+            _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" +soundName));
         }
     }
 }

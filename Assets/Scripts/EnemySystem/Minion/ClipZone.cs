@@ -14,13 +14,13 @@ namespace EnemySystem.Minion
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private BoxCollider2D _collider2D;
         [SerializeField] private Clip _currentClip;
-        
+
         private bool _isEditMode;
 
         public LayerMask ClipLayer => _clipLayer;
 
         public Clip CurrentClip => _currentClip;
-        
+
         private void OnEnable()
         {
             EditManager.OnChangeEditMode += ChangeEditMode;
@@ -40,33 +40,30 @@ namespace EnemySystem.Minion
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_currentClip != null)
+            if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
-                if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
+                var player = other.GetComponent<Player>();
+
+                if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
                 {
-                    var player = other.GetComponent<Player>();
-                    
-                    if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
-                    {
-                        print("1" + player.IsInTheDark);
-                        _enemy.SeesPlayer(other.GetComponent<Player>());
-                        _enemy.MinionAnimation.Hunt();
-                    }
+                    //print("1" + player.IsInTheDark);
+                    _enemy.SeesPlayer(other.GetComponent<Player>());
+                    _enemy.MinionAnimation.Hunt();
                 }
             }
         }
-        
+
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (_currentClip != null && _enemy.Player == null)
+            if (_enemy.Player == null)
             {
                 if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
                 {
                     var player = other.GetComponent<Player>();
-                    
+
                     if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
                     {
-                        print("2" + player.IsInTheDark);
+                        //print("2" + player.IsInTheDark);
                         _enemy.SeesPlayer(other.GetComponent<Player>());
                         _enemy.MinionAnimation.Hunt();
                     }

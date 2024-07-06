@@ -58,7 +58,6 @@ namespace Level
             if (_playerLayer.Contains(other.gameObject.layer))
             {
                 var player = other.GetComponent<Player>();
-                if (player.IsInTheDark) return;
                 player.IsInTheDark = true;
             }
         }

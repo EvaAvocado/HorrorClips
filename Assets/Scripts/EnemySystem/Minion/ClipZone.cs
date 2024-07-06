@@ -48,18 +48,7 @@ namespace EnemySystem.Minion
                     
                     if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
                     {
-                        _enemy.SeesPlayer(other.GetComponent<Player>());
-                        _enemy.MinionAnimation.Hunt();
-                    }
-                }
-            }
-            else
-            {
-                if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
-                {
-                    var player = other.GetComponent<Player>();
-                    if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
-                    {
+                        print("1" + player.IsInTheDark);
                         _enemy.SeesPlayer(other.GetComponent<Player>());
                         _enemy.MinionAnimation.Hunt();
                     }
@@ -77,18 +66,7 @@ namespace EnemySystem.Minion
                     
                     if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
                     {
-                        _enemy.SeesPlayer(other.GetComponent<Player>());
-                        _enemy.MinionAnimation.Hunt();
-                    }
-                }
-            }
-            else
-            {
-                if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
-                {
-                    var player = other.GetComponent<Player>();
-                    if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
-                    {
+                        print("2" + player.IsInTheDark);
                         _enemy.SeesPlayer(other.GetComponent<Player>());
                         _enemy.MinionAnimation.Hunt();
                     }

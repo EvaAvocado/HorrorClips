@@ -670,7 +670,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -780,7 +780,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3154,7 +3154,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3328,8 +3328,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 2.5
+  _durationFadeIn: 1.3
   _image: {fileID: 1503887222}
-  _color: {r: 0, g: 0, b: 0, a: 0}
+  _sprite: {fileID: 0}
+  _color: {r: 0, g: 0, b: 0, a: 1}
+  _secondColor: {r: 0, g: 0, b: 0, a: 0}
+  _dark: {fileID: 0}
   _actionAfterFadeIn:
     m_PersistentCalls:
       m_Calls:
@@ -3348,6 +3352,8 @@ MonoBehaviour:
   _actionAfterFadeOut:
     m_PersistentCalls:
       m_Calls: []
+  _playFadeInOnStart: 0
+  _playFadeOutOnStart: 0
 --- !u!114 &1503887225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3360,7 +3366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5d7e09493c68e4b9ab01b01dfad050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: Eva
+  _sceneName: Level_1
   _timeBeforeLoadScene: 1.2
 --- !u!1 &1722618425
 GameObject:
@@ -3425,7 +3431,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3662,7 +3668,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3841,7 +3847,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -4011,7 +4017,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 65
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

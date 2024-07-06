@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Core;
+using UnityEngine;
 
 namespace Level
 {
@@ -9,6 +10,8 @@ namespace Level
         [SerializeField] private GameObject _background;
         [SerializeField] private Collider2D _collider2D;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private PlaySound _playSound;
+        [SerializeField] private PlaySound _playSound2;
         
         private static readonly int Fall = Animator.StringToHash("fall");
         private static readonly int Property = Animator.StringToHash("enemy-exit");
@@ -37,6 +40,16 @@ namespace Level
         private void PlaySoundSafe()
         {
             _audioSource.PlayOneShot((AudioClip)Resources.Load("Sounds/" + "safe fall"));
+        }
+
+        public void PlaySoundMonster()
+        {
+            _playSound.PlaySoundByName();
+        }
+        
+        public void PlaySoundSafeOpen()
+        {
+            _playSound2.PlaySoundByName();
         }
     }
 }

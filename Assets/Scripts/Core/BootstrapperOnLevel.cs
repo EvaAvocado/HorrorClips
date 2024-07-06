@@ -22,7 +22,7 @@ namespace Core
             _layersManager.Init();
             _editManager.Init(_layersManager);
             _pressQ.Init(_editManager);
-            _player.OnDie += _layersManager.Fade.FadeIn;
+            //_player.OnDie += _layersManager.Fade.FadeIn;
         }
 
         private void Start()

@@ -8,6 +8,7 @@ using Level;
 using Level.Clips;
 using UI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using Utils;
 
@@ -30,6 +31,7 @@ namespace PlayerSystem
         [SerializeField] private FlashlightOnPlayer _flashlight;
         [SerializeField] private bool _isCantStop;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private UnityEvent _dieEvent;
         
         private Movement _movement;
         private Interaction _interaction;
@@ -179,11 +181,11 @@ namespace PlayerSystem
             {
                 if (other.TryGetComponent(out Creature creature))
                 {
-                    OnDie?.Invoke();
+                    Die();
                 }
                 else if (!_isEditMode)
                 {
-                    OnDie?.Invoke();
+                    Die();
                 }
             }
             
@@ -211,11 +213,11 @@ namespace PlayerSystem
             {
                 if (other.TryGetComponent(out Creature creature))
                 {
-                    OnDie?.Invoke();
+                    Die();
                 }
                 else if (!_isEditMode)
                 {
-                    OnDie?.Invoke();
+                    Die();
                 }
             }
         }
@@ -233,6 +235,12 @@ namespace PlayerSystem
             {
                 other.GetComponent<Clip>().PlayerExit();
             }
+        }
+
+        private void Die()
+        {
+            _dieEvent?.Invoke();
+            OnDie?.Invoke();
         }
 
         private bool CheckItem(IItem item)

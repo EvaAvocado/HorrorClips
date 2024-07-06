@@ -2755,6 +2755,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuManager: {fileID: 7510050044611538069}
+  _audioMixer: {fileID: 24100000, guid: 188abe24183200446b1ce40730260ebe, type: 2}
+  _pitchParameterMusic: MusicPitch
 --- !u!4 &1312972220
 Transform:
   m_ObjectHideFlags: 0

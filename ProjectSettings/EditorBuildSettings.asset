@@ -44,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OutroTV.unity
     guid: 71b400678c9c7bf41b8d29328f9c1c50
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 5a9bc482c342d284685848ec49df6e8c
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 719f02c64026f1943a35fc8576c7a1ef, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3495b73afcd340344a8c18367df3f982, type: 2}

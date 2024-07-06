@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,8 +11,17 @@ namespace Level
         [SerializeField] private float _levelNumber;
         [SerializeField] private string _pitchParameterMusic;
         [SerializeField] private string _pitchParameterSound;
+        [SerializeField] private bool _playOnStart;
 
         private float _pitchFloat = 1f;
+
+        private void Start()
+        {
+            if (_playOnStart)
+            {
+                Init();
+            }
+        }
 
         public void Init()
         {

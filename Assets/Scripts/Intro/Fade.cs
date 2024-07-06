@@ -50,8 +50,7 @@ namespace Intro
                 if (_image != null)
                 {
                     _image.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _durationFadeIn)
-                        .SetEase(Ease.Linear)
-                        .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                        .SetEase(Ease.Linear).OnComplete(() => _actionAfterFadeIn?.Invoke());
                 }
                 else
                 {

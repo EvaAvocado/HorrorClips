@@ -37,7 +37,6 @@ namespace PlayerSystem
         private bool _isHoldAxe;
         private bool _isTriggerForItem;
         private float _pressingTime;
-        private bool _isInTheDark;
         private bool _isFlashlight;
 
         public static event Action<float> OnMove;
@@ -57,11 +56,7 @@ namespace PlayerSystem
 
         public AudioSource AudioSource => _audioSource;
 
-        public bool IsInTheDark
-        {
-            get => _isInTheDark;
-            set => _isInTheDark = value;
-        }
+        public bool IsInTheDark { get; set; }
 
         public bool IsCantStop
         {

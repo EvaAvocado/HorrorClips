@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1139587619281017243
+--- !u!1001 &6749734180447874564
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,17 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2042658634188672286, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4153188698418493289, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 4002717331419670389, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: _sceneName
+      value: Level_04
       objectReference: {fileID: 0}
     - target: {fileID: 4725816749268805833, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _isDeadEnd
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5367038585641510463, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,17 +56,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7033398324744804956, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
-      propertyPath: m_Layer
-      value: 9
+    - target: {fileID: 6047987221714705459, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: _isEndDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879847922711558204, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: _isDeadEnd
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7607441105184073044, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7888838607348643044, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_Name
-      value: e-F-dd
+      value: exit 03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887074774280248579, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

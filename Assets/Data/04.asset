@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66f333482b917e6459bbc91300b4e4ea, type: 3}
-  m_Name: 10
+  m_Name: 04
   m_EditorClassIdentifier: 
   clips:
     gridSize: {x: 6, y: 2}
@@ -19,14 +19,14 @@ MonoBehaviour:
     - row:
       - {fileID: 0}
       - {fileID: 0}
-      - {fileID: 7417104186484508768, guid: 8a996551c84e39942bf1da1c3861dc45, type: 3}
-      - {fileID: 7417104186484508768, guid: 8a996551c84e39942bf1da1c3861dc45, type: 3}
-      - {fileID: 7417104186484508768, guid: 8a996551c84e39942bf1da1c3861dc45, type: 3}
+      - {fileID: 3517618704492747488, guid: 5164a9d8bf5518d4b885d796c218273d, type: 3}
+      - {fileID: 0}
+      - {fileID: 0}
       - {fileID: 0}
     - row:
       - {fileID: 3517618704492747488, guid: 5164a9d8bf5518d4b885d796c218273d, type: 3}
-      - {fileID: 7109609363660778879, guid: cabc5f9c72c9e2d4b870fda2da5a0fa8, type: 3}
-      - {fileID: 3517618704492747488, guid: 5164a9d8bf5518d4b885d796c218273d, type: 3}
-      - {fileID: 5507901906883208970, guid: b681f6e9a9c976b4eb61dcd95640d5d2, type: 3}
       - {fileID: 0}
-      - {fileID: 3517618704492747488, guid: 183908d484775284b8034dc180cbcd46, type: 3}
+      - {fileID: 5507901906883208970, guid: b681f6e9a9c976b4eb61dcd95640d5d2, type: 3}
+      - {fileID: 7109609363660778879, guid: cabc5f9c72c9e2d4b870fda2da5a0fa8, type: 3}
+      - {fileID: 0}
+      - {fileID: 3517618704492747488, guid: fdadf37811e22214d948720f362e0016, type: 3}

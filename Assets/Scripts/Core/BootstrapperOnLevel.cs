@@ -1,6 +1,7 @@
 ﻿using Level;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {
@@ -23,12 +24,19 @@ namespace Core
             _editManager.Init(_layersManager);
             _pressQ.Init(_editManager);
             //_player.OnDie += _layersManager.Fade.FadeIn;
+            SaveLevel();
         }
 
         private void Start()
         {
             _pitchChanger.Init();
             _menuManager.Init();
+        }
+
+        private void SaveLevel()
+        {
+            PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().buildIndex}", 1);
+            PlayerPrefs.Save();
         }
     }
 }

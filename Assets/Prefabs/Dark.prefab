@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 4398069056482578239}
   - component: {fileID: 2915437954860077447}
   - component: {fileID: 6252862214735132145}
+  - component: {fileID: 34600930341983091}
   m_Layer: 0
   m_Name: Dark
   m_TagString: Untagged
@@ -152,7 +153,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1251186755
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: a15c4e0b89376d1409e9c667abd3f9f9, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -245,6 +246,8 @@ MonoBehaviour:
   _image: {fileID: 0}
   _sprite: {fileID: 1482393384132795976}
   _color: {r: 0, g: 0, b: 0, a: 0}
+  _secondColor: {r: 0, g: 0, b: 0, a: 0}
+  _dark: {fileID: 0}
   _actionAfterFadeIn:
     m_PersistentCalls:
       m_Calls: []
@@ -253,3 +256,30 @@ MonoBehaviour:
       m_Calls: []
   _playFadeInOnStart: 0
   _playFadeOutOnStart: 0
+--- !u!50 &34600930341983091
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794634886600333088}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

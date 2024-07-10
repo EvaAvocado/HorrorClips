@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 6015839686359269581}
+  _dark: {fileID: 1939604446807105515}
 --- !u!61 &5450544290856749701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4156,7 +4157,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7888838607348643044}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

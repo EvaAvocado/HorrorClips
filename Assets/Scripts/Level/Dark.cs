@@ -17,6 +17,8 @@ namespace Level
         private const float TRANSPARENCY = 0.5f;
         private const float MAX_COLOR = 1f;
 
+        private bool _isEditMode;
+
         private void OnEnable()
         {
             EditManager.OnChangeEditMode += ChangeEditMode;
@@ -29,13 +31,32 @@ namespace Level
 
         private void ChangeEditMode(bool status)
         {
-            if (status)
+            _isEditMode = status;
+            if (_isEditMode)
             {
                 _collider2D.isTrigger = true;
+                //_fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
             }
             else
             {
                 _collider2D.isTrigger = false;
+                _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
+            }
+        }
+
+        public void MouseEnter()
+        {
+            if (_isEditMode)
+            {
+                _fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
+            }
+        }
+
+        public void MouseExit()
+        {
+            if (_isEditMode)
+            {
+                _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
             }
         }
 

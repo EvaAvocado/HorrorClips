@@ -45,6 +45,7 @@ namespace Level.Clips
         public StopWall LeftStop => _leftStop;
         public BoxCollider2D ColliderWithoutDoors => _colliderWithoutDoors;
         public bool IsEditMode => _isEditMode;
+        public ClipStateEnum StateEnum => _clipState;
 
         public List<SpriteRenderer> SpriteRenderers
         {
@@ -113,6 +114,11 @@ namespace Level.Clips
                 transform.localPosition = new Vector3(_mousePos.x - _startPos.x, _mousePos.y - _startPos.y,
                     transform.localPosition.z);
             }
+
+            // if (_clipState != ClipStateEnum.Exit)
+            // {
+            //     
+            // }
         }
 
         public void MouseDown()

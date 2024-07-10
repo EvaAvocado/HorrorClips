@@ -15,12 +15,18 @@ namespace Level.Clips
             {
                 _collider.isTrigger = false;
             }
+
+            if (!_stopWall.CanHaveCollider)
+            {
+                _collider.isTrigger = true;
+            }
         }
 
         //TODO
          private void OnTriggerEnter2D(Collider2D other)
          {
-             if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
+             if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd
+                 && _stopWall.CanHaveCollider)
              {
                  // Debug.Log(other.name);
                  gameObject.layer = default;
@@ -30,7 +36,8 @@ namespace Level.Clips
 //TODO
          private void OnTriggerStay2D(Collider2D other)
          {
-             if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
+             if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd
+                 && _stopWall.CanHaveCollider)
              {
                  gameObject.layer = default;
                  _collider.isTrigger = true;
@@ -39,7 +46,8 @@ namespace Level.Clips
 //TODO
          private void OnTriggerExit2D(Collider2D other)
          {
-             if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd)
+             if (_stopWall.ClipLayer.Contains(other.gameObject.layer) && !_stopWall.IsDeadEnd
+                 && _stopWall.CanHaveCollider)
              {
                  //Debug.Log(other.name);
                  gameObject.layer = 9;

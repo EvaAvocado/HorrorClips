@@ -46,6 +46,16 @@ namespace Level
             _countOfCreatures = _transparentCreatures.Count;
         }
 
+        private void Start()
+        {
+            if (_clip.StateEnum == Clip.ClipStateEnum.Exit)
+            {
+                _rightStop.EnableWall(true);
+                _rightStop.ClipExit();
+                _collider.isTrigger = true;
+            }
+        }
+
         private void OnEnable()
         {
             Minion.OnDieMinion += CheckDiedMinion;
@@ -59,7 +69,8 @@ namespace Level
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_creatureLayer.Contains(other.gameObject.layer)
-                && _leftSprites is not null && !_clip.IsEditMode)
+                && _leftSprites is not null && !_clip.IsEditMode
+                && _clip.StateEnum != Clip.ClipStateEnum.Exit)
             {
                 if (other.TryGetComponent(out Player player))
                 {
@@ -119,6 +130,7 @@ namespace Level
             }
 //TODO
             if (_clipLayer.Contains(other.gameObject.layer)
+                && _clip.StateEnum != Clip.ClipStateEnum.Exit
                 && _leftSprites is null
                 && other.TryGetComponent(out Clip clip)
                 && clip != _clip)
@@ -135,6 +147,7 @@ namespace Level
         {
             //TODO
             if (_clipLayer.Contains(other.gameObject.layer)
+                && _clip.StateEnum != Clip.ClipStateEnum.Exit
                 && _leftSprites is null
                 && other.TryGetComponent(out Clip clip)
                 && clip != _clip)
@@ -147,6 +160,7 @@ namespace Level
             }
 
             if (_clipLayer.Contains(other.gameObject.layer)
+                && _clip.StateEnum != Clip.ClipStateEnum.Exit
                 && _leftSprites is not null
                 && other.TryGetComponent(out Clip clip1)
                 && !clip1.LeftStop.GetEnableWall
@@ -162,7 +176,8 @@ namespace Level
         {
             if (_creatureLayer.Contains(other.gameObject.layer) && !_clip.IsEditMode)
             {
-                if (other.TryGetComponent(out Player player))
+                if (other.TryGetComponent(out Player player)
+                    && _clip.StateEnum != Clip.ClipStateEnum.Exit)
                 {
                     Transparent(MAX_COLOR);
                     
@@ -219,10 +234,11 @@ namespace Level
             }
 //TODO
             if (_clipLayer.Contains(other.gameObject.layer)
-                && _leftSprites == other.GetComponent<Clip>().LeftSprites
-                && other.GetComponent<Clip>() != _clip)
+                && other.TryGetComponent(out Clip clip)
+                && _clip.StateEnum != Clip.ClipStateEnum.Exit
+                && _leftSprites == clip.LeftSprites
+                && clip != _clip)
             {
-                //Debug.Log(_leftSprites == other.GetComponent<Clip>().LeftSprites);
                 _leftSprites = null;
                 _collider.isTrigger = false;
                 _rightStop.EnableWall(false);

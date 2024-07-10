@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 630766638074683421, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4002717331419670389, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _sceneName
       value: Level_11

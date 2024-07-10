@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9136996636495852369}
   - component: {fileID: 3252457836660974670}
   - component: {fileID: 3673162486435096865}
+  - component: {fileID: 8229554329940446599}
   m_Layer: 0
   m_Name: ClipPlace
   m_TagString: Clip Place
@@ -50,7 +51,7 @@ MonoBehaviour:
   _sprite: {fileID: 212508354263101198}
   _clipLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2048
   _currentClip: {fileID: 0}
 --- !u!61 &3673162486435096865
 BoxCollider2D:
@@ -95,8 +96,35 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 5}
+  m_Size: {x: 8, y: 15}
   m_EdgeRadius: 0
+--- !u!50 &8229554329940446599
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609205334525196599}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7989655990987352459
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +196,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 822174203
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d5f565d37c816e94c896c709379f145c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -252,7 +280,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 822174203
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5f565d37c816e94c896c709379f145c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8039216}

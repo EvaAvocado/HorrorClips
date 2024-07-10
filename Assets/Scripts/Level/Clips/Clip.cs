@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Array2DEditor;
+using Core;
 using DG.Tweening;
 using EnemySystem.CreatureSystem;
 using EnemySystem.Minion;
@@ -39,19 +40,6 @@ namespace Level.Clips
         public static event Action OnStartMoving;
         public static event Action OnStopMoving;
 
-        public List<SpriteRenderer> LeftSprites => _leftSprites;
-        public List<SpriteRenderer> RightSprites => _rightSprites;
-        public StopWall RightStop => _rightStop;
-        public StopWall LeftStop => _leftStop;
-        public BoxCollider2D ColliderWithoutDoors => _colliderWithoutDoors;
-        public bool IsEditMode => _isEditMode;
-
-        public List<SpriteRenderer> SpriteRenderers
-        {
-            get => _spriteRenderers;
-            set => _spriteRenderers = value;
-        }
-
         public enum ClipStateEnum
         {
             Default,
@@ -62,6 +50,19 @@ namespace Level.Clips
         }
 
         #region Properties
+
+        public List<SpriteRenderer> SpriteRenderers
+        {
+            get => _spriteRenderers;
+            set => _spriteRenderers = value;
+        }
+
+        public List<SpriteRenderer> LeftSprites => _leftSprites;
+        public List<SpriteRenderer> RightSprites => _rightSprites;
+        public StopWall RightStop => _rightStop;
+        public StopWall LeftStop => _leftStop;
+        public BoxCollider2D ColliderWithoutDoors => _colliderWithoutDoors;
+        public bool IsEditMode => _isEditMode;
 
         public ClipPlace CurrentClipPlace
         {
@@ -76,6 +77,7 @@ namespace Level.Clips
 
         public ClipStateEnum ClipState
         {
+            get => _clipState;
             set => _clipState = value;
         }
 
@@ -140,7 +142,7 @@ namespace Level.Clips
             }
         }
 
-        private void SetSortingLayer(string layerName)
+        public void SetSortingLayer(string layerName)
         {
             foreach (var sprite in _spriteRenderers)
             {
@@ -185,7 +187,7 @@ namespace Level.Clips
                 _clipChooseSprite.FadeIn();
             }
             else if (!_isEditMode && (_clipState == ClipStateEnum.Enter || _clipState == ClipStateEnum.Exit ||
-                                    _clipState == ClipStateEnum.MonsterIn || _clipState == ClipStateEnum.PlayerIn))
+                                      _clipState == ClipStateEnum.MonsterIn || _clipState == ClipStateEnum.PlayerIn))
             {
                 _clipChooseSprite.FadeOut();
             }

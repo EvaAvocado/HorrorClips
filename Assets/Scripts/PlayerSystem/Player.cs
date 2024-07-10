@@ -48,6 +48,7 @@ namespace PlayerSystem
         public static event Action OnThrow;
         public static event Action OnRelease;
         public static event Action OnSwing;
+        public static event Action OnHasFlashlight;
 
         private const string HORIZONTAL = "Horizontal";
         public Movement Movement => _movement;
@@ -280,6 +281,7 @@ namespace PlayerSystem
         public void OnFlashlight()
         {
             _isFlashlight = true;
+            OnHasFlashlight?.Invoke();
             _flashlight.OnFlashlight();
         }
         

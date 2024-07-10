@@ -202,6 +202,10 @@ PrefabInstance:
       propertyPath: _levelData
       value: 
       objectReference: {fileID: 11400000, guid: 907e149fcb8e7434f9a4f659cd75f12e, type: 2}
+    - target: {fileID: 6644012850003721652, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: _levelName
+      value: Level 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

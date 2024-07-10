@@ -14,6 +14,7 @@ namespace Core
         [SerializeField] private PitchChanger _pitchChanger;
         [SerializeField] private PressQ _pressQ;
         [SerializeField] private LevelManager _levelManager;
+        [SerializeField] private string _levelName;
 
         private readonly Game _game = new();
         
@@ -35,7 +36,7 @@ namespace Core
 
         private void SaveLevel()
         {
-            PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().buildIndex}", 1);
+            PlayerPrefs.SetInt(_levelName, 1);
             PlayerPrefs.Save();
         }
     }

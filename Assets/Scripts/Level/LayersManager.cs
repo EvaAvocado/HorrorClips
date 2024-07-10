@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using Data;
 using EnemySystem.CreatureSystem;
 using Intro;
 using Level.Clips;
 using PlayerSystem;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Level

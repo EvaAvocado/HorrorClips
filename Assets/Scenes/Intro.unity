@@ -3368,7 +3368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5d7e09493c68e4b9ab01b01dfad050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: Level_1
+  _sceneName: Level_01
   _timeBeforeLoadScene: 1.2
 --- !u!1 &1722618425
 GameObject:

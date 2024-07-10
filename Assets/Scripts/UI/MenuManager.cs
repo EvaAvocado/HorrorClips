@@ -1,41 +1,53 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UI;
 using UnityEngine;
 using UnityEngine.Localization.Components;
-using UnityEngine.Localization.Settings;
+using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private GameObject _menu;
-    [SerializeField] private LocalizeStringEvent _localizeStringEvent;
-    [SerializeField] private VolumeController[] _volumeControllers;
-    [SerializeField] private bool _isCanOpen = true;
-    
-    public static event Action OnMenuOpen; 
-    public static event Action OnMenuClose; 
+    public class MenuManager : MonoBehaviour
+    {
+        [SerializeField] private GameObject _menu;
+        [SerializeField] private Button _menuButton;
+        [SerializeField] private LevelSelection _level;
+        [SerializeField] private LocalizeStringEvent _localizeStringEvent;
+        [SerializeField] private VolumeController[] _volumeControllers;
+        [SerializeField] private bool _isCanOpen = true;
 
-    public void Init()
-    {
-        foreach (var controller in _volumeControllers)
+        public static event Action OnMenuOpen;
+        public static event Action OnMenuClose;
+
+        public void Init()
         {
-            controller.Init();
+            foreach (var controller in _volumeControllers)
+            {
+                controller.Init();
+            }
         }
-    }
-    
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf)
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && _level.gameObject.activeSelf)
+            {
+                _level.gameObject.SetActive(false);
+                _menu.SetActive(true);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf)
+            {
+                CloseMenu();
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf && _isCanOpen)
+            {
+                _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
+                _menu.SetActive(true);
+                OnMenuOpen?.Invoke();
+            }
+        }
+
+        public void CloseMenu()
         {
             _menu.SetActive(false);
             OnMenuClose?.Invoke();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf && _isCanOpen)
-        {
-            _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
-            _menu.SetActive(true);
-            OnMenuOpen?.Invoke();
         }
     }
 }

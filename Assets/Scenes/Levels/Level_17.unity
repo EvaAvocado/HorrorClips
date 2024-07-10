@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1991256900537320709, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _deltaToPitch
-      value: 4
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 6222664996868998095, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_ChildCameras.Array.size

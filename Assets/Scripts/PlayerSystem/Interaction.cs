@@ -95,13 +95,18 @@ namespace PlayerSystem
             return false;
         }
 
-        public void CheckAxe()
+        public void CheckAxe(GameObject hint = null)
         {
             if (_itemInHand is not null 
                 && _itemInHand.GetTransform().parent is null)
             {
                 _itemInHand = null;
                 _isAxeInHand = false;
+                
+                if (hint is not null)
+                {
+                    hint.SetActive(false);
+                }
             }
         }
         

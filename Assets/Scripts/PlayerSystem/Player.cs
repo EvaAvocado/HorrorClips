@@ -129,15 +129,20 @@ namespace PlayerSystem
                 && !_isEditMode)
             {
                 if (_interaction.HaveAxeInHand
-                    && _isTriggerForItem)
+                    && _isTriggerForItem
+                    && Input.GetKeyUp(KeyCode.E))
                 {
                     OnSwing?.Invoke();
                     return;
                 }
                 
-                if (!_interaction.Action(_isHoldAxe))
+                if (Input.GetKeyUp(KeyCode.E) 
+                    && !_interaction.Action(_isHoldAxe))
                 {
                     _interaction.SetItem(null);
+                    _hint.SetActive(false);
+                    _pressButtons.SetCantPress(PressButtonEnum.E);
+                    _isTriggerForItem = false;
                 }
 
                 if (_spriteRenderers[0].flipX)
@@ -145,16 +150,13 @@ namespace PlayerSystem
                     _interaction.Flip(-1);
                 }
                 
-                if (_isHoldAxe)
+                if (_isHoldAxe
+                    && Input.GetKeyUp(KeyCode.Q))
                 {
                     OnRelease?.Invoke();
+                    _pressingTime = 0;
+                    _isHoldAxe = false;
                 }
-                
-                _pressingTime = 0;
-                _isHoldAxe = false;
-                _isTriggerForItem = false;
-                _hint.SetActive(false);
-                _pressButtons.SetCantPress(PressButtonEnum.E);
             }
         }
 
@@ -343,6 +345,6 @@ namespace PlayerSystem
         public void HoldAxe() => _isHoldAxe = true;
         public void NotHoldAxe() => _isHoldAxe = false;
         public void DropAxe() => _interaction.Drop();
-        public void CheckAxe() => _interaction.CheckAxe();
+        public void CheckAxe() => _interaction.CheckAxe(_hint);
     }
 }

@@ -26,14 +26,19 @@ namespace EnemySystem.Minion
         private Player _player;
         private EditManager _editManager;
         private bool _isCanPlaySound = true;
-        
+
         public static event Action<Minion> OnDieMinion;
 
         public GameObject Parent => _parent;
         public MinionAnimation MinionAnimation => _minionAnimation;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
-
         public Player Player => _player;
+
+        public bool InDark
+        {
+            get;
+            set;
+        }
 
         public float Speed
         {

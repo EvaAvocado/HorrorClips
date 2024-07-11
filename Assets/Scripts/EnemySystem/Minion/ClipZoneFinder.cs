@@ -8,6 +8,7 @@ namespace EnemySystem.Minion
     {
         [SerializeField] private ClipZone _clipZone;
         [SerializeField] private Minion _minion;
+        [SerializeField] private LayerMask _darkMask;
 
         public Minion Minion => _minion;
 
@@ -16,6 +17,27 @@ namespace EnemySystem.Minion
             if (_clipZone.ClipLayer.Contains(other.gameObject.layer))
             {
                 _clipZone.TryChangeCollider(other);
+            }
+            
+            if (_darkMask.Contains(other.gameObject.layer))
+            {
+                _minion.InDark = true;
+            } 
+        }
+        
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (_darkMask.Contains(other.gameObject.layer))
+            {
+                _minion.InDark = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (_darkMask.Contains(other.gameObject.layer))
+            {
+                _minion.InDark = false;
             }
         }
     }

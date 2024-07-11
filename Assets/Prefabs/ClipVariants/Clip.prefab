@@ -4649,6 +4649,10 @@ PrefabInstance:
       value: Dark
       objectReference: {fileID: 0}
     - target: {fileID: 5794634886600333088, guid: b517886b3545d2d42bf13a98d41b6356, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794634886600333088, guid: b517886b3545d2d42bf13a98d41b6356, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

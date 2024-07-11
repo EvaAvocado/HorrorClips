@@ -14,7 +14,6 @@ namespace EnemySystem.Minion
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private BoxCollider2D _collider2D;
         [SerializeField] private Clip _currentClip;
-        [SerializeField] private LayerMask _dark;
 
         private bool _isEditMode;
         private bool _inDark;
@@ -45,8 +44,9 @@ namespace EnemySystem.Minion
             if (_playerLayer.Contains(other.gameObject.layer) && !_isEditMode)
             {
                 var player = other.GetComponent<Player>();
-
-                if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
+                
+                if ((player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
+                    && (!_enemy.InDark || player.HaveFlashlight))
                 {
                     //print("1" + player.IsInTheDark);
                     _enemy.SeesPlayer(other.GetComponent<Player>());
@@ -63,7 +63,8 @@ namespace EnemySystem.Minion
                 {
                     var player = other.GetComponent<Player>();
 
-                    if (player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
+                    if ((player.HaveFlashlight && player.IsInTheDark || !player.IsInTheDark)
+                        && (!_enemy.InDark || player.HaveFlashlight))
                     {
                         //print("2" + player.IsInTheDark);
                         _enemy.SeesPlayer(other.GetComponent<Player>());

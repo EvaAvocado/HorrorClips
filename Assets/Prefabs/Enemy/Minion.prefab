@@ -242,6 +242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clipZone: {fileID: 77801114005738813}
   _minion: {fileID: 2255988732289502183}
+  _darkMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!50 &357651977164680877
 Rigidbody2D:
   serializedVersion: 4
@@ -531,9 +534,6 @@ MonoBehaviour:
   _minionAnimation: {fileID: 8763517314687628812}
   _distanceToLostPlayer: {x: 20, y: 0.5}
   _audioSource: {fileID: 4199955063167584784}
-  _dark:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!82 &4199955063167584784
 AudioSource:
   m_ObjectHideFlags: 0

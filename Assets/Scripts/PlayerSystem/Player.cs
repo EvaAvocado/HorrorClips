@@ -22,7 +22,6 @@ namespace PlayerSystem
         [SerializeField] private Transform _hand;
         [SerializeField] private List<Animator> _animators;
         [SerializeField] private float _speed;
-        [SerializeField] private KeyCode _interactionKey;
         [SerializeField] private LayerMask _itemLayer;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private LayerMask _clipLayer;
@@ -31,6 +30,7 @@ namespace PlayerSystem
         [SerializeField] private FlashlightOnPlayer _flashlight;
         [SerializeField] private bool _isCantStop;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private Press _pressButtons;
         [SerializeField] private UnityEvent _dieEvent;
         
         private Movement _movement;
@@ -40,6 +40,7 @@ namespace PlayerSystem
         private bool _isTriggerForItem;
         private float _pressingTime;
         private bool _isFlashlight;
+        private bool _isOpenMenu;
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -68,17 +69,21 @@ namespace PlayerSystem
         private void Awake()
         {
             _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
-            _interaction = new Interaction(new ChangeStrategy(_animators), _hand, this);
+            _interaction = new Interaction(new ChangeStrategy(_animators), _hand, this, _pressButtons);
         }
         
         private void OnEnable()
         {
             EditManager.OnChangeEditMode += ChangeEditMode;
+            MenuManager.OnMenuOpen += MenuOpen;
+            MenuManager.OnMenuClose += MenuClose;
         }
 
         private void OnDisable()
         {
             EditManager.OnChangeEditMode -= ChangeEditMode;
+            MenuManager.OnMenuOpen -= MenuOpen;
+            MenuManager.OnMenuClose -= MenuClose;
         }
 
         private void Update()
@@ -105,18 +110,23 @@ namespace PlayerSystem
             }
 
             if (!_isTriggerForItem 
-                && Input.GetKey(_interactionKey)
-                && _interaction.HaveAxeInHand)
+                && Input.GetKey(KeyCode.Q)
+                && _interaction.HaveAxeInHand
+                && !_isOpenMenu
+                && !_isEditMode)
             {
                 _pressingTime += Time.deltaTime;
-
+                
                 if (!_isHoldAxe)
                 {
                     OnThrow?.Invoke();
                 }
             }
             
-            if (Input.GetKeyUp(_interactionKey))
+            if ((Input.GetKeyUp(KeyCode.E)
+                || Input.GetKeyUp(KeyCode.Q))
+                && !_isOpenMenu
+                && !_isEditMode)
             {
                 if (_interaction.HaveAxeInHand
                     && _isTriggerForItem)
@@ -144,6 +154,7 @@ namespace PlayerSystem
                 _isHoldAxe = false;
                 _isTriggerForItem = false;
                 _hint.SetActive(false);
+                _pressButtons.SetCantPress(PressButtonEnum.E);
             }
         }
 
@@ -160,6 +171,8 @@ namespace PlayerSystem
             {
                 _playerCollider.isTrigger = false;
             }
+
+            CheckButton();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -175,6 +188,7 @@ namespace PlayerSystem
                 _interaction.SetItem(item);
                 _isTriggerForItem = true;
                 _hint.SetActive(true);
+                _pressButtons.SetCanPress(PressButtonEnum.E);
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
@@ -202,11 +216,15 @@ namespace PlayerSystem
                 && iitem.CheckUse(_interaction.HaveAxeInHand)
                 && CheckItem(iitem)
                 && (_isTriggerForItem == false 
-                || iitem.GetItemEnum() == ItemEnum.AXE))
+                || iitem.GetItemEnum() == ItemEnum.AXE)
+                && !_isOpenMenu
+                && !_isEditMode)
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
                 _isTriggerForItem = true;
                 _hint.SetActive(true);
+                _pressButtons.SetCanPress(PressButtonEnum.E);
+                _pressButtons.SetCantPress(PressButtonEnum.Q);
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
@@ -229,6 +247,12 @@ namespace PlayerSystem
                 _interaction.SetItem(null);
                 _isTriggerForItem = false;
                 _hint.SetActive(false);
+                _pressButtons.SetCantPress(PressButtonEnum.E);
+
+                if (_interaction.HaveAxeInHand)
+                {
+                    _pressButtons.SetCanPress(PressButtonEnum.Q);
+                }
             }
             
             if (_clipLayer.Contains(other.gameObject.layer) && !_isEditMode)
@@ -258,6 +282,39 @@ namespace PlayerSystem
             }
             
             return true;
+        }
+
+        private void MenuOpen()
+        {
+            _isOpenMenu = true;
+            CheckButton();
+        }
+
+        private void MenuClose()
+        {
+            _isOpenMenu = false;
+            CheckButton();
+        }
+
+        private void CheckButton()
+        {
+            if (_isOpenMenu || _isEditMode)
+            {
+                _pressButtons.SetCantPress(PressButtonEnum.E);
+                _pressButtons.SetCantPress(PressButtonEnum.Q);
+            }
+            else
+            {
+                if (_interaction.HaveAxeInHand)
+                {
+                    _pressButtons.SetCanPress(PressButtonEnum.Q);
+                }
+
+                if (_isTriggerForItem)
+                {
+                    _pressButtons.SetCanPress(PressButtonEnum.E);
+                }
+            }
         }
 
         public void UseAxe()

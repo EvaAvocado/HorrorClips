@@ -14,8 +14,10 @@ namespace EnemySystem.Minion
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private BoxCollider2D _collider2D;
         [SerializeField] private Clip _currentClip;
+        [SerializeField] private LayerMask _dark;
 
         private bool _isEditMode;
+        private bool _inDark;
 
         public LayerMask ClipLayer => _clipLayer;
 

@@ -88,7 +88,7 @@ namespace EnemySystem.Minion
 
         private void CheckPlayerPos()
         {
-            if (_player != null)
+            if (_player is not null)
             {
                 var distance = transform.position - _player.transform.position;
                 if (_stateMachine.GetState() is Hunt &&

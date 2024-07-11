@@ -36,13 +36,13 @@ namespace Level
 
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.Q) && !_isEditMode && _isCanPress)
+            if (Input.GetKeyUp(KeyCode.Space) && !_isEditMode && _isCanPress)
             {
                 _isEditMode = true;
                 SwitchState();
                 OnChangeEditMode?.Invoke(_isEditMode);
             }
-            else if (Input.GetKeyUp(KeyCode.Q) && _isEditMode && _isCanPress)
+            else if (Input.GetKeyUp(KeyCode.Space) && _isEditMode && _isCanPress)
             {
                 SwitchState();
                 _isEditMode = false;

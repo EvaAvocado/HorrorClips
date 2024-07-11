@@ -54,7 +54,7 @@ namespace PlayerSystem
 
         private void Update()
         {
-            if (_isCanRelease && !Input.GetKey(KeyCode.E))
+            if (_isCanRelease && !Input.GetKey(KeyCode.Q))
             {
                 ResetAnimator();
                 _isCanRelease = false;

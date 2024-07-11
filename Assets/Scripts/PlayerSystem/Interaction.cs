@@ -1,6 +1,7 @@
 ﻿using System;
 using Items;
 using Items.Strategy;
+using UI;
 using UnityEngine;
 
 namespace PlayerSystem
@@ -10,6 +11,7 @@ namespace PlayerSystem
         private readonly ChangeStrategy _changeStrategy;
         private readonly Transform _hand;
         private readonly Player _player;
+        private readonly Press _pressButtons;
         private readonly float _needTimeForThrowAxe;
         
         private IStrategy _strategy;
@@ -18,11 +20,12 @@ namespace PlayerSystem
         private bool _isAxeInHand;
         private bool _isHaveFlashlight;
 
-        public Interaction(ChangeStrategy changeStrategy, Transform hand, Player player)
+        public Interaction(ChangeStrategy changeStrategy, Transform hand, Player player, Press pressButtons)
         {
             _changeStrategy = changeStrategy;
             _hand = hand;
             _player = player;
+            _pressButtons = pressButtons;
         }
         
         public bool HaveFlashlight => _isHaveFlashlight;
@@ -55,6 +58,7 @@ namespace PlayerSystem
                     _isAxeInHand = true;
                     PlaySoundPickup();
                     _strategy?.Use(_hand, _item, _player);
+                    _pressButtons.SetCanPress(PressButtonEnum.Q);
                     return false;
                 }
                 
@@ -117,6 +121,7 @@ namespace PlayerSystem
                 _itemInHand.Drop();
                 _strategy = _changeStrategy.SwitchStrategy(_itemInHand.GetItemEnum());
                 _strategy?.AlternativeUse(_itemInHand);
+                _pressButtons.SetCantPress(PressButtonEnum.Q);
                 CheckAxe();
             }
         }

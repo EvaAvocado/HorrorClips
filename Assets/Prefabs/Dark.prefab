@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4398069056482578239}
   - component: {fileID: 2915437954860077447}
   - component: {fileID: 6252862214735132145}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,6 +245,8 @@ MonoBehaviour:
   _image: {fileID: 0}
   _sprite: {fileID: 1482393384132795976}
   _color: {r: 0, g: 0, b: 0, a: 0}
+  _secondColor: {r: 0, g: 0, b: 0, a: 0}
+  _dark: {fileID: 0}
   _actionAfterFadeIn:
     m_PersistentCalls:
       m_Calls: []

@@ -2,6 +2,7 @@
 using PlayerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Core
 {
@@ -11,8 +12,8 @@ namespace Core
         [SerializeField] private EditManager _editManager;
         [SerializeField] private LayersManager _layersManager;
         [SerializeField] private MenuManager _menuManager;
-        [SerializeField] private PitchChanger _pitchChanger;
-        [SerializeField] private PressQ _pressQ;
+        [SerializeField] private PitchChanger _pitchChanger; 
+        [FormerlySerializedAs("_pressQ")] [SerializeField] private Press _press;
         [SerializeField] private LevelManager _levelManager;
 
         private readonly Game _game = new();
@@ -22,7 +23,7 @@ namespace Core
             _levelManager.Init();
             _layersManager.Init();
             _editManager.Init(_layersManager);
-            _pressQ.Init(_editManager);
+            _press.Init(_editManager);
             //_player.OnDie += _layersManager.Fade.FadeIn;
             SaveLevel();
         }

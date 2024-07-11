@@ -139,6 +139,7 @@ namespace PlayerSystem
                 if (Input.GetKeyUp(KeyCode.E) 
                     && !_interaction.Action(_isHoldAxe))
                 {
+                    _movement.Move(0.0001f);
                     _interaction.SetItem(null);
                     _hint.SetActive(false);
                     _pressButtons.SetCantPress(PressButtonEnum.E);
@@ -219,8 +220,7 @@ namespace PlayerSystem
                 && CheckItem(iitem)
                 && (_isTriggerForItem == false 
                 || iitem.GetItemEnum() == ItemEnum.AXE)
-                && !_isOpenMenu
-                && !_isEditMode)
+                && !_isOpenMenu)
             {
                 _interaction.SetItem(other.GetComponent<IItem>());
                 _isTriggerForItem = true;

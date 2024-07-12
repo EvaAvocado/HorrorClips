@@ -19,7 +19,11 @@ namespace Level.Clips
 
         public bool IsEmpty => _currentClip == null;
 
-        public Clip CurrentClip => _currentClip;
+        public Clip CurrentClip
+        {
+            get => _currentClip;
+            set => _currentClip = value;
+        }
 
         #endregion
 
@@ -56,6 +60,24 @@ namespace Level.Clips
 
                 _clipIn.ChangePosition(new Vector3(transform.position.x, transform.position.y,
                     _clipIn.transform.position.z));
+
+                _currentClip = _clipIn;
+            }
+            else if (comparisonClip == _clipIn && !IsEmpty && _currentClip.ClipState == Clip.ClipStateEnum.Default)
+            {
+                _currentClip.IsCanDrag = false;
+                _currentClip.CurrentClipPlace = _clipIn.CurrentClipPlace;
+                _currentClip.SetSortingLayer("RoomTop");
+                _currentClip.ChangePosition(new Vector3(_currentClip.CurrentClipPlace.transform.position.x,
+                    _currentClip.CurrentClipPlace.transform.position.y,
+                    _currentClip.transform.position.z));
+                _clipIn.CurrentClipPlace.CurrentClip = _currentClip;
+
+                _clipIn.IsCanDrag = false;
+                _clipIn.CurrentClipPlace = this;
+                _clipIn.SetSortingLayer("RoomTopTop");
+                _clipIn.ChangePosition(new Vector3(transform.position.x, transform.position.y,
+                    _clipIn.transform.position.z));
                 _currentClip = _clipIn;
             }
             else if (_currentClip != null)
@@ -77,7 +99,7 @@ namespace Level.Clips
         {
             if (_clipLayer.Contains(other.gameObject.layer))
             {
-                _clipIn = other.GetComponent<Clip>();
+                _clipIn = other.GetComponent<CheckerClipPlace>().Clip;
             }
         }
 

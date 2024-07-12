@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: _levelData
       value: 
       objectReference: {fileID: 11400000, guid: b4900b97564d5a54484dc78df4140bd8, type: 2}
+    - target: {fileID: 6644012850003721652, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: _levelName
+      value: Level 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8670252916277386960, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_LocalPosition.x
       value: -65

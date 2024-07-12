@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using Level;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Intro
+namespace Core
 {
     public class Fade : MonoBehaviour
     {

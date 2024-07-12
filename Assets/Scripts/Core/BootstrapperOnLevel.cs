@@ -1,5 +1,6 @@
 ﻿using Level;
 using PlayerSystem;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -15,6 +16,7 @@ namespace Core
         [SerializeField] private PitchChanger _pitchChanger; 
         [FormerlySerializedAs("_pressQ")] [SerializeField] private Press _press;
         [SerializeField] private LevelManager _levelManager;
+        [SerializeField] private string _levelName;
 
         private readonly Game _game = new();
         
@@ -36,7 +38,7 @@ namespace Core
 
         private void SaveLevel()
         {
-            PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().buildIndex}", 1);
+            PlayerPrefs.SetInt(_levelName, 1);
             PlayerPrefs.Save();
         }
     }

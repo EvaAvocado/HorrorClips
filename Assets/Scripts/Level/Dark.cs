@@ -1,4 +1,5 @@
 ﻿using System;
+using Core;
 using Intro;
 using PlayerSystem;
 using UnityEngine;
@@ -15,26 +16,55 @@ namespace Level
         
         private const float TRANSPARENCY = 0.5f;
         private const float MAX_COLOR = 1f;
+        
+        private bool _playerHasLight;
+        private bool _isEditMode;
 
         private void OnEnable()
         {
             EditManager.OnChangeEditMode += ChangeEditMode;
+            Player.OnHasFlashlight += ChangePlayerHasLightTrue;
         }
 
         private void OnDisable()
         {
             EditManager.OnChangeEditMode -= ChangeEditMode;
+            Player.OnHasFlashlight -= ChangePlayerHasLightTrue;
         }
 
         private void ChangeEditMode(bool status)
         {
-            if (status)
+            _isEditMode = status;
+            if (_isEditMode)
             {
                 _collider2D.isTrigger = true;
+                //_fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
             }
             else
             {
                 _collider2D.isTrigger = false;
+                _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
+            }
+        }
+
+        private void ChangePlayerHasLightTrue()
+        {
+            _playerHasLight = true;
+        }
+
+        public void MouseEnter()
+        {
+            if (_isEditMode && _playerHasLight)
+            {
+                _fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
+            }
+        }
+
+        public void MouseExit()
+        {
+            if (_isEditMode && _playerHasLight)
+            {
+                _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
             }
         }
 

@@ -7,7 +7,7 @@ namespace Level
     {
         public void Init()
         {
-            print("start");
+            //print("start");
         }
 
         private void Update()

@@ -7,13 +7,13 @@ namespace Level
     public class PitchChanger : MonoBehaviour
     {
         [SerializeField] private AudioMixer _audioMixer;
-        [SerializeField] private float _deltaToPitch = 8f;
         [SerializeField] private float _levelNumber;
         [SerializeField] private string _pitchParameterMusic;
         [SerializeField] private string _pitchParameterSound;
         [SerializeField] private bool _playOnStart;
 
         private float _pitchFloat = 1f;
+        private float _deltaToPitch = 4.6f;
 
         private void Start()
         {

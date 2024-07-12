@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -10,20 +8,20 @@ namespace UI
     {
         [SerializeField] private List<Button> _buttonForSelection;
 
-        private void Start()
+        private void OnEnable()
         {
             for (int i = 0; i < _buttonForSelection.Count; i++)
             {
-                if (PlayerPrefs.GetInt($"{i + 1}") == 1)
+                _buttonForSelection[i].interactable = false;
+                
+                if (PlayerPrefs.HasKey(_buttonForSelection[i].gameObject.name))
                 {
-                    _buttonForSelection[i].interactable = true;
-                    var i1 = i + 1;
-                    _buttonForSelection[i].onClick.AddListener(() => SceneManager.LoadScene(i1));
+                    if (PlayerPrefs.GetInt(_buttonForSelection[i].gameObject.name) == 1)
+                    {
+                        _buttonForSelection[i].interactable = true;
+                    }
                 }
-                else
-                {
-                    break;
-                }
+                
             }
         }
     }

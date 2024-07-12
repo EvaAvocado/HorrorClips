@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Level;
+using UnityEngine;
 
 namespace EnemySystem.States
 {
@@ -8,13 +9,15 @@ namespace EnemySystem.States
         private readonly Transform _transform;
         private readonly Transform _playerTransform;
         private readonly float _speed;
+        private readonly EditManager _editManager;
         
-        public Hunt(SpriteRenderer spriteRenderer, Transform transform, Transform playerTransform, float speed)
+        public Hunt(SpriteRenderer spriteRenderer, Transform transform, Transform playerTransform, float speed, EditManager editManager)
         {
             _spriteRenderer = spriteRenderer;
             _transform = transform;
             _playerTransform = playerTransform;
             _speed = speed;
+            _editManager = editManager;
         }
         
         public void Enter()
@@ -34,12 +37,14 @@ namespace EnemySystem.States
 
         private void Move()
         {
-            if (_playerTransform.position.x > _transform.position.x)
+            if (_playerTransform.position.x > _transform.position.x
+                && !_editManager.IsEditMode)
             {
                 _transform.localPosition += _transform.right * (_speed * Time.deltaTime);
                 _spriteRenderer.flipX = false;
             }
-            else
+            else if (_playerTransform.position.x < _transform.position.x
+                     && !_editManager.IsEditMode)
             {
                 _transform.localPosition -= _transform.right * (_speed * Time.deltaTime);
                 _spriteRenderer.flipX = true;

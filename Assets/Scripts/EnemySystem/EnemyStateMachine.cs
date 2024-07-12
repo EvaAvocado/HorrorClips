@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EnemySystem.States;
+using Level;
 using UnityEngine;
 
 namespace EnemySystem
@@ -22,13 +23,13 @@ namespace EnemySystem
                 throw new Exception("No such a state");
         }
 
-        public void CreateStates(SpriteRenderer spriteRenderer, Transform transform, Transform playerTransform, float speed)
+        public void CreateStates(SpriteRenderer spriteRenderer, Transform transform, Transform playerTransform, float speed, EditManager editManager)
         {
             _states = new Dictionary<Type, IEnemyState>()
             {
                 [typeof(Wait)] = new Wait(),
                 [typeof(Patrol)] = new Patrol(),
-                [typeof(Hunt)] = new Hunt(spriteRenderer, transform, playerTransform, speed),
+                [typeof(Hunt)] = new Hunt(spriteRenderer, transform, playerTransform, speed, editManager),
                 [typeof(Die)] = new Die(transform.gameObject)
             };
         }

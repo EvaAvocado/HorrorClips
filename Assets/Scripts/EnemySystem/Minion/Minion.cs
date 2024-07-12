@@ -63,19 +63,19 @@ namespace EnemySystem.Minion
 
         private void ChangeEditMode(bool status)
         {
-            if (status)
-            {
-                _player = null;
-            }
+            // if (status)
+            // {
+            //     _player = null;
+            // }
         }
 
         private void Awake()
         {
             _stateMachine = new EnemyStateMachine();
             _playerTransform = FindObjectOfType<Player>().transform;
-            _stateMachine.CreateStates(_spriteRenderer, transform, _playerTransform, _speed);
-            _stateMachine.ChangeState<Wait>();
             _editManager = FindObjectOfType<EditManager>();
+            _stateMachine.CreateStates(_spriteRenderer, transform, _playerTransform, _speed, _editManager);
+            _stateMachine.ChangeState<Wait>();
         }
 
         private void Update()
@@ -84,8 +84,12 @@ namespace EnemySystem.Minion
 
             if (_editManager.IsEditMode) //&& _stateMachine.GetState() is Hunt)
             {
-                LostPlayer();
                 _minionAnimation.Lost();
+            }
+            else if (!_editManager.IsEditMode
+                     && _stateMachine.GetState() is Hunt)
+            {
+                _minionAnimation.Hunt();
             }
 
             CheckPlayerPos();
@@ -97,12 +101,12 @@ namespace EnemySystem.Minion
             {
                 var distance = transform.position - _player.transform.position;
                 if (_stateMachine.GetState() is Hunt &&
-                    Mathf.Abs(distance.x) >= _distanceToLostPlayer.x ||
                     Mathf.Abs(distance.y) >= _distanceToLostPlayer.y)
                 {
                     LostPlayer();
                     _minionAnimation.Lost();
                     _player = null;
+                    _stateMachine.ChangeState<Wait>();
                 }
             }
         }
@@ -138,6 +142,5 @@ namespace EnemySystem.Minion
             _audioSource.clip = (AudioClip)Resources.Load("Sounds/" + "minion spot");
             _audioSource.PlayOneShot(_audioSource.clip );
         }
-        
     }
 }

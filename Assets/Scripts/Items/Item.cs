@@ -24,7 +24,6 @@ namespace Items
         private int _currentSprite;
         private EditManager _editManager;
         
-
         public static event Action<Item> OnAxeIdle;
         public static event Action<Item> OnAxeSpinLeft;
         public static event Action<Item> OnAxeSpinRight;
@@ -44,14 +43,11 @@ namespace Items
 
         private void Update()
         {
-            if (_isDropItem)
+            if (_isDropItem
+                && !_editManager.IsEditMode)
             {
                 transform.position += transform.right * (_speedDrop * Time.deltaTime);
             }
-            /*else if (transform.parent is not null)
-            {
-                transform.localPosition = Vector3.zero;
-            }*/
         }
         
         private void PlaySoundBounce()

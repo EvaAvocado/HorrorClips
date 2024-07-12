@@ -39,6 +39,8 @@ namespace Level.Clips
         public static event Action<Clip> OnMouseUpAction;
         public static event Action OnStartMoving;
         public static event Action OnStopMoving;
+        
+        public ClipStateEnum StateEnum => _clipState;
 
         public enum ClipStateEnum
         {

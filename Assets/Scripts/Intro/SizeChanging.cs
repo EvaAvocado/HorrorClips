@@ -1,4 +1,3 @@
-using System;
 using PlayerSystem;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace Intro
         [SerializeField] private float _offset = .1f;
 
         private float _delta;
-        private float _currentPosX;
+        private float _currentPosY;
         private float _currentStartPos;
 
         private void OnEnable()
@@ -27,7 +26,7 @@ namespace Intro
 
         private void Awake()
         {
-            _currentPosX = transform.position.x;
+            _currentPosY = transform.position.y;
             transform.localScale = new Vector3(_startSize, _startSize, transform.localScale.z);
             _delta = (_endSize - _startSize) / (_distance / _offset);
             _currentStartPos = _distance - 0.1f;
@@ -35,21 +34,21 @@ namespace Intro
 
         private void ChangeSize(float direction)
         {
-            var newPosX = transform.position.x;
+            var newPosY = transform.position.y;
 
-            if (direction > 0 && _currentPosX + _offset < newPosX && newPosX > _currentStartPos &&
-                newPosX < _distance)
+            if (direction > 0 && _currentPosY + _offset < newPosY && newPosY > _currentStartPos &&
+                newPosY < _distance)
             {
-                transform.localScale = new Vector3(transform.localScale.x + _delta, transform.localScale.x + _delta,
+                transform.localScale = new Vector3(transform.localScale.y + _delta, transform.localScale.y + _delta,
                     transform.localScale.z);
-                _currentPosX = newPosX;
+                _currentPosY = newPosY;
             }
-            else if (direction < 0 && _currentPosX - _offset > newPosX && newPosX > _currentStartPos &&
-                     newPosX < _distance)
+            else if (direction < 0 && _currentPosY - _offset > newPosY && newPosY > _currentStartPos &&
+                     newPosY < _distance)
             {
-                transform.localScale = new Vector3(transform.localScale.x - _delta, transform.localScale.x - _delta,
+                transform.localScale = new Vector3(transform.localScale.y - _delta, transform.localScale.y - _delta,
                     transform.localScale.z);
-                _currentPosX = newPosX;
+                _currentPosY = newPosY;
             }
         }
 

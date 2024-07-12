@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a93ff4e71fd6c7498adb5e3ab759eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isCanScreen: 1
+  _isCanScreen: 0
 --- !u!1 &4884377898344605716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,6 +2601,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 317410725209958414}
     m_Modifications:
+    - target: {fileID: 294073403793854622, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
+      propertyPath: _runSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 294073403793854622, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
+      propertyPath: _baseSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 294073403793854622, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: _deltaToShiftX
       value: 15

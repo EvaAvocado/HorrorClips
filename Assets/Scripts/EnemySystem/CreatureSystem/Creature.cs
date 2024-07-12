@@ -43,7 +43,7 @@ namespace EnemySystem.CreatureSystem
         {
             if (!_editManager.IsEditMode)
             {
-                _animator.speed = 0.2f;
+                _animator.speed = 1f;
                 transform.position += transform.right * (_baseSpeed * Time.deltaTime);
             }
             else

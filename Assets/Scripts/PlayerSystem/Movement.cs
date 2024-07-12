@@ -7,8 +7,13 @@ namespace PlayerSystem
         private readonly SpriteRenderer[] _playerSprites;
         private readonly Transform _playerTransform;
         private readonly Transform _handTransform;
-        private readonly float _speed;
-        
+        private float _speed;
+
+        public float Speed
+        {
+            set => _speed = value;
+        }
+
         public Movement(SpriteRenderer[] playerSprites, Transform playerTransform, Transform handTransform, float speed)
         {
             _playerSprites = playerSprites;
@@ -17,9 +22,17 @@ namespace PlayerSystem
             _speed = speed;
         }
         
-        public void Move(float direction)
+        public void Move(float direction, bool horizontal)
         {
-            _playerTransform.position += _playerTransform.right * (direction * _speed * Time.deltaTime);
+            if (horizontal)
+            {
+                _playerTransform.position += _playerTransform.right * (direction * _speed * Time.deltaTime);
+            }
+            else
+            {
+                _playerTransform.position += _playerTransform.up * (direction * _speed * Time.deltaTime);
+            }
+            
         }
 
         public bool Flip(float direction)

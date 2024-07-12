@@ -32,6 +32,8 @@ namespace PlayerSystem
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private Press _pressButtons;
         [SerializeField] private UnityEvent _dieEvent;
+
+        [SerializeField] private bool _isIntro;
         
         private Movement _movement;
         private Interaction _interaction;
@@ -60,12 +62,16 @@ namespace PlayerSystem
 
         public AudioSource AudioSource => _audioSource;
 
+        public bool IsIntro => _isIntro;
+
         public bool IsInTheDark { get; set; }
 
         public bool IsCantStop
         {
             set => _isCantStop = value;
         }
+
+        public Movement MovementClass => _movement;
 
         private void Awake()
         {
@@ -93,8 +99,15 @@ namespace PlayerSystem
             if (direction != 0 && !_isEditMode)
             {
                 InvokeOnMove(direction);
-                
-                _movement.Move(direction);
+
+                if (!_isIntro)
+                {
+                    _movement.Move(direction, true);
+                }
+                else
+                {
+                    _movement.Move(direction, false);
+                }
                 
                 if (_movement.Flip(direction))
                 {
@@ -140,7 +153,7 @@ namespace PlayerSystem
                 if (Input.GetKeyUp(KeyCode.E) 
                     && !_interaction.Action(_isHoldAxe))
                 {
-                    _movement.Move(0.0001f);
+                    _movement.Move(0.0001f, true);
                     _interaction.SetItem(null);
                     _hint.SetActive(false);
                     _pressButtons.SetCantPress(PressButtonEnum.E);
@@ -342,6 +355,11 @@ namespace PlayerSystem
             _isFlashlight = true;
             OnHasFlashlight?.Invoke();
             _flashlight.OnFlashlight();
+        }
+
+        public void SetIsIntroTrue()
+        {
+            _isIntro = true;
         }
         
         public void HoldAxe() => _isHoldAxe = true;

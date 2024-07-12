@@ -21,7 +21,9 @@ namespace Intro
         [SerializeField] private Collider2D _collider;
         [SerializeField] private LayerMask _playerLayer;
 
+        [SerializeField] private UnityEvent _textStarted;
         [SerializeField] private UnityEvent _textArrived;
+        
         [SerializeField] private bool _isLast;
         [SerializeField] private float _deltaScale = 5f;
 
@@ -35,6 +37,7 @@ namespace Intro
             {
                 _collider.enabled = false;
                 StartText();
+                _textStarted?.Invoke();
             }
         }
 
@@ -46,6 +49,8 @@ namespace Intro
                 StartCoroutine(TimerToAction());
             }
 
+            _player.MovementClass.Speed = 0;
+            
             _isMoving = true;
             _startPosY = _textField.transform.position.y;
 

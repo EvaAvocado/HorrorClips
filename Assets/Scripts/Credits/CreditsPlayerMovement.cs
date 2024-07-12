@@ -21,7 +21,7 @@ namespace Credits
                     _player.IsCantStop = false;
                 }
                 
-                _player.Movement.Move(1);
+                _player.Movement.Move(1, true);
                 _player.InvokeOnMove(1);
             }
             

@@ -10,7 +10,7 @@ namespace Level
         [SerializeField] private LayerMask _clipLayer;
         [SerializeField] private bool _isDeadEnd;
 
-        private bool _canHaveCollider;
+        private bool _canHaveCollider = true;
 
         public bool IsDeadEnd => _isDeadEnd;
         public bool CanHaveCollider => _canHaveCollider;

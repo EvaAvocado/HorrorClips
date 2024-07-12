@@ -206,6 +206,7 @@ namespace PlayerSystem
                 _isTriggerForItem = true;
                 _hint.SetActive(true);
                 _pressButtons.SetCanPress(PressButtonEnum.E);
+                _pressButtons.SetCantPress(PressButtonEnum.Q);
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))

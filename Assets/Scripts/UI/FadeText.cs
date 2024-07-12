@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,12 @@ namespace UI
         {
             _text.DOColor(new Color(_color.r, _color.g, _color.b, 0), _duration)
                 .SetEase(Ease.Linear);
+        }
+        
+        public void FadeOut(Action endAction)
+        {
+            _text.DOColor(new Color(_color.r, _color.g, _color.b, 0), _duration)
+                .SetEase(Ease.Linear).OnComplete(endAction.Invoke);
         }
     }
 }

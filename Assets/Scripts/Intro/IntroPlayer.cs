@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using PlayerSystem;
 using UnityEngine;
+using Utils;
 
 namespace Intro
 {
@@ -10,6 +11,7 @@ namespace Intro
         [SerializeField] private GameObject _texts;
         [SerializeField] private GameObject _hints;
         [SerializeField] private Player _player;
+        [SerializeField] private LayerMask _itemLayer;
 
         private bool _isCanMove = true;
         
@@ -32,11 +34,16 @@ namespace Intro
             }
             else if (_isCanMove)
             {
-                _hints.transform.DOMove(new Vector3(transform.position.x - 3.75f, transform.position.y - 5f, 0), 1f);
+                _hints.transform.DOMove(new Vector3(transform.position.x - 3.75f, transform.position.y - 10f, 0), 1f);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (_itemLayer.Contains(other.gameObject.layer))
+            {
                 _isCanMove = false;
             }
-            
-            
         }
     }
 }

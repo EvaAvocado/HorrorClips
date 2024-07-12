@@ -22,9 +22,9 @@ namespace Intro
             if (_palyerLayer.Contains(other.gameObject.layer))
             {
                 _languageSelector.ChangeLanguage();
-                _differentIntroSelectLanguage.FadeText.FadeOut();
+                _differentIntroSelectLanguage.FadeText.FadeOut(() => _differentIntroSelectLanguage.gameObject.SetActive(false));
                 _selectLanguage?.Invoke();
-                _fadeText.FadeOut();
+                _fadeText.FadeOut(() => gameObject.SetActive(false));
             }
         }
     }

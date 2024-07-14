@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 188865077830972037, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _deltaToShiftX
-      value: 40
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 317410725209958414, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 6641168108932134693, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _levelData
       value: 
-      objectReference: {fileID: 11400000, guid: b8c58e64ff3b94944bc80b4ffe110702, type: 2}
+      objectReference: {fileID: 11400000, guid: f405a7b788038774cb40d2dfdef66f1d, type: 2}
     - target: {fileID: 6644012850003721652, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _levelName
       value: Level 11

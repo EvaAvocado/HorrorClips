@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: "\u0423\u0440\u043E\u0432\u043D\u0438"
     m_Metadata:
       m_Items: []
+  - m_Id: 9519716147503104
+    m_Key: "\u0412\u044B\u0445\u043E\u0434"
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -12,6 +12,7 @@ namespace EnemySystem.CreatureSystem
         [SerializeField] private Animator _animator;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float _deltaToShiftX;
+        [SerializeField] private GameObject _maskToShift;
 
         private float _playerDirection;
         private EditManager _editManager;
@@ -19,6 +20,8 @@ namespace EnemySystem.CreatureSystem
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
         public float DeltaToShiftX => _deltaToShiftX;
+
+        public GameObject MaskToShift => _maskToShift;
 
         private void Awake()
         {

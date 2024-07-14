@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Core;
 using Data;
@@ -86,6 +87,14 @@ namespace Level
                 _player.transform.position = _bottomClips[0].transform.position - new Vector3(5,3,0);
                 _creature.transform.position = new Vector3(_bottomClips[0].transform.position.x - 20 - _creature.DeltaToShiftX,
                     _bottomClips[0].transform.position.y - 3f, 0);
+
+                var distanceCreatureClip = Math.Abs(_creature.transform.position.x - _bottomClips[0].transform.position.x);
+                var normalizeDistance = (distanceCreatureClip - 20f) * 2f + 2f;
+                var deltaCreature = normalizeDistance / 20f;
+                _creature.MaskToShift.transform.localScale = new Vector3(_creature.transform.localScale.x + deltaCreature, _creature.transform.localScale.y, _creature.transform.localScale.z);
+                
+                _creature.MaskToShift.transform.position = new Vector3(_creature.transform.position.x,
+                    _bottomClips[0].transform.position.y, 0);
                 
                 _fade.FadeOut();
             }

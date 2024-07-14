@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97269afb30aa84742ae3f3342603618a, type: 3}
+  m_Name: HintsText_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: a871ae9fc78caf040a9576ac51423dcb, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11242151936
+    m_Localized: 64976ea916dadc047864aff63c899438[enter 14_en]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945670168576
+    m_Localized: e6a83e613335063428564f73bd6a32be[dd-dd 1_en]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 719987253248
+    m_Localized: bae2af89e936b44458adb324f6859606[dd-dd 3_en]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 868637581312
+    m_Localized: 52d2dfef59138de40871c0c2c2ca5bb9[dd-dd 2_en]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89386229760
+    m_Localized: fc0f131d21e072e479cc1b6c3817ddd3[enter 11_en]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 418756534272
+    m_Localized: 7bab68e376a74b341841fde9040e9293[e-newhint01-e_eng]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 284819824640
+    m_Localized: f056d8f37f0a87d47bc9172ad8677754[enter 06_en]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 571596972032
+    m_Localized: 8043600623b0bad4fbe6cb346599c95a[dd-hint05-e_en]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 470921093120
+    m_Localized: 72ffc78575a530c44899484ed044e85d[e-a-hint02-e_eng]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 658788163584
+    m_Localized: 0fd644524717a1c429e8cceca339ff3a[dd-dr-hint-a-e_en]
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

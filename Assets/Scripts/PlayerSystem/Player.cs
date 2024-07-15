@@ -40,7 +40,6 @@ namespace PlayerSystem
         private bool _isEditMode;
         private bool _isHoldAxe;
         private bool _isTriggerForItem;
-        private float _pressingTime;
         private bool _isFlashlight;
         private bool _isOpenMenu;
 
@@ -115,7 +114,6 @@ namespace PlayerSystem
                     OnFlip?.Invoke();
                 }
                 
-                _pressingTime = 0;
                 _isHoldAxe = false;
             }
             else if (!_isEditMode && !_isCantStop)
@@ -124,17 +122,12 @@ namespace PlayerSystem
             }
 
             if (!_isTriggerForItem 
-                && Input.GetKey(KeyCode.Q)
+                && Input.GetKeyUp(KeyCode.Q)
                 && _interaction.HaveAxeInHand
                 && !_isOpenMenu
                 && !_isEditMode)
             {
-                _pressingTime += Time.deltaTime;
-                
-                if (!_isHoldAxe)
-                {
-                    OnThrow?.Invoke();
-                }
+                OnThrow?.Invoke();
             }
             
             if ((Input.GetKeyUp(KeyCode.E)
@@ -163,14 +156,6 @@ namespace PlayerSystem
                 if (_spriteRenderers[0].flipX)
                 {
                     _interaction.Flip(-1);
-                }
-                
-                if (_isHoldAxe
-                    && Input.GetKeyUp(KeyCode.Q))
-                {
-                    OnRelease?.Invoke();
-                    _pressingTime = 0;
-                    _isHoldAxe = false;
                 }
             }
         }
@@ -342,7 +327,6 @@ namespace PlayerSystem
                 _isTriggerForItem = false;
             }
             
-            _pressingTime = 0;
             _isHoldAxe = false;
         }
 

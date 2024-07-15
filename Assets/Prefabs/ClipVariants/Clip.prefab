@@ -4980,6 +4980,7 @@ MonoBehaviour:
   _wall:
     serializedVersion: 2
     m_Bits: 512
+  _deadEnd: {fileID: 3914308331587477149}
   _creatureLayer:
     serializedVersion: 2
     m_Bits: 328

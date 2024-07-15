@@ -51,5 +51,7 @@ namespace Level.Clips
                  _collider.isTrigger = false;
              }
         }
+
+         public void Disable() => _collider.isTrigger = true;
     }
 }

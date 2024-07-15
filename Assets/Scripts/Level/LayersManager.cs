@@ -104,7 +104,9 @@ namespace Level
         
         private IEnumerator TimerToFadeOut()
         {
+            Time.timeScale = 1;
             yield return new WaitForSeconds(0.5f);
+            
             _fade.FadeOut();
         }
 

@@ -23,6 +23,7 @@ namespace Core
 
         public void ReloadScene()
         {
+            _timeBeforeLoadScene = 0;
             StartCoroutine(TimerToLoadScene(SceneManager.GetActiveScene().name));
         }
         

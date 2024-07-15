@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_12
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &245960516025402222
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_05
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &283720769847694327
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_01
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &616366733197198875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_06
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &729833420487808028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_14
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &1143080291594226950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_15
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &1525092065768810340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_13
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &1787462959358577018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,7 +2326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_02
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &2081099598459478631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_07
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &2331101490340073277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,7 +2732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_17
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &2962588071210447099
 GameObject:
   m_ObjectHideFlags: 0
@@ -3267,7 +3267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_10
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &3449426962432615609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4219,7 +4219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_04
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &4730901719036178682
 GameObject:
   m_ObjectHideFlags: 0
@@ -4367,7 +4367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_16
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &4916927514800198723
 GameObject:
   m_ObjectHideFlags: 0
@@ -5800,7 +5800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_09
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &7172494998589083393
 GameObject:
   m_ObjectHideFlags: 0
@@ -6023,7 +6023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_08
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &7322586773678894750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6299,7 +6299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_11
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &7444027648881811649
 GameObject:
   m_ObjectHideFlags: 0
@@ -7116,7 +7116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Level_03
-  _timeBeforeLoadScene: 0.1
+  _timeBeforeLoadScene: 0.2
 --- !u!1 &8821918712153492600
 GameObject:
   m_ObjectHideFlags: 0

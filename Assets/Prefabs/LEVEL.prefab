@@ -2034,7 +2034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8704352138dd24f4ba5e52c00da28f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 1
+  _duration: 0.25
   _durationFadeIn: 0.25
   _image: {fileID: 7404169065796368082}
   _sprite: {fileID: 0}

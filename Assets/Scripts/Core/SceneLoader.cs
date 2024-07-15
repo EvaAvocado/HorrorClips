@@ -12,34 +12,37 @@ namespace Core
         
         private void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            _timeBeforeLoadScene = 0;
+            StartCoroutine(TimerToLoadScene(sceneName));
         }
 
         public void LoadSceneAfterTime()
         {
-            StartCoroutine(TimerToLoadScene());
+            StartCoroutine(TimerToLoadScene(_sceneName));
         }
 
         public void ReloadScene()
         {
-            LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(TimerToLoadScene(SceneManager.GetActiveScene().name));
         }
         
         public void ReloadSceneAfterTime()
         {
-            StartCoroutine(TimerToReloadScene());
+            StartCoroutine(TimerToLoadScene(SceneManager.GetActiveScene().name));
         }
 
-        private IEnumerator TimerToLoadScene()
+        private IEnumerator TimerToLoadScene(string sceneName)
         {
+            AsyncOperation loadAsync = SceneManager.LoadSceneAsync(sceneName);
+
+            while (!loadAsync.isDone)
+            {
+                yield return null;
+            }
+            
             yield return new WaitForSeconds(_timeBeforeLoadScene);
-            LoadScene(_sceneName);
-        }
-        
-        private IEnumerator TimerToReloadScene()
-        {
-            yield return new WaitForSeconds(_timeBeforeLoadScene);
-            LoadScene(SceneManager.GetActiveScene().name);
+
+            loadAsync.allowSceneActivation = true;
         }
     }
 }

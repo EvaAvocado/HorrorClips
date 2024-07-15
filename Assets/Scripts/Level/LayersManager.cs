@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Core;
 using Data;
@@ -95,9 +96,16 @@ namespace Level
                 
                 _creature.MaskToShift.transform.position = new Vector3(_creature.transform.position.x,
                     _bottomClips[0].transform.position.y, 0);
-                
-                _fade.FadeOut();
+
+
+                StartCoroutine(TimerToFadeOut());
             }
+        }
+        
+        private IEnumerator TimerToFadeOut()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _fade.FadeOut();
         }
 
         private List<ClipPlace> SpawnLayer(float spawnPosY, int countOfClips)

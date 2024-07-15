@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: _isDeadEnd
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4954608193314130207, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: m_LocalizedAssetReference.m_TableEntryReference.m_KeyId
+      value: 719987253248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954608193314130207, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: m_LocalizedAssetReference.m_TableReference.m_TableCollectionName
+      value: GUID:a871ae9fc78caf040a9576ac51423dcb
+      objectReference: {fileID: 0}
     - target: {fileID: 5367038585641510463, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -68,9 +76,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7692651062496653725, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7888838607348643044, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_Name
-      value: dd-dd
+      value: dd-dd 3
       objectReference: {fileID: 0}
     - target: {fileID: 8887074774280248579, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_IsActive

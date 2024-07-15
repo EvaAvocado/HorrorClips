@@ -592,7 +592,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4868686528249204159}
         m_TargetAssemblyTypeName: UI.MenuManager, Assembly-CSharp
-        m_MethodName: OpenMenu
+        m_MethodName: MenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

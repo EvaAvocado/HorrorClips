@@ -38,7 +38,7 @@ namespace UI
             }
             else if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf)
             {
-                OpenMenu();
+                MenuButton();
             }
         }
 
@@ -49,14 +49,25 @@ namespace UI
             OnMenuClose?.Invoke();
         }
 
-        public void OpenMenu()
+        private void OpenMenu()
         {
-            if (_isCanOpen)
+            Time.timeScale = 0;
+            _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
+            _menu.SetActive(true);
+            OnMenuOpen?.Invoke();
+        }
+
+        public void MenuButton()
+        {
+            if (_isCanOpen 
+                && !_menu.activeSelf)
             {
-                Time.timeScale = 0;
-                _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
-                _menu.SetActive(true);
-                OnMenuOpen?.Invoke();
+                OpenMenu();
+            }
+            else if (_isCanOpen 
+                     && _menu.activeSelf)
+            {
+                CloseMenu();
             }
         }
     }

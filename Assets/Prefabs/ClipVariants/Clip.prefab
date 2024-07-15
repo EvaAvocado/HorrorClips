@@ -269,7 +269,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -9.675498, y: 0}
+  m_Offset: {x: 9.767794, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -280,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.649004, y: 15.000001}
+  m_Size: {x: 0.46441364, y: 15.000001}
   m_EdgeRadius: 0
 --- !u!1 &621137313216686614
 GameObject:
@@ -561,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3559287469251647161}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Cooliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 4360293671557500803}
   - component: {fileID: 1740196062240087162}
   - component: {fileID: 7041764362162934442}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ClipChooseSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

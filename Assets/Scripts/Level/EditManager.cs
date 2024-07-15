@@ -63,5 +63,21 @@ namespace Level
                 _playerCamera = true;
             }
         }
+
+        public void PressButton()
+        {
+            if (!_isEditMode && _isCanPress)
+            {
+                _isEditMode = true;
+                SwitchState();
+                OnChangeEditMode?.Invoke(_isEditMode);
+            }
+            else if (_isEditMode && _isCanPress)
+            {
+                SwitchState();
+                _isEditMode = false;
+                OnChangeEditMode?.Invoke(_isEditMode);
+            }
+        }
     }
 }

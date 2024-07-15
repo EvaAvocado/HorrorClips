@@ -346,6 +346,47 @@ namespace PlayerSystem
         {
             _isIntro = true;
         }
+
+        public void PressE()
+        {
+            if (_isOpenMenu
+                && _isEditMode)
+            {
+                return;
+            }
+            
+            if (_interaction.HaveAxeInHand
+                && _isTriggerForItem)
+            {
+                OnSwing?.Invoke();
+                return;
+            }
+                
+            if (!_interaction.Action(_isHoldAxe))
+            {
+                _movement.Move(0.0001f, true);
+                _interaction.SetItem(null);
+                _hint.SetActive(false);
+                _pressButtons.SetCantPress(PressButtonEnum.E);
+                _isTriggerForItem = false;
+            }
+
+            if (_spriteRenderers[0].flipX)
+            {
+                _interaction.Flip(-1);
+            }
+        }
+
+        public void PressQ()
+        {
+            if (!_isTriggerForItem 
+                && _interaction.HaveAxeInHand
+                && !_isOpenMenu
+                && !_isEditMode)
+            {
+                OnThrow?.Invoke();
+            }
+        }
         
         public void HoldAxe() => _isHoldAxe = true;
         public void NotHoldAxe() => _isHoldAxe = false;

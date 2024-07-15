@@ -36,11 +36,9 @@ namespace UI
             {
                 CloseMenu();
             }
-            else if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf && _isCanOpen)
+            else if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf)
             {
-                _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
-                _menu.SetActive(true);
-                OnMenuOpen?.Invoke();
+                OpenMenu();
             }
         }
 
@@ -48,6 +46,16 @@ namespace UI
         {
             _menu.SetActive(false);
             OnMenuClose?.Invoke();
+        }
+
+        public void OpenMenu()
+        {
+            if (_isCanOpen)
+            {
+                _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
+                _menu.SetActive(true);
+                OnMenuOpen?.Invoke();
+            }
         }
     }
 }

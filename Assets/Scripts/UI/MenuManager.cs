@@ -38,16 +38,23 @@ namespace UI
             }
             else if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf && _isCanOpen)
             {
-                _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
-                _menu.SetActive(true);
-                OnMenuOpen?.Invoke();
+                OpenMenu();
             }
         }
 
         public void CloseMenu()
         {
+            Time.timeScale = 1;
             _menu.SetActive(false);
             OnMenuClose?.Invoke();
+        }
+
+        private void OpenMenu()
+        {
+            _localizeStringEvent.OnUpdateString.Invoke(_localizeStringEvent.StringReference.GetLocalizedString());
+            Time.timeScale = 0;
+            _menu.SetActive(true);
+            OnMenuOpen?.Invoke();
         }
     }
 }

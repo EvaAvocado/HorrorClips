@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8885924748716210666}
   - component: {fileID: 1686355858194180953}
   m_Layer: 5
-  m_Name: CanvasPressQ
+  m_Name: CanvasPress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61fddaf6d22b2b4b8c12683111129a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorCanPress: {r: 0.6392157, g: 1, b: 0, a: 1}
-  _colorCantPress: {r: 1, g: 0.35686275, b: 0, a: 1}
+  _colorCanPress: {r: 1, g: 1, b: 1, a: 1}
+  _colorCantPress: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   _spriteEsc: {fileID: 1473617933726029671}
   _spriteSpace: {fileID: 6504855086250086801}
   _spriteQ: {fileID: 8850540672366119268}
@@ -1639,7 +1639,7 @@ MonoBehaviour:
   _pitchChanger: {fileID: 1991256900537320709}
   _press: {fileID: 1686355858194180953}
   _levelManager: {fileID: 7795912117391858300}
-  _levelName: 
+  _levelName: Level 3
 --- !u!1 &6528870625878587172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,7 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 188abe24183200446b1ce40730260ebe, type: 2}
-  _levelNumber: 0
+  _levelNumber: 2
   _pitchParameterMusic: MusicPitch
   _pitchParameterSound: SoundsPitch
   _playOnStart: 0
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   _durationFadeIn: 0.25
   _image: {fileID: 7404169065796368082}
   _sprite: {fileID: 0}
-  _color: {r: 0, g: 0, b: 0, a: 0}
+  _color: {r: 0, g: 0, b: 0, a: 1}
   _secondColor: {r: 0, g: 0, b: 0, a: 0}
   _dark: {fileID: 0}
   _actionAfterFadeIn:
@@ -2109,8 +2109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -199.99982, y: 0}
+  m_SizeDelta: {x: 2399.9998, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4953949027463108724
 CanvasRenderer:
@@ -2740,7 +2740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1725872599069219073, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9140289559766023371, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: m_LocalPosition.x

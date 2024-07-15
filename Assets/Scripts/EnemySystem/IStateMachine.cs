@@ -9,5 +9,6 @@ namespace EnemySystem
         void CreateStates(SpriteRenderer spriteRenderer, Transform transform, Transform playerTransform, float speed, EditManager editManager);
         void UpdateState();
         IEnemyState GetState();
+        void SetNewSpeed(float newSpeed);
     }
 }

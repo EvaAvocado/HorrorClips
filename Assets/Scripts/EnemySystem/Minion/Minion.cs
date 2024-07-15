@@ -34,6 +34,8 @@ namespace EnemySystem.Minion
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Player Player => _player;
 
+        public IStateMachine StateMachine => _stateMachine;
+
         public bool InDark
         {
             get;

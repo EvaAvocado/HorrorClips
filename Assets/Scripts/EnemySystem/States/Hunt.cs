@@ -8,7 +8,7 @@ namespace EnemySystem.States
         private readonly SpriteRenderer _spriteRenderer;
         private readonly Transform _transform;
         private readonly Transform _playerTransform;
-        private readonly float _speed;
+        private float _speed;
         private readonly EditManager _editManager;
         
         public Hunt(SpriteRenderer spriteRenderer, Transform transform, Transform playerTransform, float speed, EditManager editManager)
@@ -49,6 +49,11 @@ namespace EnemySystem.States
                 _transform.localPosition -= _transform.right * (_speed * Time.deltaTime);
                 _spriteRenderer.flipX = true;
             }
+        }
+
+        public void SetNewSpeed(float newSpeed)
+        {
+            _speed = newSpeed;
         }
     }
 }

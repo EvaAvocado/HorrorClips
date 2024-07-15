@@ -52,15 +52,6 @@ namespace PlayerSystem
             DoorItem.OnDestroyDoor -= DropAxe;
         }
 
-        private void Update()
-        {
-            if (_isCanRelease && !Input.GetKey(KeyCode.Q))
-            {
-                ResetAnimator();
-                _isCanRelease = false;
-            }
-        }
-
         private void ResetAnimator()
         {
             _isCanDrop = false;
@@ -123,7 +114,7 @@ namespace PlayerSystem
 
         private void ChangeThrowState()
         {
-            if (!_isThrow && !_player.IsEditMode)
+            if (!_player.IsEditMode)
             {
                 _isMoving = false;
                 _isCanDrop = true;

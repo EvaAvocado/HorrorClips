@@ -10,10 +10,15 @@ public class Press : MonoBehaviour
     [SerializeField] private Color _colorCanPress;
     [SerializeField] private Color _colorCantPress;
     [SerializeField] private Image _spriteEsc;
+    [SerializeField] private Button _buttonEsc;
     [SerializeField] private Image _spriteSpace;
+    [SerializeField] private Button _buttonSpace;
     [SerializeField] private Image _spriteQ;
+    [SerializeField] private Button _buttonQ;
     [SerializeField] private Image _spriteE;
+    [SerializeField] private Button _buttonE;
     [SerializeField] private Image _spriteP;
+    [SerializeField] private Button _buttonP;
 
     private EditManager _editManager;
     private int _transparentObjectsCount;
@@ -57,27 +62,32 @@ public class Press : MonoBehaviour
             case PressButtonEnum.Esc:
             {
                 _spriteEsc.color = _colorCanPress;
+                _buttonEsc.interactable = true;
                 break;
             }
             case PressButtonEnum.Space:
             {
                 _spriteSpace.color = _colorCanPress;
                 _editManager.IsCanPress = true;
+                _buttonSpace.interactable = true;
                 break;
             }
             case PressButtonEnum.Q:
             {
                 _spriteQ.color = _colorCanPress;
+                _buttonQ.interactable = true;
                 break;
             }
             case PressButtonEnum.E:
             {
                 _spriteE.color = _colorCanPress;
+                _buttonE.interactable = true;
                 break;
             }
             case PressButtonEnum.P:
             {
                 _spriteP.color = _colorCanPress;
+                _buttonP.interactable = true;
                 break;
             }
         }
@@ -90,27 +100,32 @@ public class Press : MonoBehaviour
             case PressButtonEnum.Esc:
             {
                 _spriteEsc.color = _colorCantPress;
+                _buttonEsc.interactable = false;
                 break;
             }
             case PressButtonEnum.Space:
             {
                 _spriteSpace.color = _colorCantPress;
                 _editManager.IsCanPress = false;
+                _buttonSpace.interactable = false;
                 break;
             }
             case PressButtonEnum.Q:
             {
                 _spriteQ.color = _colorCantPress;
+                _buttonQ.interactable = false;
                 break;
             }
             case PressButtonEnum.E:
             {
                 _spriteE.color = _colorCantPress;
+                _buttonE.interactable = false;
                 break;
             }
             case PressButtonEnum.P:
             {
                 _spriteP.color = _colorCantPress;
+                _buttonP.interactable = false;
                 break;
             }
         }

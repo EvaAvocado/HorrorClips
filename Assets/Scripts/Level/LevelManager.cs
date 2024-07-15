@@ -14,8 +14,13 @@ namespace Level
         {
             if (Input.GetKeyUp(KeyCode.P))
             {
-                SceneManager.LoadScene((SceneManager.GetActiveScene().name));
+                Reset();
             }
+        }
+
+        public void Reset()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Level
         [SerializeField] private Collider2D _collider;
         [SerializeField] private GameObject _rightWall;
         [SerializeField] private LayerMask _wall;
+        [SerializeField] private DeadEnd _deadEnd;
 
         [FormerlySerializedAs("_playerLayer")] [SerializeField]
         private LayerMask _creatureLayer;
@@ -53,6 +54,7 @@ namespace Level
                 _rightStop.EnableWall(true);
                 _rightStop.ClipExit();
                 _collider.isTrigger = true;
+                _deadEnd.Disable();
             }
         }
 

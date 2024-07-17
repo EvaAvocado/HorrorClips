@@ -300,6 +300,8 @@ namespace PlayerSystem
 
         private void CheckButton()
         {
+            if (_pressButtons == null) return;
+            
             if (_isOpenMenu || _isEditMode)
             {
                 _pressButtons.SetCantPress(PressButtonEnum.E);

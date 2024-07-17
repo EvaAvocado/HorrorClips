@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2527067213370829994, guid: fa63a120c0f11074a823108c6ee84472, type: 3}
       propertyPath: m_Name
-      value: OUTRO_EXIT
+      value: OUTRO_TV
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

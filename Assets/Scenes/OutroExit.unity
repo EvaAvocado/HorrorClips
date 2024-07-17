@@ -174,9 +174,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: OUTRO_EXIT
       objectReference: {fileID: 0}
-    - target: {fileID: 5298493333098022526, guid: fa63a120c0f11074a823108c6ee84472, type: 3}
-      propertyPath: _sceneName
-      value: Level_17
+    - target: {fileID: 5251867059311319812, guid: fa63a120c0f11074a823108c6ee84472, type: 3}
+      propertyPath: _pitchParameterMusic
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

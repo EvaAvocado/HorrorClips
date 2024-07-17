@@ -12,7 +12,8 @@ namespace UI
         [SerializeField] private LevelSelection _level;
         [SerializeField] private LocalizeStringEvent _localizeStringEvent;
         [SerializeField] private VolumeController[] _volumeControllers;
-        [SerializeField] private bool _isCanOpen = true;
+        
+        private bool _isCanOpen = true;
 
         public static event Action OnMenuOpen;
         public static event Action OnMenuClose;
@@ -22,6 +23,16 @@ namespace UI
             foreach (var controller in _volumeControllers)
             {
                 controller.Init();
+            }
+            
+            if (!PlayerPrefs.HasKey("IsFirstRun"))
+            {
+                _isCanOpen = false;
+                PlayerPrefs.SetInt("IsFirstRun", 1);
+            }
+            else
+            {
+                _isCanOpen = true;
             }
         }
 

@@ -42,6 +42,7 @@ namespace PlayerSystem
         private bool _isTriggerForItem;
         private bool _isFlashlight;
         private bool _isOpenMenu;
+        private bool _isTV;
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -137,6 +138,7 @@ namespace PlayerSystem
             {
                 if (_interaction.HaveAxeInHand
                     && _isTriggerForItem
+                    && !_isTV
                     && Input.GetKeyUp(KeyCode.E))
                 {
                     OnSwing?.Invoke();
@@ -192,6 +194,11 @@ namespace PlayerSystem
                 _hint.SetActive(true);
                 _pressButtons.SetCanPress(PressButtonEnum.E);
                 _pressButtons.SetCantPress(PressButtonEnum.Q);
+
+                if (item.GetItemEnum() == ItemEnum.TV)
+                {
+                    _isTV = true;
+                }
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
@@ -222,11 +229,17 @@ namespace PlayerSystem
                 || iitem.GetItemEnum() == ItemEnum.AXE)
                 && !_isOpenMenu)
             {
-                _interaction.SetItem(other.GetComponent<IItem>());
+                var item = other.GetComponent<IItem>();
+                _interaction.SetItem(item);
                 _isTriggerForItem = true;
                 _hint.SetActive(true);
                 _pressButtons.SetCanPress(PressButtonEnum.E);
                 _pressButtons.SetCantPress(PressButtonEnum.Q);
+                
+                if (item.GetItemEnum() == ItemEnum.TV)
+                {
+                    _isTV = true;
+                }
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
@@ -249,6 +262,7 @@ namespace PlayerSystem
                 _interaction.SetItem(null);
                 _isTriggerForItem = false;
                 _hint.SetActive(false);
+                _isTV = false;
                 _pressButtons.SetCantPress(PressButtonEnum.E);
 
                 if (_interaction.HaveAxeInHand)

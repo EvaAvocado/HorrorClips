@@ -37,6 +37,11 @@ namespace PlayerSystem
             {
                 _strategy = _changeStrategy.SwitchStrategy(_item.GetItemEnum());
 
+                if (_item.GetItemEnum() == ItemEnum.TV)
+                {
+                    _strategy?.AlternativeUse(_item);
+                }
+                
                 if ((_item.GetItemEnum() == ItemEnum.DOOR
                     || _item.GetItemEnum() == ItemEnum.ROPE)
                     && _isAxeInHand)
@@ -45,11 +50,6 @@ namespace PlayerSystem
                     
                     CheckAxe();
                     return true;
-                }
-
-                if (_item.GetItemEnum() == ItemEnum.TV)
-                {
-                    _strategy?.AlternativeUse(_item);
                 }
                 
                 if (_item.GetItemEnum() == ItemEnum.AXE)

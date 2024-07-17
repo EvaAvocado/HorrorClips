@@ -24,6 +24,7 @@ namespace Level
         private void BackgroundOn()
         {
             _background.SetActive(true);
+            _collider2D.isTrigger = true;
         }
 
         public void ChangeFallState()

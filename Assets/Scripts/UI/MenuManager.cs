@@ -12,6 +12,7 @@ namespace UI
         [SerializeField] private LevelSelection _level;
         [SerializeField] private LocalizeStringEvent _localizeStringEvent;
         [SerializeField] private VolumeController[] _volumeControllers;
+        [SerializeField] private bool _isFirstLevel = false;
         
         private bool _isCanOpen = true;
 
@@ -24,13 +25,18 @@ namespace UI
             {
                 controller.Init();
             }
-            
-            if (!PlayerPrefs.HasKey("IsFirstRun"))
+
+            if (_isFirstLevel)
             {
-                _isCanOpen = false;
                 PlayerPrefs.SetInt("IsFirstRun", 1);
             }
-            else
+            
+            if (!PlayerPrefs.HasKey("IsFirstRun") || PlayerPrefs.GetInt("IsFirstRun") == 0)
+            {
+                _isCanOpen = false;
+                PlayerPrefs.SetInt("IsFirstRun", 0);
+            }
+            else if (PlayerPrefs.GetInt("IsFirstRun") == 1)
             {
                 _isCanOpen = true;
             }

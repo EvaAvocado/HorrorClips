@@ -17,7 +17,8 @@ namespace PlayerSystem
     public class Player : MonoBehaviour, ITransparent
     {
         public event Action OnDie;
-        
+
+        [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private Transform _hand;
         [SerializeField] private List<Animator> _animators;
@@ -75,7 +76,7 @@ namespace PlayerSystem
 
         private void Awake()
         {
-            _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
+            _movement = new Movement(_rb, _spriteRenderers, transform, _hand, _speed);
             _interaction = new Interaction(new ChangeStrategy(_animators), _hand, this, _pressButtons);
         }
         
@@ -120,6 +121,7 @@ namespace PlayerSystem
             else if (!_isEditMode && !_isCantStop)
             {
                 OnIdle?.Invoke();
+                _movement.Move(0, true);
             }
 
             if (!_isTriggerForItem 

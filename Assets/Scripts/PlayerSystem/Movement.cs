@@ -4,6 +4,7 @@ namespace PlayerSystem
 {
     public class Movement
     {
+        private readonly Rigidbody2D _rb;
         private readonly SpriteRenderer[] _playerSprites;
         private readonly Transform _playerTransform;
         private readonly Transform _handTransform;
@@ -14,8 +15,9 @@ namespace PlayerSystem
             set => _speed = value;
         }
 
-        public Movement(SpriteRenderer[] playerSprites, Transform playerTransform, Transform handTransform, float speed)
+        public Movement(Rigidbody2D rb, SpriteRenderer[] playerSprites, Transform playerTransform, Transform handTransform, float speed)
         {
+            _rb = rb;
             _playerSprites = playerSprites;
             _playerTransform = playerTransform;
             _handTransform = handTransform;
@@ -26,7 +28,8 @@ namespace PlayerSystem
         {
             if (horizontal)
             {
-                _playerTransform.position += _playerTransform.right * (direction * _speed * Time.deltaTime);
+                // _playerTransform.position += _playerTransform.right * (direction * _speed * Time.deltaTime);
+                _rb.velocity = _playerTransform.right * (direction * _speed);
             }
             else
             {

@@ -1385,6 +1385,7 @@ MonoBehaviour:
   _sprite: {fileID: 1740196062240087162}
   _color: {r: 0.5019608, g: 0.078431375, b: 0, a: 0.8666667}
   _secondColor: {r: 0.5019608, g: 0.078431375, b: 0, a: 0.14117648}
+  _thirdColor: {r: 0, g: 0, b: 0, a: 0}
   _dark: {fileID: 1939604446807105515}
   _actionAfterFadeIn:
     m_PersistentCalls:
@@ -1785,7 +1786,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.17457485, y: -4.7789855}
@@ -4302,6 +4303,7 @@ MonoBehaviour:
   _sprite: {fileID: 0}
   _color: {r: 0, g: 0, b: 0, a: 1}
   _secondColor: {r: 0, g: 0, b: 0, a: 0}
+  _thirdColor: {r: 0, g: 0, b: 0, a: 0}
   _dark: {fileID: 0}
   _actionAfterFadeIn:
     m_PersistentCalls:

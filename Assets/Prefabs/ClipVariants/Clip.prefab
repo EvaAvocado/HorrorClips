@@ -1385,6 +1385,7 @@ MonoBehaviour:
   _sprite: {fileID: 1740196062240087162}
   _color: {r: 0.5019608, g: 0.078431375, b: 0, a: 0.8666667}
   _secondColor: {r: 0.5019608, g: 0.078431375, b: 0, a: 0.14117648}
+  _thirdColor: {r: 0.5019608, g: 0.078431375, b: 0, a: 0.78431374}
   _dark: {fileID: 1939604446807105515}
   _actionAfterFadeIn:
     m_PersistentCalls:
@@ -4302,6 +4303,7 @@ MonoBehaviour:
   _sprite: {fileID: 0}
   _color: {r: 0, g: 0, b: 0, a: 1}
   _secondColor: {r: 0, g: 0, b: 0, a: 0}
+  _thirdColor: {r: 0, g: 0, b: 0, a: 0}
   _dark: {fileID: 0}
   _actionAfterFadeIn:
     m_PersistentCalls:
@@ -5308,6 +5310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5367038585641510463}
     m_Modifications:
+    - target: {fileID: 2915437954860077447, guid: b517886b3545d2d42bf13a98d41b6356, type: 3}
+      propertyPath: _clip
+      value: 
+      objectReference: {fileID: 6015839686359269581}
     - target: {fileID: 4033509042584349720, guid: b517886b3545d2d42bf13a98d41b6356, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

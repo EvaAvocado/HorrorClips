@@ -65,12 +65,13 @@ namespace Level.Clips
         public StopWall LeftStop => _leftStop;
         public BoxCollider2D ColliderWithoutDoors => _colliderWithoutDoors;
         public bool IsEditMode => _isEditMode;
-
         public ClipPlace CurrentClipPlace
         {
             get => _currentClipPlace;
             set => _currentClipPlace = value;
         }
+
+        public Fade ClipChooseSprite => _clipChooseSprite;
 
         public bool IsCanDrag
         {

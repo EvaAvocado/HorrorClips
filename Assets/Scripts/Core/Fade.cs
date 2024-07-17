@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Level;
+using Level.Clips;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -15,6 +16,7 @@ namespace Core
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Color _color;
         [SerializeField] private Color _secondColor;
+        [SerializeField] private Color _thirdColor;
         [SerializeField] private Dark _dark;
 
         [FormerlySerializedAs("_actionAfterFade")] [SerializeField]
@@ -41,6 +43,26 @@ namespace Core
                 FadeOut();
             }
         }
+        public void FadeInColorSprite()
+        {
+            _sprite.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _durationFadeIn)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => _actionAfterFadeIn?.Invoke());
+        }
+        
+        public void FadeInSecondColorSprite()
+        {
+            _sprite.DOColor(new Color(_secondColor.r, _secondColor.g, _secondColor.b, _secondColor.a), _durationFadeIn)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => _actionAfterFadeIn?.Invoke());
+        }
+
+        public void FadeInThirdColorSprite()
+        {
+            _sprite.DOColor(new Color(_thirdColor.r, _thirdColor.g, _thirdColor.b, _thirdColor.a), _durationFadeIn)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => _actionAfterFadeIn?.Invoke());
+        }
 
         public void FadeIn()
         {
@@ -55,9 +77,9 @@ namespace Core
                 {
                     if (_dark.gameObject.activeSelf)
                     {
-                        _sprite.DOColor(new Color(_secondColor.r, _secondColor.g, _secondColor.b, _secondColor.a),
+                        /*_sprite.DOColor(new Color(_secondColor.r, _secondColor.g, _secondColor.b, _secondColor.a),
                                 _durationFadeIn).SetEase(Ease.Linear)
-                            .OnComplete(() => _actionAfterFadeIn?.Invoke());
+                            .OnComplete(() => _actionAfterFadeIn?.Invoke());*/
                     }
                     else
                     {
@@ -78,8 +100,8 @@ namespace Core
                 {
                     if (_dark.gameObject.activeSelf)
                     {
-                        _sprite.DOColor(new Color(_secondColor.r, _secondColor.g, _secondColor.b, _secondColor.a),
-                                _duration).SetEase(Ease.Linear).OnComplete(() => _actionAfterFadeIn?.Invoke());
+                        /*_sprite.DOColor(new Color(_secondColor.r, _secondColor.g, _secondColor.b, _secondColor.a),
+                                _duration).SetEase(Ease.Linear).OnComplete(() => _actionAfterFadeIn?.Invoke());*/
                     }
                     else
                     {

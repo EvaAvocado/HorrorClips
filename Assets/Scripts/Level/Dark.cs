@@ -1,6 +1,7 @@
 ﻿using System;
 using Core;
 using Intro;
+using Level.Clips;
 using PlayerSystem;
 using UnityEngine;
 using Utils;
@@ -13,12 +14,15 @@ namespace Level
         [SerializeField] private Collider2D _collider2D;
         [SerializeField] private LayerMask _playerLayer;
         [SerializeField] private Fade _fade;
+        [SerializeField] private Clip _clip;
         
         private const float TRANSPARENCY = 0.5f;
         private const float MAX_COLOR = 1f;
         
         private bool _playerHasLight;
         private bool _isEditMode;
+
+        public Clip Clip => _clip;
 
         private void OnEnable()
         {
@@ -37,11 +41,19 @@ namespace Level
             _isEditMode = status;
             if (_isEditMode)
             {
+                if (_clip.ClipState == Clip.ClipStateEnum.PlayerIn) _clip.ClipChooseSprite.FadeInThirdColorSprite();
+                else if (_clip.ClipState == Clip.ClipStateEnum.Enter || _clip.ClipState == Clip.ClipStateEnum.Exit)
+                {
+                    _clip.ClipChooseSprite.FadeInSecondColorSprite();
+                }
+                
                 _collider2D.isTrigger = true;
                 //_fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
             }
             else
             {
+                if (_clip.ClipState == Clip.ClipStateEnum.PlayerIn) return;
+                
                 _collider2D.isTrigger = false;
                 _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
             }
@@ -56,14 +68,18 @@ namespace Level
         {
             if (_isEditMode && _playerHasLight)
             {
+                if(_clip.ClipState == Clip.ClipStateEnum.Enter || _clip.ClipState == Clip.ClipStateEnum.Exit) _clip.ClipChooseSprite.FadeInThirdColorSprite();
                 _fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
             }
         }
 
         public void MouseExit()
         {
+            if (_clip.ClipState == Clip.ClipStateEnum.PlayerIn) return;
+            
             if (_isEditMode && _playerHasLight)
             {
+                if(_clip.ClipState == Clip.ClipStateEnum.Enter || _clip.ClipState == Clip.ClipStateEnum.Exit) _clip.ClipChooseSprite.FadeInSecondColorSprite();
                 _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
             }
         }

@@ -17,7 +17,8 @@ namespace PlayerSystem
     public class Player : MonoBehaviour, ITransparent
     {
         public event Action OnDie;
-        
+
+        [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
         [SerializeField] private Transform _hand;
         [SerializeField] private List<Animator> _animators;
@@ -42,6 +43,7 @@ namespace PlayerSystem
         private bool _isTriggerForItem;
         private bool _isFlashlight;
         private bool _isOpenMenu;
+        private bool _isTV;
 
         public static event Action<float> OnMove;
         public static event Action OnIdle;
@@ -74,7 +76,7 @@ namespace PlayerSystem
 
         private void Awake()
         {
-            _movement = new Movement(_spriteRenderers, transform, _hand, _speed);
+            _movement = new Movement(_rb, _spriteRenderers, transform, _hand, _speed);
             _interaction = new Interaction(new ChangeStrategy(_animators), _hand, this, _pressButtons);
         }
         
@@ -119,6 +121,7 @@ namespace PlayerSystem
             else if (!_isEditMode && !_isCantStop)
             {
                 OnIdle?.Invoke();
+                _movement.Move(0, true);
             }
 
             if (!_isTriggerForItem 
@@ -137,6 +140,7 @@ namespace PlayerSystem
             {
                 if (_interaction.HaveAxeInHand
                     && _isTriggerForItem
+                    && !_isTV
                     && Input.GetKeyUp(KeyCode.E))
                 {
                     OnSwing?.Invoke();
@@ -192,6 +196,11 @@ namespace PlayerSystem
                 _hint.SetActive(true);
                 _pressButtons.SetCanPress(PressButtonEnum.E);
                 _pressButtons.SetCantPress(PressButtonEnum.Q);
+
+                if (item.GetItemEnum() == ItemEnum.TV)
+                {
+                    _isTV = true;
+                }
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
@@ -222,11 +231,17 @@ namespace PlayerSystem
                 || iitem.GetItemEnum() == ItemEnum.AXE)
                 && !_isOpenMenu)
             {
-                _interaction.SetItem(other.GetComponent<IItem>());
+                var item = other.GetComponent<IItem>();
+                _interaction.SetItem(item);
                 _isTriggerForItem = true;
                 _hint.SetActive(true);
                 _pressButtons.SetCanPress(PressButtonEnum.E);
                 _pressButtons.SetCantPress(PressButtonEnum.Q);
+                
+                if (item.GetItemEnum() == ItemEnum.TV)
+                {
+                    _isTV = true;
+                }
             }
             
             if (_enemyLayer.Contains(other.gameObject.layer))
@@ -249,6 +264,7 @@ namespace PlayerSystem
                 _interaction.SetItem(null);
                 _isTriggerForItem = false;
                 _hint.SetActive(false);
+                _isTV = false;
                 _pressButtons.SetCantPress(PressButtonEnum.E);
 
                 if (_interaction.HaveAxeInHand)

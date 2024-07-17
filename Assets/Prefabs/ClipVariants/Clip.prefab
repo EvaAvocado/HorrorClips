@@ -1705,7 +1705,7 @@ GameObject:
   - component: {fileID: 619034625900227663}
   - component: {fileID: 5203622568729357172}
   - component: {fileID: 3074026243533886500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Safe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1786,7 +1786,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.17457485, y: -4.7789855}

@@ -522,7 +522,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6518159, y: -0.3053751}
+  m_Offset: {x: -0.43065912, y: -0.3053751}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -533,7 +533,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3036318, y: 9.61075}
+  m_Size: {x: 2.7459455, y: 9.61075}
   m_EdgeRadius: 0
 --- !u!114 &6879847922711558204
 MonoBehaviour:
@@ -1252,7 +1252,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.63314915, y: -0.3053751}
+  m_Offset: {x: 0.4006086, y: -0.3053751}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1263,7 +1263,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2662983, y: 9.61075}
+  m_Size: {x: 2.7313795, y: 9.61075}
   m_EdgeRadius: 0
 --- !u!114 &4725816749268805833
 MonoBehaviour:
@@ -4582,10 +4582,8 @@ MonoBehaviour:
   - {fileID: 164344071596380603}
   _leftSprites:
   - {fileID: 6989539519012160963}
-  - {fileID: 659282844687568227}
   _rightSprites:
   - {fileID: 1779539808154412150}
-  - {fileID: 2357803453384262137}
   _leftCollider: {fileID: 0}
   _rightCollider: {fileID: 0}
   _clipState: 0

@@ -94,8 +94,46 @@ namespace PlayerSystem
             MenuManager.OnMenuClose -= MenuClose;
         }
 
+        /*private void FixedUpdate()
+        {
+            var direction = Input.GetAxis(HORIZONTAL);
+            if (direction != 0 && !_isEditMode)
+            {
+                if (!_isIntro)
+                {
+                    _movement.Move(direction, true);
+                }
+                else
+                {
+                    _movement.Move(direction, false);
+                }
+            }
+            else if (!_isEditMode && !_isCantStop)
+            {
+                _movement.Move(0, true);
+            }
+        }*/
+
         private void Update()
         {
+            /*var direction = Input.GetAxis(HORIZONTAL);
+            if (direction != 0 && !_isEditMode)
+            {
+                InvokeOnMove(direction);
+                
+                if (_movement.Flip(direction))
+                {
+                    _interaction.Flip(direction);
+                    OnFlip?.Invoke();
+                }
+                
+                _isHoldAxe = false;
+            }
+            else if (!_isEditMode && !_isCantStop)
+            {
+                OnIdle?.Invoke();
+            }*/
+            
             var direction = Input.GetAxis(HORIZONTAL);
             if (direction != 0 && !_isEditMode)
             {
@@ -123,7 +161,7 @@ namespace PlayerSystem
                 OnIdle?.Invoke();
                 _movement.Move(0, true);
             }
-
+            
             if (!_isTriggerForItem 
                 && Input.GetKeyUp(KeyCode.Q)
                 && _interaction.HaveAxeInHand

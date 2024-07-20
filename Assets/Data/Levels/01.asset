@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f333482b917e6459bbc91300b4e4ea, type: 3}
+  m_Name: 01
+  m_EditorClassIdentifier: 
+  clips:
+    gridSize: {x: 6, y: 2}
+    cellSize: {x: 100, y: 20}
+    cells:
+    - row:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 3517618704492747488, guid: 5164a9d8bf5518d4b885d796c218273d, type: 3}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - row:
+      - {fileID: 3517618704492747488, guid: b96f0d3670846c84cbb1ecbd488efa82, type: 3}
+      - {fileID: 0}
+      - {fileID: 7417104186484508768, guid: 8a996551c84e39942bf1da1c3861dc45, type: 3}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 3517618704492747488, guid: e4c59b60a289cd44f84e94198a2a0e5e, type: 3}

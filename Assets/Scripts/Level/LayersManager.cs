@@ -15,7 +15,7 @@ namespace Level
     {
         [SerializeField] private ClipPlace _clipPlacePrefab;
         [SerializeField] private LevelData _levelData;
-        [SerializeField] private ClipBackgroundData _clipsBackData;
+        [SerializeField] private ClipBackgroundData _clipBackData;
         [SerializeField] private Fade _fade;
         [SerializeField] private Player _player;
         [SerializeField] private Creature _creature;
@@ -157,7 +157,7 @@ namespace Level
         {
             foreach (var clip in clips)
             {
-                clip.Init(_clipsBackData.wallBack, _clipsBackData.wallRight, _clipsBackData.floor);
+                clip.Init(_clipBackData.wallBack, _clipBackData.wallRight, _clipBackData.floor);
             }
         }
     }

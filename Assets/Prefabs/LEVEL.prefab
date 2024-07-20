@@ -2392,7 +2392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clipPlacePrefab: {fileID: 3252457836660974670, guid: b8f60cd12c370e147ac08ab8a91f32c2, type: 3}
   _levelData: {fileID: 11400000, guid: a3984d5156f93e24cb63ea3be04b76e6, type: 2}
-  _clipsBackData: {fileID: 11400000, guid: ab1a2f39961e8524293dd1d5ff94e19e, type: 2}
+  _clipBackData: {fileID: 11400000, guid: ab1a2f39961e8524293dd1d5ff94e19e, type: 2}
   _fade: {fileID: 1147791151493270843}
   _player: {fileID: 8736690917170078579}
   _creature: {fileID: 188865077830972037}

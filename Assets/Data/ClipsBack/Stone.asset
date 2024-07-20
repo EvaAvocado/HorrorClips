@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64efa7fc4ddc74741b25fb68e598dbb5, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  wallBack: {fileID: 21300000, guid: e06eff001004f5d459ea4f647dfea218, type: 3}
-  wallRight: {fileID: 21300000, guid: 5c0150b8dea4d0644b61f85a250cbdfe, type: 3}
-  floor: {fileID: 21300000, guid: 529a98a1d55878e45966100c88b764b2, type: 3}
+  wallBack: {fileID: 21300000, guid: 546437532aa979247ad16c83637347b1, type: 3}
+  wallRight: {fileID: 21300000, guid: cd418abc99672f24ca21782f823ebbbd, type: 3}
+  floor: {fileID: 21300000, guid: 0de2c3b748ef619408cdace3c677b9c0, type: 3}

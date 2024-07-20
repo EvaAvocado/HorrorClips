@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64efa7fc4ddc74741b25fb68e598dbb5, type: 3}
-  m_Name: 01
+  m_Name: Brick
   m_EditorClassIdentifier: 
   wallBack: {fileID: 21300000, guid: 3cc5c7b2534b0e44abf454654a2648aa, type: 3}
   wallRight: {fileID: 21300000, guid: b2f6ce79bf69dc243acc9b4737852899, type: 3}
-  floor: {fileID: 21300000, guid: 529a98a1d55878e45966100c88b764b2, type: 3}
+  floor: {fileID: 21300000, guid: 0de2c3b748ef619408cdace3c677b9c0, type: 3}

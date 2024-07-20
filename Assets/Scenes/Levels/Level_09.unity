@@ -202,6 +202,10 @@ PrefabInstance:
       propertyPath: _levelData
       value: 
       objectReference: {fileID: 11400000, guid: 8b588fde601f0b648b5117abf651dc08, type: 2}
+    - target: {fileID: 6641168108932134693, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: _clipBackData
+      value: 
+      objectReference: {fileID: 11400000, guid: feb2b6eac616c764a8557e915a2206f6, type: 2}
     - target: {fileID: 6644012850003721652, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _levelName
       value: Level 9

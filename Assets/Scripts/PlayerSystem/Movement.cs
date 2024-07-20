@@ -29,12 +29,12 @@ namespace PlayerSystem
             if (horizontal)
             {
                 _playerTransform.position += _playerTransform.right * (direction * _speed * Time.deltaTime);
-                // _rb.velocity = _playerTransform.right * (direction * _speed);
+                // _rb.velocity = _playerTransform.right * (direction * _speed * Time.fixedDeltaTime * 50f);
             }
             else
             {
                 _playerTransform.position += _playerTransform.up * (direction * _speed * Time.deltaTime);
-                // _rb.velocity = _playerTransform.up * (direction * _speed);
+                // _rb.velocity = _playerTransform.up * (direction * _speed * Time.fixedDeltaTime * 50f);
             }
             
         }

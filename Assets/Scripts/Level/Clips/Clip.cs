@@ -31,6 +31,12 @@ namespace Level.Clips
         [SerializeField] private GameObject _leftWall;
         [SerializeField] private GameObject _rightWall;
 
+        [Header("Back Sprites")] 
+        [SerializeField] private SpriteRenderer _wallBack;
+        [SerializeField] private SpriteRenderer _wallRight;
+        [SerializeField] private SpriteRenderer _wallLeft;
+        [SerializeField] private SpriteRenderer _floor;
+
         private bool _isBeingHeld;
         private Camera _camera;
         private Vector3 _mousePos;
@@ -86,8 +92,13 @@ namespace Level.Clips
 
         #endregion
 
-        private void Start()
+        public void Init(Sprite wallBack, Sprite wallRight, Sprite floor)
         {
+            _wallBack.sprite = wallBack;
+            _wallRight.sprite = wallRight;
+            _wallLeft.sprite = wallRight;
+            _floor.sprite = floor;
+            
             if (_clipState == ClipStateEnum.Enter)
             {
                 _leftWall.layer = 9;

@@ -15,6 +15,7 @@ namespace Level
     {
         [SerializeField] private ClipPlace _clipPlacePrefab;
         [SerializeField] private LevelData _levelData;
+        [SerializeField] private ClipBackgroundData _clipBackData;
         [SerializeField] private Fade _fade;
         [SerializeField] private Player _player;
         [SerializeField] private Creature _creature;
@@ -85,6 +86,9 @@ namespace Level
                 SpawnClips(_bottomClipPlaces, false);
                 SpawnClips(_topClipPlaces, true);
 
+                SetBackInClips(_bottomClips);
+                SetBackInClips(_topClips);
+                
                 _player.transform.position = _bottomClips[0].transform.position - new Vector3(5,3,0);
                 _creature.transform.position = new Vector3(_bottomClips[0].transform.position.x - 20 - _creature.DeltaToShiftX,
                     _bottomClips[0].transform.position.y - 3f, 0);
@@ -146,6 +150,14 @@ namespace Level
             {
                 clipPlaces[0].CurrentClip.ClipState = Clip.ClipStateEnum.Enter;
                 clipPlaces[^1].CurrentClip.ClipState = Clip.ClipStateEnum.Exit;
+            }
+        }
+
+        private void SetBackInClips(List<Clip> clips)
+        {
+            foreach (var clip in clips)
+            {
+                clip.Init(_clipBackData.wallBack, _clipBackData.wallRight, _clipBackData.floor);
             }
         }
     }

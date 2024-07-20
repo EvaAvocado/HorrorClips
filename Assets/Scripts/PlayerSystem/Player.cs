@@ -447,6 +447,10 @@ namespace PlayerSystem
         public void HoldAxe() => _isHoldAxe = true;
         public void NotHoldAxe() => _isHoldAxe = false;
         public void DropAxe() => _interaction.Drop();
-        public void CheckAxe() => _interaction.CheckAxe(_hint);
+        public void CheckAxe() 
+        {
+            _interaction.CheckAxe(_hint);
+            _pressButtons.SetCantPress(PressButtonEnum.E);
+        }
     }
 }

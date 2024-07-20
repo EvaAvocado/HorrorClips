@@ -4602,6 +4602,10 @@ MonoBehaviour:
   _leftStop: {fileID: 6879847922711558204}
   _leftWall: {fileID: 315034578157742894}
   _rightWall: {fileID: 7033398324744804956}
+  _wallBack: {fileID: 2169973014878669178}
+  _wallRight: {fileID: 1779539808154412150}
+  _wallLeft: {fileID: 6989539519012160963}
+  _floor: {fileID: 8799097556574533390}
 --- !u!61 &6710528701774333961
 BoxCollider2D:
   m_ObjectHideFlags: 0

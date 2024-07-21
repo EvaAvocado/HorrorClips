@@ -8,7 +8,8 @@ namespace Level
         [SerializeField] private Animator _animator;
         [SerializeField] private GameObject _hole;
         [SerializeField] private GameObject _background;
-        [SerializeField] private Collider2D _collider2D;
+        [SerializeField] private Collider2D _collider2DFirst;
+        [SerializeField] private Collider2D _collider2DSecond;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private PlaySound _playSound;
         [SerializeField] private PlaySound _playSound2;
@@ -24,7 +25,7 @@ namespace Level
         private void BackgroundOn()
         {
             _background.SetActive(true);
-            _collider2D.isTrigger = true;
+            _collider2DSecond.enabled = true;
         }
 
         public void ChangeFallState()
@@ -35,7 +36,7 @@ namespace Level
         public void ChangeReleaseEnemyState()
         {
             _animator.SetTrigger(Property);
-            _collider2D.enabled = true;
+            _collider2DFirst.enabled = true;
         }
         
         private void PlaySoundSafe()

@@ -376,6 +376,7 @@ MonoBehaviour:
   _spriteRenderers:
   - {fileID: 6731387821224093599}
   - {fileID: 4774667838470021717}
+  - {fileID: 7416673709565519340}
   _hand: {fileID: 7018992706509572352}
   _animators:
   - {fileID: 3433131520606109140}

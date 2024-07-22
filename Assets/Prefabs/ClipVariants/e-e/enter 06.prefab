@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2754783918563318930, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3721354785250444888, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _stopWall
       value: 

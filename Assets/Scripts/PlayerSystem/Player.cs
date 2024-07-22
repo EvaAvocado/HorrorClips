@@ -33,6 +33,7 @@ namespace PlayerSystem
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private Press _pressButtons;
         [SerializeField] private UnityEvent _dieEvent;
+        [SerializeField] private GameObject _maskToEnd;
 
         [SerializeField] private bool _isIntro;
         
@@ -73,6 +74,7 @@ namespace PlayerSystem
         }
 
         public Movement MovementClass => _movement;
+        public GameObject MaskToEnd => _maskToEnd;
 
         private void Awake()
         {

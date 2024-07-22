@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.Events;
 using Utils;
 
 namespace Intro
@@ -12,6 +13,7 @@ namespace Intro
         [SerializeField] private GameObject _hints;
         [SerializeField] private Player _player;
         [SerializeField] private LayerMask _itemLayer;
+        [SerializeField] private UnityEvent _action;
 
         private bool _isCanMove = true;
         
@@ -35,6 +37,11 @@ namespace Intro
             else if (_isCanMove)
             {
                 _hints.transform.DOMove(new Vector3(transform.position.x - 3.75f, transform.position.y - 10f, 0), 1f);
+            }
+
+            if (!_isCanMove)
+            {
+                _action?.Invoke();
             }
         }
 

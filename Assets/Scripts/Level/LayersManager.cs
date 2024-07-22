@@ -88,29 +88,35 @@ namespace Level
 
                 SetBackInClips(_bottomClips);
                 SetBackInClips(_topClips);
-                
-                _player.transform.position = _bottomClips[0].transform.position - new Vector3(5,3,0);
-                _creature.transform.position = new Vector3(_bottomClips[0].transform.position.x - 20 - _creature.DeltaToShiftX,
+
+                _player.transform.position = _bottomClips[0].transform.position - new Vector3(5, 3, 0);
+                _creature.transform.position = new Vector3(
+                    _bottomClips[0].transform.position.x - 20 - _creature.DeltaToShiftX,
                     _bottomClips[0].transform.position.y - 3f, 0);
 
-                var distanceCreatureClip = Math.Abs(_creature.transform.position.x - _bottomClips[0].transform.position.x);
+                var distanceCreatureClip =
+                    Math.Abs(_creature.transform.position.x - _bottomClips[0].transform.position.x);
                 var normalizeDistance = (distanceCreatureClip - 20f) * 2f + 2f;
                 var deltaCreature = normalizeDistance / 20f;
-                _creature.MaskToShift.transform.localScale = new Vector3(_creature.transform.localScale.x + deltaCreature, _creature.transform.localScale.y, _creature.transform.localScale.z);
                 
+                _creature.MaskToShift.transform.localScale = new Vector3(
+                    _creature.transform.localScale.x + deltaCreature, _creature.transform.localScale.y,
+                    _creature.transform.localScale.z);
                 _creature.MaskToShift.transform.position = new Vector3(_creature.transform.position.x,
                     _bottomClips[0].transform.position.y, 0);
-
+                
+                _player.MaskToEnd.transform.position = new Vector3(_bottomClips[^1].transform.position.x + 18.98f,
+                    _bottomClips[^1].transform.position.y, 0);
 
                 StartCoroutine(TimerToFadeOut());
             }
         }
-        
+
         private IEnumerator TimerToFadeOut()
         {
             Time.timeScale = 1;
             yield return new WaitForSeconds(0.5f);
-            
+
             _fade.FadeOut();
         }
 
@@ -136,11 +142,11 @@ namespace Level
                 var clip = isTop ? _levelData.clips.GetCells()[0, i] : _bottomGameObj[i];
                 if (clip != null)
                 {
-                    var newClip = Instantiate(clip, new Vector3(clipPlaces[i].transform.position.x, 
+                    var newClip = Instantiate(clip, new Vector3(clipPlaces[i].transform.position.x,
                             clipPlaces[i].transform.position.y, clip.transform.position.z), Quaternion.identity)
-                            .GetComponent<Clip>();
+                        .GetComponent<Clip>();
                     clipPlaces[i].SetClip(newClip);
-                    
+
                     if (isTop) _topClips.Add(newClip);
                     else _bottomClips.Add(newClip);
                 }

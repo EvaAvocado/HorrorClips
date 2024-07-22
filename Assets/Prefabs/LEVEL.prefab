@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61fddaf6d22b2b4b8c12683111129a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 4149600345435361587}
   _colorCanPress: {r: 1, g: 1, b: 1, a: 1}
   _colorCantPress: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   _spriteEsc: {fileID: 1473617933726029671}

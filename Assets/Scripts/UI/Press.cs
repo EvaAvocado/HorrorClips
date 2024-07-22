@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Press : MonoBehaviour
 {
+    [SerializeField] private Canvas _canvas;
     [SerializeField] private Color _colorCanPress;
     [SerializeField] private Color _colorCantPress;
     [SerializeField] private Image _spriteEsc;
@@ -47,6 +48,10 @@ public class Press : MonoBehaviour
 
     public void Init(EditManager editManager)
     {
+        _canvas.worldCamera = Camera.main;
+        _canvas.sortingLayerName = "UI";
+        _canvas.sortingOrder = 90;
+        
         _editManager = editManager;
         SetCanPress(PressButtonEnum.Esc);
         SetCanPress(PressButtonEnum.Space);

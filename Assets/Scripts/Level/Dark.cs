@@ -4,6 +4,7 @@ using Intro;
 using Level.Clips;
 using PlayerSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utils;
 
 namespace Level
@@ -14,26 +15,31 @@ namespace Level
         [SerializeField] private Collider2D _collider2D;
         [SerializeField] private LayerMask _playerLayer;
         [SerializeField] private Fade _fade;
-        [SerializeField] private Clip _clip;
-        
+
+        [FormerlySerializedAs("_clip")] [SerializeField]
+        private Clip clipDark;
+
         private const float TRANSPARENCY = 0.5f;
         private const float MAX_COLOR = 1f;
-        
+
         private bool _playerHasLight;
         private bool _isEditMode;
+        private Clip _clipWherePlayer;
 
-        public Clip Clip => _clip;
+        public Clip ClipDark => clipDark;
 
         private void OnEnable()
         {
             EditManager.OnChangeEditMode += ChangeEditMode;
             Player.OnHasFlashlight += ChangePlayerHasLightTrue;
+            Clip.OnChangePlayerIn += ChangePlayerIn;
         }
 
         private void OnDisable()
         {
             EditManager.OnChangeEditMode -= ChangeEditMode;
             Player.OnHasFlashlight -= ChangePlayerHasLightTrue;
+            Clip.OnChangePlayerIn -= ChangePlayerIn;
         }
 
         private void ChangeEditMode(bool status)
@@ -41,21 +47,26 @@ namespace Level
             _isEditMode = status;
             if (_isEditMode)
             {
-                if (_clip.ClipState == Clip.ClipStateEnum.PlayerIn) _clip.ClipChooseSprite.FadeInThirdColorSprite();
-                else if (_clip.ClipState == Clip.ClipStateEnum.Enter || _clip.ClipState == Clip.ClipStateEnum.Exit)
+                if (clipDark.ClipState == Clip.ClipStateEnum.Enter || clipDark.ClipState == Clip.ClipStateEnum.Exit ||
+                    (clipDark == _clipWherePlayer && !_playerHasLight))
                 {
-                    _clip.ClipChooseSprite.FadeInSecondColorSprite();
+                    clipDark.ClipChooseSprite.FadeInSecondColorSprite();
                 }
-                
-                _collider2D.isTrigger = true;
+
+                if (clipDark == _clipWherePlayer && _playerHasLight)
+                {
+                    clipDark.ClipChooseSprite.FadeInThirdColorSprite();
+                }
+
+                //_collider2D.isTrigger = true;
                 //_fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
             }
             else
             {
-                if (_clip.ClipState == Clip.ClipStateEnum.PlayerIn) return;
-                
-                _collider2D.isTrigger = false;
-                _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
+                if (clipDark == _clipWherePlayer) return;
+
+                //_collider2D.isTrigger = false;
+                _fade.FadeWithColor(new Color(0, 0, 0, MAX_COLOR));
             }
         }
 
@@ -64,23 +75,38 @@ namespace Level
             _playerHasLight = true;
         }
 
+        private void ChangePlayerIn(Clip clipIn)
+        {
+            _clipWherePlayer = clipIn;
+        }
+
         public void MouseEnter()
         {
             if (_isEditMode && _playerHasLight)
             {
-                if(_clip.ClipState == Clip.ClipStateEnum.Enter || _clip.ClipState == Clip.ClipStateEnum.Exit) _clip.ClipChooseSprite.FadeInThirdColorSprite();
-                _fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
+                if (clipDark.ClipState == Clip.ClipStateEnum.Enter ||
+                    clipDark.ClipState == Clip.ClipStateEnum.Exit && clipDark != _clipWherePlayer)
+                {
+                    clipDark.ClipChooseSprite.FadeInThirdColorSprite();
+                }
+
+                if (clipDark != _clipWherePlayer) _fade.FadeWithColor(new Color(0, 0, 0, TRANSPARENCY));
             }
         }
 
         public void MouseExit()
         {
-            if (_clip.ClipState == Clip.ClipStateEnum.PlayerIn) return;
-            
+            if (clipDark.ClipState == Clip.ClipStateEnum.PlayerIn) return;
+
             if (_isEditMode && _playerHasLight)
             {
-                if(_clip.ClipState == Clip.ClipStateEnum.Enter || _clip.ClipState == Clip.ClipStateEnum.Exit) _clip.ClipChooseSprite.FadeInSecondColorSprite();
-                _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
+                if (clipDark.ClipState == Clip.ClipStateEnum.Enter ||
+                    clipDark.ClipState == Clip.ClipStateEnum.Exit && clipDark != _clipWherePlayer)
+                {
+                    clipDark.ClipChooseSprite.FadeInSecondColorSprite();
+                }
+                    
+                if (clipDark != _clipWherePlayer) _fade.FadeWithColor(new Color(0, 0, 0, MAX_COLOR));
             }
         }
 
@@ -90,11 +116,11 @@ namespace Level
             {
                 var player = other.GetComponent<Player>();
                 player.IsInTheDark = true;
-                
+
                 if (player.HaveFlashlight)
                 {
                     _collider2D.enabled = false;
-                    _fade.FadeWithColor(new Color(0,0,0,TRANSPARENCY));
+                    _fade.FadeWithColor(new Color(0, 0, 0, TRANSPARENCY));
                 }
             }
         }
@@ -114,12 +140,12 @@ namespace Level
             {
                 var player = other.GetComponent<Player>();
                 player.IsInTheDark = false;
-                
-                _fade.FadeWithColor(new Color(0,0,0,MAX_COLOR));
+
+                _fade.FadeWithColor(new Color(0, 0, 0, MAX_COLOR));
                 _collider2D.enabled = true;
             }
         }
-        
+
         private Color ChangeColor(float alpha) => new(0, 0, 0, alpha);
     }
 }

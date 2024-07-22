@@ -13,7 +13,7 @@ namespace Level
         [SerializeField] private bool _playOnStart;
 
         private float _pitchFloat = 1f;
-        private float _deltaToPitch = 4.6f;
+        private float _deltaToPitch = 5.2f;
 
         private void Start()
         {

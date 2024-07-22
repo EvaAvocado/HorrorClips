@@ -131,7 +131,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 2
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -183,6 +183,7 @@ MonoBehaviour:
   _animator: {fileID: 2720300346709241507}
   _spriteRenderer: {fileID: 7590565462091695848}
   _deltaToShiftX: 15
+  _maskToShift: {fileID: 0}
 --- !u!70 &3664743066874150034
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

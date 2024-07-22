@@ -153,7 +153,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -186,7 +186,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!95 &3433131520606109140
 Animator:
@@ -399,6 +399,7 @@ MonoBehaviour:
   _dieEvent:
     m_PersistentCalls:
       m_Calls: []
+  _maskToEnd: {fileID: 0}
   _isIntro: 0
 --- !u!70 &41195180579708008
 CapsuleCollider2D:
@@ -690,7 +691,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -723,7 +724,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!95 &4470299303752914358
 Animator:
@@ -877,7 +878,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -910,7 +911,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!95 &7005524873538018400
 Animator:

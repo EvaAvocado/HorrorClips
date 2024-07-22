@@ -154,7 +154,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1251186755
   m_SortingLayer: -3
-  m_SortingOrder: 100
+  m_SortingOrder: 2500
   m_Sprite: {fileID: 21300000, guid: a15c4e0b89376d1409e9c667abd3f9f9, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -229,6 +229,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _fade: {fileID: 6252862214735132145}
+  _clip: {fileID: 0}
 --- !u!114 &6252862214735132145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +248,7 @@ MonoBehaviour:
   _sprite: {fileID: 1482393384132795976}
   _color: {r: 0, g: 0, b: 0, a: 0}
   _secondColor: {r: 0, g: 0, b: 0, a: 0}
+  _thirdColor: {r: 0, g: 0, b: 0, a: 0}
   _dark: {fileID: 0}
   _actionAfterFadeIn:
     m_PersistentCalls:

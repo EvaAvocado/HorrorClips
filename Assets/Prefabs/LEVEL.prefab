@@ -459,6 +459,7 @@ Transform:
   - {fileID: 9183873232880101784}
   - {fileID: 2885453998635643}
   - {fileID: 1319670666698368852}
+  - {fileID: 3827978909595698799}
   - {fileID: 1888882132976877740}
   - {fileID: 64904525050623480}
   - {fileID: 123166023618435796}
@@ -723,7 +724,7 @@ SpriteMask:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 2
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
@@ -754,8 +755,8 @@ SpriteMask:
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
   m_FrontSortingOrder: 0
-  m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_BackSortingOrder: -1
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!1 &3006032608155963912
 GameObject:
@@ -3145,6 +3146,89 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &9119249483730232889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3827978909595698799}
+  - component: {fileID: 7208865080519146574}
+  m_Layer: 0
+  m_Name: Sprite Mask Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3827978909595698799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119249483730232889}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 317410725209958414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!331 &7208865080519146574
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119249483730232889}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 4
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: d5f565d37c816e94c896c709379f145c, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &471252858018374171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3159,7 +3243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 294073403793854622, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: _baseSpeed
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 294073403793854622, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: _maskToShift
@@ -3176,6 +3260,10 @@ PrefabInstance:
     - target: {fileID: 1725872599069219073, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590565462091695848, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9140289559766023371, guid: 7eb32d5acbc775547b9cc638497e22ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3611,6 +3699,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 317410725209958414}
     m_Modifications:
+    - target: {fileID: 1272039990655287602, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
+      propertyPath: _maskToEnd
+      value: 
+      objectReference: {fileID: 9119249483730232889}
     - target: {fileID: 1272039990655287602, guid: eca751701aaad02438c2da62dc7ee134, type: 3}
       propertyPath: _pressButtons
       value: 

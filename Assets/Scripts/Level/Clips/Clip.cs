@@ -45,7 +45,9 @@ namespace Level.Clips
         public static event Action<Clip> OnMouseUpAction;
         public static event Action OnStartMoving;
         public static event Action OnStopMoving;
+        public static event Action<Clip> OnChangePlayerIn;
         
+
         public ClipStateEnum StateEnum => _clipState;
 
         public enum ClipStateEnum
@@ -176,6 +178,7 @@ namespace Level.Clips
 
         public void PlayerEnter()
         {
+            OnChangePlayerIn?.Invoke(this);
             if (_clipState != ClipStateEnum.Enter && _clipState != ClipStateEnum.Exit &&
                 _clipState != ClipStateEnum.MonsterIn)
             {

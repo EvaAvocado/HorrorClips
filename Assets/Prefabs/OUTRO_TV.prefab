@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OUTRO_TV
       objectReference: {fileID: 0}
+    - target: {fileID: 5032944935513009300, guid: fa63a120c0f11074a823108c6ee84472, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 50593566dbbbde94b8023ef62c2de871, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

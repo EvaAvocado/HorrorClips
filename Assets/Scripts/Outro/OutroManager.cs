@@ -1,19 +1,36 @@
 using Core;
-using Intro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Video;
 
-public class OutroManager : MonoBehaviour
+namespace Outro
 {
-    [SerializeField] private Fade _fade;
-    [SerializeField] private Animator _animator;
-
-    public void Load10Level()
+    public class OutroManager : MonoBehaviour
     {
-        _fade.FadeIn();
-    }
+        [SerializeField] private Fade _fade;
+        [SerializeField] private VideoPlayer _videoPlayer;
+        [SerializeField] private UnityEvent _actionIfVideoEnd;
 
-    public void PlayAnimation()
-    {
-        _animator.Play("cutscene");
+        private bool _isEnd;
+       
+        void OnEnable()
+        {
+            _videoPlayer.loopPointReached += OnVideoEnd;
+        }
+
+        void OnDisable()
+        {
+            _videoPlayer.loopPointReached -= OnVideoEnd;
+        }
+
+        void OnVideoEnd(VideoPlayer causedVideoPlayer)
+        {
+            if (!_isEnd)
+            {
+                print("THE END");
+                _actionIfVideoEnd?.Invoke();
+                _isEnd = true;
+            }
+        }
     }
 }

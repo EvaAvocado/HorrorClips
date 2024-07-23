@@ -12,6 +12,7 @@ namespace Intro
         [SerializeField] private Text _text;
         [SerializeField] private Image _image;
         [SerializeField] private float _duration = 0.5f;
+        [SerializeField] private bool _isAlwaysInteractable;
 
         private void OnEnable()
         {
@@ -25,6 +26,12 @@ namespace Intro
 
         private void SetInteractivity(float direction)
         {
+            if (_isAlwaysInteractable)
+            {
+                _button.interactable = true;
+                return;
+            }
+            
             if (direction > 0)
             {
                 if (_rightArrow)
@@ -71,6 +78,12 @@ namespace Intro
         {
             _button.image.DOColor(new Color(_button.image.color.r, _button.image.color.g, 
                 _button.image.color.b, 1), _duration).SetEase(Ease.Linear);
+            
+            if (_text != null)
+            {
+                _text.DOColor(new Color(_text.color.r, _text.color.g, 
+                    _text.color.b, 1), _duration).SetEase(Ease.Linear);
+            }
             
             _image.DOColor(new Color(_image.color.r, _image.color.g, 
                 _image.color.b, 1), _duration).SetEase(Ease.Linear);

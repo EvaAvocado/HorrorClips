@@ -23,6 +23,7 @@ namespace Core
         [FormerlySerializedAs("_actionAfterFade")] [SerializeField]
         private UnityEvent _actionAfterFadeIn;
 
+        [SerializeField] private UnityEvent _actionBeforeFadeOut;
         [SerializeField] private UnityEvent _actionAfterFadeOut;
         [SerializeField] private bool _playFadeInOnStart;
         [SerializeField] private bool _playFadeOutOnStart;
@@ -121,6 +122,7 @@ namespace Core
 
         public void FadeOut()
         {
+            _actionBeforeFadeOut?.Invoke();
             if (_image != null)
             {
                 _image.DOColor(new Color(_color.r, _color.g, _color.b, 0), _duration).SetEase(Ease.Linear)
@@ -143,13 +145,42 @@ namespace Core
 
         public void FadeWithColor(Color newColor)
         {
-            if (_image != null)
+            if (newColor.a != 0)
             {
-                _image.DOColor(newColor, _duration).SetEase(Ease.Linear);
+                _actionBeforeFadeIn?.Invoke();
             }
             else
             {
-                _sprite.DOColor(newColor, _duration).SetEase(Ease.Linear);
+                _actionBeforeFadeOut?.Invoke();
+            }
+            
+            if (_image != null)
+            {
+                _image.DOColor(newColor, _duration).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    if (newColor.a == 0)
+                    {
+                        _actionAfterFadeIn?.Invoke();
+                    }
+                    else
+                    {
+                        _actionAfterFadeOut?.Invoke();
+                    }
+                });
+            }
+            else
+            {
+                _sprite.DOColor(newColor, _duration).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    if (newColor.a == 0)
+                    {
+                        _actionAfterFadeIn?.Invoke();
+                    }
+                    else
+                    {
+                        _actionAfterFadeOut?.Invoke();
+                    }
+                });
             }
         }
     }

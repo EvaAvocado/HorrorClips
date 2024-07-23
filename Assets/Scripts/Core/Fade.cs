@@ -19,12 +19,14 @@ namespace Core
         [SerializeField] private Color _thirdColor;
         [SerializeField] private Dark _dark;
 
+        [SerializeField] private UnityEvent _actionBeforeFadeIn;
         [FormerlySerializedAs("_actionAfterFade")] [SerializeField]
         private UnityEvent _actionAfterFadeIn;
 
         [SerializeField] private UnityEvent _actionAfterFadeOut;
         [SerializeField] private bool _playFadeInOnStart;
         [SerializeField] private bool _playFadeOutOnStart;
+        
 
         public float Duration
         {
@@ -45,13 +47,15 @@ namespace Core
         }
         public void FadeInColorSprite()
         {
+            _actionBeforeFadeIn?.Invoke();
             _sprite.DOColor(new Color(_color.r, _color.g, _color.b, _color.a), _durationFadeIn)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _actionAfterFadeIn?.Invoke());
         }
         
         public void FadeInSecondColorSprite()
-        {
+        { 
+            _actionBeforeFadeIn?.Invoke();
             _sprite.DOColor(new Color(_secondColor.r, _secondColor.g, _secondColor.b, _secondColor.a), _durationFadeIn)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _actionAfterFadeIn?.Invoke());
@@ -59,6 +63,7 @@ namespace Core
 
         public void FadeInThirdColorSprite()
         {
+            _actionBeforeFadeIn?.Invoke();
             _sprite.DOColor(new Color(_thirdColor.r, _thirdColor.g, _thirdColor.b, _thirdColor.a), _durationFadeIn)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => _actionAfterFadeIn?.Invoke());
@@ -66,6 +71,7 @@ namespace Core
 
         public void FadeIn()
         {
+            _actionBeforeFadeIn?.Invoke();
             if (_durationFadeIn != 0)
             {
                 if (_image != null)

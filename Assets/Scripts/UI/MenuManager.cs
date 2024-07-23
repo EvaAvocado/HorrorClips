@@ -21,6 +21,7 @@ namespace UI
 
         public void Init()
         {
+            //PlayerPrefs.DeleteAll();
             foreach (var controller in _volumeControllers)
             {
                 controller.Init();

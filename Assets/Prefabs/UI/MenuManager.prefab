@@ -5799,7 +5799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5d7e09493c68e4b9ab01b01dfad050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: Level_09
+  _sceneName: Level_08
   _timeBeforeLoadScene: 0.2
 --- !u!1 &7172494998589083393
 GameObject:
@@ -6022,7 +6022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5d7e09493c68e4b9ab01b01dfad050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: Level_08
+  _sceneName: Level_09
   _timeBeforeLoadScene: 0.2
 --- !u!1 &7322586773678894750
 GameObject:
@@ -6424,7 +6424,7 @@ MonoBehaviour:
   _volumeControllers:
   - {fileID: 6501445578544261741}
   - {fileID: 6476951438879945693}
-  _isCanOpen: 1
+  _isFirstLevel: 0
 --- !u!1 &7771625063311965965
 GameObject:
   m_ObjectHideFlags: 0

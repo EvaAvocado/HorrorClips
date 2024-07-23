@@ -322,6 +322,7 @@ MonoBehaviour:
   _text: {fileID: 0}
   _image: {fileID: 2031003121}
   _duration: 0.5
+  _isAlwaysInteractable: 0
 --- !u!1 &74208745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,6 +2452,7 @@ MonoBehaviour:
   _text: {fileID: 0}
   _image: {fileID: 1128888431}
   _duration: 0.5
+  _isAlwaysInteractable: 0
 --- !u!114 &799437310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2590,6 +2592,7 @@ MonoBehaviour:
   _text: {fileID: 0}
   _image: {fileID: 1616219339}
   _duration: 0.5
+  _isAlwaysInteractable: 0
 --- !u!114 &816782140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2811,6 +2814,7 @@ MonoBehaviour:
   _text: {fileID: 0}
   _image: {fileID: 1696899636}
   _duration: 0.5
+  _isAlwaysInteractable: 0
 --- !u!1 &872183015
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,10 +4340,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 233001547576955246, guid: 24d3434155972b64e9dbb924618ae546, type: 3}
-      propertyPath: _isCanOpen
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4633169805678209321, guid: 24d3434155972b64e9dbb924618ae546, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4563,6 +4563,9 @@ MonoBehaviour:
   _secondColor: {r: 0, g: 0, b: 0, a: 0}
   _thirdColor: {r: 0, g: 0, b: 0, a: 0}
   _dark: {fileID: 0}
+  _actionBeforeFadeIn:
+    m_PersistentCalls:
+      m_Calls: []
   _actionAfterFadeIn:
     m_PersistentCalls:
       m_Calls:
@@ -4578,6 +4581,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _actionBeforeFadeOut:
+    m_PersistentCalls:
+      m_Calls: []
   _actionAfterFadeOut:
     m_PersistentCalls:
       m_Calls: []
@@ -4928,6 +4934,7 @@ MonoBehaviour:
   _text: {fileID: 1067456640}
   _image: {fileID: 0}
   _duration: 0.5
+  _isAlwaysInteractable: 0
 --- !u!1 &1722618425
 GameObject:
   m_ObjectHideFlags: 0
@@ -6191,6 +6198,7 @@ MonoBehaviour:
   _text: {fileID: 636518326}
   _image: {fileID: 0}
   _duration: 0.5
+  _isAlwaysInteractable: 0
 --- !u!1 &2096416746
 GameObject:
   m_ObjectHideFlags: 0

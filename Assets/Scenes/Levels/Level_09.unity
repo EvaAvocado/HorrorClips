@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 188865077830972037, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: _deltaToShiftX
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 317410725209958414, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174,13 +178,17 @@ PrefabInstance:
       propertyPath: _color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1259246505324935962, guid: ee7d78469c6879940b8daec40b115066, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1515559673464204766, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_SizeDelta.x
       value: 2399.9998
       objectReference: {fileID: 0}
     - target: {fileID: 1515559673464204766, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -199.99988
+      value: -199.99991
       objectReference: {fileID: 0}
     - target: {fileID: 1603876339166236733, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: m_Name
@@ -188,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1991256900537320709, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _levelNumber
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1991256900537320709, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _deltaToPitch
@@ -201,18 +209,14 @@ PrefabInstance:
     - target: {fileID: 6641168108932134693, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _levelData
       value: 
-      objectReference: {fileID: 11400000, guid: 8b588fde601f0b648b5117abf651dc08, type: 2}
+      objectReference: {fileID: 11400000, guid: 843786e5cd473864fab96522291ccdb1, type: 2}
     - target: {fileID: 6641168108932134693, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _clipBackData
       value: 
-      objectReference: {fileID: 11400000, guid: feb2b6eac616c764a8557e915a2206f6, type: 2}
+      objectReference: {fileID: 11400000, guid: ab1a2f39961e8524293dd1d5ff94e19e, type: 2}
     - target: {fileID: 6644012850003721652, guid: ee7d78469c6879940b8daec40b115066, type: 3}
       propertyPath: _levelName
       value: Level 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6962101213239479291, guid: ee7d78469c6879940b8daec40b115066, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -63,6 +63,10 @@ MonoBehaviour:
     m_Key: hint_thief
     m_Metadata:
       m_Items: []
+  - m_Id: 3335628102365184
+    m_Key: hinf_for_dds
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 6011177733539758082
@@ -124,6 +128,10 @@ MonoBehaviour:
           - en
           - ru
         - m_KeyId: 3189708056489984
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 3335628102365184
           m_TableCodes:
           - en
           - ru

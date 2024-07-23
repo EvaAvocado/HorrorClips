@@ -55,6 +55,14 @@ MonoBehaviour:
     m_Key: dd-dd 1
     m_Metadata:
       m_Items: []
+  - m_Id: 3189339385556992
+    m_Key: hint_joker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3189708056489984
+    m_Key: hint_thief
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 6011177733539758082
@@ -111,5 +119,13 @@ MonoBehaviour:
           m_TableCodes:
           - ru
           - en
+        - m_KeyId: 3189339385556992
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 3189708056489984
+          m_TableCodes:
+          - en
+          - ru
         m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null

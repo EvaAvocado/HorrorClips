@@ -129,12 +129,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6015839686359269581, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _spriteRenderers.Array.size
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6015839686359269581, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _spriteRenderers.Array.data[20]
       value: 
       objectReference: {fileID: 4501993907681232217}
+    - target: {fileID: 6015839686359269581, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: _spriteRenderers.Array.data[21]
+      value: 
+      objectReference: {fileID: 6686992451492105043}
     - target: {fileID: 6879847922711558204, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: _isDeadEnd
       value: 1
@@ -163,6 +167,11 @@ PrefabInstance:
       addedObject: {fileID: 631700987222116355}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+--- !u!212 &6686992451492105043 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9068507216171538621, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+  m_PrefabInstance: {fileID: 2383872534222164974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7741329700389483985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5367038585641510463, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}

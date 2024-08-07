@@ -27,7 +27,7 @@ namespace UI
                 controller.Init();
             }
 
-            if (_isFirstLevel)
+            /*if (_isFirstLevel)
             {
                 PlayerPrefs.SetInt("IsFirstRun", 1);
             }
@@ -40,7 +40,9 @@ namespace UI
             else if (PlayerPrefs.GetInt("IsFirstRun") == 1)
             {
                 _isCanOpen = true;
-            }
+            }*/
+            
+            _isCanOpen = true;
         }
 
         private void Update()

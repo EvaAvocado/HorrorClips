@@ -1388,7 +1388,13 @@ MonoBehaviour:
   _secondColor: {r: 0.5019608, g: 0.078431375, b: 0, a: 0.14117648}
   _thirdColor: {r: 0.5019608, g: 0.078431375, b: 0, a: 0.78431374}
   _dark: {fileID: 1939604446807105515}
+  _actionBeforeFadeIn:
+    m_PersistentCalls:
+      m_Calls: []
   _actionAfterFadeIn:
+    m_PersistentCalls:
+      m_Calls: []
+  _actionBeforeFadeOut:
     m_PersistentCalls:
       m_Calls: []
   _actionAfterFadeOut:
@@ -4521,6 +4527,9 @@ MonoBehaviour:
   _secondColor: {r: 0, g: 0, b: 0, a: 0}
   _thirdColor: {r: 0, g: 0, b: 0, a: 0}
   _dark: {fileID: 0}
+  _actionBeforeFadeIn:
+    m_PersistentCalls:
+      m_Calls: []
   _actionAfterFadeIn:
     m_PersistentCalls:
       m_Calls:
@@ -4536,6 +4545,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _actionBeforeFadeOut:
+    m_PersistentCalls:
+      m_Calls: []
   _actionAfterFadeOut:
     m_PersistentCalls:
       m_Calls: []
@@ -5171,7 +5183,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.068086624, y: -1.3958259}
+  m_Offset: {x: 0.37736, y: -1.3958259}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5182,7 +5194,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6341362, y: 8.830242}
+  m_Size: {x: 3.5423152, y: 8.830242}
   m_EdgeRadius: 0
 --- !u!114 &6908208466612505056
 MonoBehaviour:

@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: _stopWall
       value: 
       objectReference: {fileID: 6953643840202701607}
+    - target: {fileID: 4434194002946735209, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
+      propertyPath: _isCanSpawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4954608193314130207, guid: 6339c945305c1644582ca6ebbbffa862, type: 3}
       propertyPath: m_LocalizedAssetReference.m_TableEntryReference.m_KeyId
       value: 3335628102365184

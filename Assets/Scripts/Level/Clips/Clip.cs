@@ -5,6 +5,7 @@ using Core;
 using DG.Tweening;
 using EnemySystem.CreatureSystem;
 using EnemySystem.Minion;
+using Events;
 using Intro;
 using UnityEngine;
 using Utils;
@@ -36,6 +37,9 @@ namespace Level.Clips
         [SerializeField] private SpriteRenderer _wallRight;
         [SerializeField] private SpriteRenderer _wallLeft;
         [SerializeField] private SpriteRenderer _floor;
+
+        [Header("Events")] 
+        [SerializeField] private Halloween _halloween;
 
         private bool _isBeingHeld;
         private Camera _camera;
@@ -109,6 +113,9 @@ namespace Level.Clips
             {
                 _rightWall.layer = 9;
             }
+            
+            _halloween.Spawn();
+            _spriteRenderers.AddRange(_halloween.GetSpriteRenderers());
         }
 
         private void OnEnable()
